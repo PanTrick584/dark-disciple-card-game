@@ -1,0 +1,200 @@
+[
+    {
+        "level": 2,
+        "faction": "damned-hordes",
+        "category": {
+            "primary": {
+                "default": "follower",
+                "pl": "wyznawca"
+            }
+            
+        },
+        "name": {
+            "default": "miserable sacrifice",
+            "pl": "Marna Ofiarar"
+        },
+        "image": "",
+        "strength": 6,
+        "skills": [
+            {
+                "type": {
+                    "default": "sacrifice",
+                    "pl": "ofiara"
+                },
+                "description": {
+                    "Default": "Boost an enemy of the same Cost by 3p",
+                    "pl": "Wzmocnij wroga o tym samym Koszcie o 3pkt"
+                }
+            }
+        ]
+    },
+    {
+        "level": 2,
+        "faction": "damned-hordes",
+        "category": {
+            "primary": {
+                "default": "gargoyle",
+                "pl": "gargulec"
+            }
+        },
+        "image": "",
+        "name": {
+            "default": "Nothingness Sentinel",
+            "pl": "Strażnik Nicości"
+        },
+        "strength": 4,
+        "skills": []
+    },
+    {
+        "level": 2,
+        "faction": "damned-hordes",
+        "category": {
+            "primary": {
+                "default": "structure",
+                "pl": "budowla"
+            },
+            "secondary": {
+                "default": "abbys",
+                "pl": "otchłań"
+            }
+        },
+        "image": "",
+        "name": {
+            "default": "Doomgate Passage",
+            "pl": "Brama Zagłady"
+        },
+        "strength": 1,
+        "skills": [
+            {
+                "type": {
+                    "default": "play",
+                    "pl": "zagranie"
+                },
+                "description": {
+                    "default": "Summon a regular Sacrifice card from your hand, draw a card",
+                    "pl": "Wezwij z ręki zwykłą kartę z Ofiarą, dobierz kartę"
+                }
+            }
+        ]
+    },
+    {
+        "level": 2,
+        "faction": "damned-hordes",
+        "category": {
+            "primary": {
+                "default": "structure",
+                "pl": "budowla"
+            },
+            "secondary": {
+                "default": "tower",
+                "pl": "wieża"
+            }
+        },
+        "image": "",
+        "name": {
+            "default": "Gargoyle Spire",
+            "pl": "Iglica Gargulców"
+        },
+        "strength": 3,
+        "skills": [
+            {
+                "type": {
+                    "default": "looped",
+                    "pl": "zapętlenie"
+                },
+                "description": {
+                    "default": "Each time you play Gargoyle, damage the strongest enemy by 1p",
+                    "pl": "Za każdym razem gdy zagrywasz Gargulca zrań najsilniejszego wroga za 1pkt"
+                }
+            }
+        ]
+    },
+    {
+        "level": 2,
+        "faction": "damned-hordes",
+        "category": {
+            "primary": {
+                "default": "imp",
+                "pl": "chochlik"
+            }
+        },
+        "image": "",
+        "name": {
+            "default": "Servant of contempt",
+            "pl": "Sługa wzgardy"
+        },
+        "strength": 2,
+        "skills": [
+            {
+                "type": {
+                    "default": "looped",
+                    "pl": "zapętlenie"
+                },
+                "description": {
+                    "default": "If your opponent plays a card with the Play skill, boost yourself by 1p",
+                    "pl": "Jezeli przeciwnik zagrywa kartę z umiejętnością Zagrania wzmocnij siebie o 1pkt"
+                }
+            }
+        ]
+    },
+    {
+        "level": 2,
+        "faction": "damned-hordes",
+        "category": {
+            "primary": {
+                "default": "demon",
+                "pl": "demon"
+            }
+        },
+        "image": "",
+        "name": {
+            "default": "Utezar the Greed",
+            "pl": "Utezar Łapczywy"
+        },
+        "strength": 2,
+        "skills": [
+            {
+                "type": {
+                    "default": "play",
+                    "pl": "zagranie"
+                },
+                "description": {
+                    "default": "Consume an ally unit",
+                    "pl": "Pożryj sojusznika"
+                }
+            }
+        ]
+    },
+    {
+        "level": 2,
+        "faction": "damned-hordes",
+        "category": {
+            "primary": {
+                "default": "structure",
+                "pl": "budowla"
+            },
+            "secondary": {
+                "default": "abbys",
+                "pl": "otchłań"
+            }
+        },
+        "image": "",
+        "name": {
+            "default": "Hell's Passage",
+            "pl": "Piekielne Przejście"
+        },
+        "strength": 1,
+        "skills": [
+            {
+                "type": {
+                    "default": "play",
+                    "pl": " zagranie"
+                },
+                "description": {
+                    "default": "Summon a regular card with Sacrifice from your hand, draw a card",
+                    "pl": "Wezwij zwykłą kartę z Ofiarą z ręki, dobierz kartę"
+                }
+            }
+        ]
+    }
+]

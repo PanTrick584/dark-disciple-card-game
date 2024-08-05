@@ -1,0 +1,247 @@
+[
+    {
+        "level": 3,
+        "faction": "damned-hordes",
+        "category": {
+            "primary": {
+                "default": "gargoyle",
+                "pl": "gargulec"
+            }
+            
+        },
+        "name": {
+            "default": "Champion of tower",
+            "pl": "Czempion Wieży"
+        },
+        "image": "",
+        "strength": 2,
+        "skills": [
+            {
+                "type": {
+                    "default": "play",
+                    "pl": "zagranie"
+                },
+                "description": {
+                    "Default": "Boost yourself by 1p for each Gargoyle in your hand",
+                    "pl": "Wzmocnij siebie o 1pkt za każdego Gargulca w ręce"
+                }
+            },
+            {
+                "type": {
+                    "default": "domination",
+                    "pl": "dominacja"
+                },
+                "description": {
+                    "Default": "Damage an enemy by 2p",
+                    "pl": "Zrań wroga za 2pkt"
+                }
+            }
+        ]
+    },
+    {
+        "level": 3,
+        "faction": "damned-hordes",
+        "category": {
+            "primary": {
+                "default": "gargoyle",
+                "pl": "gargulec"
+            }
+        },
+        "image": "",
+        "name": {
+            "default": "Vigilant Guard",
+            "pl": "Czujna Straż"
+        },
+        "strength": 4,
+        "skills": [
+            {
+                "type": {
+                    "default": "play",
+                    "pl": "zagranie"
+                },
+                "description": {
+                    "Default": "Damage an enemy by 2p",
+                    "pl": "Zrań wroga za 2pkt"
+                }
+            }
+        ]
+    },
+    {
+        "level": 3,
+        "faction": "damned-hordes",
+        "category": {
+            "primary": {
+                "default": "Imp",
+                "pl": "chochlik"
+            }
+        },
+        "image": "",
+        "name": {
+            "default": "Daredevil",
+            "pl": "Chojrak"
+        },
+        "strength": 8,
+        "skills": [
+            {
+                "type": {
+                    "default": "play",
+                    "pl": "zagranie"
+                },
+                "description": {
+                    "default": "If your 2 strongest allies are weaker than your 2 strongest enemies, damage yourself for 4p",
+                    "pl": "Jeżeli 2 najsilniejszych sojuszników jest słabszych niż 2 najsilniejszych wrogów zrań siebie za 4pkt."
+                }
+            }
+        ]
+    },
+    {
+        "level": 3,
+        "faction": "damned-hordes",
+        "category": {
+            "primary": {
+                "default": "deamon",
+                "pl": "demon"
+            }
+        },
+        "image": "",
+        "name": {
+            "default": "Uneaten",
+            "pl": "Nenażarty"
+        },
+        "strength": 3,
+        "skills": [
+            {
+                "type": {
+                    "default": "play",
+                    "pl": "zagranie"
+                },
+                "description": {
+                    "default": "Consume an ally unit",
+                    "pl": "Pożryj sojusznika"
+                }
+            },
+            {
+                "type": {
+                    "default": "preparation",
+                    "pl": "oczekiwanie"
+                },
+                "description": {
+                    "default": "Consume an ally unit",
+                    "pl": "Pożryj sojusznika"
+                }
+            }
+        ]
+    },
+    {
+        "level": 3,
+        "faction": "damned-hordes",
+        "category": {
+            "primary": {
+                "default": "follower",
+                "pl": "wyznawca"
+            }
+        },
+        "image": "",
+        "name": {
+            "default": "Servant of worshp",
+            "pl": "Sługa uwielbienia"
+        },
+        "strength": 3,
+        "skills": [
+            {
+                "type": {
+                    "default": "sacrifice",
+                    "pl": "ofiara"
+                },
+                "description": {
+                    "default": "Boost 2 allies by 2p",
+                    "pl": "Wzmocnij 2 sojuszników o 2pkt."
+                }
+            }
+        ]
+    },
+    {
+        "level": 3,
+        "faction": "damned-hordes",
+        "category": {
+            "primary": {
+                "default": "deamon",
+                "pl": "demon"
+            }
+        },
+        "image": "",
+        "name": {
+            "default": "Great Beast",
+            "pl": "Łakoma Bestia"
+        },
+        "strength": 4,
+        "skills": [
+            {
+                "type": {
+                    "default": "domination",
+                    "pl": "dominacja"
+                },
+                "description": {
+                    "default": "Consume an enemy unit",
+                    "pl": "Pożryj wroga"
+                }
+            }
+        ]
+    },
+    {
+        "level": 3,
+        "faction": "damned-hordes",
+        "category": {
+            "primary": {
+                "default": "Imp",
+                "pl": "chochlik"
+            }
+        },
+        "image": "",
+        "name": {
+            "default": "Smart Coward",
+            "pl": "Cwany Tchórz"
+        },
+        "strength": 4,
+        "skills": [
+            {
+                "type": {
+                    "default": "play",
+                    "pl": " zagranie"
+                },
+                "description": {
+                    "default": "If you control the strongest card, boost yourself by 4p",
+                    "pl": "Jeżeli kontrolujesz najsilniejszą kartę wzmocnij siebie o 4pkt"
+                }
+            }
+        ]
+    },
+    {
+        "level": 3,
+        "faction": "damned-hordes",
+        "category": {
+            "primary": {
+                "default": "Witch",
+                "pl": "Wiedźma"
+            }
+        },
+        "image": "",
+        "name": {
+            "default": "Hegula",
+            "pl": "Hegula"
+        },
+        "strength": 4,
+        "skills": [
+            {
+                "type": {
+                    "default": "play",
+                    "pl": " zagranie"
+                },
+                "description": {
+                    "default": "Summon the top card from your deck and your opponent's deck to your Places; if the ally card has a power greater than 5, place your opponent's summoned card at the bottom of his deck.",
+                    "pl": "Wezwij wierzchnią kartę ze swojej talii i talii przeciwnika na wasze Place, jeżeli sojusznicza karta ma siłę większą niż 5 wezwaną kartę przeciwnika połóż na spodzie jego talii."
+                }
+            }
+        ]
+    }
+]
