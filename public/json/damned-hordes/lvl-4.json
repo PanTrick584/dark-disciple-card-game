@@ -1,0 +1,237 @@
+[
+    {
+        "level": 4,
+        "faction": "damned-hordes",
+        "category": {
+            "primary": {
+                "default": "deamon",
+                "pl": "demon"
+            }
+            
+        },
+        "name": {
+            "default": "Unburried",
+            "pl": "Niepochowany"
+        },
+        "image": "",
+        "strength": 4,
+        "skills": [
+            {
+                "type": {
+                    "default": "sacrifice",
+                    "pl": "ofiara"
+                },
+                "description": {
+                    "Default": "Summon self from graveyard and reduce your base power by 1p",
+                    "pl": "Wezwij się ponownie z cmentarza i zmniejsz siłę bazową o 1pkt."
+                }
+            }
+        ]
+    },
+    {
+        "level": 4,
+        "faction": "damned-hordes",
+        "category": {
+            "primary": {
+                "default": "deamon",
+                "pl": "demon"
+            }
+        },
+        "image": "",
+        "name": {
+            "default": "Moloh the Nice",
+            "pl": "Moloh Spolegliwy"
+        },
+        "strength": 1,
+        "skills": [
+            {
+                "type": {
+                    "default": "sacrifice",
+                    "pl": "ofiara"
+                },
+                "description": {
+                    "Default": "Boost 2 allays by 3p",
+                    "pl": "Wzmocnij 2 sojuszników za 3pkt"
+                }
+            }
+        ]
+    },
+    {
+        "level": 4,
+        "faction": "damned-hordes",
+        "category": {
+            "primary": {
+                "default": "gargoyle",
+                "pl": "gargulec"
+            }
+        },
+        "image": "",
+        "name": {
+            "default": "Stone Prowokator",
+            "pl": "Kamienny prowokator"
+        },
+        "strength": 5,
+        "skills": [
+            {
+                "type": {
+                    "default": "looped",
+                    "pl": "zapętlenie"
+                },
+                "description": {
+                    "default": "If enemy controlls highest unit on battlefield, every turn damage it by 1p",
+                    "pl": "Jeżeli przeciwnik kontroluje najsilniejszą kartę zrań ją każdej tury za 1pkt"
+                }
+            }
+        ]
+    },
+    {
+        "level": 4,
+        "faction": "damned-hordes",
+        "category": {
+            "primary": {
+                "default": "imp",
+                "pl": "chochlik"
+            }
+        },
+        "image": "",
+        "name": {
+            "default": "Cwany konkurent",
+            "pl": "Cwany konkurent"
+        },
+        "strength": 5,
+        "skills": [
+            {
+                "type": {
+                    "default": "play",
+                    "pl": "zagranie"
+                },
+                "description": {
+                    "default": "If enemy controlls highest unit, damage it by 4p",
+                    "pl": "Jeżeli przeciwnik kontroluje najsilniejszą kartę, zrań ją za 4pkt"
+                }
+            }
+        ]
+    },
+    {
+        "level": 4,
+        "faction": "damned-hordes",
+        "category": {
+            "primary": {
+                "default": "deamonologyst",
+                "pl": "demonolog"
+            }
+        },
+        "image": "",
+        "name": {
+            "default": "Greil wzgardliwy",
+            "pl": "Greil wzgardliwy"
+        },
+        "strength": 4,
+        "skills": [
+            {
+                "type": {
+                    "default": "play",
+                    "pl": "zagranie"
+                },
+                "description": {
+                    "default": "Wezwij zwykłą jednostkę z Ofiarą z ręki, dobierz kartę.",
+                    "pl": "Wezwij zwykłą jednostkę z Ofiarą z ręki, dobierz kartę."
+                }
+            },
+            {
+                "type": {
+                    "default": "preparation",
+                    "pl": "oczekiwanie / przygotownaie"
+                },
+                "description": {
+                    "default": "Wezwij zwykłą jednostkę z Ofiarą z cmentarza.",
+                    "pl": "Wezwij zwykłą jednostkę z Ofiarą z cmentarza."
+                }
+            }
+        ]
+    },
+    {
+        "level": 4,
+        "faction": "damned-hordes",
+        "category": {
+            "primary": {
+                "default": "deamonologyst",
+                "pl": "demonolog"
+            }
+        },
+        "image": "",
+        "name": {
+            "default": "ETREEL MAG",
+            "pl": "ETREEL MAG"
+        },
+        "strength": 1,
+        "skills": [
+            {
+                "type": {
+                    "default": "looped",
+                    "pl": "zapętlenie"
+                },
+                "description": {
+                    "default": "Za każdym razem gdy zagrywasz Demona wzmocnij siebie o 2pkt.",
+                    "pl": "Za każdym razem gdy zagrywasz Demona wzmocnij siebie o 2pkt."
+                }
+            }
+        ]
+    },
+    {
+        "level": 4,
+        "faction": "damned-hordes",
+        "category": {
+            "primary": {
+                "default": "deamon",
+                "pl": "demon"
+            }
+        },
+        "image": "",
+        "name": {
+            "default": "KHAER PODJADACZ",
+            "pl": "KHAER PODJADACZ"
+        },
+        "strength": 2,
+        "skills": [
+            {
+                "type": {
+                    "default": "play",
+                    "pl": " zagranie"
+                },
+                "description": {
+                    "default": "Pożryj kartę z ręki, dobierz kartę.",
+                    "pl": "Pożryj kartę z ręki, dobierz kartę.t"
+                }
+            }
+        ]
+    },
+    {
+        "level": 4,
+        "faction": "damned-hordes",
+        "category": {
+            "primary": {
+                "default": "deamon",
+                "pl": "demon"
+            }
+        },
+        "image": "",
+        "name": {
+            "default": "GEREIL WZGARDLIWY",
+            "pl": "GEREIL WZGARDLIWY"
+        },
+        "strength": 4,
+        "skills": [
+            {
+                "type": {
+                    "default": "sacrifice",
+                    "pl": " ofiata"
+                },
+                "description": {
+                    "default": "Jeżeli przeciwnik kontroluje 4 lub więcej kart o sile mniejszej niż 3 zrań 3 jego najsilniejsze karty za 3pkt",
+                    "pl": "Jeżeli przeciwnik kontroluje 4 lub więcej kart o sile mniejszej niż 3 zrań 3 jego najsilniejsze karty za 3pkt"
+                }
+            }
+        ]
+    }
+]
