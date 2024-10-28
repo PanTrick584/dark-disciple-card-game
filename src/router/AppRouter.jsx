@@ -7,7 +7,7 @@ import Orcs from '../pages/cards-pages/Orcs';
 import Damned from '../pages/cards-pages/Damned';
 import Empire from '../pages/cards-pages/Empire';
 import Undead from '../pages/cards-pages/Undead';
-import CardsEmpty from '../pages/CardsEmpty';
+// import CardsEmpty from '../pages/CardsEmpty';
 
 const AppRoutes = () => {
     return (
@@ -16,7 +16,6 @@ const AppRoutes = () => {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/decks" element={<DecksPage />} />
                 <Route path="/cards" element={<CardsPage />}>
-                    <Route index element={<CardsEmpty />} />
                     <Route path="elves" element={<Elves />} />
                     <Route path="orcs" element={<Orcs />} />
                     <Route path="damned" element={<Damned />} />
@@ -25,7 +24,7 @@ const AppRoutes = () => {
                 </Route>
             </Routes>
         </Router>
-    );
+    )
 };
 
 export default AppRoutes;
