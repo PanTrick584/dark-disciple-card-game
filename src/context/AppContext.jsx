@@ -9,7 +9,8 @@ export const AppProvider = ({ children }) => {
     const [userData, setUserData] = useState("siema");
     const [loadings, setLoadings] = useState({
         adminPageLIst: true
-    })
+    });
+    const [categories, setCategories] = useState([])
 
     return (
         <AppContext.Provider
@@ -17,7 +18,9 @@ export const AppProvider = ({ children }) => {
                 userData,
                 setUserData,
                 loadings,
-                setLoadings
+                setLoadings,
+                categories,
+                setCategories
             }}>
             {children}
         </AppContext.Provider>

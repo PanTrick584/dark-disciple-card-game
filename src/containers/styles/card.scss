@@ -1,0 +1,53 @@
+$textColor: #888682;
+
+.card {
+    flex: 1;
+    width: 100%;
+    padding: 30px;
+    border-radius: 8px;
+    background: linear-gradient(145deg, #1d1d1d, #353535);
+    box-shadow: 2px 2px 2px #0a0a0a,
+        -2px -2px 2px $textColor;
+    margin: 0 0 15px;
+
+    &-title {
+        display: flex;
+        justify-content: space-between;
+
+        &-name {}
+
+        &-categories {
+            display: flex;
+            font-size: 12px;
+        }
+
+        &-nums {
+            display: flex;
+            gap: 6px;
+
+            .card-level {}
+
+            .card-strength {}
+        }
+    }
+
+    &-description {
+        &-box {
+            display: flex;
+            flex-direction: column;
+            padding: 6px 0 0;
+            gap: 4px;
+
+            .skill {
+                padding: 6px 0 0;
+                border-top: 1px solid black;
+                font-size: 12px;
+                text-transform: uppercase;
+            }
+
+            .description {
+                // padding: 2px 0 0;
+            }
+        }
+    }
+}

@@ -1,0 +1,59 @@
+$textColor: #888682;
+$textColorHover: #c5c4c2;
+$textColorActive: #3a3a3a;
+
+
+li.button {
+    cursor: pointer;
+    border-radius: 8px;
+    background: linear-gradient(145deg, #1d1d1d, #353535);
+    box-shadow: 2px 2px 2px #0a0a0a,
+        -2px -2px 2px $textColor;
+    color: $textColor;
+    transition: all .2s;
+
+    a {
+        padding: 10px 20px;
+        display: block;
+        height: 100%;
+        width: 100%;
+        color: $textColor;
+    }
+
+    &:hover {
+        box-shadow: 2px 2px 3px #000000,
+            -2px -2px 3px $textColorHover;
+        color: $textColorHover;
+
+        a {
+            color: $textColorHover;
+        }
+    }
+
+    &:focus,
+    &:active {
+        box-shadow: 2px 2px 6px #000000,
+            -2px -2px 6px $textColorActive;
+        color: $textColorActive;
+
+        a {
+            color: $textColorActive;
+        }
+    }
+
+    &.active {
+        color: $textColorActive;
+
+        a {
+            color: $textColorActive;
+        }
+    }
+
+    &.small {
+        a {
+            font-size: 10px;
+            padding: 10px 12px;
+            text-transform: uppercase;
+        }
+    }
+}

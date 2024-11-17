@@ -1,16 +1,19 @@
 [
     {
         "level": 1,
-        "faction": "damned-hordes",
-        "category": {
-            "primary": {
-                "default": "gargoyle",
+        "faction": {
+            "en": "damned-hordes",
+            "pl": "hordy-potępionych"
+        },
+        "category": [
+            {
+                "en": "gargoyle",
                 "pl": "gargulec"
             }
-        },
+        ],
         "name": {
-            "default": "Obsidian Watcher",
-            "pl": "Obsidian Watcher"
+            "en": "Stone Watcher",
+            "pl": "Kammienny Strażnik"
         },
         "image": "",
         "strength": 4,
@@ -18,25 +21,30 @@
     },
     {
         "level": 1,
-        "faction": "damned-hordes",
-        "category": {
-            "primary": {
+        "faction": {
+            "en": "damned-hordes",
+            "pl": "hordy-potępionych"
+        },
+        "category": [
+            {
                 "default": "demonologist",
                 "pl": "demonolog"
             }
-        },
+        ],
         "image": "",
         "name": {
             "default": "Demonic Riftmaster",
-            "pl": ""
+            "pl": "Opiekun Przejścia"
         },
         "strength": 2,
         "skills": [
             {
-                "type": {
-                    "default": "play",
-                    "pl": "zagranie"
-                },
+                "type": [
+                    {
+                        "default": "play",
+                        "pl": "zagranie"
+                    }
+                ],
                 "description": {
                     "Default": "If you control the Abyss, boost this card by 3p",
                     "pl": "Jeżeli kontrolujesz Otchłań wzmocnij tę kartę o 3pkt"
@@ -50,7 +58,7 @@
         "category": {
             "primary": {
                 "default": "deamon",
-                "pl": "Demon"
+                "pl": "demon"
             }
         },
         "image": "",

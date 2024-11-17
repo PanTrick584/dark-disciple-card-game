@@ -7,8 +7,8 @@ const HomePage = () => {
     const { userData, loadings } = useContext(AppContext);  // Destructure values from context
 
     // Log the values from context for testing
-    console.log('userData:', userData);      // This should log "siema"
-    console.log('loadings:', loadings);
+    // console.log('userData:', userData);      // This should log "siema"
+    // console.log('loadings:', loadings);
 
     return (
         <div>

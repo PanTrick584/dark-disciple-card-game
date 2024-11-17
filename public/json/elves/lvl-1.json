@@ -1,3 +1,16 @@
-{
-    "msg": "hi"
-}
+[
+    {
+        "level": 1,
+        "faction": "damned-hordes",
+        "category": {
+            "default": "",
+            "pl": "Gargulec"
+        },
+        "name": {
+            "default": "",
+            "pl": "Pomniejszy Strażnik"
+        },
+        "strength": 4,
+        "skills": []
+    }
+]
