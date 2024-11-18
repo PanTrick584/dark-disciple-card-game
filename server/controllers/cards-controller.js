@@ -1,9 +1,9 @@
 const Cards = require("../models/CardsModel");
 
 const getAllCards = async (req, res) => {
-    const { faction } = req.query;
+    const { faction, level } = req.query;
     console.log(faction);
-    const cardsCollection = await Cards.find({ "faction.en": faction }).sort('createdAt');
+    const cardsCollection = await Cards.find({ "faction.en": faction, level: Number(level) }).sort('createdAt');
     console.log(cardsCollection);
     return res.status(200).json({ data: cardsCollection })
 }

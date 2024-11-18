@@ -3,7 +3,7 @@ import "./styles/card.scss"
 
 const Card = ({ cardsLevel }) => {
 
-    console.log(cardsLevel)
+    // console.log(cardsLevel)
     return (
         <>
             {cardsLevel.map((card) => {
@@ -11,10 +11,10 @@ const Card = ({ cardsLevel }) => {
                     <div className="card">
                         <div className="card-title">
                             <div className="card-title-name">
-                                <p>{card?.name?.default}</p>
+                                <p>{card?.name?.en}</p>
                                 <div className="card-title-categories">
-                                    <p>{card?.category?.primary?.default}</p>
-                                    <p>{card?.category?.secondary?.default}</p>
+                                    <p>{card?.category?.primary?.en}</p>
+                                    <p>{card?.category?.secondary?.en}</p>
                                 </div>
                             </div>
                             <div className="card-title-nums">
@@ -24,10 +24,15 @@ const Card = ({ cardsLevel }) => {
                         </div>
                         <div className="card-description">
                             {card?.skills.map((skill, id) => {
+                                // console.log(skill?.type);
+                                // console.log(skill?.description);
                                 return (
                                     <div className="card-description-box">
-                                        <div className="skill">{skill?.type?.default}:</div>
-                                        <div className="description">{skill?.description?.default}</div>
+                                        {skill.length && skill?.type?.forEach(item => {
+                                            return (
+                                                <div className="skill">{item?.en}</div>)
+                                        })}
+                                        <div className="description">{skill?.description?.en}</div>
                                     </div>
                                 )
                             })}

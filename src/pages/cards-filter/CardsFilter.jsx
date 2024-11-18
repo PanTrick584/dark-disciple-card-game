@@ -11,22 +11,24 @@ const CardsFilter = () => {
     const [filter, setFilter] = useState([]);
     const [activeLevels, setActiveLevels] = useState([]);
     const [categories, setCategories] = useState([]);
+    const [factionData, setFactionData] = useState();
 
     const location = useLocation();
     const dataLocation = location.state;
 
-    useEffect(() => {
-        const fetchFactionData = async () => {
-            try {
-                const factionData = await fetchDB(`http://localhost:3333/api/v1/cards?faction=damned-hordes`);
-                console.log("Faction Data:", factionData);
-            } catch (error) {
-                console.error("Error fetching faction data:", error);
-            }
-        };
+    // useEffect(() => {
+    //     const fetchFactionData = async () => {
+    //         try {
+    //             const jsonData = await fetchDB(`http://localhost:3333/api/v1/cards?faction=damned-hordes`);
+    //             setFactionData(jsonData.data)
+    //             console.log(jsonData);
+    //         } catch (error) {
+    //             console.error("Error fetching faction data:", error);
+    //         }
+    //     };
 
-        fetchFactionData();
-    }, []);
+    //     fetchFactionData();
+    // }, []);
 
     useEffect(() => {
         callAllCards();
@@ -48,14 +50,12 @@ const CardsFilter = () => {
         let uniqueCategories = [];
         data.forEach(level => {
             level.forEach(card => {
-                const primary = card?.category?.primary?.default;
-                const secondary = card?.category?.secondary?.default;
-                if (primary && !uniqueCategories.includes(primary)) {
-                    uniqueCategories = [...uniqueCategories, primary]
-                }
+                console.log(card);
+                const category = card?.category.length && card?.category?.map(category => category.en);
 
-                if (secondary && !uniqueCategories.includes(secondary)) {
-                    uniqueCategories = [...uniqueCategories, secondary]
+                console.log(category);
+                if (category && !uniqueCategories.includes(...category)) {
+                    uniqueCategories = [...uniqueCategories, ...category]
                 }
             })
         })
@@ -75,7 +75,7 @@ const CardsFilter = () => {
         if (prev.includes(type(value))) return prev.filter(item => type(item) !== type(value));
         return [...prev, type(value)];
     }
-
+    console.log(categories);
     return (
         <div className='cards-filter'>
             {/* CARDS LEVELS */}
@@ -100,7 +100,7 @@ const CardsFilter = () => {
             </nav>
             {/* CATEGORIES */}
             <nav className="">
-                {console.log(categories)}
+                {/* {console.log(categories)} */}
                 <ul>
                     {categories.map((category, id) => {
                         return (

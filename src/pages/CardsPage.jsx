@@ -5,13 +5,15 @@ import "./styles/cards-page.scss"
 const CardsPage = () => {
     const [active, setActive] = useState("");
     const pathsDamned = [
-        "/json/damned-hordes/lvl-1.json",
-        "/json/damned-hordes/lvl-2.json",
-        "/json/damned-hordes/lvl-3.json",
-        "/json/damned-hordes/lvl-4.json",
-        "/json/damned-hordes/lvl-5.json",
-        "/json/damned-hordes/lvl-6.json",
-        "/json/damned-hordes/lvl-7.json",
+        "http://localhost:3333/api/v1/cards?faction=damned-hordes&level=1",
+        "http://localhost:3333/api/v1/cards?faction=damned-hordes&level=2",
+        "http://localhost:3333/api/v1/cards?faction=damned-hordes&level=3",
+        // "/json/damned-hordes/lvl-2.json",
+        // "/json/damned-hordes/lvl-3.json",
+        // "/json/damned-hordes/lvl-4.json",
+        // "/json/damned-hordes/lvl-5.json",
+        // "/json/damned-hordes/lvl-6.json",
+        // "/json/damned-hordes/lvl-7.json",
     ];
 
     const pathsUndead = [

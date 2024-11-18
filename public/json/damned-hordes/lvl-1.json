@@ -27,13 +27,13 @@
         },
         "category": [
             {
-                "default": "demonologist",
+                "en": "demonologist",
                 "pl": "demonolog"
             }
         ],
         "image": "",
         "name": {
-            "default": "Demonic Riftmaster",
+            "en": "Demonic Riftmaster",
             "pl": "Opiekun Przejścia"
         },
         "strength": 2,
@@ -41,12 +41,12 @@
             {
                 "type": [
                     {
-                        "default": "play",
+                        "en": "play",
                         "pl": "zagranie"
                     }
                 ],
                 "description": {
-                    "Default": "If you control the Abyss, boost this card by 3p",
+                    "en": "If you control the Abyss, boost this card by 3p",
                     "pl": "Jeżeli kontrolujesz Otchłań wzmocnij tę kartę o 3pkt"
                 }
             }
@@ -54,27 +54,32 @@
     },
     {
         "level": 1,
-        "faction": "damned-hordes",
-        "category": {
-            "primary": {
-                "default": "deamon",
+        "faction": {
+            "en": "damned-hordes",
+            "pl": "hordy-potępionych"
+        },
+        "category": [
+            {
+                "en": "deamon",
                 "pl": "demon"
             }
-        },
+        ],
         "image": "",
         "name": {
-            "default": "Netherworld Fingereater",
+            "en": "Netherworld Fingereater",
             "pl": "Palcojad z Zaświatów"
         },
         "strength": 1,
         "skills": [
             {
-                "type": {
-                    "default": "play",
-                    "pl": "zagranie"
-                },
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
                 "description": {
-                    "default": "Consume an ally unit",
+                    "en": "Consume an ally unit",
                     "pl": "Pożryj sojusznika"
                 }
             }
@@ -82,27 +87,32 @@
     },
     {
         "level": 1,
-        "faction": "damned-hordes",
-        "category": {
-            "primary": {
-                "default": "imp",
+        "faction": {
+            "en": "damned-hordes",
+            "pl": "hordy-potępionych"
+        },
+        "category": [
+            {
+                "en": "imp",
                 "pl": "chochlik"
             }
-        },
+        ],
         "image": "",
         "name": {
-            "default": "Mimik",
+            "en": "Mimik",
             "pl": "Mimik"
         },
         "strength": 2,
         "skills": [
             {
-                "type": {
-                    "default": "play",
-                    "pl": "zagranie"
-                },
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
                 "description": {
-                    "default": "If in the previous turn your opponent played a card with the Cost of this card, strengthen yourself by 5p",
+                    "en": "If in the previous turn your opponent played a card with the Cost of this card, strengthen yourself by 5p",
                     "pl": "Jeżeli w poprzedniej turze przeciwnik zagrał kartę o Koszcie tej karty wzmocnij siebie o 5pkt."
                 }
             }
@@ -110,27 +120,32 @@
     },
     {
         "level": 1,
-        "faction": "damned-hordes",
-        "category": {
-            "primary": {
-                "default": "gargoyle",
+        "faction": {
+            "en": "damned-hordes",
+            "pl": "hordy-potępionych"
+        },
+        "category": [
+            {
+                "en": "gargoyle",
                 "pl": "gargulec"
             }
-        },
+        ],
         "image": "",
         "name": {
-            "default": "Infernal Lookout",
+            "en": "Infernal Lookout",
             "pl": "Piekielny Obserwator"
         },
         "strength": 2,
         "skills": [
             {
-                "type": {
-                    "default": "play",
-                    "pl": "zagranie"
-                },
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
                 "description": {
-                    "default": "Damage enemy by 2p",
+                    "en": "Damage enemy by 2p",
                     "pl": "Zrań wroga za 2pkt"
                 }
             }
@@ -138,27 +153,32 @@
     },
     {
         "level": 1,
-        "faction": "damned-hordes",
-        "category": {
-            "primary": {
-                "default": "demonologist",
+        "faction": {
+            "en": "damned-hordes",
+            "pl": "hordy-potępionych"
+        },
+        "category": [
+            {
+                "en": "demonologist",
                 "pl": "demonolog"
             }
-        },
+        ],
         "image": "",
         "name": {
-            "default": "Ozuuz, Sacrifice Conjuror",
+            "en": "Ozuuz, Sacrifice Conjuror",
             "pl": "Ozuuz, Zaklinacz Ofiary"
         },
         "strength": 2,
         "skills": [
             {
-                "type": {
-                    "default": "play",
-                    "pl": " zagranie"
-                },
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": " zagranie"
+                    }
+                ],
                 "description": {
-                    "default": "Play a unit with a Sacrifice from your graveyard",
+                    "en": "Play a unit with a Sacrifice from your graveyard",
                     "pl": "Zagraj z cmentarza jednostkę z Ofiarą."
                 }
             }
@@ -166,27 +186,32 @@
     },
     {
         "level": 1,
-        "faction": "damned-hordes",
-        "category": {
-            "primary": {
-                "default": "follower",
+        "faction": {
+            "en": "damned-hordes",
+            "pl": "hordy-potępionych"
+        },
+        "category": [
+            {
+                "en": "follower",
                 "pl": "wyznawca"
             }
-        },
+        ],
         "image": "",
         "name": {
-            "default": "Sacrificial Claw",
+            "en": "Sacrificial Claw",
             "pl": "Szpon poświęcenia"
         },
         "strength": 1,
         "skills": [
             {
-                "type": {
-                    "default": "sacrifice",
-                    "pl": " ofiara"
-                },
+                "type": [
+                    {
+                        "en": "sacrifice",
+                        "pl": " ofiara"
+                    }
+                ],
                 "description": {
-                    "default": "Play a unit with a Sacrifice from your graveyard",
+                    "en": "Play a unit with a Sacrifice from your graveyard",
                     "pl": "Zagraj z cmentarza jednostkę z Ofiarą."
                 }
             }

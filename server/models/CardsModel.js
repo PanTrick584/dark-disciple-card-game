@@ -23,7 +23,7 @@ const CardSchema = new mongoose.Schema({
     image: {
         type: String,
     },
-    skill: [
+    skills: [
         {
             type: [
                 createTranslationField()
