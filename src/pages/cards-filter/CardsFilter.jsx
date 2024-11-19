@@ -11,49 +11,32 @@ const CardsFilter = () => {
     const [filter, setFilter] = useState([]);
     const [activeLevels, setActiveLevels] = useState([]);
     const [categories, setCategories] = useState([]);
-    const [factionData, setFactionData] = useState();
+    const [factionData, setFactionData] = useState([]);
+    const [fechedFactions, setFetchedFactions] = useState([]);
 
     const location = useLocation();
-    const dataLocation = location.state;
-
-    // useEffect(() => {
-    //     const fetchFactionData = async () => {
-    //         try {
-    //             const jsonData = await fetchDB(`http://localhost:3333/api/v1/cards?faction=damned-hordes`);
-    //             setFactionData(jsonData.data)
-    //             console.log(jsonData);
-    //         } catch (error) {
-    //             console.error("Error fetching faction data:", error);
-    //         }
-    //     };
-
-    //     fetchFactionData();
-    // }, []);
+    const { dataLocation, name } = location.state;
 
     useEffect(() => {
+        if (fechedFactions.includes(name)) return;
+
         callAllCards();
     }, [dataLocation]);
-
-    useEffect(() => {
-        fetchData(filter);
-    }, [filter])
 
     const callAllCards = () => {
         fetchData(dataLocation);
         setNavigation(dataLocation);
-        setFilter([]);
         setActiveLevels([]);
+        setFetchedFactions(prev => !prev.includes(name) ? [...prev, name] : prev)
     }
 
     useEffect(() => {
         if (!data) return;
         let uniqueCategories = [];
-        data.forEach(level => {
-            level.forEach(card => {
-                console.log(card);
+        data?.forEach(level => {
+            level?.data?.forEach(card => {
                 const category = card?.category.length && card?.category?.map(category => category.en);
 
-                console.log(category);
                 if (category && !uniqueCategories.includes(...category)) {
                     uniqueCategories = [...uniqueCategories, ...category]
                 }
@@ -66,6 +49,13 @@ const CardsFilter = () => {
         try {
             const result = await fetchJsonData(path);
             setData(result);
+            console.log("hello");
+            setFactionData(prev => {
+                const newPrev = [...prev, { name: name, data: result }];
+                const filterPrev = newPrev.filter((item, index, self) =>
+                    index === self.findIndex(obj => obj.name === item.name))
+                return filterPrev;
+            })
         } catch (error) {
             console.error("Failed to fetch data:", error);
         }
@@ -75,7 +65,10 @@ const CardsFilter = () => {
         if (prev.includes(type(value))) return prev.filter(item => type(item) !== type(value));
         return [...prev, type(value)];
     }
-    console.log(categories);
+
+    console.log(factionData);
+    console.log(fechedFactions);
+
     return (
         <div className='cards-filter'>
             {/* CARDS LEVELS */}
@@ -95,12 +88,11 @@ const CardsFilter = () => {
                             </li>
                         )
                     })}
-                    <li className={`nav-ul-li button`} onClick={() => callAllCards()}><a>all</a></li>
+                    <li className={`nav-ul-li button`} onClick={() => setActiveLevels([])}><a>all</a></li>
                 </ul>
             </nav>
             {/* CATEGORIES */}
-            <nav className="">
-                {/* {console.log(categories)} */}
+            <nav className="cards-categories">
                 <ul>
                     {categories.map((category, id) => {
                         return (
@@ -111,7 +103,15 @@ const CardsFilter = () => {
             </nav>
             {/* CARDS */}
             <div className="cards-filter-container">
-                {data?.map((cardsLevel) => <Card cardsLevel={cardsLevel} />)}
+                {factionData.map((faction, id) => {
+                    if (!faction?.name === name) return;
+                    console.log(id);
+                    return faction?.data?.map((cardsLevel, id) => {
+                        if (!activeLevels.length || activeLevels.includes(id + 1)) {
+                            return <Card cardsLevel={cardsLevel} />
+                        }
+                    })
+                })}
             </div>
         </div>
     )

@@ -1,16 +1,35 @@
 [
     {
-        "level": 1,
-        "faction": "damned-hordes",
-        "category": {
-            "default": "",
-            "pl": "Gargulec"
+        "level": 5,
+        "faction": {
+            "en": "damned-hordes",
+            "pl": "hordy-potępionych"
         },
+        "category": [
+            {
+                "en": "gargoyle",
+                "pl": "gargulec"
+            }
+        ],
         "name": {
-            "default": "",
-            "pl": "Pomniejszy Strażnik"
+            "en": "Defender of towers",
+            "pl": "Obrońca wież"
         },
-        "strength": 4,
-        "skills": []
+        "image": "",
+        "strength": 5,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "preparation",
+                        "pl": "przygotowanie"
+                    }
+                ],
+                "description": {
+                    "en": "Damage two enemies by 2p",
+                    "pl": "Zrań dwóch przeciwników za 2pkt."
+                }
+            }
+        ]
     }
 ]

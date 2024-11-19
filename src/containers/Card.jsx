@@ -2,11 +2,9 @@ import React, { useEffect, useState } from 'react'
 import "./styles/card.scss"
 
 const Card = ({ cardsLevel }) => {
-
-    // console.log(cardsLevel)
     return (
         <>
-            {cardsLevel.map((card) => {
+            {cardsLevel?.data?.map((card) => {
                 return (
                     <div className="card">
                         <div className="card-title">
@@ -23,16 +21,18 @@ const Card = ({ cardsLevel }) => {
                             </div>
                         </div>
                         <div className="card-description">
-                            {card?.skills.map((skill, id) => {
-                                // console.log(skill?.type);
-                                // console.log(skill?.description);
+                            {card?.skills?.map((skill, id) => {
+                                if (!skill) return;
                                 return (
                                     <div className="card-description-box">
-                                        {skill.length && skill?.type?.forEach(item => {
+                                        {skill?.map(item => {
                                             return (
-                                                <div className="skill">{item?.en}</div>)
+                                                <>
+                                                    <div className="skill">{item.type.length && item?.type?.map(el => el?.en)}</div>
+                                                    <div className="description">{item?.description?.en}</div>
+                                                </>
+                                            )
                                         })}
-                                        <div className="description">{skill?.description?.en}</div>
                                     </div>
                                 )
                             })}

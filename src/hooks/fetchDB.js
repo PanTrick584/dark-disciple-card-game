@@ -8,7 +8,7 @@ export const fetchDB = async (path) => {
         }
 
         const result = await response.json();
-
+        console.log(result);
         return result;
     } catch (error) {
         console.error("Error fetching JSON data:", error);

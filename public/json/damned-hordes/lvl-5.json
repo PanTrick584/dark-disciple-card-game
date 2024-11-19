@@ -1,16 +1,302 @@
 [
     {
-        "level": 1,
-        "faction": "damned-hordes",
-        "category": {
-            "default": "",
-            "pl": "Gargulec"
+        "level": 5,
+        "faction": {
+            "en": "damned-hordes",
+            "pl": "hordy-potępionych"
         },
+        "category": [
+            {
+                "en": "imp",
+                "pl": "chochlik"
+            }
+        ],
         "name": {
-            "default": "",
-            "pl": "Pomniejszy Strażnik"
+            "en": "Gourmand",
+            "pl": "Łasuch"
         },
+        "image": "",
+        "strength": 10,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Damage self by 8p.",
+                    "pl": "Zrań siebie za 8pkt"
+                }
+            }
+        ]
+    },
+    {
+        "level": 5,
+        "faction": {
+            "en": "damned-hordes",
+            "pl": "hordy-potępionych"
+        },
+        "category": [
+            {
+                "en": "deamon",
+                "pl": "demon"
+            }
+        ],
+        "name": {
+            "en": "Gereil Contemptus",
+            "pl": "Gereil Wzgardliwy"
+        },
+        "image": "",
         "strength": 4,
-        "skills": []
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Summon from hand card with Sacrifice of Cost 5 or less, draw a card.",
+                    "pl": "Wezwij z ręki kartę z Ofiarą ok Koszcie 5 lub mniejszym, dobierz kartę."
+                }
+            },
+            {
+                "type": [
+                    {
+                        "en": "preparation",
+                        "pl": "przygotowanie"
+                    }
+                ],
+                "description": {
+                    "en": "Boost summoned card by 3p.",
+                    "pl": "Wzmiocnij wezwaną kartę o 3pkt."
+                }
+            }
+        ]
+    },
+    {
+        "level": 5,
+        "faction": {
+            "en": "damned-hordes",
+            "pl": "hordy-potępionych"
+        },
+        "category": [
+            {
+                "en": "deamon",
+                "pl": "demon"
+            }
+        ],
+        "name": {
+            "en": "Asaah Furious",
+            "pl": "Asaah Wściekły"
+        },
+        "image": "",
+        "strength": 4,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Consume ally",
+                    "pl": "Pożryj sojusznika"
+                }
+            },
+            {
+                "type": [
+                    {
+                        "en": "preparation",
+                        "pl": "przygotowanie"
+                    },
+                    {
+                        "en": "domination",
+                        "pl": "dominacja"
+                    }
+                ],
+                "description": {
+                    "en": "Damage enemy by 3p",
+                    "pl": "Zrań przeciwnika za 3pkt."
+                }
+            }
+        ]
+    },
+    {
+        "level": 5,
+        "faction": {
+            "en": "damned-hordes",
+            "pl": "hordy-potępionych"
+        },
+        "category": [
+            {
+                "en": "gargoyle",
+                "pl": "gargulec"
+            }
+        ],
+        "name": {
+            "en": "Defender of towers",
+            "pl": "Obrońca wież"
+        },
+        "image": "",
+        "strength": 5,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "preparation",
+                        "pl": "przygotowanie"
+                    }
+                ],
+                "description": {
+                    "en": "Damage two enemies by 2p",
+                    "pl": "Zrań dwóch przeciwników za 2pkt."
+                }
+            }
+        ]
+    },
+    {
+        "level": 5,
+        "faction": {
+            "en": "damned-hordes",
+            "pl": "hordy-potępionych"
+        },
+        "category": [
+            {
+                "en": "imp",
+                "pl": "chochlik"
+            }
+        ],
+        "name": {
+            "en": "Similarity",
+            "pl": "Upodobnienie"
+        },
+        "image": "",
+        "strength": 4,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "If you control at least 4 cards with power greater than 6 boost self by 6p.",
+                    "pl": "Jeżeli kontrolujesz przynajmniej 4 karty o sile większej niż 6 wzmocnij się o 6pkt."
+                }
+            }
+        ]
+    },
+    {
+        "level": 5,
+        "faction": {
+            "en": "damned-hordes",
+            "pl": "hordy-potępionych"
+        },
+        "category": [
+            {
+                "en": "follower",
+                "pl": "wyznawca"
+            }
+        ],
+        "name": {
+            "en": "Servant of Weekness",
+            "pl": "Sługa Słabości"
+        },
+        "image": "",
+        "strength": 3,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "sacrifice",
+                        "pl": "ofiara"
+                    }
+                ],
+                "description": {
+                    "en": "Destroy all weakest enemies.",
+                    "pl": "Znisz wszystkich najsłabszych wrogów."
+                }
+            }
+        ]
+    },
+    {
+        "level": 5,
+        "faction": {
+            "en": "damned-hordes",
+            "pl": "hordy-potępionych"
+        },
+        "category": [
+            {
+                "en": "tower",
+                "pl": "wieza"
+            },
+            {
+                "en": "building",
+                "pl": "budowla"
+            }
+        ],
+        "name": {
+            "en": "Palace of stone",
+            "pl": "Kamienny pałac"
+        },
+        "image": "",
+        "strength": 3,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Play from hand Gargoyle of cost 5 or less, draw a card.",
+                    "pl": "Zagraj z ręki Gargulca o koszcie 5 lub mniejszym, dobierz kartę."
+                }
+            }
+        ]
+    },
+    {
+        "level": 5,
+        "faction": {
+            "en": "damned-hordes",
+            "pl": "hordy-potępionych"
+        },
+        "category": [
+            {
+                "en": "tower",
+                "pl": "wieza"
+            },
+            {
+                "en": "building",
+                "pl": "budowla"
+            }
+        ],
+        "name": {
+            "en": "Sublime Palace",
+            "pl": "Wzniosły Pałac"
+        },
+        "image": "",
+        "strength": 6,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "cycle",
+                        "pl": "cykl"
+                    }
+                ],
+                "description": {
+                    "en": "Every time you destroy enemy card, boost ally Gargoyle by 2p.",
+                    "pl": "Za każdym razem gdy zniszczysz wrogą kartę wzmocnij sojuszniczego Gargulca o 2pkt."
+                }
+            }
+        ]
     }
 ]
