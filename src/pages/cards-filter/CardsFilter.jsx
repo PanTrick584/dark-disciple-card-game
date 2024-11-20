@@ -10,9 +10,11 @@ const CardsFilter = () => {
     const [navigation, setNavigation] = useState(null);
     const [filter, setFilter] = useState([]);
     const [activeLevels, setActiveLevels] = useState([]);
-    const [categories, setCategories] = useState([]);
+    const [categoriesList, setCategoriesList] = useState([]);
     const [factionData, setFactionData] = useState([]);
     const [fechedFactions, setFetchedFactions] = useState([]);
+    const [activeCategories, setActiveCategories] = useState([]);
+    const [categories, setCategories] = useState([]);
 
     const location = useLocation();
     const { dataLocation, name } = location.state;
@@ -42,14 +44,13 @@ const CardsFilter = () => {
                 }
             })
         })
-        setCategories(uniqueCategories);
+        setCategoriesList(uniqueCategories);
     }, [data])
 
     const fetchData = async (path) => {
         try {
             const result = await fetchJsonData(path);
             setData(result);
-            console.log("hello");
             setFactionData(prev => {
                 const newPrev = [...prev, { name: name, data: result }];
                 const filterPrev = newPrev.filter((item, index, self) =>
@@ -67,7 +68,7 @@ const CardsFilter = () => {
     }
 
     console.log(factionData);
-    console.log(fechedFactions);
+    console.log(activeCategories);
 
     return (
         <div className='cards-filter'>
@@ -94,11 +95,26 @@ const CardsFilter = () => {
             {/* CATEGORIES */}
             <nav className="cards-categories">
                 <ul>
-                    {categories.map((category, id) => {
+                    {categoriesList.map((category, id) => {
                         return (
-                            <li className="button small" key={`card-category-${id}`}><a>{category}</a></li>
+                            <li
+                                className={`button small ${activeCategories.includes(id + 1) ? "active" : ""}`}
+                                key={`card-category-${id}`}
+                                onClick={() => {
+                                    setCategories(prev => handleFilter(prev, category, String))
+                                    setActiveCategories(prev => handleFilter(prev, id + 1, Number))
+                                }}
+                            >
+                                <a>
+                                    {category}
+                                </a>
+                            </li>
                         )
                     })}
+                    <li className={`button small`} onClick={() => {
+                        setActiveCategories([])
+                        setCategories([])
+                        }}><a>all</a></li>
                 </ul>
             </nav>
             {/* CARDS */}
@@ -108,7 +124,9 @@ const CardsFilter = () => {
                     console.log(id);
                     return faction?.data?.map((cardsLevel, id) => {
                         if (!activeLevels.length || activeLevels.includes(id + 1)) {
-                            return <Card cardsLevel={cardsLevel} />
+                            return <Card
+                                        cardsLevel={cardsLevel} 
+                                        cardsCategories={categories} />
                         }
                     })
                 })}
