@@ -1,16 +1,409 @@
 [
     {
-        "level": 1,
-        "faction": "damned-hordes",
-        "category": {
-            "default": "",
-            "pl": "Gargulec"
+        "level": 7,
+        "faction": {
+            "en": "damned-hordes",
+            "pl": "hordy-potępionych"
         },
+        "category": [
+            {
+                "en": "witch",
+                "pl": "wiedźma"
+            }
+        ],
         "name": {
-            "default": "",
-            "pl": "Pomniejszy Strażnik"
+            "en": "Lady of Power",
+            "pl": "Pani Potęgi"
         },
+        "image": "",
+        "strength": 3,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Boost 4 allies by their base power",
+                    "pl": "Wzmocnij 4 sojuszników o ich siłę bazową"
+                }
+            }
+        ]
+    },
+    {
+        "level": 7,
+        "faction": {
+            "en": "damned-hordes",
+            "pl": "hordy-potępionych"
+        },
+        "category": [
+            {
+                "en": "demonologist",
+                "pl": "demonolog"
+            }
+        ],
+        "name": {
+            "en": "Master of Abbys",
+            "pl": "Władca Otchłani"
+        },
+        "image": "",
+        "strength": 3,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "If you control Abbys play 2 demons from your hand and draw 2 cards.",
+                    "pl": "Jeżeli kontrolujesz Otchłań zagraj 2 demony z ręki i dobierz 2 karty."
+                }
+            }
+        ]
+    },
+    {
+        "level": 7,
+        "faction": {
+            "en": "damned-hordes",
+            "pl": "hordy-potępionych"
+        },
+        "category": [
+            {
+                "en": "demonologist",
+                "pl": "demonolog"
+            }
+        ],
+        "name": {
+            "en": "A house on a snake's leg",
+            "pl": "Domek na wężowej nóżce"
+        },
+        "image": "",
+        "strength": 5,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "If you control Witch and Demonologist boost self by 4p.",
+                    "pl": "Jeżeli kontrolujesz Wiedźmę i Demonologa wzmocnij się o 4pkt."
+                }
+            },
+            {
+                "type": [
+                    {
+                        "en": "preparation",
+                        "pl": "przygotowanie"
+                    },
+                    {
+                        "en": "boost [4]",
+                        "pl": "wzmocnienie [4]"
+                    }
+                ],
+                "description": {
+                    "en": "Boost every Witch and Demonologist by 3p",
+                    "pl": "Wzmocnij każdą Wiedźmę i Demonologa o 3pkt."
+                }
+            }
+        ]
+    },
+    {
+        "level": 7,
+        "faction": {
+            "en": "damned-hordes",
+            "pl": "hordy-potępionych"
+        },
+        "category": [
+            {
+                "en": "gargoyle",
+                "pl": "gargulec"
+            }
+        ],
+        "name": {
+            "en": "Obsydian Master",
+            "pl": "Obsydianowy Władca"
+        },
+        "image": "",
+        "strength": 5,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "If you control at least 3 Towers play 2 top Gargoyles from your deck",
+                    "pl": "Jeżeli kontrolujesz przynajmniej 3 Wieże zagraj 2 wierzchnie Gargulce z talii."
+                }
+            }
+        ]
+    },
+    {
+        "level": 7,
+        "faction": {
+            "en": "damned-hordes",
+            "pl": "hordy-potępionych"
+        },
+        "category": [
+            {
+                "en": "gargoyle",
+                "pl": "gargulec"
+            }
+        ],
+        "name": {
+            "en": "Master of Chaos",
+            "pl": "Władca Chaosu"
+        },
+        "image": "",
+        "strength": 2,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Summon 3 cards with Sacrifice from your graveyard",
+                    "pl": "Wezwij z cmentarza 3 karty z Ofiarą."
+                }
+            },
+            {
+                "type": [
+                    {
+                        "en": "preparation",
+                        "pl": "przygotowanie"
+                    }
+                ],
+                "description": {
+                    "en": "Consume an ally",
+                    "pl": "Pożryj sojusznika"
+                }
+            }
+        ]
+    },
+    {
+        "level": 7,
+        "faction": {
+            "en": "damned-hordes",
+            "pl": "hordy-potępionych"
+        },
+        "category": [
+            {
+                "en": "tower",
+                "pl": "wieża"
+            },
+            {
+                "en": "structure",
+                "pl": "budowla"
+            }
+        ],
+        "name": {
+            "en": "Master of Chaos",
+            "pl": "Władca Chaosu"
+        },
+        "image": "",
+        "strength": 5,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Boost self by 2p by every Gargoyle you control.",
+                    "pl": "Wzmocnij się o 2pkt za każdego sojuszniczego Gargulca."
+                }
+            },
+            {
+                "type": [
+                    {
+                        "en": "preparation",
+                        "pl": "przygotowanie"
+                    }
+                ],
+                "description": {
+                    "en": "Damage an enemy by 5p",
+                    "pl": "Zrań wroga za 5pkt"
+                }
+            }
+        ]
+    },
+    {
+        "level": 7,
+        "faction": {
+            "en": "damned-hordes",
+            "pl": "hordy-potępionych"
+        },
+        "category": [
+            {
+                "en": "demon",
+                "pl": "demon"
+            }
+        ],
+        "name": {
+            "en": "Master of Pain",
+            "pl": "Władca Cierpień"
+        },
+        "image": "",
+        "strength": 5,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Consume an ally with cost 5 or less, then summon them back from graveyard and consume them again",
+                    "pl": "Pożryj sojusznika o koszcie 5 lub mniejszym, nastepnie wezwij go z cmentarza i pożryj go ponownie."
+                }
+            }
+        ]
+    },
+    {
+        "level": 7,
+        "faction": {
+            "en": "damned-hordes",
+            "pl": "hordy-potępionych"
+        },
+        "category": [
+            {
+                "en": "imp",
+                "pl": "chochlik"
+            }
+        ],
+        "name": {
+            "en": "Advantage",
+            "pl": "Przewaga"
+        },
+        "image": "",
         "strength": 4,
-        "skills": []
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Boost self by 2p for every card more you control",
+                    "pl": "Wzmocnij się o 2pkt za każdą kartę więcej którą kontrolujesz."
+                }
+            }
+        ]
+    },
+    {
+        "level": 7,
+        "faction": {
+            "en": "damned-hordes",
+            "pl": "hordy-potępionych"
+        },
+        "category": [
+            {
+                "en": "demonologist",
+                "pl": "demonolog"
+            }
+        ],
+        "name": {
+            "en": "Master of Demons",
+            "pl": "Władca Demonów"
+        },
+        "image": "",
+        "strength": 3,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Boost self by 2p for every Demon you control",
+                    "pl": "Wzmocnij się o 2pkt za każdego Demona którego kontrolujesz."
+                }
+            }
+        ]
+    },
+    {
+        "level": 7,
+        "faction": {
+            "en": "damned-hordes",
+            "pl": "hordy-potępionych"
+        },
+        "category": [
+            {
+                "en": "demon",
+                "pl": "demon"
+            }
+        ],
+        "name": {
+            "en": "Master of Infernal",
+            "pl": "Władca Piekieł"
+        },
+        "image": "",
+        "strength": 22,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Damage self by 1p for every card on Square.",
+                    "pl": "Zrań siebie za 1pkt za każdą kartę na Placu."
+                }
+            }
+        ]
+    },
+    {
+        "level": 7,
+        "faction": {
+            "en": "damned-hordes",
+            "pl": "hordy-potępionych"
+        },
+        "category": [
+            {
+                "en": "demon",
+                "pl": "demon"
+            }
+        ],
+        "name": {
+            "en": "Diamond Watcher",
+            "pl": "Diamentowy Władca"
+        },
+        "image": "",
+        "strength": 3,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Damage [X] enemies by 1 and boost self by [X] where [X] is amount of ally Gargoyles",
+                    "pl": "Zrań [X] wrogów za 1pkt i wzmocnij siebie o [X] gdzie [X] to liczba sojuszniczych Gargulców."
+                }
+            }
+        ]
     }
 ]

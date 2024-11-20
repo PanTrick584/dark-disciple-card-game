@@ -33,19 +33,22 @@ const CardsFilter = () => {
     }
 
     useEffect(() => {
-        if (!data) return;
+        if (!factionData) return;
         let uniqueCategories = [];
-        data?.forEach(level => {
-            level?.data?.forEach(card => {
-                const category = card?.category.length && card?.category?.map(category => category.en);
+        factionData?.forEach(faction => {
+            faction?.data.map(level => {
+                level?.data?.forEach(card => {
+                    const category = card?.category?.length && card?.category?.map(category => category.en);
 
-                if (category && !uniqueCategories.includes(...category)) {
-                    uniqueCategories = [...uniqueCategories, ...category]
-                }
+                    if (category && !uniqueCategories.includes(...category)) {
+                        uniqueCategories = [...uniqueCategories, ...category]
+                    }
+                })
             })
+
         })
         setCategoriesList(uniqueCategories);
-    }, [data])
+    }, [factionData])
 
     const fetchData = async (path) => {
         try {
@@ -114,7 +117,7 @@ const CardsFilter = () => {
                     <li className={`button small`} onClick={() => {
                         setActiveCategories([])
                         setCategories([])
-                        }}><a>all</a></li>
+                    }}><a>all</a></li>
                 </ul>
             </nav>
             {/* CARDS */}
@@ -125,8 +128,8 @@ const CardsFilter = () => {
                     return faction?.data?.map((cardsLevel, id) => {
                         if (!activeLevels.length || activeLevels.includes(id + 1)) {
                             return <Card
-                                        cardsLevel={cardsLevel} 
-                                        cardsCategories={categories} />
+                                cardsLevel={cardsLevel}
+                                cardsCategories={categories} />
                         }
                     })
                 })}

@@ -1,19 +1,101 @@
 [
     {
-        "level": 5,
+        "level": 6,
         "faction": {
             "en": "damned-hordes",
             "pl": "hordy-potępionych"
         },
         "category": [
             {
-                "en": "gargoyle",
-                "pl": "gargulec"
+                "en": "witch",
+                "pl": "wiedźma"
             }
         ],
         "name": {
-            "en": "Defender of towers",
-            "pl": "Obrońca wież"
+            "en": "Strengthen of Servant",
+            "pl": "Wzmocnienie Sługi"
+        },
+        "image": "",
+        "strength": 4,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Choose ally card of cost 5 or less, and set base power of other card to base power of choosen card.",
+                    "pl": "Wskaż zwykłego sojusznika, następnie ustaw siłę bazową innej karty na siłę bazową wskazanego."
+                }
+            }
+        ]
+    },
+    {
+        "level": 6,
+        "faction": {
+            "en": "damned-hordes",
+            "pl": "hordy-potępionych"
+        },
+        "category": [
+            {
+                "en": "demon",
+                "pl": "demon"
+            }
+        ],
+        "name": {
+            "en": "Kellen: Split",
+            "pl": "Kellen: Zionięcie"
+        },
+        "image": "",
+        "strength": 3,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Consume ally card",
+                    "pl": "Pożryj sojusznika"
+                }
+            },
+            {
+                "type": [
+                    {
+                        "en": "domination",
+                        "pl": "dominacja"
+                    }
+                ],
+                "description": {
+                    "en": "Put enemy card on top of his deck.",
+                    "pl": "Połóż kartę przeciwnika na wierzchu jego talii."
+                }
+            }
+        ]
+    },
+    {
+        "level": 6,
+        "faction": {
+            "en": "damned-hordes",
+            "pl": "hordy-potępionych"
+        },
+        "category": [
+            {
+                "en": "abbys",
+                "pl": "otchłań"
+            },
+            {
+                "en": "structure",
+                "pl": "budowla"
+            }
+        ],
+        "name": {
+            "en": "Burning Gate",
+            "pl": "Płonące Wrota"
         },
         "image": "",
         "strength": 5,
@@ -26,8 +108,197 @@
                     }
                 ],
                 "description": {
-                    "en": "Damage two enemies by 2p",
-                    "pl": "Zrań dwóch przeciwników za 2pkt."
+                    "en": "Summon card from your hand, draw a card.",
+                    "pl": "Wezwij kartę z ręki, dobierz kartę."
+                }
+            }
+        ]
+    },
+    {
+        "level": 6,
+        "faction": {
+            "en": "damned-hordes",
+            "pl": "hordy-potępionych"
+        },
+        "category": [
+            {
+                "en": "gargoyle",
+                "pl": "gargulec"
+            }
+        ],
+        "name": {
+            "en": "Domination War",
+            "pl": "Walka o dominację"
+        },
+        "image": "",
+        "strength": 5,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Damage enemy card by 5pkt.",
+                    "pl": "Zrań wroga za 5pkt."
+                }
+            }
+        ]
+    },
+    {
+        "level": 6,
+        "faction": {
+            "en": "damned-hordes",
+            "pl": "hordy-potępionych"
+        },
+        "category": [
+            {
+                "en": "gargoyle",
+                "pl": "gargulec"
+            }
+        ],
+        "name": {
+            "en": "Domination War",
+            "pl": "Walka o dominację"
+        },
+        "image": "",
+        "strength": 5,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Consume an ally card, then summon card with Sacrifice from your greyviard",
+                    "pl": "Pożryj sojusznika, następnie wezwij kartę z Ofiarą z cmentarza."
+                }
+            },
+            {
+                "type": [
+                    {
+                        "en": "preparation",
+                        "pl": "przygotowanie"
+                    }
+                ],
+                "description": {
+                    "en": "Consume an ally.",
+                    "pl": "Pożryj sojusznika."
+                }
+            }
+        ]
+    },
+    {
+        "level": 6,
+        "faction": {
+            "en": "damned-hordes",
+            "pl": "hordy-potępionych"
+        },
+        "category": [
+            {
+                "en": "imp",
+                "pl": "chochlik"
+            }
+        ],
+        "name": {
+            "en": "Feisty Fat",
+            "pl": "Zadziorny Grubas"
+        },
+        "image": "",
+        "strength": 4,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Boost self by 2p for every enemy unit with higher power than self",
+                    "pl": "Wzmocnij się o 2pkt za każdego wroga silniejszego od siebie."
+                }
+            }
+        ]
+    },
+    {
+        "level": 6,
+        "faction": {
+            "en": "damned-hordes",
+            "pl": "hordy-potępionych"
+        },
+        "category": [
+            {
+                "en": "imp",
+                "pl": "chochlik"
+            }
+        ],
+        "name": {
+            "en": "Feisty Fat",
+            "pl": "Zadziorny Grubas"
+        },
+        "image": "",
+        "strength": 4,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Play Imp with cost 5 or less from your deck",
+                    "pl": "Zagraj z talii Chochlika o koszcie 5 lub mniejszym."
+                }
+            }
+        ]
+    },
+    {
+        "level": 6,
+        "faction": {
+            "en": "damned-hordes",
+            "pl": "hordy-potępionych"
+        },
+        "category": [
+            {
+                "en": "demon",
+                "pl": "demon"
+            }
+        ],
+        "name": {
+            "en": "Servant of Eternal Hunger",
+            "pl": "Sługa Wiecznego Głodu"
+        },
+        "image": "",
+        "strength": 2,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Consume an ally",
+                    "pl": "Pożryj sojusznika"
+                }
+            },
+            {
+                "type": [
+                    {
+                        "en": "domination",
+                        "pl": "dominacja"
+                    }
+                ],
+                "description": {
+                    "en": "Consume an enemy",
+                    "pl": "Pożryj wroga"
                 }
             }
         ]

@@ -10,9 +10,8 @@ const CardsPage = () => {
         "http://localhost:3333/api/v1/cards?faction=damned-hordes&level=3",
         "http://localhost:3333/api/v1/cards?faction=damned-hordes&level=4",
         "http://localhost:3333/api/v1/cards?faction=damned-hordes&level=5",
-        // "/json/damned-hordes/lvl-5.json",
-        // "/json/damned-hordes/lvl-6.json",
-        // "/json/damned-hordes/lvl-7.json",
+        "http://localhost:3333/api/v1/cards?faction=damned-hordes&level=6",
+        "http://localhost:3333/api/v1/cards?faction=damned-hordes&level=7"
     ];
 
     const pathsUndead = [
