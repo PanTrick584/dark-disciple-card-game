@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Card from '../../containers/Card';
+import Card from '../../components/Card/Card';
 import { fetchJsonData } from '../../hooks/fetchCards';
 import { useLocation } from 'react-router-dom';
 import "./styles/cards-filter.scss"
@@ -34,21 +34,27 @@ const CardsFilter = () => {
 
     useEffect(() => {
         if (!factionData) return;
+        handleCategories();
+    }, [factionData, activeLevels])
+
+    const handleCategories = () => {
         let uniqueCategories = [];
-        factionData?.forEach(faction => {
-            faction?.data.map(level => {
-                level?.data?.forEach(card => {
-                    const category = card?.category?.length && card?.category?.map(category => category.en);
-
-                    if (category && !uniqueCategories.includes(...category)) {
-                        uniqueCategories = [...uniqueCategories, ...category]
-                    }
-                })
+        factionData?.forEach((faction, id) => {
+            faction?.data.map((level, lvlID) => {
+                if (!activeLevels.length || activeLevels.includes(lvlID + 1)) {
+                    level?.data?.forEach(card => {
+                        const category = card?.category?.length && card?.category?.map(category => category.en);
+    
+                        if (category && !uniqueCategories.includes(...category)) {
+                            uniqueCategories = [...uniqueCategories, ...category]
+                        }
+                    })
+                }
+                
             })
-
         })
         setCategoriesList(uniqueCategories);
-    }, [factionData])
+    }
 
     const fetchData = async (path) => {
         try {
@@ -70,9 +76,6 @@ const CardsFilter = () => {
         return [...prev, type(value)];
     }
 
-    console.log(factionData);
-    console.log(activeCategories);
-
     return (
         <div className='cards-filter'>
             {/* CARDS LEVELS */}
@@ -85,6 +88,7 @@ const CardsFilter = () => {
                                 onClick={() => {
                                     setFilter(prev => handleFilter(prev, dataLocation[id], String));
                                     setActiveLevels(prev => handleFilter(prev, id + 1, Number));
+                                    handleCategories()
                                 }}>
                                 <a>{
                                     id + 1}
@@ -92,7 +96,10 @@ const CardsFilter = () => {
                             </li>
                         )
                     })}
-                    <li className={`nav-ul-li button`} onClick={() => setActiveLevels([])}><a>all</a></li>
+                    <li className={`nav-ul-li button`} onClick={() => {
+                        setActiveLevels([])
+                        handleCategories()
+                        }}><a>all</a></li>
                 </ul>
             </nav>
             {/* CATEGORIES */}
@@ -106,6 +113,7 @@ const CardsFilter = () => {
                                 onClick={() => {
                                     setCategories(prev => handleFilter(prev, category, String))
                                     setActiveCategories(prev => handleFilter(prev, id + 1, Number))
+                                    handleCategories()
                                 }}
                             >
                                 <a>
@@ -116,7 +124,8 @@ const CardsFilter = () => {
                     })}
                     <li className={`button small`} onClick={() => {
                         setActiveCategories([])
-                        setCategories([])
+                        // setCategories([])
+                        handleCategories()
                     }}><a>all</a></li>
                 </ul>
             </nav>

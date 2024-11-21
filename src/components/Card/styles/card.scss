@@ -1,14 +1,19 @@
 $textColor: #888682;
 
 .card {
-    flex: 1;
-    width: 100%;
+    flex: 0 0 15%;
+    // width: 100%;
+    // max-width: 375px;
+    // min-width: 375px;
     padding: 30px;
     border-radius: 8px;
     background: linear-gradient(145deg, #1d1d1d, #353535);
     box-shadow: 2px 2px 2px #0a0a0a,
         -2px -2px 2px $textColor;
-    margin: 0 0 15px;
+    // margin: 0 0 15px;
+    align-self: stretch;
+
+
 
     &-title {
         display: flex;

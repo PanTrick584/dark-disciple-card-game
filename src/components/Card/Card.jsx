@@ -2,12 +2,10 @@ import React, { useEffect, useState } from 'react'
 import "./styles/card.scss"
 
 const Card = ({ cardsLevel, cardsCategories }) => {
-    console.log(cardsCategories);
     return (
         <>
             {cardsLevel?.data?.map((card, id) => {
                 const currentCategories = card?.category?.map((category) => category?.en);
-                console.log(currentCategories);
                 if (!cardsCategories.length || cardsCategories.some(category => currentCategories.includes(category))) {
                     return (
                         <div className="card">
