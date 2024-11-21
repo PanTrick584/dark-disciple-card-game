@@ -20,6 +20,8 @@ const CardsFilter = () => {
     const { dataLocation, name } = location.state;
 
     useEffect(() => {
+        handleCategories();
+
         if (fechedFactions.includes(name)) return;
 
         callAllCards();
@@ -29,6 +31,8 @@ const CardsFilter = () => {
         fetchData(dataLocation);
         setNavigation(dataLocation);
         setActiveLevels([]);
+        setCategories([]);
+        setActiveCategories([]);
         setFetchedFactions(prev => !prev.includes(name) ? [...prev, name] : prev)
     }
 
@@ -40,17 +44,18 @@ const CardsFilter = () => {
     const handleCategories = () => {
         let uniqueCategories = [];
         factionData?.forEach((faction, id) => {
+            if (faction?.name !== name) return;
             faction?.data.map((level, lvlID) => {
                 if (!activeLevels.length || activeLevels.includes(lvlID + 1)) {
                     level?.data?.forEach(card => {
                         const category = card?.category?.length && card?.category?.map(category => category.en);
-    
+
                         if (category && !uniqueCategories.includes(...category)) {
                             uniqueCategories = [...uniqueCategories, ...category]
                         }
                     })
                 }
-                
+
             })
         })
         setCategoriesList(uniqueCategories);
@@ -99,7 +104,7 @@ const CardsFilter = () => {
                     <li className={`nav-ul-li button`} onClick={() => {
                         setActiveLevels([])
                         handleCategories()
-                        }}><a>all</a></li>
+                    }}><a>all</a></li>
                 </ul>
             </nav>
             {/* CATEGORIES */}
@@ -131,9 +136,10 @@ const CardsFilter = () => {
             </nav>
             {/* CARDS */}
             <div className="cards-filter-container">
-                {factionData.map((faction, id) => {
-                    if (!faction?.name === name) return;
-                    console.log(id);
+                {factionData.map((faction) => {
+                    if (faction?.name !== name) return;
+                    console.log(faction?.name);
+                    console.log(name);
                     return faction?.data?.map((cardsLevel, id) => {
                         if (!activeLevels.length || activeLevels.includes(id + 1)) {
                             return <Card

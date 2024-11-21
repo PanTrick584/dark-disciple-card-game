@@ -1,16 +1,230 @@
 [
     {
-        "level": 1,
-        "faction": "damned-hordes",
-        "category": {
-            "default": "",
-            "pl": "Gargulec"
+        "level": 2,
+        "faction": {
+            "en": "houses-of-elves",
+            "pl": "rody-elfów"
         },
+        "category": [
+            {
+                "en": "forest elf",
+                "pl": "leśny elf"
+            },
+            {
+                "en": "spy",
+                "pl": "szpieg"
+            }
+        ],
         "name": {
-            "default": "",
-            "pl": "Pomniejszy Strażnik"
+            "en": "failed attack",
+            "pl": "nieudany atak"
         },
-        "strength": 4,
-        "skills": []
+        "image": "",
+        "strength": -3,
+        "spy": true,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Boost ally by 2p",
+                    "pl": "Wzmocnij sojusznika o 2pkt."
+                }
+            }
+        ]
+    },
+    {
+        "level": 2,
+        "faction": {
+            "en": "houses-of-elves",
+            "pl": "rody-elfów"
+        },
+        "category": [
+            {
+                "en": "forest elf",
+                "pl": "leśny elf"
+            },
+            {
+                "en": "spy",
+                "pl": "szpieg"
+            }
+        ],
+        "name": {
+            "en": "delivery of information",
+            "pl": "dostawa informacji"
+        },
+        "image": "",
+        "strength": -1,
+        "spy": true,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Boost enemy by 2p",
+                    "pl": "Wzmocnij wroga o 5pkt."
+                }
+            }
+        ]
+    },
+    {
+        "level": 2,
+        "faction": {
+            "en": "houses-of-elves",
+            "pl": "rody-elfów"
+        },
+        "category": [
+            {
+                "en": "high elf",
+                "pl": "wysoki elf"
+            }
+        ],
+        "name": {
+            "en": "uncomprehensible gift",
+            "pl": "niezrozumiały podarunek"
+        },
+        "image": "",
+        "strength": 6,
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Boost enemy by 3p",
+                    "pl": "Wzmocnij wroga o 3pkt."
+                }
+            }
+        ]
+    },
+    {
+        "level": 2,
+        "faction": {
+            "en": "houses-of-elves",
+            "pl": "rody-elfów"
+        },
+        "category": [
+            {
+                "en": "high elf",
+                "pl": "wysoki elf"
+            }
+        ],
+        "name": {
+            "en": "peace offer",
+            "pl": "oferta pokoju"
+        },
+        "image": "",
+        "strength": 3,
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Damage enemy by 2p, then boost enemy by 2p",
+                    "pl": "Zrań wroga za 2pkt, następnie wzmocnij wroga o 2pkt."
+                }
+            }
+        ]
+    },
+    {
+        "level": 2,
+        "faction": {
+            "en": "houses-of-elves",
+            "pl": "rody-elfów"
+        },
+        "category": [
+            {
+                "en": "forest elf",
+                "pl": "leśny elf"
+            }
+        ],
+        "name": {
+            "en": "delivery of information",
+            "pl": "dostawa informacji"
+        },
+        "image": "",
+        "strength": 2,
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "If you control a Trap boost self by 4p",
+                    "pl": "Jeżeli kontrolujesz pułapkę wzmocnij się o 4pkt"
+                }
+            }
+        ]
+    },
+    {
+        "level": 2,
+        "faction": {
+            "en": "houses-of-elves",
+            "pl": "rody-elfów"
+        },
+        "category": [
+            {
+                "en": "forest elf",
+                "pl": "leśny elf"
+            },
+            {
+                "en": "spy",
+                "pl": "szpieg"
+            }
+        ],
+        "name": {
+            "en": "hidden advantage",
+            "pl": "skryta przewaga"
+        },
+        "image": "",
+        "strength": 3,
+        "spy": true,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Draw a card",
+                    "pl": "Dobierz kartę."
+                }
+            },
+            {
+                "type": [
+                    {
+                        "en": "sacrifice",
+                        "pl": "ofiara"
+                    }
+                ],
+                "description": {
+                    "en": "Draw a card",
+                    "pl": "Dobierz kartę."
+                }
+            }
+        ]
     }
 ]

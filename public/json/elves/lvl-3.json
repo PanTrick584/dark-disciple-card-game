@@ -1,16 +1,309 @@
 [
     {
-        "level": 1,
-        "faction": "damned-hordes",
-        "category": {
-            "default": "",
-            "pl": "Gargulec"
+        "level": 3,
+        "faction": {
+            "en": "houses-of-elves",
+            "pl": "rody-elfów"
         },
+        "category": [
+            {
+                "en": "high elf",
+                "pl": "wysoki elf"
+            }
+        ],
         "name": {
-            "default": "",
-            "pl": "Pomniejszy Strażnik"
+            "en": "conditional gifl",
+            "pl": "warunkowy podarunek"
         },
+        "image": "",
         "strength": 4,
-        "skills": []
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Boost an enemy by an amount between 1 and 4, then buff yourself or another ally by the same amount.",
+                    "pl": "Wzmocnij wroga o wartość między 1 a 4, następnie wzmocnij siebie lub innego sojusznika o tę samą wartość."
+                }
+            }
+        ]
+    },
+    {
+        "level": 3,
+        "faction": {
+            "en": "houses-of-elves",
+            "pl": "rody-elfów"
+        },
+        "category": [
+            {
+                "en": "high elf",
+                "pl": "wysoki elf"
+            }
+        ],
+        "name": {
+            "en": "some for some",
+            "pl": "coś za coś"
+        },
+        "image": "",
+        "strength": 2,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Boost an enemy by 3p. Boost yourself with its base strength.",
+                    "pl": "Wzmocnij wroga o 3pkt. Wzmocnij siebie o jego siłę bazową."
+                }
+            }
+        ]
+    },
+    {
+        "level": 3,
+        "faction": {
+            "en": "houses-of-elves",
+            "pl": "rody-elfów"
+        },
+        "category": [
+            {
+                "en": "high elf",
+                "pl": "wysoki elf"
+            }
+        ],
+        "name": {
+            "en": "vain joy",
+            "pl": "prózna radość"
+        },
+        "image": "",
+        "strength": 2,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "cycle",
+                        "pl": "cykl"
+                    }
+                ],
+                "description": {
+                    "en": "If you damaged Spy in this round, boost sefl by 2p",
+                    "pl": "Jeżeli zraniłeś Szpiega w tej turze wzmocnij się o 2pkt."
+                }
+            }
+        ]
+    },
+    {
+        "level": 3,
+        "faction": {
+            "en": "houses-of-elves",
+            "pl": "rody-elfów"
+        },
+        "category": [
+            {
+                "en": "forest elf",
+                "pl": "leśny elf"
+            },
+            {
+                "en": "spy",
+                "pl": "szpieg"
+            }
+        ],
+        "name": {
+            "en": "sneaket attack",
+            "pl": "atak z ukrycia"
+        },
+        "image": "",
+        "strength": -1,
+        "spy": true,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Damage ally by 3p.",
+                    "pl": "Zrań sojusznika o 3pkt."
+                }
+            }
+        ]
+    },
+    {
+        "level": 3,
+        "faction": {
+            "en": "houses-of-elves",
+            "pl": "rody-elfów"
+        },
+        "category": [
+            {
+                "en": "high elf",
+                "pl": "wysoki elf"
+            }
+        ],
+        "name": {
+            "en": "round-up",
+            "pl": "łapanka"
+        },
+        "image": "",
+        "strength": 2,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Damage two Spies by 2p.",
+                    "pl": "Zrań 2 Szpiegów za 2pkt"
+                }
+            }
+        ]
+    },
+    {
+        "level": 3,
+        "faction": {
+            "en": "houses-of-elves",
+            "pl": "rody-elfów"
+        },
+        "category": [
+            {
+                "en": "high elf",
+                "pl": "wysoki elf"
+            }
+        ],
+        "name": {
+            "en": "show of superiority",
+            "pl": "pokaz wyższości"
+        },
+        "image": "",
+        "strength": 2,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Damage 3 boosted enemies by 2p.",
+                    "pl": "Zrań 3 wzmocnionych wrogów za 2pkt."
+                }
+            }
+        ]
+    },
+    {
+        "level": 3,
+        "faction": {
+            "en": "houses-of-elves",
+            "pl": "rody-elfów"
+        },
+        "category": [
+            {
+                "en": "forest elf",
+                "pl": "leśny elf"
+            },
+            {
+                "en": "spy",
+                "pl": "szpieg"
+            }
+        ],
+        "name": {
+            "en": "waiting",
+            "pl": "wyczekiwanie"
+        },
+        "image": "",
+        "strength": 2,
+        "spy": true,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "sacrifice",
+                        "pl": "ofiara"
+                    }
+                ],
+                "description": {
+                    "en": "Damage 3 boosted allies by 3p.",
+                    "pl": "Zrań 3 wzmocnionych sojuszników za 3pkt."
+                }
+            }
+        ]
+    },
+    {
+        "level": 3,
+        "faction": {
+            "en": "houses-of-elves",
+            "pl": "rody-elfów"
+        },
+        "category": [
+            {
+                "en": "high elf",
+                "pl": "wysoki elf"
+            }
+        ],
+        "name": {
+            "en": "furiouse revenge",
+            "pl": "wściekła zemsta"
+        },
+        "image": "",
+        "strength": 3,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "If enemy controlls 3 Spies damage enemy by 4p.",
+                    "pl": "Jeżeli przeciwnik kontroluje 3 Szpiegów zrań wroga za 4pkt."
+                }
+            }
+        ]
+    },
+    {
+        "level": 3,
+        "faction": {
+            "en": "houses-of-elves",
+            "pl": "rody-elfów"
+        },
+        "category": [
+            {
+                "en": "high elf",
+                "pl": "wysoki elf"
+            }
+        ],
+        "name": {
+            "en": "change of priorities",
+            "pl": "zmiana priorytetów"
+        },
+        "image": "",
+        "strength": 5,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Point boosted enemy, move 1 to 5 its boost from its to other enemy.",
+                    "pl": "Wskaż wzmocnionego wroga, przenieś 1 do 5pkt jego wzmocnienia na innego wroga."
+                }
+            }
+        ]
     }
 ]

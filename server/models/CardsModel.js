@@ -23,6 +23,7 @@ const CardSchema = new mongoose.Schema({
     image: {
         type: String,
     },
+    spy: Boolean,
     skills: [
         {
             type: [

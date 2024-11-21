@@ -4,6 +4,13 @@ import "./styles/cards-page.scss"
 
 const CardsPage = () => {
     const [active, setActive] = useState("");
+
+    const pathsElves = [
+        "http://localhost:3333/api/v1/cards?faction=houses-of-elves&level=1",
+        "http://localhost:3333/api/v1/cards?faction=houses-of-elves&level=2",
+        "http://localhost:3333/api/v1/cards?faction=houses-of-elves&level=3"
+    ];
+
     const pathsDamned = [
         "http://localhost:3333/api/v1/cards?faction=damned-hordes&level=1",
         "http://localhost:3333/api/v1/cards?faction=damned-hordes&level=2",
@@ -14,15 +21,7 @@ const CardsPage = () => {
         "http://localhost:3333/api/v1/cards?faction=damned-hordes&level=7"
     ];
 
-    const pathsUndead = [
-        "/json/undead-legion/lvl-1.json",
-        "/json/undead-legion/lvl-2.json",
-        "/json/undead-legion/lvl-3.json",
-        "/json/undead-legion/lvl-4.json",
-        "/json/undead-legion/lvl-5.json",
-        "/json/undead-legion/lvl-6.json",
-        "/json/undead-legion/lvl-7.json",
-    ];
+
 
     const pathsEmpire = [
         "/json/empire-aliance/lvl-1.json",
@@ -44,7 +43,7 @@ const CardsPage = () => {
         "/json/orcs-tribes/lvl-7.json",
     ];
 
-    const pathsElves = [
+    const pathsUndead = [
         "/json/elves/lvl-1.json",
         "/json/elves/lvl-2.json",
         "/json/elves/lvl-3.json",
@@ -57,7 +56,7 @@ const CardsPage = () => {
     return (
         <nav className='cards-page'>
             <ul className='cards-page-ul'>
-                <li className={`button ${active === 'elves' ? 'active' : ''}`} onClick={() => setActive('elves')}><Link to="./elves" state={pathsElves}>Elves</Link></li>
+                <li className={`button ${active === 'elves' ? 'active' : ''}`} onClick={() => setActive('elves')}><Link to="./elves" state={{ dataLocation: pathsElves, name: "houses-of-elves" }}>Elves</Link></li>
                 <li className={`button ${active === 'orcs' ? 'active' : ''}`} onClick={() => setActive('orcs')}><Link to="./orcs" state={pathsOrcs}>Orcs</Link></li>
                 <li className={`button ${active === 'damned' ? 'active' : ''}`} onClick={() => setActive('damned')}><Link to="./damned" state={{ dataLocation: pathsDamned, name: "damned-hordes" }} >Damned</Link></li>
                 <li className={`button ${active === 'empire' ? 'active' : ''}`} onClick={() => setActive('empire')}><Link to="./empire" state={pathsEmpire}>Empire</Link></li>

@@ -10,8 +10,8 @@ const Card = ({ cardsLevel, cardsCategories }) => {
                     return (
                         <div className="card">
                             <div className="card-title">
-                                <div className="card-title-name">
-                                    <p>{card?.name?.en}</p>
+                                <div className="card-title-box">
+                                    <p className="card-title-name">{card?.name?.en}</p>
                                     <div className="card-title-categories">
                                         {card?.category?.map(cat => <p className='card-title-categories-item'>{cat.en}</p>)}
                                     </div>

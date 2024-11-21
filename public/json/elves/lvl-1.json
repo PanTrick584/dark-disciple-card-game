@@ -1,16 +1,292 @@
 [
     {
         "level": 1,
-        "faction": "damned-hordes",
-        "category": {
-            "default": "",
-            "pl": "Gargulec"
+        "faction": {
+            "en": "houses of elves",
+            "pl": "rody elfów"
         },
+        "category": [
+            {
+                "en": "forest elf",
+                "pl": "leśny elf"
+            },
+            {
+                "en": "spy",
+                "pl": "szpieg"
+            }
+        ],
         "name": {
-            "default": "",
-            "pl": "Pomniejszy Strażnik"
+            "en": "forest assasin",
+            "pl": "Leśny zamachowiec"
         },
-        "strength": 4,
-        "skills": []
+        "image": "",
+        "strength": -1,
+        "spy": true,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Damage ally by 2p",
+                    "pl": "Zrań sojusznika za 2pkt."
+                }
+            }
+        ]
+    },
+    {
+        "level": 1,
+        "faction": {
+            "en": "houses of elves",
+            "pl": "rody elfów"
+        },
+        "category": [
+            {
+                "en": "high elf",
+                "pl": "wysoki elf"
+            }
+        ],
+        "name": {
+            "en": "purge fighter",
+            "pl": "bojownik czystki"
+        },
+        "image": "",
+        "strength": 3,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Damage spy by 2p",
+                    "pl": "Zrań szpiega za 2pkt."
+                }
+            }
+        ]
+    },
+    {
+        "level": 1,
+        "faction": {
+            "en": "houses of elves",
+            "pl": "rody elfów"
+        },
+        "category": [
+            {
+                "en": "high elf",
+                "pl": "wysoki elf"
+            }
+        ],
+        "name": {
+            "en": "purge fighter",
+            "pl": "bojownik czystki"
+        },
+        "image": "",
+        "strength": 1,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Damage an enemy of the same Cost for 4 points. Boost self by the excess damage.",
+                    "pl": "Zrań wroga o identycznym Koszcie za 4pkt. Wzmocnij siebie o nadmiar obrażeń."
+                }
+            }
+        ]
+    },
+    {
+        "level": 1,
+        "faction": {
+            "en": "houses of elves",
+            "pl": "rody elfów"
+        },
+        "category": [
+            {
+                "en": "forest elf",
+                "pl": "leśny elf"
+            },
+            {
+                "en": "spy",
+                "pl": "szpieg"
+            }
+        ],
+        "name": {
+            "en": "who to put in?",
+            "pl": "kogo wystawić?"
+        },
+        "image": "",
+        "strength": -1,
+        "spy": true,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Boost enemy by 2p",
+                    "pl": "Wzmocnij wroga o 2pkt."
+                }
+            }
+        ]
+    },
+    {
+        "level": 1,
+        "faction": {
+            "en": "houses of elves",
+            "pl": "rody elfów"
+        },
+        "category": [
+            {
+                "en": "forest elf",
+                "pl": "leśny elf"
+            }
+        ],
+        "name": {
+            "en": "head of the conspiracy",
+            "pl": "szef siatki"
+        },
+        "image": "",
+        "strength": 2,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Every time you play a Spy, boost self by 1p.",
+                    "pl": "Za każdym razem gdy zagrywasz Szpiega wzmocnij się o 1pkt"
+                }
+            }
+        ]
+    },
+    {
+        "level": 1,
+        "faction": {
+            "en": "houses of elves",
+            "pl": "rody elfów"
+        },
+        "category": [
+            {
+                "en": "high elf",
+                "pl": "wysoki elf"
+            }
+        ],
+        "name": {
+            "en": "eleain delighted",
+            "pl": "eleain zachwycony"
+        },
+        "image": "",
+        "strength": 2,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Whenever you boost an enemy, boost self by 1p.",
+                    "pl": "Za każdym razem gdy wzmacniasz wroga, wzmocnij siebie o 1pkt."
+                }
+            }
+        ]
+    },
+    {
+        "level": 1,
+        "faction": {
+            "en": "houses of elves",
+            "pl": "rody elfów"
+        },
+        "category": [
+            {
+                "en": "trap",
+                "pl": "pułapka"
+            },
+            {
+                "en": "structure",
+                "pl": "budowla"
+            }
+        ],
+        "name": {
+            "en": "falling boulder",
+            "pl": "spadający głaz"
+        },
+        "image": "",
+        "strength": 3,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "preparation",
+                        "pl": "przygotowanie"
+                    }
+                ],
+                "description": {
+                    "en": "Damage any enemy played on the previous turn for 2p.",
+                    "pl": "Zrań wroga zagranego w poprzedniej turze za 2pkt."
+                }
+            }
+        ]
+    },
+    {
+        "level": 1,
+        "faction": {
+            "en": "houses of elves",
+            "pl": "rody elfów"
+        },
+        "category": [
+            {
+                "en": "forest elf",
+                "pl": "leśny elf"
+            }
+        ],
+        "name": {
+            "en": "falling boulder",
+            "pl": "spadający głaz"
+        },
+        "image": "",
+        "strength": 1,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Boost Trap by 3p",
+                    "pl": "Wzmocnij pułapkę o 3pkt."
+                }
+            },
+            {
+                "type": [
+                    {
+                        "en": "preparation",
+                        "pl": "przygotowanie"
+                    }
+                ],
+                "description": {
+                    "en": "Boost Trap by 3p",
+                    "pl": "Wzmocnij pułapkę o 3pkt."
+                }
+            }
+        ]
     }
 ]
