@@ -17,7 +17,7 @@ const CardsFilter = () => {
     const [categories, setCategories] = useState([]);
 
     const location = useLocation();
-    const { dataLocation, name } = location.state;
+    const { dataLocation, name } = location.state || {};
 
     useEffect(() => {
         handleCategories();
@@ -129,7 +129,6 @@ const CardsFilter = () => {
                     })}
                     <li className={`button small`} onClick={() => {
                         setActiveCategories([])
-                        // setCategories([])
                         handleCategories()
                     }}><a>all</a></li>
                 </ul>
@@ -138,13 +137,14 @@ const CardsFilter = () => {
             <div className="cards-filter-container">
                 {factionData.map((faction) => {
                     if (faction?.name !== name) return;
-                    console.log(faction?.name);
-                    console.log(name);
+                    // console.log(faction?.name);
+                    // console.log(name);
                     return faction?.data?.map((cardsLevel, id) => {
                         if (!activeLevels.length || activeLevels.includes(id + 1)) {
                             return <Card
                                 cardsLevel={cardsLevel}
-                                cardsCategories={categories} />
+                                cardsCategories={categories} 
+                                categoryName={name} />
                         }
                     })
                 })}

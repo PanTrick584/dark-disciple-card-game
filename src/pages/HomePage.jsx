@@ -4,11 +4,7 @@ import { Link } from 'react-router-dom';
 
 const HomePage = () => {
 
-    const { userData, loadings } = useContext(AppContext);  // Destructure values from context
-
-    // Log the values from context for testing
-    // console.log('userData:', userData);      // This should log "siema"
-    // console.log('loadings:', loadings);
+    const { userData, loadings } = useContext(AppContext);
 
     return (
         <div>
