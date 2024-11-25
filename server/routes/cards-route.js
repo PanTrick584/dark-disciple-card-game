@@ -13,12 +13,12 @@ const {
 router
     .route('/')
     .get(getAllCards)
-    .patch(updateCard)
     .post(createCard)
 
 router
     .route('/:id')
     .get(getSingleCard)
     .delete(deleteCard)
+    .patch(updateCard)
 
 module.exports = router;

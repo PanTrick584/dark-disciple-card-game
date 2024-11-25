@@ -8,7 +8,9 @@ const CardsPage = () => {
     const pathsElves = [
         "http://localhost:3333/api/v1/cards?faction=houses-of-elves&level=1",
         "http://localhost:3333/api/v1/cards?faction=houses-of-elves&level=2",
-        "http://localhost:3333/api/v1/cards?faction=houses-of-elves&level=3"
+        "http://localhost:3333/api/v1/cards?faction=houses-of-elves&level=3",
+        "http://localhost:3333/api/v1/cards?faction=houses-of-elves&level=4",
+        "http://localhost:3333/api/v1/cards?faction=houses-of-elves&level=5",
     ];
 
     const pathsDamned = [

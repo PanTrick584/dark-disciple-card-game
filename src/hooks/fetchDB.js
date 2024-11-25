@@ -15,3 +15,27 @@ export const fetchDB = async (path) => {
         throw error;
     }
 };
+
+export const patchDB = async (path, updatedData) => {
+    console.log(`PATCH to: ${path}`, updatedData);
+    try {
+        const response = await fetch(path, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(updatedData),
+        });
+
+        if (!response.ok) {
+            throw new Error(`Failed to PATCH ${path}: ${response.status}`);
+        }
+
+        const result = await response.json();
+        console.log('PATCH response:', result);
+        return result;
+    } catch (error) {
+        console.error("Error with PATCH request:", error);
+        throw error;
+    }
+};

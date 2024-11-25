@@ -1,16 +1,334 @@
 [
     {
-        "level": 1,
-        "faction": "damned-hordes",
-        "category": {
-            "default": "",
-            "pl": "Gargulec"
+        "level": 5,
+        "faction": {
+            "en": "houses-of-elves",
+            "pl": "rody-elfów"
         },
+        "category": [
+            {
+                "en": "dark elf",
+                "pl": "mroczny elf"
+            }
+        ],
         "name": {
-            "default": "",
-            "pl": "Pomniejszy Strażnik"
+            "en": "veern the agile",
+            "pl": "veern zwinny"
         },
+        "image": "",
+        "strength": -2,
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Przenieś najsłabszego wroga na stronę sojuszniczą, następnie przenieś najsłabszego sojusznika na stronę wroga.",
+                    "pl": "Move the weakest enemy to the allied side, then move the weakest ally to the enemy side."
+                }
+            }
+        ]
+    },
+    {
+        "level": 5,
+        "faction": {
+            "en": "houses-of-elves",
+            "pl": "rody-elfów"
+        },
+        "category": [
+            {
+                "en": "forest elf",
+                "pl": "leśny elf"
+            },
+            {
+                "en": "spy",
+                "pl": "szpieg"
+            }
+        ],
+        "name": {
+            "en": "encouragement to attack",
+            "pl": "zachęta do ataku"
+        },
+        "image": "",
+        "strength": 2,
+        "spy": true,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Boost all other cards you play this turn by 3p.",
+                    "pl": "Wszystkie inne karty które zagrasz w tej turze wzmocnij o 3pkt."
+                }
+            }
+        ]
+    },
+    {
+        "level": 5,
+        "faction": {
+            "en": "houses-of-elves",
+            "pl": "rody-elfów"
+        },
+        "category": [
+            {
+                "en": "high elf",
+                "pl": "wysoki elf"
+            }
+        ],
+        "name": {
+            "en": "veern the agile",
+            "pl": "veern zwinny"
+        },
+        "image": "",
+        "strength": 7,
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Boost an ally and enemy by 6p",
+                    "pl": "Wzmocnij sojusznika i wroga o 6pkt"
+                }
+            }
+        ]
+    },
+    {
+        "level": 5,
+        "faction": {
+            "en": "houses-of-elves",
+            "pl": "rody-elfów"
+        },
+        "category": [
+            {
+                "en": "trap",
+                "pl": "pułapka"
+            },
+            {
+                "en": "structure",
+                "pl": "budowla"
+            }
+        ],
+        "name": {
+            "en": "veern the agile",
+            "pl": "veern zwinny"
+        },
+        "image": "",
         "strength": 4,
-        "skills": []
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "cycle",
+                        "pl": "cykl"
+                    }
+                ],
+                "description": {
+                    "en": "Whenever you play a Spy, deal 1 damage to it.",
+                    "pl": "Za każdym razem gdy zagrywasz Szpiega zadaj mu 1pkt obrażeń."
+                }
+            },
+            {
+                "type": [
+                    {
+                        "en": "preparation",
+                        "pl": "przygotowanie"
+                    }
+                ],
+                "description": {
+                    "en": "Draw a Forest Elf card from the top of your deck.",
+                    "pl": "Dobierz z wierzchu talii kartę Leśnego Elfa."
+                }
+            }
+        ]
+    },
+    {
+        "level": 5,
+        "faction": {
+            "en": "houses-of-elves",
+            "pl": "rody-elfów"
+        },
+        "category": [
+            {
+                "en": "source",
+                "pl": "źródło"
+            },
+            {
+                "en": "structure",
+                "pl": "budowla"
+            }
+        ],
+        "name": {
+            "en": "infinite waters",
+            "pl": "nieskończone wody"
+        },
+        "image": "",
+        "strength": 4,
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "cycle",
+                        "pl": "cykl"
+                    }
+                ],
+                "description": {
+                    "en": "Whenever you play a High Elf, boost self by 2p.",
+                    "pl": "Za kazdym razem gdy zagrywasz Wysokiego Elfa wzmocnij siebie o 2pkt."
+                }
+            },
+            {
+                "type": [
+                    {
+                        "en": "preparation",
+                        "pl": "przygotowanie"
+                    }
+                ],
+                "description": {
+                    "en": "Draw a High Elf card from the top of the deck. Boost High Elves played this turn by 2p.",
+                    "pl": " Dobierz z wierzchu talii kartę Wysokiego Elfa. Zagrywane Wysokie Elfy w tej turze wzmocnij o 2pkt."
+                }
+            }
+        ]
+    },
+    {
+        "level": 5,
+        "faction": {
+            "en": "houses-of-elves",
+            "pl": "rody-elfów"
+        },
+        "category": [
+            {
+                "en": "source",
+                "pl": "źródło"
+            },
+            {
+                "en": "structure",
+                "pl": "budowla"
+            }
+        ],
+        "name": {
+            "en": "waters of grace of the goddess",
+            "pl": "wody łaski bogini"
+        },
+        "image": "",
+        "strength": 2,
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Boost an enemy by 4, then boost yourself by 8.",
+                    "pl": "Wzmocnij wroga o 4pkt, następnie wzmocnij siebie o 8pkt."
+                }
+            }
+        ]
+    },
+    {
+        "level": 5,
+        "faction": {
+            "en": "houses-of-elves",
+            "pl": "rody-elfów"
+        },
+        "category": [
+            {
+                "en": "forest elf",
+                "pl": "leśny elf"
+            },
+            {
+                "en": "spy",
+                "pl": "szpieg"
+            }
+        ],
+        "name": {
+            "en": "hunting victim",
+            "pl": "ofiara polowania"
+        },
+        "image": "",
+        "strength": 4,
+        "spy": true,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "cycle",
+                        "pl": "cykl"
+                    }
+                ],
+                "description": {
+                    "en": "Whenever an opponent plays a High Elf, damage yourself by 1p.",
+                    "pl": "Za każdym razem gdy przciwnik zagrywa Wysokiego Elfa zrań siebie za 1pkt."
+                }
+            },
+            {
+                "type": [
+                    {
+                        "en": "sacrifice",
+                        "pl": "ofiara"
+                    }
+                ],
+                "description": {
+                    "en": "Boost 3 enemy High Elves by 4p.",
+                    "pl": "Wzmocnij 3 wrogich  Wysokich Elfów o 4pkt"
+                }
+            }
+        ]
+    },
+    {
+        "level": 5,
+        "faction": {
+            "en": "houses-of-elves",
+            "pl": "rody-elfów"
+        },
+        "category": [
+            {
+                "en": "forest elf",
+                "pl": "leśny elf"
+            }
+        ],
+        "name": {
+            "en": "rescue operation",
+            "pl": "akcja ratunkowa"
+        },
+        "image": "",
+        "strength": 5,
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    },
+                    {
+                        "en": "domination",
+                        "pl": "dominacja"
+                    }
+                ],
+                "description": {
+                    "en": "Seize an enemy Spy",
+                    "pl": " Przechwyć wrogiego Szpiega"
+                }
+            }
+        ]
     }
 ]

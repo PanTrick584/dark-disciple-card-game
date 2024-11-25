@@ -1,16 +1,264 @@
 [
     {
-        "level": 1,
-        "faction": "damned-hordes",
-        "category": {
-            "default": "",
-            "pl": "Gargulec"
+        "level": 4,
+        "faction": {
+            "en": "houses-of-elves",
+            "pl": "rody-elfów"
         },
+        "category": [
+            {
+                "en": "trap",
+                "pl": "pułapka"
+            },
+            {
+                "en": "structure",
+                "pl": "budowla"
+            }
+        ],
         "name": {
-            "default": "",
-            "pl": "Pomniejszy Strażnik"
+            "en": "attack from afar",
+            "pl": "atak z nienacka"
         },
+        "image": "",
         "strength": 4,
-        "skills": []
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Play a Wood Elf from the top of your deck that costs 5 or less. If it's a Spy, damage it for 2p",
+                    "pl": "Zagraj z wierzchu talii Leśnego Elfa o Koszcie 5 lub mniej. Jeżeli to Szpieg zrań go za 2pkt"
+                }
+            }
+        ]
+    },
+    {
+        "level": 4,
+        "faction": {
+            "en": "houses-of-elves",
+            "pl": "rody-elfów"
+        },
+        "category": [
+            {
+                "en": "high elf",
+                "pl": "wysoki elf"
+            }
+        ],
+        "name": {
+            "en": "an act of revenge",
+            "pl": "akt zemsty"
+        },
+        "image": "",
+        "strength": 5,
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Destroy an allied Elf, draw a card.",
+                    "pl": "Zniszcz sojuszniczego Elfa, dobierz kartę."
+                }
+            }
+        ]
+    },
+    {
+        "level": 4,
+        "faction": {
+            "en": "houses-of-elves",
+            "pl": "rody-elfów"
+        },
+        "category": [
+            {
+                "en": "high elf",
+                "pl": "wysoki elf"
+            }
+        ],
+        "name": {
+            "en": "lost nobleman",
+            "pl": "zagubiony szlachcic"
+        },
+        "image": "",
+        "strength": -4,
+        "spy": true,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Boost ally by 2p, draw a card",
+                    "pl": "Wzmocnij sojusznika o 3pkt, dobierz kartę"
+                }
+            }
+        ]
+    },
+    {
+        "level": 4,
+        "faction": {
+            "en": "houses-of-elves",
+            "pl": "rody-elfów"
+        },
+        "category": [
+            {
+                "en": "high elf",
+                "pl": "wysoki elf"
+            }
+        ],
+        "name": {
+            "en": "revival",
+            "pl": "odrodzenie"
+        },
+        "image": "",
+        "strength": 5,
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Restore a card's base strength.",
+                    "pl": "Przywróć siłę bazową karty."
+                }
+            }
+        ]
+    },
+    {
+        "level": 4,
+        "faction": {
+            "en": "houses-of-elves",
+            "pl": "rody-elfów"
+        },
+        "category": [
+            {
+                "en": "high elf",
+                "pl": "wysoki elf"
+            }
+        ],
+        "name": {
+            "en": "ancient grace",
+            "pl": "starożytna łaska"
+        },
+        "image": "",
+        "strength": 5,
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Boost enemy by 3p and allied Source by 5p",
+                    "pl": "Wzmocnij wroga o 3pkt i sojusznicze Źródło o 5pkt"
+                }
+            }
+        ]
+    },
+    {
+        "level": 4,
+        "faction": {
+            "en": "houses-of-elves",
+            "pl": "rody-elfów"
+        },
+        "category": [
+            {
+                "en": "forest elf",
+                "pl": "leśny elf"
+            },
+            {
+                "en": "spy",
+                "pl": "szpieg"
+            }
+        ],
+        "name": {
+            "en": "messenger",
+            "pl": "posłaniec"
+        },
+        "image": "",
+        "strength": -3,
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Boost an enemy Trap by 3p",
+                    "pl": "Wzmocnij wrogą Pułapkę o 3pkt."
+                }
+            },
+            {
+                "type": [
+                    {
+                        "en": "sacrifice",
+                        "pl": "ofiara"
+                    }
+                ],
+                "description": {
+                    "en": "Boost the card that destroyed this card by 5p.",
+                    "pl": "Wzmocnij kartę która zniszczyła tę kartę o 5pkt."
+                }
+            }
+        ]
+    },
+    {
+        "level": 4,
+        "faction": {
+            "en": "houses-of-elves",
+            "pl": "rody-elfów"
+        },
+        "category": [
+            {
+                "en": "dark elf",
+                "pl": "mroczny elf"
+            },
+            {
+                "en": "spy",
+                "pl": "szpieg"
+            }
+        ],
+        "name": {
+            "en": "messenger",
+            "pl": "posłaniec"
+        },
+        "image": "",
+        "strength": 6,
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Boost self and an enemy by 4p, then damage an enemy for 2p.",
+                    "pl": "Wzmocnij siebie i wroga o 4pkt, następnie zrań wroga za 2pkt."
+                }
+            }
+        ]
     }
 ]
