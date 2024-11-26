@@ -1,16 +1,238 @@
 [
     {
-        "level": 1,
-        "faction": "damned-hordes",
-        "category": {
-            "default": "",
-            "pl": "Gargulec"
+        "level": 6,
+        "faction": {
+            "en": "houses-of-elves",
+            "pl": "rody-elfów"
         },
+        "category": [
+            {
+                "en": "dark elf",
+                "pl": "mroczny elf"
+            }
+        ],
         "name": {
-            "default": "",
-            "pl": "Pomniejszy Strażnik"
+            "en": "de-escalation",
+            "pl": "deeskalacja"
         },
-        "strength": 4,
-        "skills": []
+        "image": "",
+        "strength": 5,
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Return an enemy to your opponent's hand, return an ally to your hand.",
+                    "pl": "Cofnij wroga do ręki przeciwnika, cofnij sojusznika do swojej ręki."
+                }
+            }
+        ]
+    },
+    {
+        "level": 6,
+        "faction": {
+            "en": "houses-of-elves",
+            "pl": "rody-elfów"
+        },
+        "category": [
+            {
+                "en": "high elf",
+                "pl": "wysoki elf"
+            }
+        ],
+        "name": {
+            "en": "honors taken away",
+            "pl": "odebrane honory"
+        },
+        "image": "",
+        "strength": 1,
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Claim the boost of an enemy card that is not the strongest enemy card.",
+                    "pl": "Przejmij wzmocnienie wrogiej karty, która nie jest najsilniejszą  wrogą kartą."
+                }
+            }
+        ]
+    },
+    {
+        "level": 6,
+        "faction": {
+            "en": "houses-of-elves",
+            "pl": "rody-elfów"
+        },
+        "category": [
+            {
+                "en": "high elf",
+                "pl": "wysoki elf"
+            }
+        ],
+        "name": {
+            "en": "zaaferowanie",
+            "pl": "embarrassment"
+        },
+        "image": "",
+        "strength": 3,
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Target a buffed enemy. Remove the buff and buff yourself by its base power.",
+                    "pl": "Wskaż wzmocnionego wroga. Usuń wzmocnienie i wzmocnij się o jego siłę bazową"
+                }
+            }
+        ]
+    },
+    {
+        "level": 6,
+        "faction": {
+            "en": "houses-of-elves",
+            "pl": "rody-elfów"
+        },
+        "category": [
+            {
+                "en": "dark elf",
+                "pl": "mroczny elf"
+            }
+        ],
+        "name": {
+            "en": "unexpected salvation",
+            "pl": "niespodziewane ocalenie"
+        },
+        "image": "",
+        "strength": 5,
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Seize an enemy card.",
+                    "pl": "Przechwyć wrogiego Szpiega."
+                }
+            }
+        ]
+    },
+    {
+        "level": 6,
+        "faction": {
+            "en": "houses-of-elves",
+            "pl": "rody-elfów"
+        },
+        "category": [
+            {
+                "en": "trap",
+                "pl": "pułapka"
+            },
+            {
+                "en": "structure",
+                "pl": "budowla"
+            }
+        ],
+        "name": {
+            "en": "prepared to attack",
+            "pl": "gotowi do ataku"
+        },
+        "image": "",
+        "strength": 2,
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Damage an enemy by 3p.",
+                    "pl": "Zrań wroga za 3pkt."
+                }
+            },
+            {
+                "type": [
+                    {
+                        "en": "execution",
+                        "pl": "egzekucja"
+                    }
+                ],
+                "description": {
+                    "en": "Draw 2 top Forest Elf cards.",
+                    "pl": "Dobierz 2 wierchnie karty Leśnych Elfów."
+                }
+            }
+        ]
+    },
+    {
+        "level": 6,
+        "faction": {
+            "en": "houses-of-elves",
+            "pl": "rody-elfów"
+        },
+        "category": [
+            {
+                "en": "forest elf",
+                "pl": "leśny elf"
+            },
+            {
+                "en": "spy",
+                "pl": "szpieg"
+            }
+        ],
+        "name": {
+            "en": "prepared to attack",
+            "pl": "gotowi do ataku"
+        },
+        "image": "",
+        "strength": -4,
+        "spy": true,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Draw Trap from top of your deck.",
+                    "pl": "Dobierz z wierzchu talii Pułapkę."
+                }
+            },
+            {
+                "type": [
+                    {
+                        "en": "offering",
+                        "pl": "ofiara"
+                    }
+                ],
+                "description": {
+                    "en": "Boost 2 Traps by 4pkt",
+                    "pl": "Wzmocnij 2 Pułapki o 4pkt"
+                }
+            }
+        ]
     }
 ]

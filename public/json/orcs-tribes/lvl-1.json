@@ -1,16 +1,261 @@
 [
     {
         "level": 1,
-        "faction": "damned-hordes",
-        "category": {
-            "default": "",
-            "pl": "Gargulec"
+        "faction": {
+            "en": "orc tribes",
+            "pl": "plemiona orków"
         },
+        "category": [
+            {
+                "en": "troll",
+                "pl": "troll"
+            }
+        ],
         "name": {
-            "default": "",
-            "pl": "Pomniejszy Strażnik"
+            "en": "young troll",
+            "pl": "młody troll"
         },
-        "strength": 4,
+        "image": "",
+        "strength": 3,
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Damage self by 2p",
+                    "pl": "Zrań siebie za 2pkt."
+                }
+            }
+        ]
+    },
+    {
+        "level": 1,
+        "faction": {
+            "en": "orc tribes",
+            "pl": "plemiona orków"
+        },
+        "category": [
+            {
+                "en": "goblin",
+                "pl": "goblin"
+            }
+        ],
+        "name": {
+            "en": "goblin guide",
+            "pl": "goblin przewodnik"
+        },
+        "image": "",
+        "strength": 1,
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Summon a copy of self from deck or graveyard",
+                    "pl": "Wezwij swoją kopię z talii lub cmentarza"
+                }
+            }
+        ]
+    },
+    {
+        "level": 1,
+        "faction": {
+            "en": "orc tribes",
+            "pl": "plemiona orków"
+        },
+        "category": [
+            {
+                "en": "goblin",
+                "pl": "goblin"
+            }
+        ],
+        "name": {
+            "en": "goblin",
+            "pl": "goblin"
+        },
+        "image": "",
+        "strength": 1,
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Damage an enemy by 1p",
+                    "pl": "Zrań wroga za 1pkt."
+                }
+            }
+        ]
+    },
+    {
+        "level": 1,
+        "faction": {
+            "en": "orc tribes",
+            "pl": "plemiona orków"
+        },
+        "category": [
+            {
+                "en": "goblin",
+                "pl": "goblin"
+            }
+        ],
+        "name": {
+            "en": "goblin",
+            "pl": "goblin"
+        },
+        "image": "",
+        "strength": 1,
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Damage an enemy by 1p",
+                    "pl": "Zrań wroga za 1pkt."
+                }
+            }
+        ]
+    },
+    {
+        "level": 1,
+        "faction": {
+            "en": "orc tribes",
+            "pl": "plemiona orków"
+        },
+        "category": [
+            {
+                "en": "ork",
+                "pl": "ork"
+            }
+        ],
+        "name": {
+            "en": "ork",
+            "pl": "ork"
+        },
+        "image": "",
+        "strength": 3,
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "preparation",
+                        "pl": "przygotowanie"
+                    }
+                ],
+                "description": {
+                    "en": "Damage an undamaged enemy by 2p",
+                    "pl": "Zrań niezranionego wroga za 2pkt"
+                }
+            }
+        ]
+    },
+    {
+        "level": 1,
+        "faction": {
+            "en": "orc tribes",
+            "pl": "plemiona orków"
+        },
+        "category": [
+            {
+                "en": "troll",
+                "pl": "troll"
+            }
+        ],
+        "name": {
+            "en": "sleeping troll",
+            "pl": "śpiący troll"
+        },
+        "image": "",
+        "strength": 3,
+        "spy": false,
         "skills": []
+    },
+    {
+        "level": 1,
+        "faction": {
+            "en": "orc tribes",
+            "pl": "plemiona orków"
+        },
+        "category": [
+            {
+                "en": "ogre",
+                "pl": "ogr"
+            }
+        ],
+        "name": {
+            "en": "ogre",
+            "pl": "ogr"
+        },
+        "image": "",
+        "strength": 5,
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Destroy an allied Goblin or destroy self.",
+                    "pl": "Zniszcz sojuszniczego Goblina inaczej zniszcz siebie."
+                }
+            }
+        ]
+    },
+    {
+        "level": 1,
+        "faction": {
+            "en": "orc tribes",
+            "pl": "plemiona orków"
+        },
+        "category": [
+            {
+                "en": "beast",
+                "pl": "bestia"
+            }
+        ],
+        "name": {
+            "en": "beast",
+            "pl": "bestia"
+        },
+        "image": "",
+        "strength": 2,
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Damage an enemy and an ally for 1 point.",
+                    "pl": "Zrań wroga i sojusznika za 1pkt."
+                }
+            }
+        ]
     }
 ]

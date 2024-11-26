@@ -43,7 +43,20 @@ const CardEdit = () => {
                     </div>
                     <div className="card-edit-column card-edit-cost">
                         <label htmlFor="card-cost" className="label-title">card cost</label>
-                        <input type="text" name="card-cost" defaultValue={card?.level} />
+                        <input
+                            type="text"
+                            name="card-cost"
+                            defaultValue={card?.level}
+                            onChange={(e) => {
+                                const level = Number(e.target.value);
+                                if (isNaN(level) || level === 0) {
+                                    setStrengthError("Please provide value as Number and different than '0'")
+                                    return;
+                                }
+                                setStrengthError("")
+                                setNewData(prev => ({ ...prev, level }));
+                            }}
+                        />
                     </div>
                     <div className="card-edit-column card-edit-strength">
                         <label htmlFor="card-strength" className="label-title">card strength</label>
@@ -63,9 +76,7 @@ const CardEdit = () => {
                         />
                         <label htmlFor="card-strength">{strengthError}</label>
                     </div>
-                    
                 </div>
-                
                 <div className="card-edit-row card-edit-categories">
                     {/* <p className="categories-title">categories:</p> */}
                     {card?.category?.map(cat => {
@@ -99,7 +110,7 @@ const CardEdit = () => {
                                             </div>
                                             <div className="card-edit-column card-edit-description">
                                                 <label htmlFor="card-description" className="label-title">card description</label>
-                                                <input type="text" name="card-description" defaultValue={item?.description?.en} />
+                                                <textarea type="text" name="card-description" defaultValue={item?.description?.en} />
                                             </div>
                                         </>
                                     )

@@ -110,6 +110,7 @@ const CardsFilter = () => {
             {/* CATEGORIES */}
             <nav className="cards-categories">
                 <ul>
+                    {console.log(categoriesList)}
                     {categoriesList.map((category, id) => {
                         return (
                             <li
@@ -144,7 +145,7 @@ const CardsFilter = () => {
                         if (!activeLevels.length || activeLevels.includes(id + 1)) {
                             return <Card
                                 cardsLevel={cardsLevel}
-                                cardsCategories={categories} 
+                                cardsCategories={categories}
                                 categoryName={name} />
                         }
                     })

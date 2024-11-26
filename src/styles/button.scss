@@ -11,19 +11,26 @@ li.button {
     border-radius: 15px;
     background: colors.$backgroundColor;
     box-shadow: inset 3px 3px 3px #1f1f1f,
-                inset -3px -3px 3px #292929;
-    
+        inset -3px -3px 3px #292929;
+
     &:focus,
     &:active,
     &:hover {
         background: colors.$backgroundColorHover;
         box-shadow: inset 3px 3px 1px #1f1f1f,
-                inset -3px -3px 1px #292929;
+            inset -3px -3px 1px #292929;
     }
 
     &:hover {
         a {
             color: colors.$textColorHover;
+        }
+    }
+
+    &:focus,
+    &:active {
+        a {
+            color: colors.$textColorActive;
         }
     }
 
