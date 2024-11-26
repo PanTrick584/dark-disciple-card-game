@@ -1,18 +1,23 @@
-$textColor: #888682;
+@use "../../../styles/colors.scss" as colors;
 
 .card {
     flex: 0 0 15%;
-    // width: 100%;
     max-width: 375px;
     min-width: 375px;
     padding: 30px;
-    border-radius: 8px;
-    background: linear-gradient(145deg, #1d1d1d, #353535);
-    box-shadow: 2px 2px 2px #0a0a0a,
-        -2px -2px 2px $textColor;
-    // margin: 0 0 15px;
+    border-radius: 15px;
     align-self: stretch;
+    transition: all .2s;
+    background: colors.$backgroundColor;
+    box-shadow: inset 6px 6px 6px #1f1f1f,
+                inset -6px -6px 6px #292929;
+    
 
+    &:hover {
+        background: colors.$backgroundColorHover;
+        box-shadow: inset 3px 3px 1px #1f1f1f,
+                inset -3px -3px 1px #292929;
+    }
 
 
     &-title {

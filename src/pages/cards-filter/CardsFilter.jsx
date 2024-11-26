@@ -130,6 +130,7 @@ const CardsFilter = () => {
                     <li className={`button small`} onClick={() => {
                         setActiveCategories([])
                         handleCategories()
+                        setCategories([])
                     }}><a>all</a></li>
                 </ul>
             </nav>

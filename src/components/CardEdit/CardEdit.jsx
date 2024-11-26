@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { patchDB } from "../../hooks/fetchDB";
+import "./styles/card-edit.scss"
 
 const CardEdit = () => {
     const [newData, setNewData] = useState({});
@@ -25,57 +26,59 @@ const CardEdit = () => {
 
     return (
         <>
-            <form action="" method="" onSubmit={(e) => {
-                console.log(card?._id);
+            <form className="card-edit" action="" method="" onSubmit={(e) => {
                 e.preventDefault()
                 updateData()
 
             }}>
-                <div className="card-edit-title">
-                    <label htmlFor="card-title">card name</label>
-                    <input
-                        type="text"
-                        name="card-title"
-                        onChange={(e) => setNewData(prev => ({ ...prev, name: { en: e.target.value } }))}
-                        defaultValue={card?.name?.en}
-                    />
+                <div className="card-edit-row">
+                    <div className="card-edit-column card-edit-title">
+                        <label htmlFor="card-title" className="label-title">card name</label>
+                        <input
+                            type="text"
+                            name="card-title"
+                            onChange={(e) => setNewData(prev => ({ ...prev, name: { en: e.target.value } }))}
+                            defaultValue={card?.name?.en}
+                        />
+                    </div>
+                    <div className="card-edit-column card-edit-cost">
+                        <label htmlFor="card-cost" className="label-title">card cost</label>
+                        <input type="text" name="card-cost" defaultValue={card?.level} />
+                    </div>
+                    <div className="card-edit-column card-edit-strength">
+                        <label htmlFor="card-strength" className="label-title">card strength</label>
+                        <input
+                            type="text"
+                            name="card-strength"
+                            defaultValue={card?.strength}
+                            onChange={(e) => {
+                                const strength = Number(e.target.value);
+                                if (isNaN(strength) || strength === 0) {
+                                    setStrengthError("Please provide value as Number and different than '0'")
+                                    return;
+                                }
+                                setStrengthError("")
+                                setNewData(prev => ({ ...prev, strength }));
+                            }}
+                        />
+                        <label htmlFor="card-strength">{strengthError}</label>
+                    </div>
+                    
                 </div>
-                <div className="card-edit-strength">
-                    <label htmlFor="card-strength">card strength</label>
-
-                    <input
-                        type="text"
-                        name="card-strength"
-                        defaultValue={card?.strength}
-                        onChange={(e) => {
-                            const strength = Number(e.target.value);
-                            if (isNaN(strength) || strength === 0) {
-                                setStrengthError("Please provide value as Number and different than '0'")
-                                return;
-                            }
-                            setStrengthError("")
-                            setNewData(prev => ({ ...prev, strength }));
-                        }}
-                    />
-                    <label htmlFor="card-strength">{strengthError}</label>
-                </div>
-                <div className="card-edit-cost">
-                    <label htmlFor="card-cost">card cost</label>
-                    <input type="text" name="card-cost" defaultValue={card?.level} />
-                </div>
-                <div className="card-edit-categories">
-                    <p className="categories-title">categories:</p>
+                
+                <div className="card-edit-row card-edit-categories">
+                    {/* <p className="categories-title">categories:</p> */}
                     {card?.category?.map(cat => {
                         return (
-                            <>
-                                <label htmlFor="card-category">card category</label>
+                            <div className="card-edit-column card-edit-categories">
+                                <label htmlFor="card-category" className="label-title">card category</label>
                                 <input type="text" name="card-category" defaultValue={cat.en} />
-                            </>
+                            </div>
                         )
                     })}
                 </div>
-                <div className="card-edit-description">
-                    <p>card skills:</p>
+                <div className="card-edit-column card-edit-description">
+                    {/* <p>card skills:</p> */}
                     {card?.skills?.map(skill => {
                         if (!skill) return;
                         return (
@@ -83,19 +86,19 @@ const CardEdit = () => {
                                 {skill?.map(item => {
                                     return (
                                         <>
-                                            <div className="card-edit-skill">
+                                            <div className="card-edit-column card-edit-skill">
                                                 {item.type.length && item?.type?.map(el => {
                                                     return (
                                                         <>
-                                                            <label htmlFor="card-skill">card skill</label>
+                                                            <label htmlFor="card-skill" className="label-title">card skill</label>
                                                             <input type="text" name="card-skill" defaultValue={el?.en} />
                                                         </>
                                                     )
                                                 })}
 
                                             </div>
-                                            <div className="card-edit-description">
-                                                <label htmlFor="card-description">card description</label>
+                                            <div className="card-edit-column card-edit-description">
+                                                <label htmlFor="card-description" className="label-title">card description</label>
                                                 <input type="text" name="card-description" defaultValue={item?.description?.en} />
                                             </div>
                                         </>

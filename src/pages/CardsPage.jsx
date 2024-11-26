@@ -58,11 +58,11 @@ const CardsPage = () => {
     return (
         <nav className='cards-page'>
             <ul className='cards-page-ul'>
-                <li className={`button ${active === 'elves' ? 'active' : ''}`} onClick={() => setActive('elves')}><Link to="./elves" state={{ dataLocation: pathsElves, name: "houses-of-elves" }}>Elves</Link></li>
-                <li className={`button ${active === 'orcs' ? 'active' : ''}`} onClick={() => setActive('orcs')}><Link to="./orcs" state={{ dataLocation: pathsOrcs, name: "orcs-tribes" }}>Orcs</Link></li>
-                <li className={`button ${active === 'damned' ? 'active' : ''}`} onClick={() => setActive('damned')}><Link to="./damned" state={{ dataLocation: pathsDamned, name: "damned-hordes" }} >Damned</Link></li>
-                <li className={`button ${active === 'empire' ? 'active' : ''}`} onClick={() => setActive('empire')}><Link to="./empire" state={{ dataLocation: pathsEmpire, name: "empire-alliance" }}>Empire</Link></li>
-                <li className={`button ${active === 'undead' ? 'active' : ''}`} onClick={() => setActive('undead')}><Link to="./undead" state={{ dataLocation: pathsUndead, name: "undead-legion" }}>Undead</Link></li>
+                <li className={`button ${active === 'elves' ? 'active' : ''}`} onClick={() => setActive('elves')}><Link to="./houses-of-elves" state={{ dataLocation: pathsElves, name: "houses-of-elves" }}>Elves</Link></li>
+                <li className={`button ${active === 'orcs' ? 'active' : ''}`} onClick={() => setActive('orcs')}><Link to="./orc-tribes" state={{ dataLocation: pathsOrcs, name: "orc-tribes" }}>Orcs</Link></li>
+                <li className={`button ${active === 'damned' ? 'active' : ''}`} onClick={() => setActive('damned')}><Link to="./hordes-of-the-damned" state={{ dataLocation: pathsDamned, name: "hordes-of-the-damned" }} >Damned</Link></li>
+                <li className={`button ${active === 'empire' ? 'active' : ''}`} onClick={() => setActive('empire')}><Link to="./empire-alliance" state={{ dataLocation: pathsEmpire, name: "empire-alliance" }}>Empire</Link></li>
+                <li className={`button ${active === 'undead' ? 'active' : ''}`} onClick={() => setActive('undead')}><Link to="./undead-legion" state={{ dataLocation: pathsUndead, name: "undead-legion" }}>Undead</Link></li>
             </ul>
             <Outlet />
         </nav>

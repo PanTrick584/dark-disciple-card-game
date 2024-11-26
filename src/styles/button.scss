@@ -1,59 +1,44 @@
-$textColor: #888682;
-$textColorHover: #c5c4c2;
-$textColorActive: #3a3a3a;
+@use "./colors.scss" as colors;
 
+a {
+    text-decoration: none;
+    color: colors.$textColor;
+}
 
 li.button {
     cursor: pointer;
-    border-radius: 8px;
-    background: linear-gradient(145deg, #1d1d1d, #353535);
-    box-shadow: 2px 2px 2px #0a0a0a,
-        -2px -2px 2px $textColor;
-    color: $textColor;
     transition: all .2s;
+    border-radius: 15px;
+    background: colors.$backgroundColor;
+    box-shadow: inset 3px 3px 3px #1f1f1f,
+                inset -3px -3px 3px #292929;
+    
+    &:focus,
+    &:active,
+    &:hover {
+        background: colors.$backgroundColorHover;
+        box-shadow: inset 3px 3px 1px #1f1f1f,
+                inset -3px -3px 1px #292929;
+    }
+
+    &:hover {
+        a {
+            color: colors.$textColorHover;
+        }
+    }
 
     a {
         padding: 10px 20px;
         display: block;
         height: 100%;
         width: 100%;
-        color: $textColor;
-    }
-
-    &:hover {
-        box-shadow: 2px 2px 3px #000000,
-            -2px -2px 3px $textColorHover;
-        color: $textColorHover;
-
-        a {
-            color: $textColorHover;
-        }
-    }
-
-    &:focus,
-    &:active {
-        box-shadow: 2px 2px 6px #000000,
-            -2px -2px 6px $textColorActive;
-        color: $textColorActive;
-
-        a {
-            color: $textColorActive;
-        }
-    }
-
-    &.active {
-        color: $textColorActive;
-
-        a {
-            color: $textColorActive;
-        }
+        text-transform: uppercase;
     }
 
     &.small {
         a {
             font-size: 10px;
             padding: 10px 12px;
-            text-transform: uppercase;
         }
     }
 }
