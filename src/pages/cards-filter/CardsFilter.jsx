@@ -81,6 +81,7 @@ const CardsFilter = () => {
         return [...prev, type(value)];
     }
 
+    console.log(activeLevels);
     return (
         <div className='cards-filter'>
             {/* CARDS LEVELS */}

@@ -37,11 +37,21 @@ const updateCard = async (req, res) => {
     }
 }
 
-const updateActiveRevision = async (req, res) => {
-    await Cards.findByIdAndUpdate(req.body._id, { $set: req.body });
-
-    const updatedCard = await Cards.find({ _id: req.body._id }).sort('createdAt')
-    return res.status(200).json({ data: updatedCard })
+const updateAllCards = async (req, res) => {
+    await Cards.updateMany(
+        {
+            "faction.en": "orc tribes",
+            "faction.pl": "plemiona orków"
+        },
+        {
+            $set: {
+                "faction.en": "orc-tribes",
+                "faction.pl": "plemiona-orków"
+            }
+        }
+    )
+    console.log("updated cards");
+    // return res.status(200).json({ data: updatedCard })
 }
 
 const createCard = async (req, res) => {
@@ -60,5 +70,6 @@ module.exports = {
     getSingleCard,
     updateCard,
     createCard,
-    deleteCard
+    deleteCard,
+    updateAllCards
 }

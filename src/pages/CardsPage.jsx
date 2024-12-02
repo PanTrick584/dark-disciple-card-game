@@ -12,6 +12,7 @@ const CardsPage = () => {
         "http://localhost:3333/api/v1/cards?faction=houses-of-elves&level=4",
         "http://localhost:3333/api/v1/cards?faction=houses-of-elves&level=5",
         "http://localhost:3333/api/v1/cards?faction=houses-of-elves&level=6",
+        "http://localhost:3333/api/v1/cards?faction=houses-of-elves&level=7"
     ];
 
     const pathsDamned = [
@@ -37,13 +38,8 @@ const CardsPage = () => {
     ];
 
     const pathsOrcs = [
-        "/json/orcs-tribes/lvl-1.json",
-        "/json/orcs-tribes/lvl-2.json",
-        "/json/orcs-tribes/lvl-3.json",
-        "/json/orcs-tribes/lvl-4.json",
-        "/json/orcs-tribes/lvl-5.json",
-        "/json/orcs-tribes/lvl-6.json",
-        "/json/orcs-tribes/lvl-7.json",
+        "http://localhost:3333/api/v1/cards?faction=orc-tribes&level=1",
+        "http://localhost:3333/api/v1/cards?faction=orc-tribes&level=2",
     ];
 
     const pathsUndead = [

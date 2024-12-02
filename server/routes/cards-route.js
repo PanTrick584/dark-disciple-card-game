@@ -6,7 +6,8 @@ const {
     getSingleCard,
     updateCard,
     createCard,
-    deleteCard
+    deleteCard,
+    updateAllCards
 } = require("../controllers/cards-controller");
 
 
@@ -14,6 +15,7 @@ router
     .route('/')
     .get(getAllCards)
     .post(createCard)
+    .patch(updateAllCards)
 
 router
     .route('/:id')

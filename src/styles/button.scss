@@ -48,4 +48,10 @@ li.button {
             padding: 10px 12px;
         }
     }
+
+    &.active {
+        a {
+            color: colors.$textColorActive;
+        }
+    }
 }

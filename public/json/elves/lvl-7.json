@@ -1,16 +1,104 @@
 [
     {
-        "level": 1,
-        "faction": "damned-hordes",
-        "category": {
-            "default": "",
-            "pl": "Gargulec"
+        "level": 7,
+        "faction": {
+            "en": "houses-of-elves",
+            "pl": "rody-elfów"
         },
+        "category": [
+            {
+                "en": "high elf",
+                "pl": "wysoki elf"
+            }
+        ],
         "name": {
-            "default": "",
-            "pl": "Pomniejszy Strażnik"
+            "en": "incineration",
+            "pl": "spopielenie"
         },
+        "image": "",
+        "strength": 3,
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "preparation",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Destroy all cards with power equal to this card's power.",
+                    "pl": "Zniszcz wszystkie karty o sile równej sile tej karty"
+                }
+            }
+        ]
+    },
+    {
+        "level": 7,
+        "faction": {
+            "en": "houses-of-elves",
+            "pl": "rody-elfów"
+        },
+        "category": [
+            {
+                "en": "high elf",
+                "pl": "wysoki elf"
+            }
+        ],
+        "name": {
+            "en": "spy gambit",
+            "pl": "szpiegowski gambit"
+        },
+        "image": "",
+        "strength": 3,
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Damage 3 Spies for 4p.",
+                    "pl": "Zrań 3 Szpiegów za 4pkt"
+                }
+            }
+        ]
+    },
+    {
+        "level": 7,
+        "faction": {
+            "en": "houses-of-elves",
+            "pl": "rody-elfów"
+        },
+        "category": [
+            {
+                "en": "dark elf",
+                "pl": "mroczny elf"
+            }
+        ],
+        "name": {
+            "en": "spy gambit",
+            "pl": "szpiegowski gambit"
+        },
+        "image": "",
         "strength": 4,
-        "skills": []
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Seize an enemy whose power is the opposite of any Spy's power.",
+                    "pl": "Przechwyć wroga którego siła jest odwrotnością siły dowolnego Szpiega"
+                }
+            }
+        ]
     }
 ]

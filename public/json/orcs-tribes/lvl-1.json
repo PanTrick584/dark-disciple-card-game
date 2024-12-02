@@ -36,8 +36,8 @@
     {
         "level": 1,
         "faction": {
-            "en": "orc tribes",
-            "pl": "plemiona orków"
+            "en": "orc-tribes",
+            "pl": "plemiona-orków"
         },
         "category": [
             {
