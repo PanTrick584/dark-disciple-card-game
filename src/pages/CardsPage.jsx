@@ -1,9 +1,19 @@
-import React, { useState } from 'react'
-import { Link, Outlet } from 'react-router-dom';
-import "./styles/cards-page.scss"
+import React, { useEffect, useState } from 'react'
+import { useLocation, useNavigate, Link, Outlet } from 'react-router-dom';
+import "./styles/cards-page.scss";
 
 const CardsPage = () => {
     const [active, setActive] = useState("");
+
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        // Check if the user is on a deeper route under /cards
+        if (location.pathname !== '/cards' && location.pathname.startsWith('/cards/')) {
+            navigate('/cards'); // Redirect to /cards
+        }
+    }, []);
 
     const pathsElves = [
         "http://localhost:3333/api/v1/cards?faction=houses-of-elves&level=1",
@@ -40,6 +50,11 @@ const CardsPage = () => {
     const pathsOrcs = [
         "http://localhost:3333/api/v1/cards?faction=orc-tribes&level=1",
         "http://localhost:3333/api/v1/cards?faction=orc-tribes&level=2",
+        "http://localhost:3333/api/v1/cards?faction=orc-tribes&level=3",
+        "http://localhost:3333/api/v1/cards?faction=orc-tribes&level=4",
+        "http://localhost:3333/api/v1/cards?faction=orc-tribes&level=5",
+        "http://localhost:3333/api/v1/cards?faction=orc-tribes&level=6",
+        "http://localhost:3333/api/v1/cards?faction=orc-tribes&level=7",
     ];
 
     const pathsUndead = [

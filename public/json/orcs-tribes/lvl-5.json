@@ -1,16 +1,294 @@
 [
     {
-        "level": 1,
-        "faction": "damned-hordes",
-        "category": {
-            "default": "",
-            "pl": "Gargulec"
+        "level": 5,
+        "faction": {
+            "en": "orc-tribes",
+            "pl": "plemiona-orków"
         },
+        "category": [
+            {
+                "en": "shaman",
+                "pl": "szaman"
+            },
+            {
+                "en": "goblin",
+                "pl": "goblin"
+            }
+        ],
         "name": {
-            "default": "",
-            "pl": "Pomniejszy Strażnik"
+            "en": "goblin",
+            "pl": "goblin"
         },
+        "image": "",
+        "strength": 2,
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "cycle",
+                        "pl": "cykl"
+                    }
+                ],
+                "description": {
+                    "en": "Whenever an ally takes damage, increase their base power by 1p.",
+                    "pl": "Za każdym razem gdy sojusznik otrzymuje obrażenia, zwiększ jego siłę bazową o 1p."
+                }
+            }
+        ]
+    },
+    {
+        "level": 5,
+        "faction": {
+            "en": "orc-tribes",
+            "pl": "plemiona-orków"
+        },
+        "category": [
+            {
+                "en": "ogre",
+                "pl": "ogr"
+            }
+        ],
+        "name": {
+            "en": "ogre",
+            "pl": "ogr"
+        },
+        "image": "",
+        "strength": 6,
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Destroy an ally, damage an enemy for 2p. If the ally was a Goblin, destroy the enemy instead of damaging it.",
+                    "pl": "Zniszcz sojusznika, zrań wroga za 2p. Jeżeli sojusznik był Goblinem zamiast ranić zniszcz wroga."
+                }
+            }
+        ]
+    },
+    {
+        "level": 5,
+        "faction": {
+            "en": "orc-tribes",
+            "pl": "plemiona-orków"
+        },
+        "category": [
+            {
+                "en": "orc",
+                "pl": "ork"
+            }
+        ],
+        "name": {
+            "en": "orc",
+            "pl": "ork"
+        },
+        "image": "",
+        "strength": 6,
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Boost self by how much damage the target card is.",
+                    "pl": "Wzmocnij się o ile ranna jest wskazana karta."
+                }
+            }
+        ]
+    },
+    {
+        "level": 5,
+        "faction": {
+            "en": "orc-tribes",
+            "pl": "plemiona-orków"
+        },
+        "category": [
+            {
+                "en": "beast",
+                "pl": "bestia"
+            }
+        ],
+        "name": {
+            "en": "beast",
+            "pl": "bestia"
+        },
+        "image": "",
+        "strength": 5,
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "cycle",
+                        "pl": "cykl"
+                    }
+                ],
+                "description": {
+                    "en": "If your opponent played a card stronger than this card, damage that enemy and this card for 1p.",
+                    "pl": "Jeżeli przeciwnik zagrał silniejszą kartę niż ta karta, zrań tego wroga i tę kartę za 1p."
+                }
+            }
+        ]
+    },
+    {
+        "level": 5,
+        "faction": {
+            "en": "orc-tribes",
+            "pl": "plemiona-orków"
+        },
+        "category": [
+            {
+                "en": "orc",
+                "pl": "ork"
+            }
+        ],
+        "name": {
+            "en": "orc",
+            "pl": "ork"
+        },
+        "image": "",
         "strength": 4,
-        "skills": []
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "cycle",
+                        "pl": "cykl"
+                    }
+                ],
+                "description": {
+                    "en": "Damage an enemy for 3p. If they are still buffed, damage them for another 3p.",
+                    "pl": "Zrań wroga za 3pkt. Jeżeli wciąż jest wzmocniony zrań za kolejne 3pkt."
+                }
+            }
+        ]
+    },
+    {
+        "level": 5,
+        "faction": {
+            "en": "orc-tribes",
+            "pl": "plemiona-orków"
+        },
+        "category": [
+            {
+                "en": "shaman",
+                "pl": "szaman"
+            },
+            {
+                "en": "goblin",
+                "pl": "goblin"
+            }
+        ],
+        "name": {
+            "en": "goblin",
+            "pl": "goblin"
+        },
+        "image": "",
+        "strength": 4,
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Summon 2 Goblins from the graveyard.",
+                    "pl": "Wezwij z cmentarza 2 Gobliny."
+                }
+            }
+        ]
+    },
+    {
+        "level": 5,
+        "faction": {
+            "en": "orc-tribes",
+            "pl": "plemiona-orków"
+        },
+        "category": [
+            {
+                "en": "beast",
+                "pl": "bestia"
+            }
+        ],
+        "name": {
+            "en": "beast",
+            "pl": "bestia"
+        },
+        "image": "",
+        "strength": 5,
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Damage self by 2p.",
+                    "pl": "Zrań siebie za 2p."
+                }
+            },
+            {
+                "type": [
+                    {
+                        "en": "sacrifice",
+                        "pl": "ofiara"
+                    }
+                ],
+                "description": {
+                    "en": "Damage enemy by 2p, summon self from graveyard",
+                    "pl": "Zrań wroga za 2p, wezwij się z cmentarza na Plac."
+                }
+            }
+        ]
+    },
+    {
+        "level": 5,
+        "faction": {
+            "en": "orc-tribes",
+            "pl": "plemiona-orków"
+        },
+        "category": [
+            {
+                "en": "troll",
+                "pl": "troll"
+            }
+        ],
+        "name": {
+            "en": "troll",
+            "pl": "troll"
+        },
+        "image": "",
+        "strength": 6,
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "cycle",
+                        "pl": "cykl"
+                    }
+                ],
+                "description": {
+                    "en": "If this card is wounded for 4p, heal it and increase its base power by 2p.",
+                    "pl": "Jeżeli ta karta jest ranna za 4p uzdrów ją i zwiększ siłę bazową o 2p."
+                }
+            }
+        ]
     }
 ]

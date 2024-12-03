@@ -1,16 +1,344 @@
 [
     {
-        "level": 1,
-        "faction": "damned-hordes",
-        "category": {
-            "default": "",
-            "pl": "Gargulec"
+        "level": 6,
+        "faction": {
+            "en": "orc-tribes",
+            "pl": "plemiona-orków"
         },
+        "category": [
+            {
+                "en": "shaman",
+                "pl": "szaman"
+            },
+            {
+                "en": "goblin",
+                "pl": "goblin"
+            }
+        ],
         "name": {
-            "default": "",
-            "pl": "Pomniejszy Strażnik"
+            "en": "goblin",
+            "pl": "goblin"
         },
+        "image": "",
+        "strength": 5,
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Draw up to 2 top cards, then shuffle that many into the deck. You may discard the drawn Goblins to the graveyard and draw more cards in their place,",
+                    "pl": "Dobierz do 2 wierzchnich kart, następnie wtasuj tyle samo do talii. Możesz odrzucić dobrane Gobliny na cmentarz i dobrać w ich miejsce kolejne karty,"
+                }
+            }
+        ]
+    },
+    {
+        "level": 6,
+        "faction": {
+            "en": "orc-tribes",
+            "pl": "plemiona-orków"
+        },
+        "category": [
+            {
+                "en": "orc",
+                "pl": "ork"
+            }
+        ],
+        "name": {
+            "en": "orc",
+            "pl": "ork"
+        },
+        "image": "",
+        "strength": 5,
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Banish a card from the graveyard, deal damage to an enemy equal to its power.",
+                    "pl": "Wygnaj kartę z cmentarza, zadaj wrogowi obrażenia równe jej sile."
+                }
+            }
+        ]
+    },
+    {
+        "level": 6,
+        "faction": {
+            "en": "orc-tribes",
+            "pl": "plemiona-orków"
+        },
+        "category": [
+            {
+                "en": "orc",
+                "pl": "ork"
+            }
+        ],
+        "name": {
+            "en": "orc",
+            "pl": "ork"
+        },
+        "image": "",
+        "strength": 6,
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Damage an enemy by 3p.",
+                    "pl": "Zrań wroga za 3p."
+                }
+            },
+            {
+                "type": [
+                    {
+                        "en": "preparation",
+                        "pl": "przygotowanie"
+                    }
+                ],
+                "description": {
+                    "en": "Damage 2 enemies by 3p.",
+                    "pl": "Zrań 2 wrogów za 3pkt."
+                }
+            }
+        ]
+    },
+    {
+        "level": 6,
+        "faction": {
+            "en": "orc-tribes",
+            "pl": "plemiona-orków"
+        },
+        "category": [
+            {
+                "en": "shaman",
+                "pl": "szaman"
+            },
+            {
+                "en": "orc",
+                "pl": "ork"
+            }
+        ],
+        "name": {
+            "en": "orc",
+            "pl": "ork"
+        },
+        "image": "",
         "strength": 4,
-        "skills": []
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Boost self by 2p for each wounded card.",
+                    "pl": "Wzmocnij się o 2p za każdą ranną kartę."
+                }
+            }
+        ]
+    },
+    {
+        "level": 6,
+        "faction": {
+            "en": "orc-tribes",
+            "pl": "plemiona-orków"
+        },
+        "category": [
+            {
+                "en": "shaman",
+                "pl": "szaman"
+            },
+            {
+                "en": "orc",
+                "pl": "ork"
+            }
+        ],
+        "name": {
+            "en": "orc",
+            "pl": "ork"
+        },
+        "image": "",
+        "strength": 5,
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Restore the base power of 3 enemies and allies.",
+                    "pl": "Przywróć siłę bazową 3 wrogów i sojuszników."
+                }
+            }
+        ]
+    },
+    {
+        "level": 6,
+        "faction": {
+            "en": "orc-tribes",
+            "pl": "plemiona-orków"
+        },
+        "category": [
+            {
+                "en": "beast",
+                "pl": "bestia"
+            }
+        ],
+        "name": {
+            "en": "primal strength",
+            "pl": "pierwotna siła"
+        },
+        "image": "",
+        "strength": 5,
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Damage 2 undamaged enemies and allies for 1p. For each damage dealt, boost yourself by 2p.",
+                    "pl": "Zrań 2 niezranionych wrogów i sojuszników za 1p. Za każde zranienie wzmocnij się o 2p."
+                }
+            }
+        ]
+    },
+    {
+        "level": 6,
+        "faction": {
+            "en": "orc-tribes",
+            "pl": "plemiona-orków"
+        },
+        "category": [
+            {
+                "en": "shaman",
+                "pl": "szaman"
+            },
+            {
+                "en": "orc",
+                "pl": "ork"
+            }
+        ],
+        "name": {
+            "en": "orc",
+            "pl": "ork"
+        },
+        "image": "",
+        "strength": 4,
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Increase the base power of 4 Trolls by 3p.",
+                    "pl": "Zwiększ siłę bazową 4 Trolli o 3p."
+                }
+            }
+        ]
+    },
+    {
+        "level": 6,
+        "faction": {
+            "en": "orc-tribes",
+            "pl": "plemiona-orków"
+        },
+        "category": [
+            {
+                "en": "orc",
+                "pl": "ork"
+            }
+        ],
+        "name": {
+            "en": "orc",
+            "pl": "ork"
+        },
+        "image": "",
+        "strength": 5,
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    },
+                    {
+                        "en": "domination",
+                        "pl": "dominacja"
+                    }
+                ],
+                "description": {
+                    "en": "Destroy 2 enemies.",
+                    "pl": "Zniszcz 2 wrogów."
+                }
+            }
+        ]
+    },
+    {
+        "level": 6,
+        "faction": {
+            "en": "orc-tribes",
+            "pl": "plemiona-orków"
+        },
+        "category": [
+            {
+                "en": "shaman",
+                "pl": "szaman"
+            },
+            {
+                "en": "orc",
+                "pl": "ork"
+            }
+        ],
+        "name": {
+            "en": "orc",
+            "pl": "ork"
+        },
+        "image": "",
+        "strength": 2,
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "If your opponent controls 4 wounded units, destroy an enemy card.",
+                    "pl": "Jeżeli przeciwnik kontroluje 4 ranne jednostki zniszcz wrogą kartę."
+                }
+            }
+        ]
     }
 ]

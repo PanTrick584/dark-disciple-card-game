@@ -1,16 +1,328 @@
 [
     {
-        "level": 1,
-        "faction": "damned-hordes",
-        "category": {
-            "default": "",
-            "pl": "Gargulec"
+        "level": 3,
+        "faction": {
+            "en": "goblin-tribes",
+            "pl": "plemiona-orków"
         },
+        "category": [
+            {
+                "en": "troll",
+                "pl": "troll"
+            }
+        ],
         "name": {
-            "default": "",
-            "pl": "Pomniejszy Strażnik"
+            "en": "young troll",
+            "pl": "młody troll"
         },
+        "image": "",
         "strength": 4,
-        "skills": []
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Increase your base strength by the number of enemies wounded.",
+                    "pl": "Zwiększ swoją siłę bazową o ilość rannych wrogów."
+                }
+            }
+        ]
+    },
+    {
+        "level": 3,
+        "faction": {
+            "en": "orc-tribes",
+            "pl": "plemiona-orków"
+        },
+        "category": [
+            {
+                "en": "orc",
+                "pl": "ork"
+            }
+        ],
+        "name": {
+            "en": "orc",
+            "pl": "ork"
+        },
+        "image": "",
+        "strength": 4,
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Damage an enemy for 1 point, if they are empowered damage them for 3 points.",
+                    "pl": "Zrań wroga za 1pkt, jeżeli jest wzmocniony zrań go za 3pkt."
+                }
+            }
+        ]
+    },
+    {
+        "level": 3,
+        "faction": {
+            "en": "orc-tribes",
+            "pl": "plemiona-orków"
+        },
+        "category": [
+            {
+                "en": "shaman",
+                "pl": "szaman"
+            },
+            {
+                "en": "gpblin",
+                "pl": "goblin"
+            }
+        ],
+        "name": {
+            "en": "goblin",
+            "pl": "goblin"
+        },
+        "image": "",
+        "strength": 1,
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "cycle",
+                        "pl": "cykl"
+                    }
+                ],
+                "description": {
+                    "en": "Whenever an ally is damaged, boost self by 1p.",
+                    "pl": "Za każdym razem gdy raniony jest sojusznik wzmocnij się o 1pkt."
+                }
+            }
+        ]
+    },
+    {
+        "level": 3,
+        "faction": {
+            "en": "orc-tribes",
+            "pl": "plemiona-orków"
+        },
+        "category": [
+            {
+                "en": "beast",
+                "pl": "bestia"
+            }
+        ],
+        "name": {
+            "en": "goblin",
+            "pl": "goblin"
+        },
+        "image": "",
+        "strength": 7,
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Damage 2 allies for 1p.",
+                    "pl": "Zrań 2 sojuszników za 1pkt."
+                }
+            }
+        ]
+    },
+    {
+        "level": 3,
+        "faction": {
+            "en": "orc-tribes",
+            "pl": "plemiona-orków"
+        },
+        "category": [
+            {
+                "en": "shaman",
+                "pl": "szaman"
+            },
+            {
+                "en": "gpblin",
+                "pl": "goblin"
+            }
+        ],
+        "name": {
+            "en": "goblin",
+            "pl": "goblin"
+        },
+        "image": "",
+        "strength": 4,
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Draw a card, shuffle a card into the deck. If you drew or shuffled a Goblin, put it in the graveyard.",
+                    "pl": "Dobierz kartę, wtasuj kartę do talii. Jeżeli dobrałeś lub wtasowałeś Goblina - odrzuć go na cmentarz."
+                }
+            }
+        ]
+    },
+    {
+        "level": 3,
+        "faction": {
+            "en": "orc-tribes",
+            "pl": "plemiona-orków"
+        },
+        "category": [
+            {
+                "en": "orc",
+                "pl": "ork"
+            }
+        ],
+        "name": {
+            "en": "orc",
+            "pl": "ork"
+        },
+        "image": "",
+        "strength": 4,
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Damage an enemy for 2p.",
+                    "pl": "Zrań wroga za 2pkt."
+                }
+            }
+        ]
+    },
+    {
+        "level": 3,
+        "faction": {
+            "en": "orc-tribes",
+            "pl": "plemiona-orków"
+        },
+        "category": [
+            {
+                "en": "beast",
+                "pl": "bestia"
+            }
+        ],
+        "name": {
+            "en": "beast",
+            "pl": "bestia"
+        },
+        "image": "",
+        "strength": 3,
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Damage an enemy for 1p.",
+                    "pl": "Zrań wroga za 1pkt."
+                }
+            },
+            {
+                "type": [
+                    {
+                        "en": "cycle",
+                        "pl": "cykl"
+                    }
+                ],
+                "description": {
+                    "en": "Whenever you damage an enemy, damage them and selfd by 1.",
+                    "pl": "Za każdym razem gdy ranisz wroga, zrań jego i tę kartę o 1pkt."
+                }
+            }
+        ]
+    },
+    {
+        "level": 3,
+        "faction": {
+            "en": "orc-tribes",
+            "pl": "plemiona-orków"
+        },
+        "category": [
+            {
+                "en": "goblin",
+                "pl": "goblin"
+            }
+        ],
+        "name": {
+            "en": "goblin",
+            "pl": "goblin"
+        },
+        "image": "",
+        "strength": 1,
+        "spy": false,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "sacrifice",
+                        "pl": "ofiara"
+                    }
+                ],
+                "description": {
+                    "en": "Increase the base strength of the unit that destroyed this unit by 4.",
+                    "pl": "Zwiększ siłę bazowa jednostki, która zniszczyła tę jednostkę o 4pkt."
+                }
+            }
+        ]
+    },
+    {
+        "level": 3,
+        "faction": {
+            "en": "orc-tribes",
+            "pl": "plemiona-orków"
+        },
+        "category": [
+            {
+                "en": "goblin",
+                "pl": "goblin"
+            }
+        ],
+        "name": {
+            "en": "goblin",
+            "pl": "goblin"
+        },
+        "image": "",
+        "strength": 2,
+        "spy": true,
+        "skills": [
+            {
+                "type": [
+                    {
+                        "en": "sacrifice",
+                        "pl": "ofiara"
+                    }
+                ],
+                "description": {
+                    "en": "Draw a card.",
+                    "pl": "Dobierz kartę."
+                }
+            }
+        ]
     }
 ]
