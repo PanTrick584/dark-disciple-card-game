@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { patchDB } from "../../hooks/fetchDB";
+import { patchDB } from "../../tools/fetchDB";
 import "./styles/card-edit.scss"
 
 const CardEdit = () => {

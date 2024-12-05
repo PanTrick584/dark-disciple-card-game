@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import Card from '../../components/Card/Card';
-import { fetchJsonData } from '../../hooks/fetchCards';
+import { fetchJsonData } from '../../tools/fetchCards';
 import { useLocation } from 'react-router-dom';
 import "./styles/cards-filter.scss"
-import { fetchDB } from '../../hooks/fetchDB';
+import { fetchDB } from '../../tools/fetchDB';
+import { handleCategories } from '../../tools/handlers/handleCategories';
 
 const CardsFilter = () => {
     const [data, setData] = useState(null);
@@ -20,7 +21,7 @@ const CardsFilter = () => {
     const { dataLocation, name } = location.state || {};
 
     useEffect(() => {
-        handleCategories();
+        handleCategory();
 
         if (fechedFactions.includes(name)) return;
 
@@ -38,28 +39,9 @@ const CardsFilter = () => {
 
     useEffect(() => {
         if (!factionData) return;
-        handleCategories();
+        handleCategory();
+        console.log(categoriesList);
     }, [factionData, activeLevels])
-
-    const handleCategories = () => {
-        let uniqueCategories = [];
-        factionData?.forEach((faction, id) => {
-            if (faction?.name !== name) return;
-            faction?.data.map((level, lvlID) => {
-                if (!activeLevels.length || activeLevels.includes(lvlID + 1)) {
-                    level?.data?.forEach(card => {
-                        const category = card?.category?.length && card?.category?.map(category => category.en);
-
-                        if (category && !uniqueCategories.includes(...category)) {
-                            uniqueCategories = [...uniqueCategories, ...category]
-                        }
-                    })
-                }
-
-            })
-        })
-        setCategoriesList(uniqueCategories);
-    }
 
     const fetchData = async (path) => {
         try {
@@ -81,6 +63,11 @@ const CardsFilter = () => {
         return [...prev, type(value)];
     }
 
+    const handleCategory = () => {
+        const newCategories = handleCategories(factionData, name, activeLevels);
+        setCategoriesList(newCategories);
+    }
+
     console.log(activeLevels);
     return (
         <div className='cards-filter'>
@@ -94,7 +81,7 @@ const CardsFilter = () => {
                                 onClick={() => {
                                     setFilter(prev => handleFilter(prev, dataLocation[id], String));
                                     setActiveLevels(prev => handleFilter(prev, id + 1, Number));
-                                    handleCategories()
+                                    handleCategory();
                                 }}>
                                 <a>{
                                     id + 1}
@@ -104,7 +91,7 @@ const CardsFilter = () => {
                     })}
                     <li className={`nav-ul-li button`} onClick={() => {
                         setActiveLevels([])
-                        handleCategories()
+                        handleCategory();
                     }}><a>all</a></li>
                 </ul>
             </nav>
@@ -120,7 +107,7 @@ const CardsFilter = () => {
                                 onClick={() => {
                                     setCategories(prev => handleFilter(prev, category, String))
                                     setActiveCategories(prev => handleFilter(prev, id + 1, Number))
-                                    handleCategories()
+                                    handleCategory();
                                 }}
                             >
                                 <a>
@@ -130,9 +117,9 @@ const CardsFilter = () => {
                         )
                     })}
                     <li className={`button small`} onClick={() => {
-                        setActiveCategories([])
-                        handleCategories()
-                        setCategories([])
+                        setActiveCategories([]);
+                        handleCategory();
+                        setCategories([]);
                     }}><a>all</a></li>
                 </ul>
             </nav>

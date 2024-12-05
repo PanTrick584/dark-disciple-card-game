@@ -10,7 +10,8 @@ export const AppProvider = ({ children }) => {
     const [loadings, setLoadings] = useState({
         adminPageLIst: true
     });
-    const [categories, setCategories] = useState([])
+    const [categories, setCategories] = useState([]);
+    const [language, setLanguage] = useState("pl");
 
     return (
         <AppContext.Provider
@@ -20,7 +21,9 @@ export const AppProvider = ({ children }) => {
                 loadings,
                 setLoadings,
                 categories,
-                setCategories
+                setCategories,
+                language,
+                setLanguage
             }}>
             {children}
         </AppContext.Provider>

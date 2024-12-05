@@ -5,7 +5,7 @@ a {
     color: colors.$textColor;
 }
 
-li.button {
+.button {
     cursor: pointer;
     transition: all .2s;
     border-radius: 15px;
@@ -34,7 +34,8 @@ li.button {
         }
     }
 
-    a {
+    a
+    &select {
         padding: 10px 20px;
         display: block;
         height: 100%;

@@ -1,0 +1,33 @@
+@use "../../../styles/colors.scss" as color;
+.language-selector {
+    height: min-content;
+    display: flex;
+    align-items: center;
+    // flex-direction: column;
+    // width: 100%;
+    margin-left: auto;
+
+    label {
+        width: max-content;
+        margin-right: 12px;
+    }
+    
+    label, select {
+        font-size: 10px;
+        text-transform: uppercase;
+        
+    }
+
+    select {
+        width: min-content;
+        height: min-content;
+        border: none;
+        outline: none;
+        background-color: color.$backgroundColorHover;
+        padding: 10px;
+
+        option {
+            // background-color: color.$backgroundColorHover;
+        }
+    }
+}

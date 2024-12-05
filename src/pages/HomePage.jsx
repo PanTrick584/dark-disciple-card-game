@@ -1,23 +1,34 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../context/AppContext'
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
+import LanguageSelector from '../components/LanguageSelector/LanguageSelector';
 
 const HomePage = () => {
 
-    const { userData, loadings } = useContext(AppContext);
+    const { setLanguage } = useContext(AppContext);
 
     return (
-        <div>
+        <div className='main-container'>
             Here is home page
 
-            <nav className='nav'> Check navigation to:
-                <Link to="/cards" className='nav-link'>
-                    <button className='nav-btn'>Check collection of cards</button>
-                </Link>
-                <Link to="/decks" className='nav-link'>
-                    <button className='nav-btn'>Check decks you created</button>
-                </Link>
+            <nav className='main-nav'>
+            <ul>
+                <li className='button'>
+                    <Link to="/cards" className='nav-link'>
+                        Check collection of cards
+                    </Link>
+                </li>
+                <li className='button'>
+                    <Link to="/decks" className='nav-link'>
+                        Check decks you created
+                    </Link>
+                </li>
+            </ul>
+                
+                
+                <LanguageSelector />
             </nav>
+            <Outlet />
         </div>
     )
 }

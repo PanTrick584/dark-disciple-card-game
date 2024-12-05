@@ -38,20 +38,36 @@ const updateCard = async (req, res) => {
 }
 
 const updateAllCards = async (req, res) => {
+    // await Cards.updateMany(
+    //     {
+    //         "faction.en": "orc tribes",
+    //         "faction.pl": "plemiona orków"
+    //     },
+    //     {
+    //         $set: {
+    //             "faction.en": "orc-tribes",
+    //             "faction.pl": "plemiona-orków"
+    //         }
+    //     }
+    // )
     await Cards.updateMany(
-        {
-            "faction.en": "orc tribes",
-            "faction.pl": "plemiona orków"
-        },
-        {
-            $set: {
-                "faction.en": "orc-tribes",
-                "faction.pl": "plemiona-orków"
-            }
-        }
+        { "category.en": "gpblin" }, // Match documents with en: "troll"
+        { $set: { "category.$.en": "goblin" } }
     )
+    // db.collection.updateMany(
+    //     {
+    //         category: [
+    //             { en: "troll", pl: "ogr" }
+    //         ]
+    //     },
+    //     {
+    //         $set: {
+    //             "category.0.en": "ogre"
+    //         }
+    //     }
+    // );
     console.log("updated cards");
-    // return res.status(200).json({ data: updatedCard })
+    return res.status(200).json({ message: "updated" })
 }
 
 const createCard = async (req, res) => {

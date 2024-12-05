@@ -9,16 +9,17 @@ const AppRoutes = () => {
     return (
         <Router>
             <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/decks" element={<DecksPage />} />
-                <Route path="/cards" element={<CardsPage />}>
-                    <Route path="houses-of-elves" element={<CardsFilter />} />
-                    <Route path="orc-tribes" element={<CardsFilter />} />
-                    <Route path="hordes-of-the-damned" element={<CardsFilter />} />
-                    <Route path="empire-alliance" element={<CardsFilter />} />
-                    <Route path="undead-legion" element={<CardsFilter />} />
+                <Route path="/" element={<HomePage />}>
+                    <Route path="/decks" element={<DecksPage />} />
+                    <Route path="/cards" element={<CardsPage />}>
+                        <Route path="houses-of-elves" element={<CardsFilter />} />
+                        <Route path="orc-tribes" element={<CardsFilter />} />
+                        <Route path="hordes-of-the-damned" element={<CardsFilter />} />
+                        <Route path="empire-alliance" element={<CardsFilter />} />
+                        <Route path="undead-legion" element={<CardsFilter />} />
+                    </Route>
+                    <Route path="/cards/:category/:id" element={<CardEdit />} />
                 </Route>
-                <Route path="/cards/:category/:id" element={<CardEdit />} />
             </Routes>
         </Router>
     )
