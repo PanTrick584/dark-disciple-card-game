@@ -1,18 +1,23 @@
-import React, { useEffect, useState } from 'react'
-import { useLocation, useNavigate, Link, Outlet } from 'react-router-dom';
+import React, { useContext, useEffect } from 'react'
+import { useLocation, useNavigate, Outlet } from 'react-router-dom';
+import { AppContext } from '../context/AppContext';
+import { factions } from '../consts/translations';
+import { MainNavItem } from '../components/MainNavItem/MainNavItem';
+
 import "./styles/cards-page.scss";
 
 const CardsPage = () => {
-    const [active, setActive] = useState("");
 
     const location = useLocation();
     const navigate = useNavigate();
 
+    const { language } = useContext(AppContext);
+
     useEffect(() => {
-        // Check if the user is on a deeper route under /cards
         if (location.pathname !== '/cards' && location.pathname.startsWith('/cards/')) {
-            navigate('/cards'); // Redirect to /cards
+            navigate('/cards');
         }
+
     }, []);
 
     const pathsElves = [
@@ -67,14 +72,40 @@ const CardsPage = () => {
         "/json/elves/lvl-7.json",
     ]
 
+    const factionsNavigation = {
+        elves: {
+            name: factions.elves?.[language],
+            path: pathsElves
+        },
+        orcs: {
+            name: factions.orcs?.[language],
+            path: pathsOrcs
+        },
+        damned: {
+            name: factions.damned?.[language],
+            path: pathsDamned
+        },
+        empire: {
+            name: factions.empire?.[language],
+            path: pathsEmpire
+        },
+        undead: {
+            name: factions.undead?.[language],
+            path: pathsUndead
+        }
+    }
+
     return (
         <nav className='cards-page'>
             <ul className='cards-page-ul'>
-                <li className={`button ${active === 'elves' ? 'active' : ''}`} onClick={() => setActive('elves')}><Link to="./houses-of-elves" state={{ dataLocation: pathsElves, name: "houses-of-elves" }}>Elves</Link></li>
-                <li className={`button ${active === 'orcs' ? 'active' : ''}`} onClick={() => setActive('orcs')}><Link to="./orc-tribes" state={{ dataLocation: pathsOrcs, name: "orc-tribes" }}>Orcs</Link></li>
-                <li className={`button ${active === 'damned' ? 'active' : ''}`} onClick={() => setActive('damned')}><Link to="./hordes-of-the-damned" state={{ dataLocation: pathsDamned, name: "hordes-of-the-damned" }} >Damned</Link></li>
-                <li className={`button ${active === 'empire' ? 'active' : ''}`} onClick={() => setActive('empire')}><Link to="./empire-alliance" state={{ dataLocation: pathsEmpire, name: "empire-alliance" }}>Empire</Link></li>
-                <li className={`button ${active === 'undead' ? 'active' : ''}`} onClick={() => setActive('undead')}><Link to="./undead-legion" state={{ dataLocation: pathsUndead, name: "undead-legion" }}>Undead</Link></li>
+                {Object.entries(factionsNavigation).map(([key, value]) => {
+                    return (
+                        <MainNavItem
+                            key={key}
+                            faction={value?.name}
+                            path={value?.path} />
+                    )
+                })}
             </ul>
             <Outlet />
         </nav>

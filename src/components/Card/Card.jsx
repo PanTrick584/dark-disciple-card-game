@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react'
-import "./styles/card.scss"
-import { Link, useLocation } from 'react-router-dom';
+import React, { useContext } from 'react'
+import { Link } from 'react-router-dom';
 import { AppContext } from '../../context/AppContext';
+import "./styles/card.scss"
 
 
 const Card = ({ cardsLevel, cardsCategories, categoryName }) => {
@@ -12,10 +12,11 @@ const Card = ({ cardsLevel, cardsCategories, categoryName }) => {
         <>
             {cardsLevel?.data?.map((card, id) => {
                 const currentCategories = card?.category?.map((category) => category?.[language]);
-                const cardName = card?.name?.en.split(" ").join("-");
+                const cardName = card?.name?.[language].split(" ").join("-");
+                const newCategoryName = categoryName.split(" ").join("-");
                 if (!cardsCategories.length || cardsCategories.some(category => currentCategories.includes(category))) {
                     return (
-                        <Link to={`/cards/${categoryName}/${cardName}`} state={card}>
+                        <Link to={`/cards/${newCategoryName}/${cardName}`} state={card}>
                             <div className="card">
                                 <div className="card-title">
                                     <div className="card-title-box">

@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Card from '../../components/Card/Card';
 import { fetchJsonData } from '../../tools/fetchCards';
 import { useLocation } from 'react-router-dom';
 import "./styles/cards-filter.scss"
-import { fetchDB } from '../../tools/fetchDB';
+// import { fetchDB } from '../../tools/fetchDB';
 import { handleCategories } from '../../tools/handlers/handleCategories';
+import { AppContext } from '../../context/AppContext';
+import { all } from '../../consts/translations';
 
 const CardsFilter = () => {
     const [data, setData] = useState(null);
@@ -19,6 +21,8 @@ const CardsFilter = () => {
 
     const location = useLocation();
     const { dataLocation, name } = location.state || {};
+    const { language } = useContext(AppContext);
+
 
     useEffect(() => {
         handleCategory();
@@ -40,13 +44,12 @@ const CardsFilter = () => {
     useEffect(() => {
         if (!factionData) return;
         handleCategory();
-        console.log(categoriesList);
-    }, [factionData, activeLevels])
+    }, [factionData, activeLevels, language])
 
     const fetchData = async (path) => {
         try {
             const result = await fetchJsonData(path);
-            setData(result);
+            // setData(result);
             setFactionData(prev => {
                 const newPrev = [...prev, { name: name, data: result }];
                 const filterPrev = newPrev.filter((item, index, self) =>
@@ -64,11 +67,12 @@ const CardsFilter = () => {
     }
 
     const handleCategory = () => {
-        const newCategories = handleCategories(factionData, name, activeLevels);
+        const newCategories = handleCategories(factionData, name, activeLevels, language);
         setCategoriesList(newCategories);
     }
 
-    console.log(activeLevels);
+    // console.log(activeLevels);
+    // console.log(filter);
     return (
         <div className='cards-filter'>
             {/* CARDS LEVELS */}
@@ -89,10 +93,10 @@ const CardsFilter = () => {
                             </li>
                         )
                     })}
-                    <li className={`nav-ul-li button`} onClick={() => {
+                    <li className={`nav-ul-li button `} onClick={() => {
                         setActiveLevels([])
                         handleCategory();
-                    }}><a>all</a></li>
+                    }}><a>{all?.[language]}</a></li>
                 </ul>
             </nav>
             {/* CATEGORIES */}
@@ -120,15 +124,14 @@ const CardsFilter = () => {
                         setActiveCategories([]);
                         handleCategory();
                         setCategories([]);
-                    }}><a>all</a></li>
+                    }}><a>{all?.[language]}</a></li>
                 </ul>
             </nav>
             {/* CARDS */}
             <div className="cards-filter-container">
                 {factionData.map((faction) => {
                     if (faction?.name !== name) return;
-                    // console.log(faction?.name);
-                    // console.log(name);
+
                     return faction?.data?.map((cardsLevel, id) => {
                         if (!activeLevels.length || activeLevels.includes(id + 1)) {
                             return <Card

@@ -1,31 +1,39 @@
-import React, { useContext } from 'react'
-import { AppContext } from '../context/AppContext'
 import { Link, Outlet } from 'react-router-dom';
+import { useContext } from 'react';
+import { AppContext } from '../context/AppContext';
 import LanguageSelector from '../components/LanguageSelector/LanguageSelector';
+import { mainNav } from '../consts/translations';
 
 const HomePage = () => {
+    const { language } = useContext(AppContext);
 
-    const { setLanguage } = useContext(AppContext);
+    const mainNavigation = {
+        cards: {
+            translate: mainNav.cards?.[language],
+            path: "cards"
+        },
+        decks: {
+            translate: mainNav.decks?.[language],
+            path: "decks"
+        }
+    }
 
     return (
         <div className='main-container'>
-            Here is home page
+            <h1 className='main-header'>Dark Disciple: Card Game</h1>
 
             <nav className='main-nav'>
-            <ul>
-                <li className='button'>
-                    <Link to="/cards" className='nav-link'>
-                        Check collection of cards
-                    </Link>
-                </li>
-                <li className='button'>
-                    <Link to="/decks" className='nav-link'>
-                        Check decks you created
-                    </Link>
-                </li>
-            </ul>
-                
-                
+                <ul>
+                    {Object.entries(mainNavigation).map(([key, value]) => {
+                        return (
+                            <li key={key} className='button'>
+                                <Link to={`/${value?.path}`} className='nav-link'>
+                                    {value.translate}
+                                </Link>
+                            </li>
+                        )
+                    })}
+                </ul>
                 <LanguageSelector />
             </nav>
             <Outlet />

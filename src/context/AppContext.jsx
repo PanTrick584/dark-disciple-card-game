@@ -12,6 +12,7 @@ export const AppProvider = ({ children }) => {
     });
     const [categories, setCategories] = useState([]);
     const [language, setLanguage] = useState("pl");
+    const [activeFaction, setActiveFaction] = useState("");
 
     return (
         <AppContext.Provider
@@ -23,7 +24,9 @@ export const AppProvider = ({ children }) => {
                 categories,
                 setCategories,
                 language,
-                setLanguage
+                setLanguage,
+                activeFaction,
+                setActiveFaction
             }}>
             {children}
         </AppContext.Provider>

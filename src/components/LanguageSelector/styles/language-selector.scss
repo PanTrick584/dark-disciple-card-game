@@ -1,4 +1,5 @@
 @use "../../../styles/colors.scss" as color;
+
 .language-selector {
     height: min-content;
     display: flex;
@@ -11,11 +12,12 @@
         width: max-content;
         margin-right: 12px;
     }
-    
-    label, select {
+
+    label,
+    select {
         font-size: 10px;
         text-transform: uppercase;
-        
+        color: color.$textColor;
     }
 
     select {
