@@ -1,12 +1,34 @@
-@use "../../../styles/colors.scss" as color;
+@use "./colors.scss" as color;
 
 .language-selector {
+    margin-left: auto;
+}
+
+.select-box {
+    width: 100%;
+
+    select {
+        margin-bottom: 20px;
+    }
+}
+
+.select-box,
+.language-selector {
+    width: 100%;
     height: min-content;
     display: flex;
     align-items: center;
-    // flex-direction: column;
-    // width: 100%;
-    margin-left: auto;
+    position: relative;
+    justify-content: center;
+
+    &::after {
+        content: "▼";
+        font-size: 10px;
+        top: 8px;
+        right: 10px;
+        position: absolute;
+        color: color.$textColor;
+    }
 
     label {
         width: max-content;
@@ -21,12 +43,14 @@
     }
 
     select {
-        width: min-content;
+        width: 100%;
         height: min-content;
         border: none;
         outline: none;
         background-color: color.$backgroundColorHover;
         padding: 10px;
+        -webkit-appearance: none;
+        appearance: none;
 
         option {
             // background-color: color.$backgroundColorHover;

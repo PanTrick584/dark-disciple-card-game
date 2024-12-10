@@ -13,6 +13,7 @@ const getSingleCard = (req, res) => {
 }
 
 const updateCard = async (req, res) => {
+    console.log(req.body);
     try {
         const { _id, ...updateFields } = req.body;
 
@@ -29,8 +30,9 @@ const updateCard = async (req, res) => {
         if (!updatedCard) {
             return res.status(404).json({ error: "Card not found" });
         }
+        console.log(updatedCard);
 
-        return res.status(200).json({ data: updatedCard });
+        return res.status(200).json({ updatedCard });
     } catch (error) {
         console.error("Error updating card:", error);
         return res.status(500).json({ error: "Internal server error" });
@@ -51,8 +53,8 @@ const updateAllCards = async (req, res) => {
     //     }
     // )
     await Cards.updateMany(
-        { "category.en": "gpblin" }, // Match documents with en: "troll"
-        { $set: { "category.$.en": "goblin" } }
+        // {}, // Match documents with en: "troll"
+        // { $set: { "category.$.id": "spy", } }
     )
     // db.collection.updateMany(
     //     {

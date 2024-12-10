@@ -2,16 +2,14 @@ import React, { useContext, useEffect, useState } from 'react'
 import Card from '../../components/Card/Card';
 import { fetchJsonData } from '../../tools/fetchCards';
 import { useLocation } from 'react-router-dom';
-import "./styles/cards-filter.scss"
-// import { fetchDB } from '../../tools/fetchDB';
 import { handleCategories } from '../../tools/handlers/handleCategories';
 import { AppContext } from '../../context/AppContext';
 import { all } from '../../consts/translations';
 
+import "./styles/cards-filter.scss"
+
 const CardsFilter = () => {
-    const [data, setData] = useState(null);
     const [navigation, setNavigation] = useState(null);
-    const [filter, setFilter] = useState([]);
     const [activeLevels, setActiveLevels] = useState([]);
     const [categoriesList, setCategoriesList] = useState([]);
     const [factionData, setFactionData] = useState([]);
@@ -22,7 +20,6 @@ const CardsFilter = () => {
     const location = useLocation();
     const { dataLocation, name } = location.state || {};
     const { language } = useContext(AppContext);
-
 
     useEffect(() => {
         handleCategory();
@@ -71,8 +68,6 @@ const CardsFilter = () => {
         setCategoriesList(newCategories);
     }
 
-    // console.log(activeLevels);
-    // console.log(filter);
     return (
         <div className='cards-filter'>
             {/* CARDS LEVELS */}
@@ -81,7 +76,7 @@ const CardsFilter = () => {
                     {navigation?.map((_, id) => {
                         return (
                             <li
-                                className={`nav-ul-li button ${activeLevels.includes(id + 1) ? "active" : ""}`}
+                                className={`nav-ul-li button${activeLevels.includes(id + 1) ? " active" : ""}`}
                                 onClick={() => {
                                     setFilter(prev => handleFilter(prev, dataLocation[id], String));
                                     setActiveLevels(prev => handleFilter(prev, id + 1, Number));

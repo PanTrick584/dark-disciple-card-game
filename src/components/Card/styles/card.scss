@@ -58,7 +58,8 @@
             }
 
             .card-level {
-                border: 3px solid colors.$textColor;
+                border: 3px solid colors.$backgroundColor;
+                border-bottom: 3px solid colors.$textColor;
                 color: colors.$textColor;
             }
 

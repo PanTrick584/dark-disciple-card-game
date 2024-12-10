@@ -12,7 +12,7 @@ const Card = ({ cardsLevel, cardsCategories, categoryName }) => {
         <>
             {cardsLevel?.data?.map((card, id) => {
                 const currentCategories = card?.category?.map((category) => category?.[language]);
-                const cardName = card?.name?.[language].split(" ").join("-");
+                const cardName = card?.name?.[language] && card?.name?.[language].split(" ").join("-");
                 const newCategoryName = categoryName.split(" ").join("-");
                 if (!cardsCategories.length || cardsCategories.some(category => currentCategories.includes(category))) {
                     return (

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { AppContext } from "../../context/AppContext";
-import "./styles/language-selector.scss"
+import "../../styles/selectors.scss"
 
 const LanguageSelector = () => {
   const [selectedLanguage, setSelectedLanguage] = useState("en");
@@ -25,13 +25,13 @@ const LanguageSelector = () => {
     <div className="language-selector">
       <label htmlFor="language-select">Choose a language:</label>
       <select
-      className="button"
+        className="button"
         id="language-select"
         value={language}
         onChange={handleLanguageChange}
       >
         {languages.map((lang) => (
-          <option  key={lang.code} value={lang.code}>
+          <option key={lang.code} value={lang.code}>
             {lang.label}
           </option>
         ))}

@@ -1,10 +1,11 @@
 import { Link, Outlet } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AppContext } from '../context/AppContext';
 import LanguageSelector from '../components/LanguageSelector/LanguageSelector';
 import { mainNav } from '../consts/translations';
 
 const HomePage = () => {
+    const [activeDirectory, setActiveDirectory] = useState([]);
     const { language } = useContext(AppContext);
 
     const mainNavigation = {
@@ -17,7 +18,6 @@ const HomePage = () => {
             path: "decks"
         }
     }
-
     return (
         <div className='main-container'>
             <h1 className='main-header'>Dark Disciple: Card Game</h1>
@@ -26,7 +26,7 @@ const HomePage = () => {
                 <ul>
                     {Object.entries(mainNavigation).map(([key, value]) => {
                         return (
-                            <li key={key} className='button'>
+                            <li key={key} className={`button${activeDirectory === key ? " active" : ""}`} onClick={() => setActiveDirectory(key)}>
                                 <Link to={`/${value?.path}`} className='nav-link'>
                                     {value.translate}
                                 </Link>
