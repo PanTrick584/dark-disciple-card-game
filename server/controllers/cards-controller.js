@@ -40,6 +40,38 @@ const updateCard = async (req, res) => {
 }
 
 const updateAllCards = async (req, res) => {
+    const documents = await Cards.find({});
+    for (const doc of documents) {
+        // Update category array
+        const updatedCategory = doc.category?.map((item, index) => ({
+            id: index + 1, // Sequential ID
+            ...item,
+        }));
+
+        // Update skills array
+        const updatedSkills = doc.skills?.map((skill, index) => ({
+            id: index + 1, // Sequential ID for each skill
+            ...skill,
+            type: skill?.type?.map((typeItem, typeIndex) => ({
+                id: typeIndex + 1, // Sequential ID for nested type array
+                ...typeItem,
+            })),
+        }));
+
+        console.log(updatedCategory);
+        console.log(updatedSkills);
+
+        // Update the document in MongoDB
+        await Cards.updateOne(
+            { _id: doc._id },
+            {
+                $set: {
+                    category: updatedCategory,
+                    skills: updatedSkills,
+                },
+            }
+        );
+    }
     // await Cards.updateMany(
     //     {
     //         "faction.en": "orc tribes",
@@ -52,10 +84,10 @@ const updateAllCards = async (req, res) => {
     //         }
     //     }
     // )
-    await Cards.updateMany(
-        // {}, // Match documents with en: "troll"
-        // { $set: { "category.$.id": "spy", } }
-    )
+    // await Cards.updateMany(
+    // {}, // Match documents with en: "troll"
+    // { $set: { "category.$.id": "spy", } }
+    // )
     // db.collection.updateMany(
     //     {
     //         category: [

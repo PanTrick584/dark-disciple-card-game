@@ -7,6 +7,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "ogr",
                 "pl": "ogr"
             }
@@ -20,15 +21,17 @@
         "spy": false,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
                 ],
                 "description": {
                     "en": "If you control at least 3 Goblins, damage an enemy for 4p.",
-                    "pl": "Jeżeli kontrolujesz przynajmniej 3 Gobliny zrań wroga za 4pkt"
+                    "pl": "Jeżeli kontrolujesz przynajmniej 3 Gobliny zrań wroga za 4p."
                 }
             }
         ]
@@ -41,10 +44,12 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "shaman",
                 "pl": "szaman"
             },
             {
+                "id": 1,
                 "en": "goblin",
                 "pl": "goblin"
             }
@@ -58,8 +63,10 @@
         "spy": false,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
@@ -79,6 +86,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "troll",
                 "pl": "troll"
             }
@@ -92,8 +100,10 @@
         "spy": false,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
@@ -113,6 +123,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "beast",
                 "pl": "bestia"
             }
@@ -126,8 +137,47 @@
         "spy": false,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
+                        "en": "play",
+                        "pl": "zagranie"
+                    }
+                ],
+                "description": {
+                    "en": "Damage 2 allies for 1p.",
+                    "pl": "Zrań 2 sojuszników za 1p."
+                }
+            }
+        ]
+    },
+    {
+        "level": 4,
+        "faction": {
+            "en": "orc-tribes",
+            "pl": "plemiona-orków"
+        },
+        "category": [
+            {
+                "id": 0,
+                "en": "beast",
+                "pl": "bestia"
+            }
+        ],
+        "name": {
+            "en": "beast",
+            "pl": "bestia"
+        },
+        "image": "",
+        "strength": 7,
+        "spy": false,
+        "skills": [
+            {
+                "id": 0,
+                "type": [
+                    {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
@@ -147,40 +197,7 @@
         },
         "category": [
             {
-                "en": "beast",
-                "pl": "bestia"
-            }
-        ],
-        "name": {
-            "en": "beast",
-            "pl": "bestia"
-        },
-        "image": "",
-        "strength": 7,
-        "spy": false,
-        "skills": [
-            {
-                "type": [
-                    {
-                        "en": "play",
-                        "pl": "zagranie"
-                    }
-                ],
-                "description": {
-                    "en": "Damage 2 allies for 1p.",
-                    "pl": "Zrań 2 sojuszników za 1pkt."
-                }
-            }
-        ]
-    },
-    {
-        "level": 4,
-        "faction": {
-            "en": "orc-tribes",
-            "pl": "plemiona-orków"
-        },
-        "category": [
-            {
+                "id": 0,
                 "en": "goblin",
                 "pl": "goblin"
             }
@@ -194,15 +211,17 @@
         "spy": true,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
                 ],
                 "description": {
                     "en": "Damage self by 1p and play an Orc from your hand, draw a card.",
-                    "pl": "Zrań siebie za 1pkt i zagraj Orka z ręki, dobierz kartę."
+                    "pl": "Zrań siebie za 1p i zagraj Orka z ręki, dobierz kartę."
                 }
             }
         ]
@@ -215,6 +234,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "ogr",
                 "pl": "ogr"
             }
@@ -228,12 +248,15 @@
         "spy": false,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     },
                     {
+                        "id": 1,
                         "en": "domination",
                         "pl": "dominacja"
                     }
@@ -253,6 +276,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "troll",
                 "pl": "troll"
             }
@@ -266,8 +290,10 @@
         "spy": false,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
@@ -287,6 +313,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "orc",
                 "pl": "ork"
             }
@@ -300,8 +327,47 @@
         "spy": false,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
+                        "en": "preparation",
+                        "pl": "przygotowanie"
+                    }
+                ],
+                "description": {
+                    "en": "Damage an enemy by 3p.",
+                    "pl": "Zrań wroga za 3p."
+                }
+            }
+        ]
+    },
+    {
+        "level": 4,
+        "faction": {
+            "en": "orc-tribes",
+            "pl": "plemiona-orków"
+        },
+        "category": [
+            {
+                "id": 0,
+                "en": "orc",
+                "pl": "ork"
+            }
+        ],
+        "name": {
+            "en": "orc",
+            "pl": "ork"
+        },
+        "image": "",
+        "strength": 4,
+        "spy": false,
+        "skills": [
+            {
+                "id": 0,
+                "type": [
+                    {
+                        "id": 0,
                         "en": "preparation",
                         "pl": "przygotowanie"
                     }
@@ -321,40 +387,7 @@
         },
         "category": [
             {
-                "en": "orc",
-                "pl": "ork"
-            }
-        ],
-        "name": {
-            "en": "orc",
-            "pl": "ork"
-        },
-        "image": "",
-        "strength": 4,
-        "spy": false,
-        "skills": [
-            {
-                "type": [
-                    {
-                        "en": "preparation",
-                        "pl": "przygotowanie"
-                    }
-                ],
-                "description": {
-                    "en": "Damage an enemy by 3p.",
-                    "pl": "Zrań wroga za 3pkt."
-                }
-            }
-        ]
-    },
-    {
-        "level": 4,
-        "faction": {
-            "en": "orc-tribes",
-            "pl": "plemiona-orków"
-        },
-        "category": [
-            {
+                "id": 0,
                 "en": "ogre",
                 "pl": "ogr"
             }
@@ -376,10 +409,12 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "shaman",
                 "pl": "szaman"
             },
             {
+                "id": 1,
                 "en": "goblin",
                 "pl": "goblin"
             }
@@ -393,8 +428,10 @@
         "spy": false,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
@@ -414,6 +451,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "beast",
                 "pl": "bestia"
             }
@@ -427,8 +465,10 @@
         "spy": false,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
@@ -448,10 +488,12 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "shaman",
                 "pl": "szaman"
             },
             {
+                "id": 1,
                 "en": "goblin",
                 "pl": "goblin"
             }
@@ -465,8 +507,10 @@
         "spy": false,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }

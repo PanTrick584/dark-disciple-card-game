@@ -7,6 +7,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "troll",
                 "pl": "troll"
             }
@@ -20,8 +21,10 @@
         "spy": false,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
@@ -41,6 +44,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "orc",
                 "pl": "ork"
             }
@@ -54,15 +58,17 @@
         "spy": false,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
                 ],
                 "description": {
                     "en": "Damage an enemy for 1 point, if they are empowered damage them for 3 points.",
-                    "pl": "Zrań wroga za 1pkt, jeżeli jest wzmocniony zrań go za 3pkt."
+                    "pl": "Zrań wroga za 1pkt, jeżeli jest wzmocniony zrań go za 3p."
                 }
             }
         ]
@@ -75,10 +81,12 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "shaman",
                 "pl": "szaman"
             },
             {
+                "id": 1,
                 "en": "gpblin",
                 "pl": "goblin"
             }
@@ -92,15 +100,17 @@
         "spy": false,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "cycle",
                         "pl": "cykl"
                     }
                 ],
                 "description": {
                     "en": "Whenever an ally is damaged, boost self by 1p.",
-                    "pl": "Za każdym razem gdy raniony jest sojusznik wzmocnij się o 1pkt."
+                    "pl": "Za każdym razem gdy raniony jest sojusznik wzmocnij się o 1p."
                 }
             }
         ]
@@ -113,6 +123,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "beast",
                 "pl": "bestia"
             }
@@ -126,15 +137,17 @@
         "spy": false,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
                 ],
                 "description": {
                     "en": "Damage 2 allies for 1p.",
-                    "pl": "Zrań 2 sojuszników za 1pkt."
+                    "pl": "Zrań 2 sojuszników za 1p."
                 }
             }
         ]
@@ -147,11 +160,13 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "shaman",
                 "pl": "szaman"
             },
             {
-                "en": "gpblin",
+                "id": 1,
+                "en": "goblin",
                 "pl": "goblin"
             }
         ],
@@ -164,8 +179,10 @@
         "spy": false,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
@@ -185,6 +202,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "orc",
                 "pl": "ork"
             }
@@ -198,8 +216,10 @@
         "spy": false,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
@@ -219,6 +239,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "beast",
                 "pl": "bestia"
             }
@@ -232,8 +253,10 @@
         "spy": false,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
@@ -244,15 +267,17 @@
                 }
             },
             {
+                "id": 1,
                 "type": [
                     {
+                        "id": 0,
                         "en": "cycle",
                         "pl": "cykl"
                     }
                 ],
                 "description": {
-                    "en": "Whenever you damage an enemy, damage them and selfd by 1.",
-                    "pl": "Za każdym razem gdy ranisz wroga, zrań jego i tę kartę o 1pkt."
+                    "en": "Whenever you damage an enemy, damage them and selfd by 1p.",
+                    "pl": "Za każdym razem gdy ranisz wroga, zrań jego i tę kartę o 1p."
                 }
             }
         ]
@@ -265,6 +290,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "goblin",
                 "pl": "goblin"
             }
@@ -278,15 +304,17 @@
         "spy": false,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "sacrifice",
                         "pl": "ofiara"
                     }
                 ],
                 "description": {
-                    "en": "Increase the base strength of the unit that destroyed this unit by 4.",
-                    "pl": "Zwiększ siłę bazowa jednostki, która zniszczyła tę jednostkę o 4pkt."
+                    "en": "Increase the base strength of the unit that destroyed this unit by 4p.",
+                    "pl": "Zwiększ siłę bazowa jednostki, która zniszczyła tę jednostkę o 4p."
                 }
             }
         ]
@@ -299,6 +327,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "goblin",
                 "pl": "goblin"
             }
@@ -312,8 +341,10 @@
         "spy": true,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "sacrifice",
                         "pl": "ofiara"
                     }

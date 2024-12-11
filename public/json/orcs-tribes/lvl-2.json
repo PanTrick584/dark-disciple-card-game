@@ -7,6 +7,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "troll",
                 "pl": "troll"
             }
@@ -20,8 +21,10 @@
         "spy": false,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
@@ -41,10 +44,12 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "totem",
                 "pl": "totem"
             },
             {
+                "id": 1,
                 "en": "item",
                 "pl": "przedmiot"
             }
@@ -58,15 +63,17 @@
         "spy": false,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "cycle",
                         "pl": "cykl"
                     }
                 ],
                 "description": {
-                    "en": "Preparation skills deal 1 more damage to enemies.",
-                    "pl": "Umiejętności Przygotowania ranią wrogów o 1pkt więcej."
+                    "en": "Preparation skills deal 1p more damage to enemies.",
+                    "pl": "Umiejętności Przygotowania ranią wrogów o 1p więcej."
                 }
             }
         ]
@@ -79,6 +86,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "ogre",
                 "pl": "ogr"
             }
@@ -92,24 +100,30 @@
         "spy": false,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
                 ],
                 "description": {
                     "en": "Destroy an ally. If it's a Goblin, boost yourselfself by 2p.",
-                    "pl": "Zniszcz sojusznika. Jeżeli to Goblin wzmocnij się o 2pkt."
+                    "pl": "Zniszcz sojusznika. Jeżeli to Goblin wzmocnij się o 2p."
                 }
             },
             {
+                "id": 1,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     },
                     {
+                        "id": 1,
                         "en": "domination",
                         "pl": "dominacja"
                     }
@@ -129,10 +143,12 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "shaman",
                 "pl": "szaman"
             },
             {
+                "id": 1,
                 "en": "goblin",
                 "pl": "goblin"
             }
@@ -146,8 +162,10 @@
         "spy": false,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
@@ -167,6 +185,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "orc",
                 "pl": "ork"
             }
@@ -180,27 +199,31 @@
         "spy": false,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
                 ],
                 "description": {
                     "en": "Damage an enemy by 1p.",
-                    "pl": "Zrań wroga za 1pkt."
+                    "pl": "Zrań wroga za 1p."
                 }
             },
             {
+                "id": 1,
                 "type": [
                     {
+                        "id": 0,
                         "en": "preparation",
                         "pl": "przygotowanie"
                     }
                 ],
                 "description": {
                     "en": "Damage an enemy by 1p.",
-                    "pl": "Zrań wroga za 1pkt."
+                    "pl": "Zrań wroga za 1p."
                 }
             }
         ]
@@ -213,6 +236,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "gablin",
                 "pl": "goblin"
             }
@@ -226,15 +250,17 @@
         "spy": false,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
                 ],
                 "description": {
                     "en": "Damage an enemy by 2p, damage self by 1p.",
-                    "pl": "Zrań siebie za 1pkt, zrań wroga za 2pkt."
+                    "pl": "Zrań siebie za 1pkt, zrań wroga za 2p."
                 }
             }
         ]

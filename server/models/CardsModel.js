@@ -1,24 +1,36 @@
 const mongoose = require("mongoose");
 
-const createTranslationField = (required = false) => ({
-    type: Map,
-    of: String,
-    required: required ? true : false
-});
+// Define a translation field explicitly as an object
+const TranslationField = {
+    en: {
+        type: String,
+        required: true,
+    },
+    pl: {
+        type: String,
+        required: true,
+    },
+};
 
 const CardSchema = new mongoose.Schema({
     level: {
         type: Number,
-        required: [true, "Please provide card's level"]
+        required: [true, "Please provide card's level"],
     },
-    faction: createTranslationField(true),
-    name: createTranslationField(true),
+    faction: TranslationField, // Translation field for faction
+    name: TranslationField,    // Translation field for name
     strength: {
         type: Number,
-        required: [true, "Please provide card's strength"]
+        required: [true, "Please provide card's strength"],
     },
     category: [
-        createTranslationField(true)
+        {
+            id: {
+                type: Number, // Adding `id` field
+                required: true,
+            },
+            ...TranslationField, // Translation fields for category
+        },
     ],
     image: {
         type: String,
@@ -26,12 +38,22 @@ const CardSchema = new mongoose.Schema({
     spy: Boolean,
     skills: [
         {
+            id: {
+                type: Number, // Adding `id` field for skills
+                required: true,
+            },
             type: [
-                createTranslationField()
+                {
+                    id: {
+                        type: Number, // Adding `id` field for nested type
+                        required: true,
+                    },
+                    ...TranslationField, // Translation fields for skill type
+                },
             ],
-            description: createTranslationField()
-        }
+            description: TranslationField, // Translation field for description
+        },
     ],
-})
+});
 
 module.exports = mongoose.model("Cards", CardSchema);

@@ -7,6 +7,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "troll",
                 "pl": "troll"
             }
@@ -20,15 +21,17 @@
         "spy": false,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
                 ],
                 "description": {
                     "en": "Damage self by 2p",
-                    "pl": "Zrań siebie za 2pkt."
+                    "pl": "Zrań siebie za 2p."
                 }
             }
         ]
@@ -41,6 +44,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "goblin",
                 "pl": "goblin"
             }
@@ -54,8 +58,10 @@
         "spy": false,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
@@ -75,6 +81,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "goblin",
                 "pl": "goblin"
             }
@@ -88,15 +95,17 @@
         "spy": false,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
                 ],
                 "description": {
                     "en": "Damage an enemy by 1p",
-                    "pl": "Zrań wroga za 1pkt."
+                    "pl": "Zrań wroga za 1p."
                 }
             }
         ]
@@ -109,6 +118,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "goblin",
                 "pl": "goblin"
             }
@@ -122,15 +132,17 @@
         "spy": false,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
                 ],
                 "description": {
                     "en": "Damage an enemy by 1p",
-                    "pl": "Zrań wroga za 1pkt."
+                    "pl": "Zrań wroga za 1p."
                 }
             }
         ]
@@ -143,6 +155,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "ork",
                 "pl": "ork"
             }
@@ -156,15 +169,17 @@
         "spy": false,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "preparation",
                         "pl": "przygotowanie"
                     }
                 ],
                 "description": {
-                    "en": "Damage an undamaged enemy by 2p",
-                    "pl": "Zrań niezranionego wroga za 2pkt"
+                    "en": "Damage an undamaged enemy by 2p.",
+                    "pl": "Zrań niezranionego wroga za 2p."
                 }
             }
         ]
@@ -177,6 +192,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "troll",
                 "pl": "troll"
             }
@@ -198,6 +214,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "ogre",
                 "pl": "ogr"
             }
@@ -211,8 +228,10 @@
         "spy": false,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
@@ -232,6 +251,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "beast",
                 "pl": "bestia"
             }
@@ -245,15 +265,17 @@
         "spy": false,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
                 ],
                 "description": {
                     "en": "Damage an enemy and an ally for 1 point.",
-                    "pl": "Zrań wroga i sojusznika za 1pkt."
+                    "pl": "Zrań wroga i sojusznika za 1p."
                 }
             }
         ]

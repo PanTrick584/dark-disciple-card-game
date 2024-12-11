@@ -38,7 +38,7 @@ const Card = ({ cardsLevel, cardsCategories, categoryName }) => {
                                                 {skill?.map(item => {
                                                     return (
                                                         <>
-                                                            <div className="skill">{item.type.length && item?.type?.map(el => <p className='skill-item'>{el?.[language]}</p>)}</div>
+                                                            <div className="skill">{item?.type?.length && item?.type?.map(el => <p className='skill-item'>{el?.[language]}</p>)}</div>
                                                             <div className="description">{item?.description?.[language]}</div>
                                                         </>
                                                     )
