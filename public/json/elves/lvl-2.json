@@ -7,10 +7,12 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "forest elf",
                 "pl": "leśny elf"
             },
             {
+                "id": 1,
                 "en": "spy",
                 "pl": "szpieg"
             }
@@ -24,15 +26,17 @@
         "spy": true,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
                 ],
                 "description": {
-                    "en": "Boost ally by 2p",
-                    "pl": "Wzmocnij sojusznika o 2pkt."
+                    "en": "Boost ally by 2p.",
+                    "pl": "Wzmocnij sojusznika o 2p."
                 }
             }
         ]
@@ -45,10 +49,12 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "forest elf",
                 "pl": "leśny elf"
             },
             {
+                "id": 1,
                 "en": "spy",
                 "pl": "szpieg"
             }
@@ -62,8 +68,10 @@
         "spy": true,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
@@ -83,6 +91,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "high elf",
                 "pl": "wysoki elf"
             }
@@ -96,8 +105,10 @@
         "spy": false,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
@@ -117,6 +128,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "high elf",
                 "pl": "wysoki elf"
             }
@@ -130,15 +142,17 @@
         "spy": false,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
                 ],
                 "description": {
                     "en": "Damage enemy by 2p, then boost enemy by 2p",
-                    "pl": "Zrań wroga za 2pkt, następnie wzmocnij wroga o 2pkt."
+                    "pl": "Zrań wroga za 2p, następnie wzmocnij wroga o 2pkt."
                 }
             }
         ]
@@ -151,6 +165,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "forest elf",
                 "pl": "leśny elf"
             }
@@ -164,8 +179,10 @@
         "spy": false,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
@@ -185,10 +202,12 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "forest elf",
                 "pl": "leśny elf"
             },
             {
+                "id": 1,
                 "en": "spy",
                 "pl": "szpieg"
             }
@@ -202,8 +221,10 @@
         "spy": true,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
@@ -214,8 +235,10 @@
                 }
             },
             {
+                "id": 1,
                 "type": [
                     {
+                        "id": 0,
                         "en": "sacrifice",
                         "pl": "ofiara"
                     }

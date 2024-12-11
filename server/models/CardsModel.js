@@ -1,59 +1,76 @@
 const mongoose = require("mongoose");
 
-// Define a translation field explicitly as an object
-const TranslationField = {
+// Define a translation field as an object
+const TranslationField = new mongoose.Schema({
     en: {
         type: String,
-        required: true,
+        required: [true, "Please provide the English translation"],
     },
     pl: {
         type: String,
+        required: [true, "Please provide the Polish translation"],
+    },
+}, { _id: false }); // Prevents automatic `_id` generation for subdocuments
+
+// Define category schema
+const CategorySchema = new mongoose.Schema({
+    id: {
+        type: Number,
         required: true,
     },
-};
+    en: {
+        type: String,
+        required: [true, "Please provide the English category name"],
+    },
+    pl: {
+        type: String,
+        required: [true, "Please provide the Polish category name"],
+    },
+}, { _id: false }); // Prevents automatic `_id` generation for subdocuments
 
+// Define skill type schema
+const SkillTypeSchema = new mongoose.Schema({
+    id: {
+        type: Number,
+        required: true,
+    },
+    en: {
+        type: String,
+        required: [true, "Please provide the English skill type"],
+    },
+    pl: {
+        type: String,
+        required: [true, "Please provide the Polish skill type"],
+    },
+}, { _id: false }); // Prevents automatic `_id` generation for subdocuments
+
+// Define skills schema
+const SkillSchema = new mongoose.Schema({
+    id: {
+        type: Number,
+        required: true,
+    },
+    type: [SkillTypeSchema], // Array of skill types
+    description: TranslationField, // Description with translations
+}, { _id: false }); // Prevents automatic `_id` generation for subdocuments
+
+// Define the main card schema
 const CardSchema = new mongoose.Schema({
     level: {
         type: Number,
-        required: [true, "Please provide card's level"],
+        required: [true, "Please provide the card's level"],
     },
-    faction: TranslationField, // Translation field for faction
-    name: TranslationField,    // Translation field for name
+    faction: TranslationField, // Faction with translations
+    name: TranslationField,    // Name with translations
     strength: {
         type: Number,
-        required: [true, "Please provide card's strength"],
+        required: [true, "Please provide the card's strength"],
     },
-    category: [
-        {
-            id: {
-                type: Number, // Adding `id` field
-                required: true,
-            },
-            ...TranslationField, // Translation fields for category
-        },
-    ],
+    category: [CategorySchema], // Array of categories
     image: {
         type: String,
     },
-    spy: Boolean,
-    skills: [
-        {
-            id: {
-                type: Number, // Adding `id` field for skills
-                required: true,
-            },
-            type: [
-                {
-                    id: {
-                        type: Number, // Adding `id` field for nested type
-                        required: true,
-                    },
-                    ...TranslationField, // Translation fields for skill type
-                },
-            ],
-            description: TranslationField, // Translation field for description
-        },
-    ],
-});
+    skills: [SkillSchema], // Array of skills
+}, { timestamps: true }); // Adds createdAt and updatedAt fields
 
-module.exports = mongoose.model("Cards", CardSchema);
+module.exports = mongoose.model("Card", CardSchema);

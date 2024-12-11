@@ -7,10 +7,12 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "trap",
                 "pl": "pułapka"
             },
             {
+                "id": 1,
                 "en": "structure",
                 "pl": "budowla"
             }
@@ -24,8 +26,10 @@
         "spy": false,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
@@ -45,6 +49,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "high elf",
                 "pl": "wysoki elf"
             }
@@ -58,8 +63,10 @@
         "spy": false,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
@@ -79,6 +86,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "high elf",
                 "pl": "wysoki elf"
             }
@@ -92,8 +100,10 @@
         "spy": true,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
@@ -113,6 +123,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "high elf",
                 "pl": "wysoki elf"
             }
@@ -126,8 +137,10 @@
         "spy": false,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
@@ -147,6 +160,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "high elf",
                 "pl": "wysoki elf"
             }
@@ -160,8 +174,10 @@
         "spy": false,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
@@ -181,10 +197,12 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "forest elf",
                 "pl": "leśny elf"
             },
             {
+                "id": 1,
                 "en": "spy",
                 "pl": "szpieg"
             }
@@ -198,8 +216,10 @@
         "spy": false,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
@@ -210,8 +230,10 @@
                 }
             },
             {
+                "id": 1,
                 "type": [
                     {
+                        "id": 0,
                         "en": "sacrifice",
                         "pl": "ofiara"
                     }
@@ -231,10 +253,12 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "dark elf",
                 "pl": "mroczny elf"
             },
             {
+                "id": 1,
                 "en": "spy",
                 "pl": "szpieg"
             }
@@ -248,8 +272,10 @@
         "spy": false,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }

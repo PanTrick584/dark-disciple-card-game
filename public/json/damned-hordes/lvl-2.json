@@ -7,6 +7,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "follower",
                 "pl": "wyznawca"
             }
@@ -19,8 +20,10 @@
         "strength": 6,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "sacrifice",
                         "pl": "ofiara"
                     }
@@ -40,6 +43,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "gargoyle",
                 "pl": "gargulec"
             }
@@ -60,10 +64,12 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "abbys",
                 "pl": "otchłań"
             },
             {
+                "id": 1,
                 "en": "structure",
                 "pl": "budowla"
             }
@@ -76,8 +82,10 @@
         "strength": 1,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
@@ -97,10 +105,12 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "structure",
                 "pl": "budowla"
             },
             {
+                "id": 1,
                 "en": "tower",
                 "pl": "wieża"
             }
@@ -113,7 +123,9 @@
         "strength": 3,
         "skills": [
             {
+                "id": 0,
                 "type": {
+                    "id": 0,
                     "en": "looped",
                     "pl": "zapętlenie"
                 },
@@ -132,6 +144,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "imp",
                 "pl": "chochlik"
             }
@@ -144,8 +157,10 @@
         "strength": 2,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "looped",
                         "pl": "zapętlenie"
                     }
@@ -165,6 +180,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "demon",
                 "pl": "demon"
             }
@@ -177,8 +193,10 @@
         "strength": 2,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
@@ -198,10 +216,12 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "structure",
                 "pl": "budowla"
             },
             {
+                "id": 1,
                 "en": "abbys",
                 "pl": "otchłań"
             }
@@ -214,8 +234,10 @@
         "strength": 1,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": " zagranie"
                     }

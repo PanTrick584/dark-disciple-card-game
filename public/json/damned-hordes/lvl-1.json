@@ -7,6 +7,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "gargoyle",
                 "pl": "gargulec"
             }
@@ -27,6 +28,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "demonologist",
                 "pl": "demonolog"
             }
@@ -39,15 +41,17 @@
         "strength": 2,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
                 ],
                 "description": {
-                    "en": "If you control the Abyss, boost this card by 3p",
-                    "pl": "Jeżeli kontrolujesz Otchłań wzmocnij tę kartę o 3pkt"
+                    "en": "If you control the Abyss, boost this card by 3p.",
+                    "pl": "Jeżeli kontrolujesz Otchłań wzmocnij tę kartę o 3p."
                 }
             }
         ]
@@ -60,6 +64,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "deamon",
                 "pl": "demon"
             }
@@ -72,15 +77,17 @@
         "strength": 1,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
                 ],
                 "description": {
                     "en": "Consume an ally unit",
-                    "pl": "Pożryj sojusznika"
+                    "pl": "Pożryj sojusznika."
                 }
             }
         ]
@@ -93,6 +100,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "imp",
                 "pl": "chochlik"
             }
@@ -105,15 +113,17 @@
         "strength": 2,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
                 ],
                 "description": {
                     "en": "If in the previous turn your opponent played a card with the Cost of this card, strengthen yourself by 5p",
-                    "pl": "Jeżeli w poprzedniej turze przeciwnik zagrał kartę o Koszcie tej karty wzmocnij siebie o 5pkt."
+                    "pl": "Jeżeli w poprzedniej turze przeciwnik zagrał kartę o Koszcie tej karty wzmocnij siebie o 5p."
                 }
             }
         ]
@@ -126,6 +136,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "gargoyle",
                 "pl": "gargulec"
             }
@@ -138,15 +149,17 @@
         "strength": 2,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
                 ],
                 "description": {
                     "en": "Damage enemy by 2p",
-                    "pl": "Zrań wroga za 2pkt"
+                    "pl": "Zrań wroga za 2p"
                 }
             }
         ]
@@ -159,6 +172,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "demonologist",
                 "pl": "demonolog"
             }
@@ -171,8 +185,10 @@
         "strength": 2,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": " zagranie"
                     }
@@ -192,6 +208,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "follower",
                 "pl": "wyznawca"
             }
@@ -204,8 +221,10 @@
         "strength": 1,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "sacrifice",
                         "pl": " ofiara"
                     }

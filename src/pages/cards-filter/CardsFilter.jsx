@@ -78,7 +78,7 @@ const CardsFilter = () => {
                             <li
                                 className={`nav-ul-li button${activeLevels.includes(id + 1) ? " active" : ""}`}
                                 onClick={() => {
-                                    setFilter(prev => handleFilter(prev, dataLocation[id], String));
+                                    // setFilter(prev => handleFilter(prev, dataLocation[id], String));
                                     setActiveLevels(prev => handleFilter(prev, id + 1, Number));
                                     handleCategory();
                                 }}>

@@ -31,18 +31,12 @@ const Card = ({ cardsLevel, cardsCategories, categoryName }) => {
                                     </div>
                                 </div>
                                 <div className="card-description">
-                                    {card?.skills?.map((skill, id) => {
+                                    {card?.skills && card?.skills?.map((skill, id) => {
                                         if (!skill) return;
                                         return (
                                             <div className="card-description-box">
-                                                {skill?.map(item => {
-                                                    return (
-                                                        <>
-                                                            <div className="skill">{item?.type?.length && item?.type?.map(el => <p className='skill-item'>{el?.[language]}</p>)}</div>
-                                                            <div className="description">{item?.description?.[language]}</div>
-                                                        </>
-                                                    )
-                                                })}
+                                                <div className="skill">{skill?.type?.length && skill?.type?.map(el => <p className='skill-item'>{el?.[language]}</p>)}</div>
+                                                <div className="description">{skill?.description?.[language]}</div>
                                             </div>
                                         )
                                     })}

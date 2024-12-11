@@ -7,10 +7,12 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "shaman",
                 "pl": "szaman"
             },
             {
+                "id": 0,
                 "en": "orc",
                 "pl": "ork"
             }
@@ -24,8 +26,10 @@
         "spy": false,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
@@ -45,6 +49,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "troll",
                 "pl": "troll"
             }
@@ -58,8 +63,10 @@
         "spy": false,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
@@ -79,6 +86,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "troll",
                 "pl": "troll"
             }
@@ -92,8 +100,10 @@
         "spy": false,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
@@ -104,8 +114,10 @@
                 }
             },
             {
+                "id": 1,
                 "type": [
                     {
+                        "id": 0,
                         "en": "cycle",
                         "pl": "cykl"
                     }
@@ -125,6 +137,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "ogre",
                 "pl": "ogr"
             }
@@ -138,8 +151,10 @@
         "spy": false,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
@@ -159,14 +174,17 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "shaman",
                 "pl": "szaman"
             },
             {
+                "id": 1,
                 "en": "goblin",
                 "pl": "goblin"
             },
             {
+                "id": 2,
                 "en": "spy",
                 "pl": "szpieg"
             }
@@ -180,8 +198,10 @@
         "spy": false,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
@@ -201,6 +221,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "orc",
                 "pl": "ork"
             }
@@ -214,8 +235,10 @@
         "spy": false,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "cycle",
                         "pl": "cykl"
                     }

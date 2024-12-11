@@ -7,6 +7,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "imp",
                 "pl": "chochlik"
             }
@@ -19,8 +20,10 @@
         "strength": 10,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
@@ -40,6 +43,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "deamon",
                 "pl": "demon"
             }
@@ -52,8 +56,10 @@
         "strength": 4,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
@@ -64,8 +70,10 @@
                 }
             },
             {
+                "id": 1,
                 "type": [
                     {
+                        "id": 0,
                         "en": "preparation",
                         "pl": "przygotowanie"
                     }
@@ -85,6 +93,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "deamon",
                 "pl": "demon"
             }
@@ -97,8 +106,10 @@
         "strength": 4,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
@@ -109,12 +120,15 @@
                 }
             },
             {
+                "id": 1,
                 "type": [
                     {
+                        "id": 0,
                         "en": "preparation",
                         "pl": "przygotowanie"
                     },
                     {
+                        "id": 1,
                         "en": "domination",
                         "pl": "dominacja"
                     }
@@ -134,6 +148,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "gargoyle",
                 "pl": "gargulec"
             }
@@ -146,8 +161,10 @@
         "strength": 5,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "preparation",
                         "pl": "przygotowanie"
                     }
@@ -167,6 +184,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "imp",
                 "pl": "chochlik"
             }
@@ -179,8 +197,10 @@
         "strength": 4,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
@@ -200,6 +220,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "follower",
                 "pl": "wyznawca"
             }
@@ -212,8 +233,10 @@
         "strength": 3,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "sacrifice",
                         "pl": "ofiara"
                     }
@@ -233,10 +256,12 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "tower",
                 "pl": "wieza"
             },
             {
+                "id": 1,
                 "en": "building",
                 "pl": "budowla"
             }
@@ -249,8 +274,10 @@
         "strength": 3,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
@@ -270,10 +297,12 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "tower",
                 "pl": "wieza"
             },
             {
+                "id": 1,
                 "en": "building",
                 "pl": "budowla"
             }
@@ -286,8 +315,10 @@
         "strength": 6,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "cycle",
                         "pl": "cykl"
                     }

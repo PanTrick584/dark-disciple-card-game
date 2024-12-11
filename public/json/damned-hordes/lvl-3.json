@@ -7,6 +7,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "gargoyle",
                 "pl": "gargulec"
             }
@@ -19,8 +20,10 @@
         "strength": 2,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
@@ -31,12 +34,15 @@
                 }
             },
             {
+                "id": 1,
                 "type": [
                     {
+                        "id": 0,
                         "en": "domination",
                         "pl": "dominacja"
                     },
                     {
+                        "id": 1,
                         "en": "play",
                         "pl": "zagranie"
                     }
@@ -56,6 +62,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "gargoyle",
                 "pl": "gargulec"
             }
@@ -68,15 +75,17 @@
         "strength": 4,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
                 ],
                 "description": {
                     "en": "Damage an enemy by 2p",
-                    "pl": "Zrań wroga za 2pkt"
+                    "pl": "Zrań wroga za 2p"
                 }
             }
         ]
@@ -89,6 +98,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "imp",
                 "pl": "chochlik"
             }
@@ -101,8 +111,10 @@
         "strength": 8,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
@@ -122,6 +134,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "deamon",
                 "pl": "demon"
             }
@@ -134,8 +147,10 @@
         "strength": 3,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
@@ -146,8 +161,10 @@
                 }
             },
             {
+                "id": 1,
                 "type": [
                     {
+                        "id": 0,
                         "en": "preparation",
                         "pl": "oczekiwanie"
                     }
@@ -167,6 +184,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "follower",
                 "pl": "wyznawca"
             }
@@ -179,15 +197,17 @@
         "strength": 3,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "sacrifice",
                         "pl": "ofiara"
                     }
                 ],
                 "description": {
                     "en": "Boost 2 allies by 2p",
-                    "pl": "Wzmocnij 2 sojuszników o 2pkt."
+                    "pl": "Wzmocnij 2 sojuszników o 2p."
                 }
             }
         ]
@@ -200,6 +220,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "deamon",
                 "pl": "demon"
             }
@@ -212,8 +233,10 @@
         "strength": 4,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "domination",
                         "pl": "dominacja"
                     }
@@ -233,6 +256,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "imp",
                 "pl": "chochlik"
             }
@@ -245,8 +269,10 @@
         "strength": 4,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": " zagranie"
                     }
@@ -266,6 +292,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "witch",
                 "pl": "wiedźma"
             }
@@ -278,8 +305,10 @@
         "strength": 4,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": " zagranie"
                     }

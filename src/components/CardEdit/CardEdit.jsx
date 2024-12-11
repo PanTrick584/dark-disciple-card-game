@@ -8,7 +8,7 @@ import { defaultSkills } from "../../consts/skills";
 import { defaultCategories } from "../../consts/categories";
 
 const CardEdit = () => {
-    const [newData, setNewData] = useState({});
+    const [newData, setNewData] = useState({ updates: {} });
     const [updatedCardData, setUpdatedCardData] = useState();
     const [strengthError, setStrengthError] = useState("");
     const [showSubmitPopup, setShowSubmitPopup] = useState(false);
@@ -22,8 +22,6 @@ const CardEdit = () => {
         setNewData(prev => ({
             ...prev,
             _id: card?._id,
-            category: card?.category, // stays because i cant identify single category by id, need to add, also for skills
-            skills: card?.skills
         }));
     }, [updatedCardData])
 
@@ -56,13 +54,14 @@ const CardEdit = () => {
                             name="card-title"
                             onChange={(e) => setNewData((prev) => ({
                                 ...prev,
-                                name: {
-                                    ...prev.name, // Preserve existing language entries
-                                    [language]: e.target.value, // Update the current language entry
+                                updates: {
+                                    ...prev.updates,
+                                    name: {
+                                        [language]: e.target.value,
+                                    }
                                 },
                             }))}
-                            // defaultValue={card?.name?.[language] || ""}
-                            value={newData?.name?.[language] ?? (card?.name?.[language] || "")}
+                            value={newData?.updates?.name?.[language] ?? (card?.name?.[language] || "")}
                         />
                     </div>
                     <div className="card-edit-column card-edit-cost">
@@ -78,7 +77,7 @@ const CardEdit = () => {
                                     return;
                                 }
                                 setStrengthError("")
-                                setNewData(prev => ({ ...prev, level }));
+                                setNewData(prev => ({ ...prev, updates: { ...prev.updates, level } }));
                             }}
                         />
                     </div>
@@ -95,7 +94,7 @@ const CardEdit = () => {
                                     return;
                                 }
                                 setStrengthError("")
-                                setNewData(prev => ({ ...prev, strength }));
+                                setNewData(prev => ({ ...prev, updates: { ...prev.updates, strength } }));
                             }}
                         />
                         <label htmlFor="card-strength">{strengthError}</label>
@@ -112,21 +111,24 @@ const CardEdit = () => {
                                         className="button"
                                         name="select-skill"
                                         id=""
-                                        value={newData?.category?.[id]?.[language] ?? (cat?.[language] || "")}
+                                        value={newData?.updates?.category?.find(cat => cat.id === id && cat?.[language]) ?? (cat?.[language] || "")}
                                         onChange={(e) => {
                                             const newCategory = e.target.value;
                                             setNewData((prev) => {
-                                                // Clone the existing categories or initialize as an empty array
-                                                const updatedCategories = [...(prev.category || [])];
-
-                                                // Ensure the category at the specified index exists
-                                                updatedCategories[id] = {
-                                                    ...(updatedCategories[id] || {}), // Clone the existing category object or initialize
-                                                    [language]: newCategory, // Update the specific language key
+                                                const prevCategories = [...(prev.updates.category || [])];
+                                                const newCategories = {
+                                                    id,
+                                                    [language]: newCategory,
                                                 };
+                                                let filteredCategories;
 
-                                                // Return the updated state with the modified categories array
-                                                return { ...prev, category: updatedCategories };
+                                                if (prevCategories.length) {
+                                                    filteredCategories = prevCategories.filter(category => category.id !== id && category?.[language] !== language)
+                                                }
+
+                                                const uniqueCategories = [...new Set([...filteredCategories || [], newCategories])]
+
+                                                return { ...prev, updates: { ...prev.updates, category: uniqueCategories } };
                                             });
                                         }}
                                     >
@@ -144,7 +146,7 @@ const CardEdit = () => {
                                 <input
                                     type="text"
                                     name="card-category"
-                                    value={newData?.category?.[id]?.[language] ?? (cat?.[language] || "")}
+                                    value={newData?.updates?.category?.[id]?.[language] ?? (cat?.[language] || "")}
                                     readOnly
                                 />
                             </div>
@@ -153,39 +155,48 @@ const CardEdit = () => {
                 </div>
                 <div className="card-edit-column card-edit-description">
                     {/* <p>card skills:</p> */}
-                    {card?.skills?.map(skill => {
+                    {card?.skills?.map((skill, skillID) => {
                         if (!skill) return;
                         return (
                             <div className="card-edit-description-box">
-                                {skill?.map(item => {
-                                    return (
-                                        <>
+                                <div className="card-edit-column card-edit-skill">
+                                    {skill.type.length && skill?.type?.map((el) => {
+                                        return (
+                                            <>
+                                                <label htmlFor="card-skill" className="label-title">card skill</label>
+                                                <select name="select-skill" id="">
+                                                    {defaultSkills.map((skill, id) => {
+                                                        return (
+                                                            <option className="">{skill?.[language]}</option>
+                                                        )
+                                                    })}
+                                                </select>
+                                                <input type="text" name="card-skill" value={el?.[language] || ""} onChange={() => { }} />
+                                            </>
+                                        )
+                                    })}
 
-                                            <div className="card-edit-column card-edit-skill">
-                                                {item.type.length && item?.type?.map(el => {
-                                                    return (
-                                                        <>
-                                                            <label htmlFor="card-skill" className="label-title">card skill</label>
-                                                            <select name="select-skill" id="">
-                                                                {defaultSkills.map((skill, id) => {
-                                                                    return (
-                                                                        <option className="">{skill?.[language]}</option>
-                                                                    )
-                                                                })}
-                                                            </select>
-                                                            <input type="text" name="card-skill" value={el?.[language] || ""} onChange={() => { }} />
-                                                        </>
-                                                    )
-                                                })}
+                                </div>
+                                <div className="card-edit-column card-edit-description">
+                                    <label htmlFor="card-description" className="label-title">card description</label>
+                                    <textarea
+                                        type="text"
+                                        name="card-description"
+                                        value={newData?.updates?.description?.[skillID]?.[language] ?? (skill?.description?.[language] || "")}
+                                        onChange={(e) => {
+                                            const newDescription = e.target.value;
+                                            setNewData((prev) => {
+                                                // const prevDescription = [...(prev.updates.description || [])];
+                                                const updatedDescription = {
+                                                    id: skillID,
+                                                    [language]: newDescription,
+                                                };
 
-                                            </div>
-                                            <div className="card-edit-column card-edit-description">
-                                                <label htmlFor="card-description" className="label-title">card description</label>
-                                                <textarea type="text" name="card-description" value={item?.description?.[language] || ""} onChange={() => { }} />
-                                            </div>
-                                        </>
-                                    )
-                                })}
+                                                return { ...prev, updates: { ...prev.updates, description: [updatedDescription] } };
+                                            });
+                                        }}
+                                    />
+                                </div>
                             </div>
                         )
                     })}
@@ -211,14 +222,10 @@ const CardEdit = () => {
                         if (!skill) return;
                         return (
                             <div className="card-description-box">
-                                {skill?.map(item => {
-                                    return (
-                                        <>
-                                            <div className="skill">{item.type.length && item?.type?.map(el => <p className='skill-item'>{el?.[language]}</p>)}</div>
-                                            <div className="description">{item?.description?.[language]}</div>
-                                        </>
-                                    )
-                                })}
+                                <>
+                                    <div className="skill">{skill.type.length && skill?.type?.map(el => <p className='skill-item'>{el?.[language]}</p>)}</div>
+                                    <div className="description">{skill?.description?.[language]}</div>
+                                </>
                             </div>
                         )
                     })}

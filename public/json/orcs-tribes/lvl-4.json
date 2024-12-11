@@ -8,12 +8,12 @@
         "category": [
             {
                 "id": 0,
-                "en": "ogr",
+                "en": "ogre",
                 "pl": "ogr"
             }
         ],
         "name": {
-            "en": "ogr",
+            "en": "ogre",
             "pl": "ogr"
         },
         "image": "",
@@ -235,12 +235,12 @@
         "category": [
             {
                 "id": 0,
-                "en": "ogr",
+                "en": "ogre",
                 "pl": "ogr"
             }
         ],
         "name": {
-            "en": "ogr",
+            "en": "ogre",
             "pl": "ogr"
         },
         "image": "",

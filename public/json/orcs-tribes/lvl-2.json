@@ -103,7 +103,6 @@
                 "id": 0,
                 "type": [
                     {
-
                         "id": 0,
                         "en": "play",
                         "pl": "zagranie"
@@ -237,12 +236,12 @@
         "category": [
             {
                 "id": 0,
-                "en": "gablin",
+                "en": "goblin",
                 "pl": "goblin"
             }
         ],
         "name": {
-            "en": "gablin",
+            "en": "goblin",
             "pl": "goblin"
         },
         "image": "",

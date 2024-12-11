@@ -7,6 +7,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "witch",
                 "pl": "wiedźma"
             }
@@ -19,8 +20,10 @@
         "strength": 4,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
@@ -40,6 +43,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "demon",
                 "pl": "demon"
             }
@@ -52,8 +56,10 @@
         "strength": 3,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
@@ -64,8 +70,10 @@
                 }
             },
             {
+                "id": 1,
                 "type": [
                     {
+                        "id": 0,
                         "en": "domination",
                         "pl": "dominacja"
                     }
@@ -85,10 +93,12 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "abbys",
                 "pl": "otchłań"
             },
             {
+                "id": 1,
                 "en": "structure",
                 "pl": "budowla"
             }
@@ -101,8 +111,10 @@
         "strength": 5,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "preparation",
                         "pl": "przygotowanie"
                     }
@@ -122,6 +134,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "gargoyle",
                 "pl": "gargulec"
             }
@@ -134,8 +147,10 @@
         "strength": 5,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
@@ -155,6 +170,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "gargoyle",
                 "pl": "gargulec"
             }
@@ -167,8 +183,10 @@
         "strength": 5,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
@@ -179,8 +197,10 @@
                 }
             },
             {
+                "id": 1,
                 "type": [
                     {
+                        "id": 0,
                         "en": "preparation",
                         "pl": "przygotowanie"
                     }
@@ -200,6 +220,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "imp",
                 "pl": "chochlik"
             }
@@ -212,8 +233,10 @@
         "strength": 4,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
@@ -233,6 +256,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "imp",
                 "pl": "chochlik"
             }
@@ -245,8 +269,10 @@
         "strength": 4,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
@@ -266,6 +292,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "demon",
                 "pl": "demon"
             }
@@ -278,8 +305,10 @@
         "strength": 2,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
@@ -290,8 +319,10 @@
                 }
             },
             {
+                "id": 1,
                 "type": [
                     {
+                        "id": 0,
                         "en": "domination",
                         "pl": "dominacja"
                     }

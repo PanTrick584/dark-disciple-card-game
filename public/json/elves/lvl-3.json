@@ -7,6 +7,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "high elf",
                 "pl": "wysoki elf"
             }
@@ -19,8 +20,10 @@
         "strength": 4,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
@@ -40,6 +43,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "high elf",
                 "pl": "wysoki elf"
             }
@@ -52,8 +56,10 @@
         "strength": 2,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
@@ -73,6 +79,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "high elf",
                 "pl": "wysoki elf"
             }
@@ -85,8 +92,10 @@
         "strength": 2,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "cycle",
                         "pl": "cykl"
                     }
@@ -106,10 +115,12 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "forest elf",
                 "pl": "leśny elf"
             },
             {
+                "id": 1,
                 "en": "spy",
                 "pl": "szpieg"
             }
@@ -123,8 +134,10 @@
         "spy": true,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
@@ -144,6 +157,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "high elf",
                 "pl": "wysoki elf"
             }
@@ -156,8 +170,10 @@
         "strength": 2,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
@@ -177,6 +193,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "high elf",
                 "pl": "wysoki elf"
             }
@@ -189,8 +206,10 @@
         "strength": 2,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
@@ -210,10 +229,12 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "forest elf",
                 "pl": "leśny elf"
             },
             {
+                "id": 1,
                 "en": "spy",
                 "pl": "szpieg"
             }
@@ -227,8 +248,10 @@
         "spy": true,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "sacrifice",
                         "pl": "ofiara"
                     }
@@ -248,6 +271,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "high elf",
                 "pl": "wysoki elf"
             }
@@ -260,8 +284,10 @@
         "strength": 3,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
@@ -281,6 +307,7 @@
         },
         "category": [
             {
+                "id": 0,
                 "en": "high elf",
                 "pl": "wysoki elf"
             }
@@ -293,8 +320,10 @@
         "strength": 5,
         "skills": [
             {
+                "id": 0,
                 "type": [
                     {
+                        "id": 0,
                         "en": "play",
                         "pl": "zagranie"
                     }
