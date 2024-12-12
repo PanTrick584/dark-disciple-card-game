@@ -22,37 +22,40 @@ const updateCard = async (req, res) => {
     try {
         const updateOps = {};
         const arrayFilters = [];
+        let filterIndex = 0; // Track array filter index for unique identifiers
 
         for (const [field, value] of Object.entries(updates)) {
             if (field === "description") {
                 value.forEach((skillUpdate) => {
                     if (skillUpdate.id !== undefined) {
+                        const filterName = `skillElem${filterIndex}`; // Unique identifier
                         for (const [key, val] of Object.entries(skillUpdate)) {
-                            // Use the correct path for description inside skills.$[skillElem]
-                            updateOps[`skills.$[skillElem].description.${key}`] = val;
+                            if (key !== "id") {
+                                updateOps[`skills.$[${filterName}].description.${key}`] = val;
+                            }
                         }
-                        arrayFilters.push({ "skillElem.id": skillUpdate.id });
+                        arrayFilters.push({ [`${filterName}.id`]: skillUpdate.id });
+                        filterIndex++; // Increment the index for unique identifiers
                     }
                 });
             } else if (Array.isArray(value)) {
-                // Handle other arrays, like category
                 value.forEach((item) => {
                     if (item.id !== undefined) {
+                        const filterName = `elem${filterIndex}`; // Unique identifier for other arrays
                         for (const [key, val] of Object.entries(item)) {
                             if (key !== "id") {
-                                updateOps[`${field}.$[elem].${key}`] = val;
+                                updateOps[`${field}.$[${filterName}].${key}`] = val;
                             }
                         }
-                        arrayFilters.push({ "elem.id": item.id });
+                        arrayFilters.push({ [`${filterName}.id`]: item.id });
+                        filterIndex++; // Increment the index for unique identifiers
                     }
                 });
             } else if (typeof value === "object") {
-                // Handle nested objects, like name
                 for (const [key, val] of Object.entries(value)) {
                     updateOps[`${field}.${key}`] = val;
                 }
             } else {
-                // Handle flat fields
                 updateOps[field] = value;
             }
         }
@@ -78,6 +81,7 @@ const updateCard = async (req, res) => {
         return res.status(500).json({ error: "Internal server error" });
     }
 };
+
 
 
 

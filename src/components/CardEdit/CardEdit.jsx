@@ -184,30 +184,45 @@ const CardEdit = () => {
                                         name="card-description"
                                         // defaultValue={newData?.updates?.description?.[skillID]?.[language] ?? (skill?.description?.[language] || "")}
                                         value={
-                                            newData?.updates?.descriptions?.find(desc => desc.id === skillID)?.[language]
+                                            newData?.updates?.description?.find(desc => desc.id === skillID)?.[language]
                                             ?? skill?.description?.[language]
                                             ?? ""
                                         }
+
                                         onChange={(e) => {
                                             const newDescription = e.target.value;
+                                            console.log(newData?.updates?.description?.find(desc => desc.id === skillID)?.[language]);
                                             setNewData((prev) => {
                                                 const prevUpdates = prev.updates || {};
-                                                const prevDescriptions = prevUpdates.descriptions || [];
-                                                console.log(prevDescriptions);
+                                                const prevDescriptions = prevUpdates.description || [];
                                                 const existingIndex = prevDescriptions.findIndex(
-                                                    (desc) => desc.id === skillID && desc.hasOwnProperty(language)
+                                                    (desc) => desc.id === skillID
                                                 );
+
+                                                // const existingLanguage = prevDescriptions.findIndex(
+                                                //     (desc) => desc.hasOwnProperty(language)
+                                                // );
+
                                                 console.log(existingIndex);
+                                                // console.log(existingLanguage);
+                                                console.log(skillID);
                                     
                                                 let updatedDescriptions;
-                                                if (existingIndex > -1) {
+                                                if (existingIndex > -1 ) {
+                                                // if (existingIndex > -1 && existingLanguage > -1) {
                                                     updatedDescriptions = prevDescriptions.map((desc, index) =>
-                                                        // index === existingIndex 
-                                                        // ?
-                                                        {return { ...desc, [language]: newDescription } }
-                                                        // : desc
+                                                    desc.id === skillID 
+                                                        ?
+                                                        // {return { ...desc, [language]: newDescription } }
+                                                         { ...desc, [language]: newDescription } 
+                                                        : desc
                                                     );
-                                                } else {
+                                                }
+                                                //  else if (existingIndex > -1 && existingLanguage > -1) {
+
+                                                // }
+                                                
+                                                else {
                                                     console.log("new lang!");
                                                     updatedDescriptions = [
                                                         ...prevDescriptions,
@@ -219,7 +234,7 @@ const CardEdit = () => {
                                                     ...prev,
                                                     updates: {
                                                         ...prev.updates,
-                                                        descriptions: updatedDescriptions,
+                                                        description: updatedDescriptions,
                                                     },
                                                 };
                                             });
