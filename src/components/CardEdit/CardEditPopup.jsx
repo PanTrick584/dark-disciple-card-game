@@ -2,8 +2,8 @@ import React from 'react';
 import "./styles/card-popup.scss";
 import { updateData } from '../../tools/updateCard';
 
-const CardEditPopup = ({ data, setShowSubmitPopup, setNewData, setUpdatedCardData }) => {
-    console.log(data);
+export const CardEditPopup = ({ newData, setShowSubmitPopup, setNewData, setUpdatedCardData }) => {
+    console.log(newData);
 
     const renderValue = (val) => {
         if (Array.isArray(val)) {
@@ -29,38 +29,38 @@ const CardEditPopup = ({ data, setShowSubmitPopup, setNewData, setUpdatedCardDat
         }
     };
 
+    const acceptChanges = async () => {
+        try {
+            const result = await updateData(newData);
+            setUpdatedCardData(result)
+            setShowSubmitPopup(false);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const denyChanges = () => {
+        setShowSubmitPopup(false);
+        setNewData({})
+    }
+
     return (
         <div className="card-edit-popup">
-            <div className="card-edit-popup-header">Your changes:</div>
-            {data && Object.entries(data).map(([key, value]) => {
-                console.log(key);
-                console.log(value);
-                if (key === "_id") return;
-                return (
-                    <>
-                        <div>{key}</div>
-
-                        <div>{renderValue(value)}</div>
-                    </>
-                )
-            })}
-
-            <button onClick={async () => {
-                try {
-
-                    const result = await updateData(data);
-                    setUpdatedCardData(result)
-                    setShowSubmitPopup(false);
-                } catch (error) {
-                    console.log(error);
-                }
-            }}>Accept changes</button>
-            <button onClick={() => {
-                setShowSubmitPopup(false);
-                setNewData({})
-            }}>Deny changes</button>
+            <div className="card-edit-popup-container">
+                <div className="card-edit-popup-header">Your changes:</div>
+                {newData &&
+                    Object.entries(newData.updates).map(([key, value]) => {
+                        if (key === "_id" || key === "id") return;
+                        return (
+                            <div className="card-edit-popup-box">
+                                <div className="card-edit-popup-key">{key}:</div>
+                                <div className="card-edit-popup-value">{renderValue(value)}</div>
+                            </div>
+                        )
+                    })}
+                <button className="card-edit-popup-button" onClick={acceptChanges}>Accept changes</button>
+                <button className="card-edit-popup-button" onClick={denyChanges}>Deny changes</button>
+            </div>
         </div>
     )
 }
-
-export default CardEditPopup
