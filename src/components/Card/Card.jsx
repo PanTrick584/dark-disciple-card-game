@@ -1,11 +1,11 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { AppContext } from '../../context/AppContext';
 import "./styles/card.scss"
 
 
 const Card = ({ cardsLevel, cardsCategories, categoryName }) => {
-
+    const [editCard, setEditCard] = useState(false);
     const { language } = useContext(AppContext);
 
     return (
@@ -16,8 +16,15 @@ const Card = ({ cardsLevel, cardsCategories, categoryName }) => {
                 const newCategoryName = categoryName.split(" ").join("-");
                 if (!cardsCategories.length || cardsCategories.some(category => currentCategories.includes(category))) {
                     return (
-                        <Link to={`/cards/${newCategoryName}/${cardName}`} state={card}>
                             <div className="card">
+                                <div className="card-popup">
+                                    {editCard ?
+                                        <div className="card-popup-edit">
+                                            <Link to={`/cards/${newCategoryName}/${cardName}`} state={card} >EDIT</Link>
+                                        </div> :
+                                        <div className="card-popup-add">ADD</div>
+                                    }
+                                </div>
                                 <div className="card-title">
                                     <div className="card-title-box">
                                         <p className="card-title-name">{card?.name?.[language]}</p>
@@ -42,7 +49,6 @@ const Card = ({ cardsLevel, cardsCategories, categoryName }) => {
                                     })}
                                 </div>
                             </div>
-                        </Link>
                     )
                 }
             })}

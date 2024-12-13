@@ -22,33 +22,33 @@ const updateCard = async (req, res) => {
     try {
         const updateOps = {};
         const arrayFilters = [];
-        let filterIndex = 0; // Track array filter index for unique identifiers
+        let filterIndex = 0;
 
         for (const [field, value] of Object.entries(updates)) {
             if (field === "description") {
                 value.forEach((skillUpdate) => {
                     if (skillUpdate.id !== undefined) {
-                        const filterName = `skillElem${filterIndex}`; // Unique identifier
+                        const filterName = `skillElem${filterIndex}`;
                         for (const [key, val] of Object.entries(skillUpdate)) {
                             if (key !== "id") {
                                 updateOps[`skills.$[${filterName}].description.${key}`] = val;
                             }
                         }
                         arrayFilters.push({ [`${filterName}.id`]: skillUpdate.id });
-                        filterIndex++; // Increment the index for unique identifiers
+                        filterIndex++;
                     }
                 });
             } else if (Array.isArray(value)) {
                 value.forEach((item) => {
                     if (item.id !== undefined) {
-                        const filterName = `elem${filterIndex}`; // Unique identifier for other arrays
+                        const filterName = `elem${filterIndex}`;
                         for (const [key, val] of Object.entries(item)) {
                             if (key !== "id") {
                                 updateOps[`${field}.$[${filterName}].${key}`] = val;
                             }
                         }
                         arrayFilters.push({ [`${filterName}.id`]: item.id });
-                        filterIndex++; // Increment the index for unique identifiers
+                        filterIndex++;
                     }
                 });
             } else if (typeof value === "object") {
@@ -62,7 +62,6 @@ const updateCard = async (req, res) => {
 
         console.log(updateOps);
 
-        // Execute update with arrayFilters
         const updateResult = await Cards.updateOne(
             { _id },
             { $set: updateOps },
