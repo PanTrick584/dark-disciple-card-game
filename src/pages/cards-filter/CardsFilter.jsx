@@ -7,6 +7,8 @@ import { AppContext } from '../../context/AppContext';
 import { all } from '../../consts/translations';
 
 import "./styles/cards-filter.scss"
+import { CardTitle } from '../../components/Card/CardTitle';
+import { NeoBox } from '../../containers/NeoBox';
 
 const CardsFilter = () => {
     const [navigation, setNavigation] = useState(null);
@@ -20,6 +22,10 @@ const CardsFilter = () => {
     const location = useLocation();
     const { dataLocation, name } = location.state || {};
     const { language } = useContext(AppContext);
+
+    //DECKBUILDER
+    const [deckBuilderOn, setDeckBuilderOn] = useState(false);
+    const [deckBuilderCards, setDeckBuilderCards] = useState([])
 
     useEffect(() => {
         handleCategory();
@@ -120,23 +126,46 @@ const CardsFilter = () => {
                         handleCategory();
                         setCategories([]);
                     }}><a>{all?.[language]}</a></li>
+                    <div className={`button small deckbuilder-enabler`} onClick={() => setDeckBuilderOn(prev => !prev)}>
+                        <span>BUILD NEW DECK</span>
+                    </div>
                 </ul>
-            </nav>
-            {/* CARDS */}
-            <div className="cards-filter-container">
-                {factionData.map((faction) => {
-                    if (faction?.name !== name) return;
 
-                    return faction?.data?.map((cardsLevel, id) => {
-                        if (!activeLevels.length || activeLevels.includes(id + 1)) {
-                            return <Card
-                                cardsLevel={cardsLevel}
-                                cardsCategories={categories}
-                                categoryName={name} />
+            </nav>
+
+            <div className="cards-container">
+                {/* CARDS */}
+                <div className="cards-filter-container">
+                    {factionData.map((faction) => {
+                        if (faction?.name !== name) return;
+
+                        return faction?.data?.map((cardsLevel, id) => {
+                            if (!activeLevels.length || activeLevels.includes(id + 1)) {
+                                return <Card
+                                    cardsLevel={cardsLevel}
+                                    cardsCategories={categories}
+                                    categoryName={name}
+                                    setDeckBuilderCards={setDeckBuilderCards} />
+                            }
+                        })
+                    })}
+                </div>
+                {/* DECK BUILDER */}
+                {deckBuilderOn &&
+                    <NeoBox addClass={'deck-builder'}>
+                        {deckBuilderCards.length &&
+                            deckBuilderCards.map((card, id) => {
+                                return(
+                                    <NeoBox>
+                                        <CardTitle card={card} />
+                                    </NeoBox>
+                                )
+                            })
                         }
-                    })
-                })}
+                    </NeoBox>
+                }
             </div>
+
         </div>
     )
 }

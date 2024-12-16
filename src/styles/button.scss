@@ -1,10 +1,11 @@
 @use "./colors.scss" as colors;
 
-a {
+a,
+span {
     text-decoration: none;
     color: colors.$textColor;
 }
-
+.neo-box,
 .button {
     cursor: pointer;
     transition: all .2s;
@@ -22,19 +23,23 @@ a {
     }
 
     &:hover {
-        a {
+        a,
+        span {
             color: colors.$textColorHover;
         }
     }
 
     &:focus,
     &:active {
-        a {
+        a,
+        span {
             color: colors.$textColorActive;
         }
     }
 
     a,
+    span,
+    &-item,
     &select {
         padding: 10px 20px;
         display: block;
@@ -51,7 +56,8 @@ a {
     }
 
     &.active {
-        a {
+        a,
+        span {
             color: colors.$textColorActive;
         }
     }

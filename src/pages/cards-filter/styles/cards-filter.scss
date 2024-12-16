@@ -9,3 +9,38 @@
         row-gap: 20px;
     }
 }
+
+.cards-categories {
+    .deckbuilder-enabler {
+        margin-left: auto;
+    }
+}
+
+.cards-container {
+    position: relative;
+    display: flex;
+
+    &-on {
+        height: min-content;
+    }
+
+    .cards-filter-container {
+    }
+
+    .deck-builder {
+        flex: 0 0 25%;
+        position: relative;
+
+        &-container {
+            position: sticky;
+            right: 0;
+            top: 0;
+            width: 100%;
+            padding: 15px;
+        }
+
+        &-box {
+            margin-bottom: 5px;
+        }
+    }
+}

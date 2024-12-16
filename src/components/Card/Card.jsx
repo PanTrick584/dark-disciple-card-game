@@ -2,9 +2,10 @@ import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { AppContext } from '../../context/AppContext';
 import "./styles/card.scss"
+import { CardTitle } from './CardTitle';
 
 
-const Card = ({ cardsLevel, cardsCategories, categoryName }) => {
+const Card = ({ cardsLevel, cardsCategories, categoryName, setDeckBuilderCards }) => {
     const [editCard, setEditCard] = useState(false);
     const { language } = useContext(AppContext);
 
@@ -22,10 +23,11 @@ const Card = ({ cardsLevel, cardsCategories, categoryName }) => {
                                         <div className="card-popup-edit">
                                             <Link to={`/cards/${newCategoryName}/${cardName}`} state={card} >EDIT</Link>
                                         </div> :
-                                        <div className="card-popup-add">ADD</div>
+                                        <div className="card-popup-add" onClick={() => setDeckBuilderCards(prev => [...prev, card])} >ADD</div>
                                     }
                                 </div>
-                                <div className="card-title">
+                                <CardTitle card={card}/>
+                                {/* <div className="card-title">
                                     <div className="card-title-box">
                                         <p className="card-title-name">{card?.name?.[language]}</p>
                                         <div className="card-title-categories">
@@ -36,7 +38,7 @@ const Card = ({ cardsLevel, cardsCategories, categoryName }) => {
                                         <p className='card-level'>{card?.level}</p>
                                         <p className='card-strength'>{card?.strength}</p>
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className="card-description">
                                     {card?.skills && card?.skills?.map((skill, id) => {
                                         if (!skill) return;
