@@ -151,6 +151,7 @@ const CardsFilter = () => {
                                         deckBuilderOn={deckBuilderOn}
                                         deckBuilderCards={deckBuilderCards}
                                         setDeckBuilderCards={setDeckBuilderCards}
+                                        deckCardsAmount={deckCardsAmount}
                                         setDeckCardsAmount={setDeckCardsAmount}
                                     />
                                 )

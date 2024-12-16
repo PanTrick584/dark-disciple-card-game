@@ -13,11 +13,17 @@ const Card = ({
     categoryName,
     deckBuilderOn,
     setDeckBuilderCards,
+    deckCardsAmount,
     setDeckCardsAmount
 }) => {
     const { language } = useContext(AppContext);
 
     const handleDeck = (prev, card) => {
+        if (deckCardsAmount >= 40) {
+            console.log('this is max deck')
+            return prev;
+        }
+
         const { _id, level } = card;
 
         const existingCardIndex = prev.findIndex(prevCard => prevCard.id === _id);
