@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import { AppContext } from "../../context/AppContext";
 
-export const CardTitle = ({card}) => {
+export const CardTitle = ({ card }) => {
     const { language } = useContext(AppContext);
 
-    return(
+    return (
         <div className="card-title">
             <div className="card-title-box">
                 <p className="card-title-name">{card?.name?.[language]}</p>

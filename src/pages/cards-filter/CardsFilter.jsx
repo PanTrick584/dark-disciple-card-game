@@ -25,7 +25,8 @@ const CardsFilter = () => {
 
     //DECKBUILDER
     const [deckBuilderOn, setDeckBuilderOn] = useState(false);
-    const [deckBuilderCards, setDeckBuilderCards] = useState([])
+    const [deckBuilderCards, setDeckBuilderCards] = useState([]);
+    const [deckCardsAmount, setDeckCardsAmount] = useState(0);
 
     useEffect(() => {
         handleCategory();
@@ -74,6 +75,7 @@ const CardsFilter = () => {
         setCategoriesList(newCategories);
     }
 
+    console.log(deckBuilderCards);
     return (
         <div className='cards-filter'>
             {/* CARDS LEVELS */}
@@ -141,26 +143,35 @@ const CardsFilter = () => {
 
                         return faction?.data?.map((cardsLevel, id) => {
                             if (!activeLevels.length || activeLevels.includes(id + 1)) {
-                                return <Card
-                                    cardsLevel={cardsLevel}
-                                    cardsCategories={categories}
-                                    categoryName={name}
-                                    setDeckBuilderCards={setDeckBuilderCards} />
+                                return (
+                                    <Card
+                                        cardsLevel={cardsLevel}
+                                        cardsCategories={categories}
+                                        categoryName={name}
+                                        deckBuilderOn={deckBuilderOn}
+                                        deckBuilderCards={deckBuilderCards}
+                                        setDeckBuilderCards={setDeckBuilderCards}
+                                        setDeckCardsAmount={setDeckCardsAmount}
+                                    />
+                                )
                             }
                         })
                     })}
                 </div>
                 {/* DECK BUILDER */}
                 {deckBuilderOn &&
-                    <NeoBox addClass={'deck-builder'}>
-                        {deckBuilderCards.length &&
+                    <NeoBox addClass={'deck-builder'} addClassItem={'deck-builder-container'}>
+                        <div className="deck-builder-counter">{`${deckCardsAmount ?? 0} / 40`}</div>
+                        {deckBuilderCards.length ?
                             deckBuilderCards.map((card, id) => {
-                                return(
+
+                                return (
                                     <NeoBox>
-                                        <CardTitle card={card} />
+                                        <div className='deck-builder-counter-single'>{card.amount}x</div>
+                                        <CardTitle card={card.data} />
                                     </NeoBox>
                                 )
-                            })
+                            }) : null
                         }
                     </NeoBox>
                 }

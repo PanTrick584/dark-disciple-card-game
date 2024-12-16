@@ -24,23 +24,28 @@
         height: min-content;
     }
 
-    .cards-filter-container {
-    }
+    .cards-filter-container {}
 
     .deck-builder {
-        flex: 0 0 25%;
         position: relative;
+
+        &-counter {
+            &-single {}
+
+
+        }
 
         &-container {
             position: sticky;
             right: 0;
             top: 0;
-            width: 100%;
-            padding: 15px;
+            width: max-content;
         }
 
         &-box {
             margin-bottom: 5px;
         }
+
+
     }
 }
