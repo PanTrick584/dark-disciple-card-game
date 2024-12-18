@@ -32,6 +32,7 @@ const CardsFilter = () => {
     const [deckBuilderCards, setDeckBuilderCards] = useState([]);
     const [deckCardsAmount, setDeckCardsAmount] = useState(0);
     const [deckCardsCost, setDeckCardsCost] = useState(0);
+    const [deckCardsLevels, setDeckCardsLevels] = useState([]);
 
     // SEARCH
     const [searchDescription, setSearchDescription] = useState("");
@@ -115,15 +116,31 @@ const CardsFilter = () => {
 
         const totalCards = updatedDeck.reduce((sum, card) => sum + card.amount, 0);
         const totalCost = updatedDeck.reduce((sum, card) => sum + (card.level * card.amount), 0);
+        const countCardsByLevel = (deck) => {
+            const levelCounts = deck.reduce((levelCounts, card) => {
+                const { level, amount } = card;
+                levelCounts[level] = (levelCounts[level] || 0) + amount;
+                return levelCounts;
+            }, {});
+
+            // Convert the levelCounts object into an array of objects
+            return Object.entries(levelCounts).map(([level, amount]) => ({
+                level: parseInt(level, 10), // Convert level back to a number
+                amount
+            }));
+        };
+
+        const cardsByLevel = countCardsByLevel(updatedDeck);
 
         console.log(totalCost);
         setDeckCardsCost(totalCost)
         setDeckCardsAmount(totalCards);
+        setDeckCardsLevels(cardsByLevel)
 
         return updatedDeck;
     };
 
-    // console.log(deckBuilderCards);
+    console.log(deckCardsLevels);
     // console.log(searchDescription);
     return (
         <div className="cards">
