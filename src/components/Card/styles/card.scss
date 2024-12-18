@@ -4,7 +4,7 @@
     position: relative;
     flex: 0 0 15%;
     max-width: 375px;
-    min-width: 375px;
+    min-width: 275px;
     padding: 30px;
     border-radius: 15px;
     align-self: stretch;
@@ -19,9 +19,9 @@
         box-shadow: inset 3px 3px 1px #1f1f1f,
             inset -3px -3px 1px #292929;
 
-            .card-popup {
-                visibility: visible;
-            }
+        .card-popup {
+            visibility: visible;
+        }
     }
 
     &-title {

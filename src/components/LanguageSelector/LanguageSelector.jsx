@@ -3,7 +3,7 @@ import { AppContext } from "../../context/AppContext";
 import "../../styles/selectors.scss"
 
 const LanguageSelector = () => {
-  const [selectedLanguage, setSelectedLanguage] = useState("en");
+  // const [selectedLanguage, setSelectedLanguage] = useState("en");
   const { language, setLanguage } = useContext(AppContext);
 
   const languages = [
@@ -17,7 +17,6 @@ const LanguageSelector = () => {
     const selectedCode = event.target.value;
     setLanguage(selectedCode);
 
-    // You can add additional actions here, such as updating the website's language
     console.log(`Language changed to: ${selectedCode}`);
   };
 

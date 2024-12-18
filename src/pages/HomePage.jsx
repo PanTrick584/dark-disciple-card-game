@@ -3,6 +3,7 @@ import { useContext, useState } from 'react';
 import { AppContext } from '../context/AppContext';
 import LanguageSelector from '../components/LanguageSelector/LanguageSelector';
 import { mainNav } from '../consts/translations';
+import "./styles/home-page.scss"
 
 const HomePage = () => {
     const [activeDirectory, setActiveDirectory] = useState([]);
@@ -20,7 +21,10 @@ const HomePage = () => {
     }
     return (
         <div className='main-container'>
-            <h1 className='main-header'>Dark Disciple: Card Game</h1>
+            <div className="main-header">
+                <h1 className='main-header-text'>Dark Disciple: Card Game</h1>
+                <LanguageSelector />
+            </div>
 
             <nav className='main-nav'>
                 <ul>
@@ -34,7 +38,6 @@ const HomePage = () => {
                         )
                     })}
                 </ul>
-                <LanguageSelector />
             </nav>
             <Outlet />
         </div>

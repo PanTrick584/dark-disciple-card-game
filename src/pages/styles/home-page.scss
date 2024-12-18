@@ -1,0 +1,28 @@
+@use "../../styles//colors.scss" as color;
+
+.main-container {
+    padding: 30px;
+
+    .main-header {
+        display: flex;
+        align-items: center;
+
+        &-text {
+            font-size: 48px;
+            width: max-content;
+            text-transform: uppercase;
+            color: color.$textColor;
+        }
+
+        .language-selector {
+            label {
+                width: max-content;
+            }
+
+            select {
+                min-width: 120px;
+                width: max-content;
+            }
+        }
+    }
+}

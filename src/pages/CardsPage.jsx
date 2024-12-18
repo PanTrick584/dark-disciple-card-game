@@ -31,6 +31,7 @@ const CardsFilter = () => {
     const [deckBuilderOn, setDeckBuilderOn] = useState(false);
     const [deckBuilderCards, setDeckBuilderCards] = useState([]);
     const [deckCardsAmount, setDeckCardsAmount] = useState(0);
+    const [deckCardsCost, setDeckCardsCost] = useState(0);
 
     // SEARCH
     const [searchDescription, setSearchDescription] = useState("");
@@ -113,7 +114,10 @@ const CardsFilter = () => {
         }
 
         const totalCards = updatedDeck.reduce((sum, card) => sum + card.amount, 0);
+        const totalCost = updatedDeck.reduce((sum, card) => sum + (card.level * card.amount), 0);
 
+        console.log(totalCost);
+        setDeckCardsCost(totalCost)
         setDeckCardsAmount(totalCards);
 
         return updatedDeck;
@@ -186,6 +190,8 @@ const CardsFilter = () => {
                         setDeckCardsAmount={setDeckCardsAmount}
                         deckBuilderCards={deckBuilderCards}
                         setDeckBuilderCards={setDeckBuilderCards}
+                        deckCardsCost={deckCardsCost}
+                        setDeckCardsCost={setDeckCardsCost}
                     />
                 }
             </div>

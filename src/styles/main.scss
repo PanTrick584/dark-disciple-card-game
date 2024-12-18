@@ -1,16 +1,4 @@
-@use "./colors.scss" as color;
-
 #root {
     width: 100%;
     height: 100%;
-}
-
-.main-container {
-    padding: 30px;
-
-    .main-header {
-        font-size: 48px;
-        text-transform: uppercase;
-        color: color.$textColor;
-    }
 }

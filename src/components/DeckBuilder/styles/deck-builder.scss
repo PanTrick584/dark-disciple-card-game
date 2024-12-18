@@ -1,0 +1,64 @@
+.deck-builder {
+    position: relative;
+    height: min-content;
+    height: auto;
+    flex: 0 0 25%;
+
+    &-box {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+
+    &-card {
+        width: 100%;
+    }
+
+    &-counter {
+        &-single {}
+    }
+
+    &-container {
+        position: sticky;
+        top: 0;
+        right: 0;
+        width: 100%;
+        transition: transform 0.3s ease, top 0.3s ease;
+        height: max-content;
+
+        .neo-box {
+            &-item {
+                display: flex;
+                padding: 10px;
+
+                .deck-builder-counter-single {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-right: 10px;
+                }
+
+                .card-title {
+                    width: 100%;
+
+                    &-box {
+                        margin-right: 10px;
+                    }
+
+                    &-box,
+                    &-nums {
+                        align-items: center;
+                        font-size: 10px;
+
+                        .card-level,
+                        .card-strength {
+                            font-size: 10px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
