@@ -1,7 +1,89 @@
-.cards-page {
-    width: 100%;
+.cards-filter {
     display: flex;
     flex-direction: column;
-    // padding: 30px;
-    // margin-top: 30px;
+
+    &-container {
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 20px;
+        row-gap: 20px;
+    }
+
+    &-levels {
+        display: flex;
+        align-items: flex-start;
+        gap: 60px;
+
+        ul {
+            width: auto;
+        }
+    }
+
+    &-categories {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+
+        ul {
+            width: auto;
+        }
+    }
+
+    &-search {
+        padding: 15px;
+        border: none;
+        
+    }
+}
+
+.cards-container {
+    position: relative;
+    display: flex;
+    height: 100%;
+
+    .cards-grid {
+        display: flex;
+
+    }
+
+    .deck-builder {
+        position: relative;
+        height: min-content;
+        height: auto;
+        flex: 0 0 25%;
+
+        &-counter {
+            &-single {}
+        }
+
+        &-container {
+            position: sticky;
+            top: 0;
+            right: 0;
+            width: max-content;
+            transition: transform 0.3s ease, top 0.3s ease;
+            height: max-content;
+
+            .neo-box {
+                &-item {
+                    display: flex;
+                    font-size: 10px;
+
+                    .deck-builder-counter-single {
+                        margin-right: 10px;
+                    }
+
+                    .card-title {
+                        &-box {
+                            margin-right: 10px;
+                        }
+                    }
+                }
+            }
+        }
+
+        &-box {
+            margin-bottom: 5px;
+        }
+    }
 }

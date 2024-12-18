@@ -1,115 +1,196 @@
-import React, { useContext, useEffect } from 'react'
-import { useLocation, useNavigate, Outlet } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react'
+import { fetchJsonData } from '../tools/fetchCards';
+import { Link, useLocation } from 'react-router-dom';
+import { handleCategories } from '../tools/handlers/handleCategories';
 import { AppContext } from '../context/AppContext';
-import { factions } from '../consts/translations';
-import { MainNavItem } from '../components/MainNavItem/MainNavItem';
+import { all } from '../consts/translations';
+import { CardTitle } from '../components/Card/CardTitle';
+import { NeoBox } from '../containers/NeoBox';
+import { CardDescription } from '../components/Card/CardDescription';
+import { FilterLevels } from '../components/FilterLevels/FilterLevels';
+import { FilterCategories } from '../components/FilterCategories/FilterCategories';
+import { CardsGrid } from '../components/CardsGrid/CardsGrid';
+import { DeckBuilder } from '../components/DeckBuilder/DeckBuilder';
 
-import "./styles/cards-page.scss";
+import "./styles/cards-page.scss"
 
-const CardsPage = () => {
+const CardsFilter = () => {
+    const [navigation, setNavigation] = useState(null);
+    const [activeLevels, setActiveLevels] = useState([]);
+    const [categoriesList, setCategoriesList] = useState([]);
+    const [factionData, setFactionData] = useState([]);
+    const [fechedFactions, setFetchedFactions] = useState([]);
+    const [activeCategories, setActiveCategories] = useState([]);
+    const [categories, setCategories] = useState([]);
 
     const location = useLocation();
-    const navigate = useNavigate();
-
+    const { dataLocation, name } = location.state || {};
     const { language } = useContext(AppContext);
 
+    //DECKBUILDER
+    const [deckBuilderOn, setDeckBuilderOn] = useState(false);
+    const [deckBuilderCards, setDeckBuilderCards] = useState([]);
+    const [deckCardsAmount, setDeckCardsAmount] = useState(0);
+
+    // SEARCH
+    const [searchDescription, setSearchDescription] = useState("");
+    const [firstSearch, setFirstSearch] = useState(true);
+
     useEffect(() => {
-        if (location.pathname !== '/cards' && location.pathname.startsWith('/cards/')) {
-            navigate('/cards');
-        }
+        handleCategory();
 
-    }, []);
+        if (fechedFactions.includes(name)) return;
 
-    const pathsElves = [
-        "http://localhost:3333/api/v1/cards?faction=houses-of-elves&level=1",
-        "http://localhost:3333/api/v1/cards?faction=houses-of-elves&level=2",
-        "http://localhost:3333/api/v1/cards?faction=houses-of-elves&level=3",
-        "http://localhost:3333/api/v1/cards?faction=houses-of-elves&level=4",
-        "http://localhost:3333/api/v1/cards?faction=houses-of-elves&level=5",
-        "http://localhost:3333/api/v1/cards?faction=houses-of-elves&level=6",
-        "http://localhost:3333/api/v1/cards?faction=houses-of-elves&level=7"
-    ];
+        callAllCards();
+    }, [dataLocation]);
 
-    const pathsDamned = [
-        "http://localhost:3333/api/v1/cards?faction=damned-hordes&level=1",
-        "http://localhost:3333/api/v1/cards?faction=damned-hordes&level=2",
-        "http://localhost:3333/api/v1/cards?faction=damned-hordes&level=3",
-        "http://localhost:3333/api/v1/cards?faction=damned-hordes&level=4",
-        "http://localhost:3333/api/v1/cards?faction=damned-hordes&level=5",
-        "http://localhost:3333/api/v1/cards?faction=damned-hordes&level=6",
-        "http://localhost:3333/api/v1/cards?faction=damned-hordes&level=7"
-    ];
-
-
-
-    const pathsEmpire = [
-        "/json/empire-aliance/lvl-1.json",
-        "/json/empire-aliance/lvl-2.json",
-        "/json/empire-aliance/lvl-3.json",
-        "/json/empire-aliance/lvl-4.json",
-        "/json/empire-aliance/lvl-5.json",
-        "/json/empire-aliance/lvl-6.json",
-        "/json/empire-aliance/lvl-7.json",
-    ];
-
-    const pathsOrcs = [
-        "http://localhost:3333/api/v1/cards?faction=orc-tribes&level=1",
-        "http://localhost:3333/api/v1/cards?faction=orc-tribes&level=2",
-        "http://localhost:3333/api/v1/cards?faction=orc-tribes&level=3",
-        "http://localhost:3333/api/v1/cards?faction=orc-tribes&level=4",
-        "http://localhost:3333/api/v1/cards?faction=orc-tribes&level=5",
-        "http://localhost:3333/api/v1/cards?faction=orc-tribes&level=6",
-        "http://localhost:3333/api/v1/cards?faction=orc-tribes&level=7",
-    ];
-
-    const pathsUndead = [
-        "/json/elves/lvl-1.json",
-        "/json/elves/lvl-2.json",
-        "/json/elves/lvl-3.json",
-        "/json/elves/lvl-4.json",
-        "/json/elves/lvl-5.json",
-        "/json/elves/lvl-6.json",
-        "/json/elves/lvl-7.json",
-    ]
-
-    const factionsNavigation = {
-        elves: {
-            name: factions.elves?.[language],
-            path: pathsElves
-        },
-        orcs: {
-            name: factions.orcs?.[language],
-            path: pathsOrcs
-        },
-        damned: {
-            name: factions.damned?.[language],
-            path: pathsDamned
-        },
-        empire: {
-            name: factions.empire?.[language],
-            path: pathsEmpire
-        },
-        undead: {
-            name: factions.undead?.[language],
-            path: pathsUndead
-        }
+    const callAllCards = () => {
+        fetchData(dataLocation);
+        setNavigation(dataLocation);
+        setActiveLevels([]);
+        setCategories([]);
+        setActiveCategories([]);
+        setFetchedFactions(prev => !prev.includes(name) ? [...prev, name] : prev)
     }
 
+    useEffect(() => {
+        if (!factionData) return;
+        handleCategory();
+    }, [factionData, activeLevels, language])
+
+    const fetchData = async (path) => {
+        try {
+            const result = await fetchJsonData(path);
+            setFactionData(prev => {
+                const newPrev = [...prev, { name: name, data: result }];
+                const filterPrev = newPrev.filter((item, index, self) =>
+                    index === self.findIndex(obj => obj.name === item.name))
+                return filterPrev;
+            })
+        } catch (error) {
+            console.error("Failed to fetch data:", error);
+        }
+    };
+
+    const handleFilter = (prev, value, type) => {
+        if (prev.includes(type(value))) return prev.filter(item => type(item) !== type(value));
+        return [...prev, type(value)];
+    }
+
+    const handleCategory = () => {
+        const newCategories = handleCategories(factionData, name, activeLevels, language);
+        setCategoriesList(newCategories);
+    }
+
+    const handleDeck = (prev, card) => {
+        if (deckCardsAmount >= 40) {
+            console.log('this is max deck')
+            return prev;
+        }
+
+        const { _id, level } = card;
+
+        const existingCardIndex = prev.findIndex(prevCard => prevCard.id === _id);
+
+        let updatedDeck;
+        if (existingCardIndex !== -1) {
+            updatedDeck = [...prev];
+            const existingCard = updatedDeck[existingCardIndex];
+
+            const maxAmount =
+                level < 5 ? 3 :
+                    level < 7 ? 2 :
+                        1; // Level == 7
+
+            if (existingCard.amount < maxAmount) {
+                updatedDeck[existingCardIndex] = {
+                    ...existingCard,
+                    amount: existingCard.amount + 1
+                };
+            }
+        } else {
+            updatedDeck = [...prev, { id: _id, amount: 1, data: card, level }];
+        }
+
+        const totalCards = updatedDeck.reduce((sum, card) => sum + card.amount, 0);
+
+        setDeckCardsAmount(totalCards);
+
+        return updatedDeck;
+    };
+
+    // console.log(deckBuilderCards);
+    // console.log(searchDescription);
     return (
-        <nav className='cards-page'>
-            <ul className='cards-page-ul'>
-                {Object.entries(factionsNavigation).map(([key, value]) => {
-                    return (
-                        <MainNavItem
-                            key={key}
-                            faction={value?.name}
-                            path={value?.path} />
-                    )
-                })}
-            </ul>
-            <Outlet />
-        </nav>
+        <div className="cards">
+            <div className="cards-filter">
+                {/* CARDS LEVELS */}
+                <nav className='cards-filter-levels'>
+                    <FilterLevels
+                        navigation={navigation}
+                        activeLevels={activeLevels}
+                        setActiveLevels={setActiveLevels}
+                        handleCategory={handleCategory}
+                        setSearchDescription={setSearchDescription}
+                        handleFilter={handleFilter}
+                    />
+                    <div>
+                        <input
+                            className='cards-filter-search neo-box'
+                            type="text"
+                            onChange={(e) => setSearchDescription(e.target.value)}
+                            defaultValue={"search"}
+                            onClick={(e) => {
+                                if (firstSearch) {
+                                    e.target.value = ""
+                                    setFirstSearch(false)
+                                }
+                            }}
+                        />
+                    </div>
+                    <div
+                        className={`button deckbuilder-enabler`}
+                        onClick={() => setDeckBuilderOn(prev => !prev)}
+                    >
+                        <span>BUILD NEW DECK</span>
+                    </div>
+                </nav>
+                {/* CATEGORIES */}
+                <nav className="cards-filter-categories">
+                    <FilterCategories
+                        categoriesList={categoriesList}
+                        setCategories={setCategories}
+                        activeCategories={activeCategories}
+                        setActiveCategories={setActiveCategories}
+                        handleFilter={handleFilter}
+                        handleCategory={handleCategory}
+                    />
+                </nav>
+            </div>
+            <div className="cards-container">
+                {/* CARDS GRID */}
+                <CardsGrid
+                    factionData={factionData}
+                    activeLevels={activeLevels}
+                    name={name}
+                    categories={categories}
+                    searchDescription={searchDescription}
+                    deckBuilderOn={deckBuilderOn}
+                    setDeckBuilderCards={setDeckBuilderCards}
+                    handleDeck={handleDeck}
+                />
+                {/* DECK BUILDER */}
+                {deckBuilderOn &&
+                    <DeckBuilder
+                        deckCardsAmount={deckCardsAmount}
+                        setDeckCardsAmount={setDeckCardsAmount}
+                        deckBuilderCards={deckBuilderCards}
+                        setDeckBuilderCards={setDeckBuilderCards}
+                    />
+                }
+            </div>
+        </div>
     )
 }
 
-export default CardsPage
+export default CardsFilter;

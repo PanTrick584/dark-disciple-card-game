@@ -5,6 +5,7 @@ span {
     text-decoration: none;
     color: colors.$textColor;
 }
+
 .neo-box,
 .button {
     cursor: pointer;
@@ -13,6 +14,8 @@ span {
     background: colors.$backgroundColor;
     box-shadow: inset 3px 3px 3px #1f1f1f,
         inset -3px -3px 3px #292929;
+    color: colors.$textColor;
+
 
     &:focus,
     &:active,
@@ -49,7 +52,8 @@ span {
     }
 
     &.small {
-        a {
+        a,
+        span {
             font-size: 10px;
             padding: 10px 12px;
         }

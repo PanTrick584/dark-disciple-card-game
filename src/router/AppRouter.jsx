@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from '../pages/HomePage';
 import DecksPage from '../pages/DecksPage';
-import CardsPage from '../pages/CardsPage';
-import CardsFilter from '../pages/cards-filter/CardsFilter';
+import CardsPage from '../pages/FactionsNavigation';
+import CardsFilter from '../pages/CardsPage';
 import CardEdit from '../components/CardEdit/CardEdit';
 
 const AppRoutes = () => {
