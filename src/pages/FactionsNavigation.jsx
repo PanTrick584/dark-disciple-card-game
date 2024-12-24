@@ -23,23 +23,23 @@ const CardsPage = () => {
     const factionsNavigation = {
         elves: {
             name: factions.elves?.[language],
-            path: paths.elves
+            path: paths.elves,
         },
         orcs: {
             name: factions.orcs?.[language],
-            path: paths.orcs
+            path: paths.orcs,
         },
         damned: {
             name: factions.damned?.[language],
-            path: paths.damned
+            path: paths.damned,
         },
         empire: {
             name: factions.empire?.[language],
-            path: paths.empire
+            path: paths.empire,
         },
         undead: {
             name: factions.undead?.[language],
-            path: paths.undead
+            path: paths.undead,
         }
     }
 
@@ -51,7 +51,8 @@ const CardsPage = () => {
                         <MainNavItem
                             key={key}
                             faction={value?.name}
-                            path={value?.path} />
+                            path={value?.path}
+                        />
                     )
                 })}
             </ul>

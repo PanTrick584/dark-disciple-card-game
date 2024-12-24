@@ -1,8 +1,11 @@
 import { useContext } from "react";
 import { AppContext } from "../../context/AppContext";
 
-export const CardTitle = ({ card }) => {
+export const CardTitle = ({ card, colors }) => {
     const { language } = useContext(AppContext);
+    const style = {
+        backgroundColor: colors?.themeMain ?? "",
+    }
 
     return (
         <div className="card-title">
@@ -14,7 +17,7 @@ export const CardTitle = ({ card }) => {
             </div>
             <div className="card-title-nums">
                 <p className='card-level'>{card?.level}</p>
-                <p className='card-strength'>{card?.strength}</p>
+                <p className='card-strength' style={style}>{card?.strength}</p>
             </div>
         </div>
     )

@@ -10,7 +10,6 @@ const {
     updateAllCards
 } = require("../controllers/cards-controller");
 
-
 router
     .route('/')
     .get(getAllCards)

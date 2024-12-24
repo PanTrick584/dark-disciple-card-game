@@ -6,11 +6,14 @@ const path = require("path");
 
 const connectDB = require("./db/connect");
 const cardsRoute = require("./routes/cards-route");
+const decksRoute = require("./routes/decks-route");
+
 app.use(cors());
 app.use(express.json());
 
 app.use(express.static(path.join(__dirname, "../dist")));
 app.use('/api/v1/cards', cardsRoute);
+app.use('/api/v1/decks', decksRoute);
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../dist', 'index.html'));

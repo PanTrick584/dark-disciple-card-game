@@ -3,7 +3,7 @@ import { fetchJsonData } from '../tools/fetchCards';
 import { Link, useLocation } from 'react-router-dom';
 import { handleCategories } from '../tools/handlers/handleCategories';
 import { AppContext } from '../context/AppContext';
-import { all } from '../consts/translations';
+import { all, deckButton } from '../consts/translations';
 import { CardTitle } from '../components/Card/CardTitle';
 import { NeoBox } from '../containers/NeoBox';
 import { CardDescription } from '../components/Card/CardDescription';
@@ -13,6 +13,8 @@ import { CardsGrid } from '../components/CardsGrid/CardsGrid';
 import { DeckBuilder } from '../components/DeckBuilder/DeckBuilder';
 
 import "./styles/cards-page.scss"
+import { analyzeDeck } from '../tools/deckData';
+import { addDeckDB } from '../tools/fetchDB';
 
 const CardsFilter = () => {
     const [navigation, setNavigation] = useState(null);
@@ -25,7 +27,13 @@ const CardsFilter = () => {
 
     const location = useLocation();
     const { dataLocation, name } = location.state || {};
-    const { language } = useContext(AppContext);
+    const { 
+        language,
+        deckFactions,
+        setDeckFactions,
+        deckkTitle,
+        setDeckTitle
+    } = useContext(AppContext);
 
     //DECKBUILDER
     const [deckBuilderOn, setDeckBuilderOn] = useState(false);
@@ -74,6 +82,15 @@ const CardsFilter = () => {
         }
     };
 
+    const postDeck = async () => {
+        try {
+            const result = await addDeckDB("http://localhost:3333/api/v1/decks", deckBuilderCards);
+            console.log(result);
+        } catch (error) {
+            console.error("Failed to fetch data:", error);
+        }
+    }
+
     const handleFilter = (prev, value, type) => {
         if (prev.includes(type(value))) return prev.filter(item => type(item) !== type(value));
         return [...prev, type(value)];
@@ -86,7 +103,6 @@ const CardsFilter = () => {
 
     const handleDeck = (prev, card) => {
         if (deckCardsAmount >= 40) {
-            console.log('this is max deck')
             return prev;
         }
 
@@ -110,6 +126,7 @@ const CardsFilter = () => {
                     amount: existingCard.amount + 1
                 };
             }
+
         } else {
             updatedDeck = [...prev, { id: _id, amount: 1, data: card, level }];
         }
@@ -131,17 +148,43 @@ const CardsFilter = () => {
         };
 
         const cardsByLevel = countCardsByLevel(updatedDeck);
+        const cardsByFaction = analyzeDeck(updatedDeck);
 
-        console.log(totalCost);
-        setDeckCardsCost(totalCost)
+        setDeckCardsCost(totalCost);
         setDeckCardsAmount(totalCards);
-        setDeckCardsLevels(cardsByLevel)
+        setDeckCardsLevels(cardsByLevel);
+        setDeckFactions(cardsByFaction)
 
         return updatedDeck;
     };
 
-    console.log(deckCardsLevels);
-    // console.log(searchDescription);
+    const checkDeck = () => {
+        if (deckCardsAmount !== 40) return;
+
+        if (deckFactions.length === 2) {
+            const toLessCards =  deckFactions.find(faction => faction.amount < 20);
+            if (toLessCards) return console.log("za mało kart z 2 frkcji");
+        }
+        
+        if (deckFactions.length === 3 ) {
+            const toLessCards =  deckFactions.find(faction => faction.amount < 10);
+            if (toLessCards) return console.log("za mało kart z 3 frakcji");
+        }
+
+        const cardsIds = deckBuilderCards.map(card => ({id: card.id, amount: card.amount}));
+        const deckToPost = {
+            name: deckkTitle,
+            factions: deckFactions,
+            cards: cardsIds
+        }
+
+        console.log(deckToPost);
+        // return postDeck();
+    }
+
+    // console.log(deckCardsLevels);
+    // console.log(deckBuilderCards);
+    // console.log(deckFactions);
     return (
         <div className="cards">
             <div className="cards-filter">
@@ -152,28 +195,28 @@ const CardsFilter = () => {
                         activeLevels={activeLevels}
                         setActiveLevels={setActiveLevels}
                         handleCategory={handleCategory}
-                        setSearchDescription={setSearchDescription}
                         handleFilter={handleFilter}
                     />
-                    <div>
+                    <div className='cards-filter-search'>
                         <input
-                            className='cards-filter-search neo-box'
+                            className='search-text neo-box'
                             type="text"
                             onChange={(e) => setSearchDescription(e.target.value)}
-                            defaultValue={"search"}
+                            value={searchDescription}
                             onClick={(e) => {
                                 if (firstSearch) {
-                                    e.target.value = ""
+                                    setSearchDescription("")
                                     setFirstSearch(false)
                                 }
                             }}
                         />
+                        <span className="search-clear" onClick={() => setSearchDescription("")}>x</span>
                     </div>
                     <div
                         className={`button deckbuilder-enabler`}
                         onClick={() => setDeckBuilderOn(prev => !prev)}
                     >
-                        <span>BUILD NEW DECK</span>
+                        <span onClick={checkDeck}>{!deckBuilderOn ? deckButton.build[language] : deckButton.save[language]}</span>
                     </div>
                 </nav>
                 {/* CATEGORIES */}

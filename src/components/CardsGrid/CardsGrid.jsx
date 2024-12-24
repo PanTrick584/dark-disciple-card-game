@@ -23,21 +23,20 @@ export const CardsGrid = ({ factionData, activeLevels, name, categories, searchD
                                 const newCategoryName = name.split(" ").join("-");
                 
                                 if (!categories.length || categories.some(category => currentCategories.includes(category))) {
-                                    if (searchDescription || searchDescription === "") {
-                                        const [cardDescription] = card?.skills?.map(skill => skill?.description?.[language].includes(searchDescription));
-                
-                                        if (cardDescription) {
-                                            return (
-                                                <Card 
-                                                    card={card}
-                                                    deckBuilderOn={deckBuilderOn}
-                                                    setDeckBuilderCards={setDeckBuilderCards}
-                                                    handleDeck={handleDeck}
-                                                    newCategoryName={newCategoryName}
-                                                    cardName={cardName}
-                                                />
-                                        )}
-                                    }
+                                    const [cardDescription] = card?.skills?.filter(skill => skill?.description?.[language].toLowerCase().includes(searchDescription.toLowerCase()));
+            
+                                    if (cardDescription) {
+                                        return (
+                                            <Card 
+                                                card={card}
+                                                deckBuilderOn={deckBuilderOn}
+                                                setDeckBuilderCards={setDeckBuilderCards}
+                                                handleDeck={handleDeck}
+                                                newCategoryName={newCategoryName}
+                                                cardName={cardName}
+                                                factionName={name}
+                                            />
+                                    )}
                                 }
                             })
                         )

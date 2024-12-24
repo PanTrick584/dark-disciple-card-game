@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { all } from '../../consts/translations';
 import { AppContext } from '../../context/AppContext';
 
-export const FilterLevels = ({ navigation, activeLevels, setActiveLevels, handleCategory, handleFilter, setSearchDescription}) => {
+export const FilterLevels = ({ navigation, activeLevels, setActiveLevels, handleCategory, handleFilter }) => {
     const { language } = useContext(AppContext);
 
     return(

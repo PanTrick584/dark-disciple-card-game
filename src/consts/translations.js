@@ -39,3 +39,14 @@ export const factions = {
         pl: "krasnoludzkie klany"
     }
 }
+
+export const deckButton = {
+    build: {
+        en: "build new deck",
+        pl: "stwórz talię"
+    },
+    save: {
+        en: "save deck",
+        pl: "zapisz deck"
+    }
+}

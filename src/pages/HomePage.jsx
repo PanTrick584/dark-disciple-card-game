@@ -4,6 +4,7 @@ import { AppContext } from '../context/AppContext';
 import LanguageSelector from '../components/LanguageSelector/LanguageSelector';
 import { mainNav } from '../consts/translations';
 import "./styles/home-page.scss"
+import { Map } from '../components/Map/Map';
 
 const HomePage = () => {
     const [activeDirectory, setActiveDirectory] = useState([]);
@@ -39,6 +40,7 @@ const HomePage = () => {
                     })}
                 </ul>
             </nav>
+            <Map />
             <Outlet />
         </div>
     )
