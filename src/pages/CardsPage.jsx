@@ -3,7 +3,7 @@ import { fetchJsonData } from '../tools/fetchCards';
 import { Link, useLocation } from 'react-router-dom';
 import { handleCategories } from '../tools/handlers/handleCategories';
 import { AppContext } from '../context/AppContext';
-import { all, deckButton } from '../consts/translations';
+import { all, deckButton, deckViewerButton } from '../consts/translations';
 import { CardTitle } from '../components/Card/CardTitle';
 import { NeoBox } from '../containers/NeoBox';
 import { CardDescription } from '../components/Card/CardDescription';
@@ -15,6 +15,7 @@ import { DeckBuilder } from '../components/DeckBuilder/DeckBuilder';
 import "./styles/cards-page.scss"
 import { analyzeDeck } from '../tools/deckData';
 import { addDeckDB } from '../tools/fetchDB';
+import { DeckViewer } from '../components/DeckViewer/DeckViewer';
 
 const CardsFilter = () => {
     const [navigation, setNavigation] = useState(null);
@@ -41,6 +42,7 @@ const CardsFilter = () => {
     const [deckCardsAmount, setDeckCardsAmount] = useState(0);
     const [deckCardsCost, setDeckCardsCost] = useState(0);
     const [deckCardsLevels, setDeckCardsLevels] = useState([]);
+    const [deckViewerOn, setDeckViewerOn] = useState(false);
 
     // SEARCH
     const [searchDescription, setSearchDescription] = useState("");
@@ -82,9 +84,9 @@ const CardsFilter = () => {
         }
     };
 
-    const postDeck = async () => {
+    const postDeck = async (deckToPost) => {
         try {
-            const result = await addDeckDB("http://localhost:3333/api/v1/decks", deckBuilderCards);
+            const result = await addDeckDB("http://localhost:3333/api/v1/decks", deckToPost);
             console.log(result);
         } catch (error) {
             console.error("Failed to fetch data:", error);
@@ -174,12 +176,12 @@ const CardsFilter = () => {
         const cardsIds = deckBuilderCards.map(card => ({id: card.id, amount: card.amount}));
         const deckToPost = {
             name: deckkTitle,
-            factions: deckFactions,
+            factionsData: deckFactions,
             cards: cardsIds
         }
 
         console.log(deckToPost);
-        // return postDeck();
+        return postDeck(deckToPost);
     }
 
     // console.log(deckCardsLevels);
@@ -218,6 +220,17 @@ const CardsFilter = () => {
                     >
                         <span onClick={checkDeck}>{!deckBuilderOn ? deckButton.build[language] : deckButton.save[language]}</span>
                     </div>
+                    <div
+                        className={`button deck-viewer`}
+                        onClick={() => {
+                            if (deckViewerOn) {
+                                // setDeckBuilderCards()
+                            }
+                            setDeckViewerOn(prev => !prev)}
+                        }
+                    >
+                        <span >{!deckViewerOn ? deckViewerButton.view[language] : deckViewerButton.modify[language]}</span>
+                    </div>
                 </nav>
                 {/* CATEGORIES */}
                 <nav className="cards-filter-categories">
@@ -254,6 +267,9 @@ const CardsFilter = () => {
                         setDeckCardsCost={setDeckCardsCost}
                     />
                 }
+                {/* DECK VIEWER */}
+                {deckViewerOn &&
+                    <DeckViewer />}
             </div>
         </div>
     )

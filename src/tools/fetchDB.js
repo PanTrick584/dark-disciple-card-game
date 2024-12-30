@@ -41,6 +41,7 @@ export const patchDB = async (path, updatedData) => {
 };
 
 export const addDeckDB = async (path, deck) => {
+    console.log(deck);
     try {
         const response = await fetch(path, {
             method: 'POST',
@@ -51,7 +52,7 @@ export const addDeckDB = async (path, deck) => {
         });
 
         if (!response.ok) {
-            throw new Error(`Failed to PATCH ${path}: ${response.status}`);
+            throw new Error(`Failed to POST ${path}: ${response.status}`);
         }
 
         const result = await response.json();
@@ -59,6 +60,22 @@ export const addDeckDB = async (path, deck) => {
         return result;
     } catch (error) {
         console.error("Error with PATCH request:", error);
+        throw error;
+    }
+}
+
+export const getDecksDB = async (path) => {
+    try {
+        const response = await fetch(path);
+        if (!response.ok) {
+            throw new Error(`Failed to POST ${path}: ${response.status}`);
+        }
+
+        const result = await response.json();
+        console.log('GET response:', result);
+        return result;
+    } catch (error) {
+        console.error("Error with GET request:", error);
         throw error;
     }
 }

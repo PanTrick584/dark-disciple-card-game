@@ -15,6 +15,8 @@ export const AppProvider = ({ children }) => {
     const [activeFaction, setActiveFaction] = useState("");
     const [deckFactions, setDeckFactions] = useState([]);
     const [deckkTitle, setDeckTitle] = useState("3 to 30 characters :)");
+    const [creadtedDecks, setCreatedDecks] = useState({});
+    const [editedDeck, setEditedDeck] = useState({});
 
 
     return (
@@ -33,7 +35,11 @@ export const AppProvider = ({ children }) => {
                 deckFactions,
                 setDeckFactions,
                 deckkTitle,
-                setDeckTitle
+                setDeckTitle,
+                creadtedDecks,
+                setCreatedDecks,
+                editedDeck,
+                setEditedDeck
             }}>
             {children}
         </AppContext.Provider>

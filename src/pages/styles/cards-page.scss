@@ -16,11 +16,8 @@
         align-items: flex-start;
         gap: 30px;
 
-        ul {
-            width: 100%;
-        }
-
-        .deckbuilder-enabler>span {
+        .deckbuilder-enabler>span,
+        .deck-viewer>span {
             width: max-content;
         }
     }
@@ -37,6 +34,7 @@
 
     &-search {
         position: relative;
+        margin-right: auto;
 
         .search {
             &-text {

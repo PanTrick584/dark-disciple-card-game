@@ -19,7 +19,9 @@ export const DeckBuilder = ({
         deckFactions,
         setDeckFactions,
         deckkTitle,
-        setDeckTitle
+        setDeckTitle,
+        editedDeck,
+        setEditedDeck
     } = useContext(AppContext);
 
     const handleRemoveCard = (e, prev, card) => {
@@ -50,7 +52,7 @@ export const DeckBuilder = ({
 
         return updatedDeck;
     }
-// console.log(deckBuilderCards);
+    console.log(editedDeck);
     return (
         <NeoBox addClass={'deck-builder'} addClassItem={'deck-builder-container'}>
             <div className="deck-builder-box">

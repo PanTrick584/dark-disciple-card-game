@@ -1,9 +1,40 @@
 const mongoose = require("mongoose");
 
+const levelsField = new mongoose.Schema({
+    1: {
+        type: Number,
+        required: false
+    },
+    2: {
+        type: Number,
+        required: false
+    },
+    3: {
+        type: Number,
+        required: false
+    },
+    4: {
+        type: Number,
+        required: false
+    },
+    5: {
+        type: Number,
+        required: false
+    },
+    6: {
+        type: Number,
+        required: false
+    },
+    7: {
+        type: Number,
+        required: false
+    }
+}, { _id: false });
+
 const TranslationField = new mongoose.Schema({
     id: {
         type: Number,
-        required: true,
+        required: false,
     },
     en: {
         type: String,
@@ -15,11 +46,10 @@ const TranslationField = new mongoose.Schema({
     },
 }, { _id: false }); // Prevents automatic `_id` generation for subdocuments
 
-// Define skills schema
 const CardSchema = new mongoose.Schema({
     id: {
         type: String,
-        required: true,
+        required: false,
     },
     amount: {
         type: Number,
@@ -35,12 +65,36 @@ const DeckSchema = new mongoose.Schema({
         minlength: [3, "Deck name must be at least 3 characters long"],
         maxlength: [30, "Deck name cannot exceed 30 characters"],
     },
-    factions: [TranslationField],
+    factionsData: [
+        {
+            faction: TranslationField,
+            amount: {
+                type: Number,
+                required: [true, "Please give us amount of faction cards in deck"]
+            },
+            levels: levelsField
+        }
+
+    ],
     cards: {
-        type: [CardSchema],
+        type: [
+            {
+                id: {
+                    type: String,
+                    required: true,
+                },
+                amount: {
+                    type: Number,
+                    required: true
+                }
+            }
+        ],
         validate: {
             validator: function (v) {
-                return Array.isArray(v) && v.length === 40;
+                console.log(v);
+                const cardsAmount = v.reduce((sum, card) => sum + card.amount, 0)
+                console.log(cardsAmount);
+                return Array.isArray(v) && cardsAmount === 40;
             },
             message: "A deck must have at least one card.",
         },

@@ -47,6 +47,17 @@ export const deckButton = {
     },
     save: {
         en: "save deck",
-        pl: "zapisz deck"
+        pl: "zapisz talię"
+    }
+}
+
+export const deckViewerButton = {
+    view: {
+        en: "view decks",
+        pl: "przejrzyj talie"
+    },
+    modify: {
+        en: "modify deck",
+        pl: "ulepsz talię"
     }
 }

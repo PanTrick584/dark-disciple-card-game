@@ -1,4 +1,4 @@
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useLocation } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import { AppContext } from '../context/AppContext';
 import LanguageSelector from '../components/LanguageSelector/LanguageSelector';
@@ -9,6 +9,8 @@ import { Map } from '../components/Map/Map';
 const HomePage = () => {
     const [activeDirectory, setActiveDirectory] = useState([]);
     const { language } = useContext(AppContext);
+    const location = useLocation();
+    console.log(location);
 
     const mainNavigation = {
         cards: {
@@ -20,10 +22,13 @@ const HomePage = () => {
             path: "decks"
         }
     }
+
     return (
         <div className='main-container'>
             <div className="main-header">
-                <h1 className='main-header-text'>Dark Disciple: Card Game</h1>
+                <Link to={`/`} className='nav-link'>
+                    <h1 className='main-header-text'>Dark Disciple: Card Game</h1>
+                </Link>
                 <LanguageSelector />
             </div>
 
@@ -40,7 +45,7 @@ const HomePage = () => {
                     })}
                 </ul>
             </nav>
-            <Map />
+            {location.pathname === "/" ? <Map /> : ""}
             <Outlet />
         </div>
     )
