@@ -28,7 +28,7 @@ const CardsFilter = () => {
 
     const location = useLocation();
     const { dataLocation, name } = location.state || {};
-    const { 
+    const {
         language,
         deckFactions,
         setDeckFactions,
@@ -164,16 +164,16 @@ const CardsFilter = () => {
         if (deckCardsAmount !== 40) return;
 
         if (deckFactions.length === 2) {
-            const toLessCards =  deckFactions.find(faction => faction.amount < 20);
+            const toLessCards = deckFactions.find(faction => faction.amount < 20);
             if (toLessCards) return console.log("za mało kart z 2 frkcji");
         }
-        
-        if (deckFactions.length === 3 ) {
-            const toLessCards =  deckFactions.find(faction => faction.amount < 10);
+
+        if (deckFactions.length === 3) {
+            const toLessCards = deckFactions.find(faction => faction.amount < 10);
             if (toLessCards) return console.log("za mało kart z 3 frakcji");
         }
 
-        const cardsIds = deckBuilderCards.map(card => ({id: card.id, amount: card.amount}));
+        const cardsIds = deckBuilderCards.map(card => ({ id: card.id, amount: card.amount }));
         const deckToPost = {
             name: deckkTitle,
             factionsData: deckFactions,
@@ -226,7 +226,8 @@ const CardsFilter = () => {
                             if (deckViewerOn) {
                                 // setDeckBuilderCards()
                             }
-                            setDeckViewerOn(prev => !prev)}
+                            setDeckViewerOn(prev => !prev)
+                        }
                         }
                     >
                         <span >{!deckViewerOn ? deckViewerButton.view[language] : deckViewerButton.modify[language]}</span>
@@ -269,7 +270,10 @@ const CardsFilter = () => {
                 }
                 {/* DECK VIEWER */}
                 {deckViewerOn &&
-                    <DeckViewer />}
+                    <DeckViewer
+                        setDeckBuilderOn={setDeckBuilderOn}
+                        setDeckViewerOn={setDeckViewerOn}
+                    />}
             </div>
         </div>
     )

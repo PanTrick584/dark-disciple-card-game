@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { NeoBox } from "../../containers/NeoBox"
 import { CardTitle } from "../Card/CardTitle";
 import "./styles/deck-builder.scss"
@@ -23,6 +23,11 @@ export const DeckBuilder = ({
         editedDeck,
         setEditedDeck
     } = useContext(AppContext);
+
+    useEffect(() => {
+        if (editedDeck.cards === 0) return;
+        setDeckBuilderCards(editedDeck?.cards)
+    }, [editedDeck])
 
     const handleRemoveCard = (e, prev, card) => {
         const removedCardIndex = prev.findIndex(prevCard => prevCard.id === card?.id);
@@ -52,7 +57,9 @@ export const DeckBuilder = ({
 
         return updatedDeck;
     }
+
     console.log(editedDeck);
+
     return (
         <NeoBox addClass={'deck-builder'} addClassItem={'deck-builder-container'}>
             <div className="deck-builder-box">
@@ -63,17 +70,17 @@ export const DeckBuilder = ({
             <div className="deck-builder-box">
                 <div className="deck-builder-counter">{`${deckCardsAmount ?? 0} / 40`}</div>
                 <div className="deck-builder-cost">Total cost: {`${deckCardsCost ?? 0}`}</div>
-                <div className="deck-builder-sugestions" onClick={()=> setShowInfo(prev => !prev)}>{showInfo ? "x" : "?"}</div>
+                <div className="deck-builder-sugestions" onClick={() => setShowInfo(prev => !prev)}>{showInfo ? "x" : "?"}</div>
             </div>
-            {showInfo && 
+            {showInfo &&
                 <div className="deck-builder-sugestions-box">
                     {deckFactions.map((faction, _, arr) => {
-                        return(
+                        return (
                             <div className="sugestions-faction">
                                 {faction.faction[language].replace("-", " ")}: {faction.amount} / {arr.length === 1 ? 40 : arr.length === 2 ? 20 : "≥10"}
                                 {Object.entries(faction.levels).map(([key, value]) => {
                                     const numKey = Number(key);
-                                    return(
+                                    return (
                                         <div className="sugestions-faction-levels">
                                             {`Cost: ${numKey} Amount: ${value}`} {numKey === 1 ? "(sugested 12 - 16)" : numKey === 2 ? "(suggested 8 - 12)" : numKey === 3 ? "(suggested 6 - 10)" : numKey === 4 ? "(sugested 5 - 8)" : numKey === 5 ? "(sugested 4-6)" : numKey === 6 ? "(suggested 3-5)" : "(suggested 2 - 3)"}
                                         </div>

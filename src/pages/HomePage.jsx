@@ -10,7 +10,6 @@ const HomePage = () => {
     const [activeDirectory, setActiveDirectory] = useState([]);
     const { language } = useContext(AppContext);
     const location = useLocation();
-    console.log(location);
 
     const mainNavigation = {
         cards: {

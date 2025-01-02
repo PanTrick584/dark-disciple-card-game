@@ -18,7 +18,6 @@ export const AppProvider = ({ children }) => {
     const [creadtedDecks, setCreatedDecks] = useState({});
     const [editedDeck, setEditedDeck] = useState({});
 
-
     return (
         <AppContext.Provider
             value={{

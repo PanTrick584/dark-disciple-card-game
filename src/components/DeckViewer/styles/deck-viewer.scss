@@ -1,0 +1,46 @@
+.decks-viewer {
+    position: relative;
+    flex: 0 0 20%;
+
+    &-name {
+        width: max-content;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        // margin-bottom: 10px;
+
+        .name-details {
+            flex: 0 0 15%;
+        }
+    }
+
+    &-container {
+        position: sticky;
+        top: 0;
+        left: 0;
+        font-size: 12px;
+    }
+
+    &-factions {
+        display: flex;
+        width: max-content;
+        gap: 15px;
+        transition: all .2s;
+
+        &.show {
+            height: auto;
+            opacity: 1;
+            visibility: visible;
+            margin-top: 10px;
+        }
+
+        &.hide {
+            height: 0;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        &-container {}
+    }
+}
