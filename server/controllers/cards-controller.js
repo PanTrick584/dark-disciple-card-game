@@ -2,12 +2,30 @@ const Cards = require("../models/CardsModel");
 
 const getAllCards = async (req, res) => {
     const { faction, level } = req.query;
+    if (!faction || !level) return;
     const cardsCollection = await Cards.find({ "faction.en": faction, level: Number(level) }).sort('createdAt');
     return res.status(200).json({ data: cardsCollection })
 }
+const getSingleCard = () => { }
 
-const getSingleCard = (req, res) => {
+const getChoosenCards = async (req, res) => {
+    try {
+        const { ids } = req.body;
 
+        console.log(ids);
+        if (!Array.isArray(ids) || ids.length === 0) {
+            return res.status(400).json({ message: 'Invalid or empty ids array.' });
+        }
+
+        // Fetch cards from the database
+        const cards = await Cards.find({ _id: { $in: ids } });
+
+        // Send the response
+        res.status(200).json({ data: cards });
+    } catch (error) {
+        console.error('Error fetching cards:', error);
+        res.status(500).json({ message: 'Internal server error.' });
+    }
 }
 
 const updateCard = async (req, res) => {
@@ -159,5 +177,6 @@ module.exports = {
     updateCard,
     createCard,
     deleteCard,
-    updateAllCards
+    updateAllCards,
+    getChoosenCards
 }

@@ -25,8 +25,16 @@ export const DeckBuilder = ({
     } = useContext(AppContext);
 
     useEffect(() => {
-        if (editedDeck.cards === 0) return;
-        setDeckBuilderCards(editedDeck?.cards)
+        if (editedDeck.cards.length === 0) return;
+        fetch('http://localhost:3333/api/v1/cards/choosen', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify( editedDeck?.cards ),
+        })
+            .then(response => response.json())
+            .then(data => setDeckBuilderCards(data))
+            .catch(error => console.error('Error:', error));
+        
     }, [editedDeck])
 
     const handleRemoveCard = (e, prev, card) => {
