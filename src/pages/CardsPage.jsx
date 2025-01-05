@@ -14,7 +14,7 @@ import { DeckBuilder } from '../components/DeckBuilder/DeckBuilder';
 
 import "./styles/cards-page.scss"
 import { analyzeDeck } from '../tools/deckData';
-import { addDeckDB } from '../tools/fetchDB';
+import { addDeckDB, updateDeckDB } from '../tools/fetchDB';
 import { DeckViewer } from '../components/DeckViewer/DeckViewer';
 
 const CardsFilter = () => {
@@ -33,16 +33,26 @@ const CardsFilter = () => {
         deckFactions,
         setDeckFactions,
         deckkTitle,
-        setDeckTitle
+        setDeckTitle,
+        editedDeckId,
+        setEditedDeckId,
+        deckBuilderOn,
+        setDeckBuilderOn,
+        deckViewerOn,
+        setDeckViewerOn,
+        deckBuilderCards,
+        setDeckBuilderCards,
+        deckCardsAmount,
+        setDeckCardsAmount
     } = useContext(AppContext);
 
     //DECKBUILDER
-    const [deckBuilderOn, setDeckBuilderOn] = useState(false);
-    const [deckBuilderCards, setDeckBuilderCards] = useState([]);
-    const [deckCardsAmount, setDeckCardsAmount] = useState(0);
+    // const [deckBuilderOn, setDeckBuilderOn] = useState(false);
+    // const [deckBuilderCards, setDeckBuilderCards] = useState([]);
+    // const [deckCardsAmount, setDeckCardsAmount] = useState(0);
     const [deckCardsCost, setDeckCardsCost] = useState(0);
     const [deckCardsLevels, setDeckCardsLevels] = useState([]);
-    const [deckViewerOn, setDeckViewerOn] = useState(false);
+    // const [deckViewerOn, setDeckViewerOn] = useState(false);
 
     // SEARCH
     const [searchDescription, setSearchDescription] = useState("");
@@ -87,6 +97,15 @@ const CardsFilter = () => {
     const postDeck = async (deckToPost) => {
         try {
             const result = await addDeckDB("http://localhost:3333/api/v1/decks", deckToPost);
+            console.log(result);
+        } catch (error) {
+            console.error("Failed to fetch data:", error);
+        }
+    }
+
+    const updateDeck = async (deckToPost) => {
+        try {
+            const result = await updateDeckDB(`http://localhost:3333/api/v1/decks/${deckToPost._id}`, deckToPost);
             console.log(result);
         } catch (error) {
             console.error("Failed to fetch data:", error);
@@ -178,6 +197,11 @@ const CardsFilter = () => {
             name: deckkTitle,
             factionsData: deckFactions,
             cards: cardsIds
+        }
+
+        if (editedDeckId) {
+            deckToPost._id = editedDeckId;
+            return updateDeck(deckToPost);
         }
 
         console.log(deckToPost);

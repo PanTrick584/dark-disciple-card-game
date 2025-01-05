@@ -4,7 +4,7 @@ import { AppContext } from "../../context/AppContext";
 import { NeoBox } from "../../containers/NeoBox";
 import "./styles/deck-viewer.scss"
 
-export const DeckViewer = ({ setDeckBuilderOn, setDeckViewerOn }) => {
+export const DeckViewer = () => {
     const [decksData, setDecksData] = useState([]);
     const [showDetails, setShowDetails] = useState(false);
     const {
@@ -12,7 +12,11 @@ export const DeckViewer = ({ setDeckBuilderOn, setDeckViewerOn }) => {
         creadtedDecks,
         setCreatedDecks,
         editedDeck,
-        setEditedDeck
+        setEditedDeck,
+        deckBuilderOn,
+        setDeckBuilderOn,
+        deckViewerOn,
+        setDeckViewerOn,
     } = useContext(AppContext);
 
     useEffect(() => {
@@ -41,7 +45,7 @@ export const DeckViewer = ({ setDeckBuilderOn, setDeckViewerOn }) => {
                                 onClick={() => {
                                     setEditedDeck(deck)
                                     setDeckBuilderOn(prev => !prev);
-                                    setDeckViewerOn(prev => !prev);
+                                    setDeckViewerOn(false);
                                 }} >
                                 {deck?.name} <span className="name-details" onClick={() => setShowDetails(prev => !prev)}>?</span>
                             </div>
@@ -65,14 +69,11 @@ export const DeckViewer = ({ setDeckBuilderOn, setDeckViewerOn }) => {
                                                 })}
                                             </div>
                                         </div>
-
                                     )
                                 })}
                             </div>
                         </div>
                     </ NeoBox>
-
-
                 )
             })}
         </div>

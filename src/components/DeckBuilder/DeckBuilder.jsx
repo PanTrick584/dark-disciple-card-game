@@ -6,10 +6,10 @@ import { AppContext } from "../../context/AppContext";
 import { analyzeDeck } from "../../tools/deckData";
 
 export const DeckBuilder = ({
-    deckCardsAmount,
+    // deckCardsAmount,
     deckBuilderCards,
     setDeckBuilderCards,
-    setDeckCardsAmount,
+    // setDeckCardsAmount,
     deckCardsCost,
     setDeckCardsCost
 }) => {
@@ -21,21 +21,47 @@ export const DeckBuilder = ({
         deckkTitle,
         setDeckTitle,
         editedDeck,
-        setEditedDeck
+        setEditedDeck,
+        editedDeckId,
+        setEditedDeckId,
+        deckCardsAmount,
+        setDeckCardsAmount
     } = useContext(AppContext);
 
     useEffect(() => {
-        if (editedDeck.cards.length === 0) return;
-        fetch('http://localhost:3333/api/v1/cards/choosen', {
+        console.log(editedDeck);
+        if (Object.keys(editedDeck).length === 0) return;
+
+        const ids = editedDeck.cards.map(card => card.id);
+        setEditedDeckId(editedDeck._id);
+        fetch('http://localhost:3333/api/v1/cards/chosen', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify( editedDeck?.cards ),
+            body: JSON.stringify({ ids }),
         })
             .then(response => response.json())
-            .then(data => setDeckBuilderCards(data))
+            .then(data => {
+                const newEditDeck = editedDeck.cards.map(deckCard => {
+                    const cardData = data.data.find(card => card._id === deckCard.id);
+                    return cardData ? { id: deckCard.id, amount: deckCard.amount, data: cardData, level: cardData.level } : null;
+                }).filter(entry => entry !== null);
+                setDeckBuilderCards(newEditDeck);
+                checkAmountOfCards(newEditDeck);
+                checkCostOfCards(newEditDeck);
+            })
             .catch(error => console.error('Error:', error));
-        
+
     }, [editedDeck])
+
+    const checkAmountOfCards = (deck) => {
+        const totalCards = deck.reduce((sum, card) => sum + card.amount, 0);
+        setDeckCardsAmount(totalCards);
+    }
+
+    const checkCostOfCards = (deck) => {
+        const totalCost = deck.reduce((sum, card) => sum + (card.level * card.amount), 0);
+        setDeckCardsCost(totalCost);
+    }
 
     const handleRemoveCard = (e, prev, card) => {
         const removedCardIndex = prev.findIndex(prevCard => prevCard.id === card?.id);
@@ -66,7 +92,8 @@ export const DeckBuilder = ({
         return updatedDeck;
     }
 
-    console.log(editedDeck);
+    console.log(deckBuilderCards);
+    console.log(editedDeckId);
 
     return (
         <NeoBox addClass={'deck-builder'} addClassItem={'deck-builder-container'}>

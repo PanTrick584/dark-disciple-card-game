@@ -87,7 +87,8 @@ const DeckSchema = new mongoose.Schema({
                     type: Number,
                     required: true
                 }
-            }
+            },
+            { _id: false }
         ],
         validate: {
             validator: function (v) {

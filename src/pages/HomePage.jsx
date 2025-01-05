@@ -12,6 +12,10 @@ const HomePage = () => {
     const location = useLocation();
 
     const mainNavigation = {
+        game: {
+            translate: "game",
+            path: "game"
+        },
         cards: {
             translate: mainNav.cards?.[language],
             path: "cards"

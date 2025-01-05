@@ -15,8 +15,16 @@ export const AppProvider = ({ children }) => {
     const [activeFaction, setActiveFaction] = useState("");
     const [deckFactions, setDeckFactions] = useState([]);
     const [deckkTitle, setDeckTitle] = useState("3 to 30 characters :)");
+    // DECK BUILDER
+    const [deckBuilderOn, setDeckBuilderOn] = useState(false);
+    const [deckBuilderCards, setDeckBuilderCards] = useState([]);
+    const [deckCardsAmount, setDeckCardsAmount] = useState(0);
+
     const [creadtedDecks, setCreatedDecks] = useState({});
     const [editedDeck, setEditedDeck] = useState({});
+    const [editedDeckId, setEditedDeckId] = useState("");
+    // DECK VIEWER
+    const [deckViewerOn, setDeckViewerOn] = useState(false);
 
     return (
         <AppContext.Provider
@@ -38,7 +46,17 @@ export const AppProvider = ({ children }) => {
                 creadtedDecks,
                 setCreatedDecks,
                 editedDeck,
-                setEditedDeck
+                setEditedDeck,
+                editedDeckId,
+                setEditedDeckId,
+                deckViewerOn,
+                setDeckViewerOn,
+                deckBuilderOn,
+                setDeckBuilderOn,
+                deckBuilderCards,
+                setDeckBuilderCards,
+                deckCardsAmount,
+                setDeckCardsAmount
             }}>
             {children}
         </AppContext.Provider>

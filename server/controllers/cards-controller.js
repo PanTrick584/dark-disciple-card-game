@@ -12,7 +12,7 @@ const getChoosenCards = async (req, res) => {
     try {
         const { ids } = req.body;
 
-        console.log(ids);
+        // console.log(req.body);
         if (!Array.isArray(ids) || ids.length === 0) {
             return res.status(400).json({ message: 'Invalid or empty ids array.' });
         }
@@ -20,6 +20,7 @@ const getChoosenCards = async (req, res) => {
         // Fetch cards from the database
         const cards = await Cards.find({ _id: { $in: ids } });
 
+        console.log(cards);
         // Send the response
         res.status(200).json({ data: cards });
     } catch (error) {

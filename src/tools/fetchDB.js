@@ -64,6 +64,30 @@ export const addDeckDB = async (path, deck) => {
     }
 }
 
+export const updateDeckDB = async (path, deck) => {
+    try {
+        const response = await fetch(path, {
+            method: 'PATCH', // Use the correct HTTP method
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(deck),
+        });
+
+        if (!response.ok) {
+            const errorText = await response.text(); // Get server error message if any
+            throw new Error(`Failed to PATCH ${path}: ${response.status} - ${errorText}`);
+        }
+
+        const result = await response.json();
+        console.log('PATCH response:', result);
+        return result;
+    } catch (error) {
+        console.error("Error with PATCH request:", error.message);
+        throw error;
+    }
+};
+
 export const getDecksDB = async (path) => {
     try {
         const response = await fetch(path);

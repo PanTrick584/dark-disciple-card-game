@@ -13,7 +13,7 @@ router
     .route('/')
     .get(getAllDecks)
     .post(createDeck)
-//     .patch(updateAllCards)
+// .patch(updateDeck)
 
 router
     .route('/:id')
