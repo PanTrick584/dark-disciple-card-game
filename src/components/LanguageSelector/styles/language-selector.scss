@@ -1,0 +1,46 @@
+@use "../../../styles/colors.scss" as colors;
+
+.language-selector {
+    height: min-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+
+    &::after {
+        content: "▼";
+        font-size: 10px;
+        bottom: 8px;
+        right: 10px;
+        position: absolute;
+        color: colors.$textColor;
+    }
+
+    label {
+        width: max-content;
+        margin-bottom: 12px;
+    }
+
+    label,
+    select {
+        font-size: 10px;
+        text-transform: uppercase;
+        color: colors.$textColor;
+    }
+
+    select {
+        width: 100%;
+        height: min-content;
+        border: none;
+        outline: none;
+        background-color: colors.$backgroundColorHover;
+        padding: 10px;
+        -webkit-appearance: none;
+        appearance: none;
+
+        option {
+            // background-color: color.$backgroundColorHover;
+        }
+    }
+}

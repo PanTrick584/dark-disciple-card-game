@@ -20,7 +20,9 @@ const GamePage = () => {
     console.log(deckViewerOn);
     return (
         <div className="game">
-            {deckViewerOn && <DeckViewer />}
+            <div className="game-container">
+                {deckViewerOn && <DeckViewer />}
+            </div>
             {Object.keys(editedDeck).length !== 0 && <GameBoard />}
         </div>
     )

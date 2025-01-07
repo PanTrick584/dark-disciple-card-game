@@ -1,0 +1,75 @@
+@use "../../../styles/colors.scss" as colors;
+
+.cards-filter {
+    display: flex;
+    flex-direction: column;
+
+    &-container {
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 20px;
+        row-gap: 20px;
+    }
+
+    &-levels {
+        display: flex;
+        align-items: flex-start;
+        gap: 30px;
+
+        .deckbuilder-enabler>span,
+        .deck-viewer>span {
+            width: max-content;
+        }
+    }
+
+    &-categories {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+
+        ul {
+            width: auto;
+        }
+    }
+
+    &-search {
+        position: relative;
+        margin-right: auto;
+
+        .search {
+            &-text {
+                padding: 15px;
+                border: none;
+
+            }
+
+            &-clear {
+                position: absolute;
+                top: 50%;
+                right: 16px;
+                padding: 2px 10px;
+                transform: translateY(-50%);
+                cursor: pointer;
+                border-radius: 100%;
+
+                &:hover {
+                    background-color: colors.$textColor;
+                    color: colors.$backgroundColorHover;
+                }
+            }
+        }
+
+
+    }
+}
+
+.cards-container {
+    position: relative;
+    display: flex;
+    height: 100%;
+
+    .cards-grid {
+        display: flex;
+
+    }
+}

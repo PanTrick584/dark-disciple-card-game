@@ -7,7 +7,7 @@ import { AppContext } from "../../context/AppContext"
 import "./styles/card.scss"
 import "./styles/card-popup.scss"
 
-export const Card = ({card, deckBuilderOn, setDeckBuilderCards, handleDeck, newCategoryName, cardName, factionName}) => {
+export const Card = ({ card, deckBuilderOn, setDeckBuilderCards, handleDeck, newCategoryName, cardName, factionName }) => {
     const { language } = useContext(AppContext);
     let factionColors;
     const theme = Object.values(themes).find(theme => theme.faction[language] === factionName);
@@ -19,12 +19,12 @@ export const Card = ({card, deckBuilderOn, setDeckBuilderCards, handleDeck, newC
         };
     }
 
-    return(
+    return (
         <div className="card">
             <div className="card-popup">
                 {!deckBuilderOn ?
                     <div className="card-popup-edit">
-                        <Link to={`/cards/${newCategoryName}/${cardName}`} state={card} >EDIT</Link>
+                        {/* <Link to={`/cards/${newCategoryName}/${cardName}`} state={card} >EDIT</Link> */}
                     </div> :
                     <div className="card-popup-add" onClick={() => setDeckBuilderCards(prev => handleDeck(prev, card))} >ADD</div>
                 }

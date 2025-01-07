@@ -8,14 +8,18 @@ span {
 
 .neo-box,
 .button {
-    cursor: pointer;
-    transition: all .2s;
-    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    color: colors.$textColor;
     background: colors.$backgroundColor;
+    border-radius: 15px;
+    text-transform: uppercase;
     box-shadow: inset 3px 3px 3px #1f1f1f,
         inset -3px -3px 3px #292929;
-    color: colors.$textColor;
-
+    transition: all .2s;
+    cursor: pointer;
 
     &:focus,
     &:active,
@@ -26,6 +30,7 @@ span {
     }
 
     &:hover {
+
         a,
         span {
             color: colors.$textColorHover;
@@ -34,6 +39,7 @@ span {
 
     &:focus,
     &:active {
+
         a,
         span {
             color: colors.$textColorActive;
@@ -44,14 +50,15 @@ span {
     span,
     &-item,
     &select {
-        padding: 10px 20px;
-        display: block;
-        // height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         width: 100%;
         text-transform: uppercase;
     }
 
     &.small {
+
         a,
         span {
             font-size: 10px;
@@ -60,6 +67,8 @@ span {
     }
 
     &.active {
+        color: colors.$textColorActive;
+
         a,
         span {
             color: colors.$textColorActive;

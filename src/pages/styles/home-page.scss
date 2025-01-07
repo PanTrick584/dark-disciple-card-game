@@ -1,11 +1,62 @@
 @use "../../styles//colors.scss" as color;
 
-.main-container {
-    padding: 30px;
+.main {
+    min-height: 100vh;
 
-    .main-header {
+    .popup {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
         display: flex;
         align-items: center;
+        justify-content: center;
+        background-color: rgba(color.$backgroundColor, .8);
+        z-index: 20;
+
+        .main-header-text {
+            cursor: pointer;
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+    }
+
+    &-container {
+        min-height: 100vh;
+        width: 80%;
+        position: relative;
+        margin: 0 auto;
+
+        .home-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    &-settings {
+        width: 45px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        &-button {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            cursor: pointer;
+            z-index: 30;
+        }
+    }
+
+    &-header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
         &-text {
             font-size: 48px;
@@ -13,15 +64,21 @@
             text-transform: uppercase;
             color: color.$textColor;
         }
+    }
 
-        .language-selector {
-            label {
-                width: max-content;
-            }
+    &-nav {
+        margin-top: 40px;
 
-            select {
-                min-width: 120px;
-                width: max-content;
+        ul {
+            justify-content: space-between;
+
+            li {
+                flex: 0 0 30%;
+                height: 120px;
+
+                span {
+                    text-align: center;
+                }
             }
         }
     }

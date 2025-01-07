@@ -1,55 +1,84 @@
-import { Link, Outlet, useLocation } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import { AppContext } from '../context/AppContext';
-import LanguageSelector from '../components/LanguageSelector/LanguageSelector';
+import { usePaths } from '../context/pathsContext';
+import GamePage from './GamePage';
+import CardsPage from './CardsPage';
+import DecksPage from './DecksPage';
+import { LanguageSelector } from '../components/LanguageSelector/LanguageSelector';
+import { MainHeader } from '../components/MainHeader/MainHeader';
 import { mainNav } from '../consts/translations';
 import "./styles/home-page.scss"
-import { Map } from '../components/Map/Map';
 
 const HomePage = () => {
     const [activeDirectory, setActiveDirectory] = useState([]);
-    const { language } = useContext(AppContext);
-    const location = useLocation();
+    const {
+        language,
+        settingsON,
+        setSettingsOn,
+    } = useContext(AppContext);
+
+    const { mainPath, setMainPath } = usePaths();
 
     const mainNavigation = {
         game: {
             translate: "game",
-            path: "game"
+            path: "game",
+            component: <GamePage />
         },
         cards: {
             translate: mainNav.cards?.[language],
-            path: "cards"
+            path: "cards",
+            component: <CardsPage />
         },
         decks: {
             translate: mainNav.decks?.[language],
-            path: "decks"
+            path: "decks",
+            component: <DecksPage />
         }
     }
 
     return (
-        <div className='main-container'>
-            <div className="main-header">
-                <Link to={`/`} className='nav-link'>
-                    <h1 className='main-header-text'>Dark Disciple: Card Game</h1>
-                </Link>
-                <LanguageSelector />
+        <div className='main'>
+            {settingsON &&
+                <div className="main-settings popup">
+                    <MainHeader />
+                    <LanguageSelector />
+                </div>}
+            <div
+                className="main-settings-button"
+                onClick={() => setSettingsOn(prev => !prev)}
+            >
+                SETTINGS
             </div>
+            <div className="main-container">
+                {
+                    mainPath === "" &&
+                    <div className='home-page'>
+                        <MainHeader />
+                        <nav className='main-nav'>
+                            <ul>
+                                {Object.entries(mainNavigation).map(([key, value]) => {
+                                    return (
+                                        <li
+                                            key={key}
+                                            className="neo-box"
+                                            onClick={() => setMainPath(value.path)}
+                                        >
+                                            <span>{value.translate}</span>
+                                        </li>
+                                    )
+                                })}
+                            </ul>
+                        </nav>
+                    </div>
+                }
 
-            <nav className='main-nav'>
-                <ul>
-                    {Object.entries(mainNavigation).map(([key, value]) => {
-                        return (
-                            <li key={key} className={`button${activeDirectory === key ? " active" : ""}`} onClick={() => setActiveDirectory(key)}>
-                                <Link to={`/${value?.path}`} className='nav-link'>
-                                    {value.translate}
-                                </Link>
-                            </li>
-                        )
-                    })}
-                </ul>
-            </nav>
-            {location.pathname === "/" ? <Map /> : ""}
-            <Outlet />
+                {Object.entries(mainNavigation).map(([_, value]) => {
+                    return (
+                        mainPath === value.path && value.component
+                    )
+                })}
+            </div>
         </div>
     )
 }

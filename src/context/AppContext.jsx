@@ -6,6 +6,8 @@ export const AppContext = createContext();
 
 // Create a provider component
 export const AppProvider = ({ children }) => {
+    // MAIN
+    const [settingsON, setSettingsOn] = useState(false);
     const [userData, setUserData] = useState("siema");
     const [loadings, setLoadings] = useState({
         adminPageLIst: true
@@ -29,6 +31,8 @@ export const AppProvider = ({ children }) => {
     return (
         <AppContext.Provider
             value={{
+                settingsON,
+                setSettingsOn,
                 userData,
                 setUserData,
                 loadings,

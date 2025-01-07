@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
 import { AppContext } from "../../context/AppContext";
-import "../../styles/selectors.scss"
+import "./styles/language-selector.scss"
 
-const LanguageSelector = () => {
+export const LanguageSelector = () => {
   // const [selectedLanguage, setSelectedLanguage] = useState("en");
   const { language, setLanguage } = useContext(AppContext);
 
@@ -39,4 +39,4 @@ const LanguageSelector = () => {
   );
 };
 
-export default LanguageSelector;
+// export default LanguageSelector;
