@@ -10,11 +10,22 @@ import { fetchChosenCards } from '../../api/fetchCards';
 // STYLES
 import "./styles/game-board.scss"
 
-export const GameBoard = ({ player, deck, yourTurn, switchTurns }) => {
+export const GameBoard = ({
+    player,
+    deck,
+    yourTurn,
+    switchTurns,
+    ownBoard, setOwnBoard,
+    opponentBoard, setOpponentBoard,
+    ownPoints, setOwnPoints,
+    oponentPoints, setOponentPoints,
+    ownCost, setOwnCost,
+    opponentCost, setOponentCost
+}) => {
     // BASE GAME
     const [mulligan, setMulligan] = useState(0);
     const [cost, setCost] = useState({ current: 0, total: 7 });
-    const [boardCards, setBoardCards] = useState([]);
+    // const [boardCards, setBoardCards] = useState([]);
     const [boardPoints, setBoardPoints] = useState(0);
     const [showInfo, setShowInfo] = useState(false);
     const [turns, setTurns] = useState({ current: 0, total: 14 })
@@ -166,42 +177,80 @@ export const GameBoard = ({ player, deck, yourTurn, switchTurns }) => {
     }
 
     const playCard = (card, handCardId) => {
-        const isSpy = card.category?.some(category => category?.en === "spy");
-        console.log(`Is spy? ${isSpy}`);
-        const newCost = cost.current + card.level;
+        const isSpy = card.category?.some((category) => category?.en === "spy");
 
-        if (newCost > 7) {
-            handlePopup("Not enought Cost Points!")
-            return
+        if (isSpy) {
+            if (!yourTurn) {
+                const newCost = cost.current + card.level;
+
+                setOwnBoard((prev) => [...prev, card]);
+                setOponentCost((prev) => ({
+                    ...prev,
+                    current: newCost,
+                }));
+                const newBoardCards = [...ownBoard, card];
+                const newPoints = newBoardCards.reduce((sum, c) => sum + c.strength, 0);
+                setOwnPoints(newPoints);
+                // add separate own and oponents cost and points counter
+                return;
+            } else {
+                setOpponentBoard((prev) => [...prev, card]);
+            }
+            // Play spy card on opponent's board
+            handlePopup("Spy card played on opponent's board!");
+
+            // Deduct card level from cost
+            const newCost = cost.current + card.level;
+            if (newCost > 7) {
+                handlePopup("Not enough Cost Points!");
+                return;
+            }
+            console.log(newCost);
+            setCost((prev) => ({
+                ...prev,
+                current: newCost,
+            }));
+
+            // Remove the card from the player's hand
+            const newHand = currentHand.filter((_, id) => id !== handCardId);
+            setCurrentHand(newHand);
+
+            // Switch turns if cost reaches the limit
+            if (newCost === 7) {
+                handlePopup("End of turn!");
+                switchTurns();
+            }
+
+            return;
         }
 
-        // Update all states in parallel rather than nested
-        const isExactlySeven = newCost === 7;
+        // Existing logic for regular cards
+        const newCost = cost.current + card.level;
+        if (newCost > 7) {
+            handlePopup("Not enough Cost Points!");
+            return;
+        }
 
-        // Update board cards
-        const newBoardCards = [...boardCards, card];
-        setBoardCards(newBoardCards);
+        const newBoardCards = [...ownBoard, card];
+        setOwnBoard(newBoardCards);
 
-        // Update points
         const newPoints = newBoardCards.reduce((sum, c) => sum + c.strength, 0);
         setBoardPoints(newPoints);
 
-        // Update hand
         const newHand = currentHand.filter((_, id) => id !== handCardId);
         setCurrentHand(newHand);
 
-        // Update cost
-        setCost(prev => ({
+        setCost((prev) => ({
             ...prev,
-            current: newCost
+            current: newCost,
         }));
 
-        // Handle end of turn if cost is exactly 7
-        if (isExactlySeven) {
-            handlePopup("End of turn!")
+        if (newCost === 7) {
+            handlePopup("End of turn!");
             switchTurns();
         }
     };
+
 
     return (
         <div className="game-board">
@@ -243,16 +292,34 @@ export const GameBoard = ({ player, deck, yourTurn, switchTurns }) => {
                         onDragOver={(e) => e.preventDefault()}
                         onDrop={(e) => {
                             e.preventDefault();
-
+                            const draggedData = JSON.parse(e.dataTransfer.getData("card"));
+                            const { card } = draggedData;
                             if (yourTurn) {
                                 // Parse the dragged card data
-                                const draggedData = JSON.parse(e.dataTransfer.getData("card"));
-                                playCard(draggedData.card, draggedData.cardId);
+
+
+                                if (card.category?.some(category => category?.en === "spy")) {
+                                    handlePopup("Cannot play spy cards on your board!");
+                                    return;
+                                }
+
+                                playCard(card, draggedData.cardId);
+                            } else {
+                                // console.log(card);
+                                if (card.category?.some(category => category?.en === "spy")) {
+                                    console.log("spy??");
+                                    // const draggedData = JSON.parse(e.dataTransfer.getData("card"));
+                                    // const { card } = draggedData;
+
+                                    playCard(card, draggedData.cardId);
+                                    // handlePopup("Cannot play spy cards on your board!");
+                                    // return;
+                                }
                             }
 
                         }}
                     >
-                        {boardCards.length && boardCards?.map((boardCard, boardCardId) => {
+                        {ownBoard.length && ownBoard?.map((boardCard, boardCardId) => {
                             const factionColors = colors(boardCard.faction)
                             const style = {
                                 zIndex: boardCardId
@@ -279,7 +346,7 @@ export const GameBoard = ({ player, deck, yourTurn, switchTurns }) => {
                             {`PLAYER: ${player}`}
                         </div>
                         <div className="game-board-info">
-                            {`POINTS: ${boardPoints}`}
+                            {`POINTS: ${ownPoints}`}
                         </div>
                         <div className="game-board-info">
                             {`TURN: ${turns.current} / ${turns.total}`}
@@ -288,7 +355,7 @@ export const GameBoard = ({ player, deck, yourTurn, switchTurns }) => {
                             {`MULLIGANS: ${mulligan} / 3`}
                         </div>
                         <div className="game-board-info">
-                            {`TURN COST: ${cost.current} / ${cost.total}`}
+                            {`TURN COST: ${ownCost.current} / ${ownCost.total}`}
                         </div>
                         <div className="game-board-graveyard">
                             {`graveyard`}

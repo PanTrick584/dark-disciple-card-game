@@ -43,6 +43,7 @@ export const BoardHand = ({
             mulliganCard(cardId);
         } else {
             if (!yourTurn) return;
+
             if (selectedCard?.id === cardId) {
                 // Card is already selected, "play" the card
                 setSelectedCard(null);

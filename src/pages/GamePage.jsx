@@ -9,6 +9,12 @@ const GamePage = () => {
 
     const [playerOneTurn, setPlayerOneTurn] = useState(true);
     const [playerTwoTurn, setPlayerTwoTurn] = useState(false);
+    const [playerOneBoard, setPlayerOneBoard] = useState([]);
+    const [playerTwoBoard, setPlayerTwoBoard] = useState([]);
+    const [playerOnePoints, setPlayerOnePoints] = useState(0);
+    const [playerTwoPoints, setPlayerTwoPoints] = useState(0);
+    const [playerOneCost, setPlayerOneCost] = useState({ current: 0, total: 7 });
+    const [playerTwoCost, setPlayerTwoCost] = useState({ current: 0, total: 7 });
 
     const {
         editedDeck,
@@ -59,6 +65,18 @@ const GamePage = () => {
                     deck={playerTwoDeck}
                     yourTurn={playerTwoTurn}
                     switchTurns={switchTurns}
+                    ownBoard={playerTwoBoard}
+                    setOwnBoard={setPlayerTwoBoard}
+                    opponentBoard={playerOneBoard}
+                    setOpponentBoard={setPlayerOneBoard}
+                    ownPoints={playerTwoPoints}
+                    setOwnPoints={setPlayerTwoPoints}
+                    oponentPoints={playerOnePoints}
+                    setOponentPoints={setPlayerOnePoints}
+                    ownCost={playerTwoCost}
+                    setOwnCost={setPlayerTwoCost}
+                    opponentCost={playerOneCost}
+                    setOponentCost={setPlayerOneCost}
                 />}
             {playGame && <div className="game-border"></div>}
             {playGame &&
@@ -67,6 +85,18 @@ const GamePage = () => {
                     deck={playerOneDeck}
                     yourTurn={playerOneTurn}
                     switchTurns={switchTurns}
+                    ownBoard={playerOneBoard}
+                    setOwnBoard={setPlayerOneBoard}
+                    opponentBoard={playerTwoBoard}
+                    setOpponentBoard={setPlayerTwoBoard}
+                    ownPoints={playerOnePoints}
+                    setOwnPoints={setPlayerOnePoints}
+                    oponentPoints={playerTwoPoints}
+                    setOponentPoints={setPlayerTwoPoints}
+                    ownCost={playerOneCost}
+                    setOwnCost={setPlayerOneCost}
+                    opponentCost={playerTwoCost}
+                    setOponentCost={setPlayerTwoCost}
                 />}
         </div>
     )
