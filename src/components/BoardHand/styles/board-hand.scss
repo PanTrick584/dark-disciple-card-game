@@ -1,0 +1,11 @@
+@use "../../../styles/colors.scss" as colors;
+
+.game-board {
+    &-hand {
+        .hand-card {
+            &.disabled {
+                color: colors.$textColorActive;
+            }
+        }
+    }
+}

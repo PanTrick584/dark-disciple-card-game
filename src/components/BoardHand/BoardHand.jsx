@@ -5,10 +5,14 @@ import { CardDescription } from "../Card/CardDescription";
 
 export const BoardHand = ({
     cards,
+    mulligan,
     selectedCard,
-    onCardClick,
+    mulliganCard,
+    playCard,
+    setSelectedCard,
     onDragStart,
     colors,
+    yourTurn
 }) => {
     const [hoveredCard, setHoveredCard] = useState(null);
     const calculateTransform = (index, cardCount, isHovered, isSelected) => {
@@ -34,6 +38,22 @@ export const BoardHand = ({
         return transform;
     };
 
+    const handleCardClick = (card, cardId) => {
+        if (mulligan < 3) {
+            mulliganCard(cardId);
+        } else {
+            if (!yourTurn) return;
+            if (selectedCard?.id === cardId) {
+                // Card is already selected, "play" the card
+                setSelectedCard(null);
+                playCard(card, cardId);
+            } else {
+                // Select the card
+                setSelectedCard({ id: cardId, card });
+            }
+        }
+    };
+
     return (
         <div className="game-board-hand">
             {cards?.map((card, index) => {
@@ -44,16 +64,16 @@ export const BoardHand = ({
                 return (
                     <div
                         key={index}
-                        className={`hand-card`}
+                        className={`hand-card${yourTurn ? "" : " disabled"}`}
                         style={{
                             transform: calculateTransform(index, cards.length, isHovered, isSelected),
                             zIndex: isSelected || isHovered ? 999 : index,
                         }}
-                        draggable
-                        onClick={() => onCardClick(card, index)}
-                        onDragStart={(e) => onDragStart(e, card, index)}
-                        onMouseEnter={() => setHoveredCard(index)}
-                        onMouseLeave={() => setHoveredCard(null)}
+                        draggable={yourTurn}
+                        onClick={() => handleCardClick(card, index)}
+                        onDragStart={yourTurn ? (e) => onDragStart(e, card, index) : undefined}
+                        onMouseEnter={yourTurn ? () => setHoveredCard(index) : undefined}
+                        onMouseLeave={yourTurn ? () => setHoveredCard(null) : undefined}
                     >
                         <CardTitle card={card} colors={factionColors} />
                         <CardDescription skills={card?.skills} colors={factionColors} />

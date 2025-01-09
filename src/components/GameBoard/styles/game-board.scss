@@ -14,11 +14,11 @@
     }
 
     &-popup {
-        position: fixed;
+        position: absolute;
         top: 50%;
         left: 0;
         width: 100%;
-        height: 100vh;
+        height: 100%;
         overflow-y: scroll;
         background-color: rgba(colors.$backgroundColor, .8);
         display: flex;
@@ -69,11 +69,13 @@
             &.drag-over {
                 border-color: rgba(0, 0, 0, 0.5); // Highlight drop zone when a card is over
             }
+
+
         }
     }
 
     &-info {
-        font-size: 22px;
+        font-size: 12px;
     }
 
     &-aside {

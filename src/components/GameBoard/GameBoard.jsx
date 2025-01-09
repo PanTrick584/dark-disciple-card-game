@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { AppContext } from "../../context/AppContext";
 import { themes } from "../../consts/themes";
 import { CardTitle } from "../Card/CardTitle";
@@ -7,15 +7,16 @@ import { BoardHand } from "../BoardHand/BoardHand";
 import { NeoBox } from "../../containers/NeoBox";
 // API
 import { fetchChosenCards } from '../../api/fetchCards';
+// STYLES
 import "./styles/game-board.scss"
 
-export const GameBoard = ({ player, deck, yourTurn, setYourTurn }) => {
+export const GameBoard = ({ player, deck, yourTurn, switchTurns }) => {
     // BASE GAME
     const [mulligan, setMulligan] = useState(0);
     const [cost, setCost] = useState({ current: 0, total: 7 });
     const [boardCards, setBoardCards] = useState([]);
     const [boardPoints, setBoardPoints] = useState(0);
-    const [endTurn, setEndTurn] = useState(false);
+    const [showInfo, setShowInfo] = useState(false);
     const [turns, setTurns] = useState({ current: 0, total: 14 })
     // HAND
     const [currentHand, setCurrentHand] = useState();
@@ -59,10 +60,13 @@ export const GameBoard = ({ player, deck, yourTurn, setYourTurn }) => {
         };
     }, []);
 
-    useEffect(() => handlePopup("Mulligan phase!"), [])
+    useEffect(() => handlePopup("Mulligan!"), [])
 
     useEffect(() => {
-        if (mulligan === 3) handlePopup("ok! lets start the game!")
+        if (mulligan === 3) {
+            handlePopup("READY!")
+            setShowInfo(true)
+        }
     }, [mulligan])
 
     useEffect(() => {
@@ -73,60 +77,67 @@ export const GameBoard = ({ player, deck, yourTurn, setYourTurn }) => {
         initializeDeck(ids);
     }, [deck]);
 
-    const initializeDeck = async (ids) => {
+    useEffect(() => {
+        if (!yourTurn) return; // Do nothing if it's not the player's turn
+
+        if (turns.current === 0) {
+            // Handle mulligan phase at the beginning of the round
+            mulligan < 3 && handlePopup("Mulligan!");
+            setTurns((prev) => ({ ...prev, current: 1 })); // Initialize turn to 1
+            setCost((prev) => ({ ...prev, current: 0 })); // Reset card cost
+        } else {
+            // Handle regular turn logic
+            handlePopup("Your turn!");
+            setCost((prev) => ({ ...prev, current: 0 })); // Reset card cost
+
+            if (currentDeck.length > 0) {
+                // Draw a card from the deck
+                const [topCard, ...remainingDeck] = currentDeck;
+                setCurrentDeck(remainingDeck);
+                setCurrentHand((prevHand) => [...prevHand, topCard]);
+            }
+
+            // Increment the turn counter
+            setTurns((prev) => ({ ...prev, current: prev.current + 1 }));
+        }
+    }, [yourTurn]);
+
+    const initializeDeck = useCallback(async (ids) => {
         try {
             const data = await fetchChosenCards(ids);
-
             const newEditDeck = deck.cards
                 .map(deckCard => {
                     const cardData = data.data.find(card => card._id === deckCard.id);
-                    return cardData ? { id: deckCard.id, amount: deckCard.amount, data: cardData, level: cardData.level } : null;
+                    return cardData ? Array(deckCard.amount).fill(cardData) : null;
                 })
-                .filter(entry => entry !== null)
-                .flatMap(card => Array(card.amount).fill(card.data));
+                .flat()
+                .filter(Boolean);
 
             const shuffledDeck = shuffleArray(newEditDeck);
-            const createHand = shuffledDeck.splice(0, 10);
-
+            const initialHand = shuffledDeck.splice(0, 10);
             setCurrentDeck(shuffledDeck);
-            setCurrentHand(createHand);
+            setCurrentHand(initialHand);
         } catch (error) {
             console.error('Error initializing deck:', error);
         }
-    };
+    }, [deck]);
 
-    const handlePopup = (message, time = 1200) => {
+    const handlePopup = (message, time = 600) => {
         setPopupOn(true)
         setPopupMessage(message)
         setTimeout(() => setPopupOn(false), time)
     }
 
-    const handleCardClick = (card, cardId) => {
-        if (mulligan < 3) {
-            mulliganCard(cardId);
-        } else {
-            if (selectedCard?.id === cardId) {
-                // Card is already selected, "play" the card
-                setSelectedCard(null);
-                playCard(card, cardId);
-            } else {
-                // Select the card
-                setSelectedCard({ id: cardId, card });
-            }
-        }
-    };
-
     function shuffleArray(array) {
         const shuffled = [...array];
         for (let i = shuffled.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1)); // Pick a random index from 0 to i
-            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]; // Swap elements
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
         }
         return shuffled;
     }
 
     const handleDragStart = (e, card, cardId) => {
-        console.log(card);
         e.dataTransfer.setData(
             "card",
             JSON.stringify({ card, cardId })
@@ -150,34 +161,13 @@ export const GameBoard = ({ player, deck, yourTurn, setYourTurn }) => {
     };
 
     const handleEndTurn = () => {
-        setEndTurn(true);
+        switchTurns()
         handlePopup("End of turn!")
-        setTimeout(() => {
-            setEndTurn(false);
-            setCost((prev) => ({
-                ...prev,
-                current: 0,
-            }));
-            setTurns(prev => ({
-                ...prev,
-                current: prev.current + 1
-            }));
-            handlePopup("Your turn!")
-
-            setCurrentDeck((prevDeck) => {
-                if (prevDeck.length > 0) {
-                    const [topCard, ...remainingDeck] = prevDeck;
-                    setCurrentHand((prevHand) => [...prevHand, topCard]);
-
-                    return remainingDeck;
-                }
-                return prevDeck;
-            });
-        }, 1200);
     }
 
     const playCard = (card, handCardId) => {
-        console.log(card);
+        const isSpy = card.category?.some(category => category?.en === "spy");
+        console.log(`Is spy? ${isSpy}`);
         const newCost = cost.current + card.level;
 
         if (newCost > 7) {
@@ -209,34 +199,13 @@ export const GameBoard = ({ player, deck, yourTurn, setYourTurn }) => {
         // Handle end of turn if cost is exactly 7
         if (isExactlySeven) {
             handlePopup("End of turn!")
-            setEndTurn(true);
-
-            setTimeout(() => {
-                setEndTurn(false);
-                setCost(prev => ({
-                    ...prev,
-                    current: 0
-                }));
-
-                setTurns(prev => ({
-                    ...prev,
-                    current: prev.current + 1
-                }));
-                handlePopup("Your turn!")
-
-                // Draw card as a separate operation
-                if (currentDeck.length > 0) {
-                    const [topCard, ...remainingDeck] = currentDeck;
-                    setCurrentDeck(remainingDeck);
-                    setCurrentHand(prevHand => [...prevHand, topCard]);
-                }
-            }, 1200);
+            switchTurns();
         }
     };
 
     return (
         <div className="game-board">
-            <div className="game-board-container" style={player === "player_1" ? { order: 0} : { order: 2}}>
+            <div className="game-board-container" style={player === "player_1" ? { order: 0 } : { order: 2 }}>
                 {popupOn && <div className="game-board-popup">
                     <div className="game-board-popup-text">
                         {popupMessage}
@@ -259,23 +228,28 @@ export const GameBoard = ({ player, deck, yourTurn, setYourTurn }) => {
                 </div>}
                 <div className="game-board-main">
                     <div className="game-board-info">
-                        {endTurn ? "END OF TURN, PLEASE WAIT..." : ""}
+                        {/* {endTurn ? "END OF TURN, PLEASE WAIT..." : ""} */}
                     </div>
                     <div className="game-board-info">
                         {mulligan < 3 ? "MULLIGAN!" : "PLAY"}
                     </div>
                     <div className="game-board-info">
+                        {yourTurn && "Your turn!"}
+                    </div>
+                    <div className="game-board-info">
                     </div>
                     <div
-                        className="board-battlefield"
+                        className={`board-battlefield${yourTurn ? "" : " disabled"}`}
                         onDragOver={(e) => e.preventDefault()}
                         onDrop={(e) => {
                             e.preventDefault();
 
-                            // Parse the dragged card data
-                            const draggedData = JSON.parse(e.dataTransfer.getData("card"));
+                            if (yourTurn) {
+                                // Parse the dragged card data
+                                const draggedData = JSON.parse(e.dataTransfer.getData("card"));
+                                playCard(draggedData.card, draggedData.cardId);
+                            }
 
-                            playCard(draggedData.card, draggedData.cardId);
                         }}
                     >
                         {boardCards.length && boardCards?.map((boardCard, boardCardId) => {
@@ -293,44 +267,50 @@ export const GameBoard = ({ player, deck, yourTurn, setYourTurn }) => {
                     </div>
 
                 </div>
-                <div className="game-board-aside">
+                {showInfo
+                    && <div className="game-board-aside">
+                        {yourTurn &&
+                            <div
+                                className="neo-box"
+                                onClick={() => handleEndTurn(player)}>
+                                END TURN
+                            </div>}
+                        <div className="game-board-info">
+                            {`PLAYER: ${player}`}
+                        </div>
+                        <div className="game-board-info">
+                            {`POINTS: ${boardPoints}`}
+                        </div>
+                        <div className="game-board-info">
+                            {`TURN: ${turns.current} / ${turns.total}`}
+                        </div>
+                        <div className="game-board-info">
+                            {`MULLIGANS: ${mulligan} / 3`}
+                        </div>
+                        <div className="game-board-info">
+                            {`TURN COST: ${cost.current} / ${cost.total}`}
+                        </div>
+                        <div className="game-board-graveyard">
+                            {`graveyard`}
+                        </div>
+                        <div className="" onClick={() => { setPopupOn(true); setDeckOn(true), setPopupMessage("View deck") }}>
+                            <div className="game-board-deck neo-box" >
+                                {`DECK: ${currentDeck?.length}`}
+                            </div>
+                        </div>
 
-                    <div
-                        className=""
-                        onClick={() => handleEndTurn(player)}><NeoBox className="game-board-end-turn" >END TURN</NeoBox></div>
-                    <div className="game-board-points">
-                        {`PLAYER: ${player}`}
-                    </div>
-                    <div className="game-board-points">
-                        {`POINTS: ${boardPoints}`}
-                    </div>
-                    <div className="game-board-turn">
-                        {`TURN: ${turns.current} / ${turns.total}`}
-                    </div>
-                    <div className="game-board-mulligans">
-                        {`MULLIGANS: ${mulligan} / 3`}
-                    </div>
-                    <div className="game-board-cost">
-                        {`TURN COST: ${cost.current} / ${cost.total}`}
-                    </div>
-                    <div className="game-board-graveyard">
-                        {`graveyard`}
-                    </div>
-                    <div className="" onClick={() => { setPopupOn(true); setDeckOn(true), setPopupMessage("View deck") }}>
-                        <NeoBox className="game-board-deck" >
-                            {`DECK: ${currentDeck?.length}`}
-                        </NeoBox>
-                    </div>
-
-                </div>
+                    </div>}
             </div>
             <BoardHand
                 cards={currentHand}
                 selectedCard={selectedCard}
                 mulligan={mulligan}
-                onCardClick={handleCardClick}
+                mulliganCard={mulliganCard}
+                playCard={playCard}
+                setSelectedCard={setSelectedCard}
                 onDragStart={handleDragStart}
                 colors={colors}
+                yourTurn={yourTurn}
             />
         </div>
     )

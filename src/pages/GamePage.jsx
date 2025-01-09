@@ -22,48 +22,52 @@ const GamePage = () => {
         setDeckViewerOn(true)
     }, [])
 
-    console.log(Object.keys(playerOneDeck).length !== 0);
-    console.log(Object.keys(playerTwoDeck).length !== 0);
+    const switchTurns = () => {
+        setPlayerTwoTurn(prev => !prev);
+        setPlayerOneTurn(prev => !prev)
+    }
 
     return (
         <div className="game">
             {!playGame &&
                 <>
-                <h3 className="game-header">Choose deck</h3>
-            <div className="game-container">
-                <div className="game-container-player">
-                    <div className="game-container-header">
-                        Player 1
+                    <h3 className="game-header">Choose deck</h3>
+                    <div className="game-container">
+                        <div className="game-container-player">
+                            <div className="game-container-header">
+                                Player 1
+                            </div>
+                            {deckViewerOn && <DeckViewer player={"player_1"} />}
+                        </div>
+                        <span className="game-container-border"></span>
+                        <div className="game-container-player">
+                            <div className="game-container-header">
+                                Player 2
+                            </div>
+                            {deckViewerOn && <DeckViewer player={"player_2"} />}
+                        </div>
                     </div>
-                    {deckViewerOn && <DeckViewer player={"player_1"} />}
-                </div>
-                <span className="game-container-border"></span>
-                <div className="game-container-player">
-                    <div className="game-container-header">
-                        Player 2
+                    <div className={`button${Object.keys(playerOneDeck).length !== 0 && Object.keys(playerTwoDeck).length !== 0 ? "" : " disabled"}`} onClick={() => {
+                        if (Object.keys(playerOneDeck).length !== 0 && Object.keys(playerTwoDeck).length !== 0) setPlayGame(true)
+                    }} >PLAY!
                     </div>
-                    {deckViewerOn && <DeckViewer player={"player_2"} />}
-                </div>
-            </div>
-            <div className={`button${Object.keys(playerOneDeck).length !== 0 && Object.keys(playerTwoDeck).length !== 0 ? "" : " disabled"}`} onClick={() => {
-                if (Object.keys(playerOneDeck).length !== 0 && Object.keys(playerTwoDeck).length !== 0 ) setPlayGame(true)
-                }} >PLAY!
-            </div>
                 </>
             }
-            {playGame && <GameBoard
-                            player={"player_2"}
-                            deck={playerTwoDeck}
-                            youTurn={playerTwoTurn}
-                            setYourTurn={setPlayerTwoTurn}
-                        />}
+            {playGame &&
+                <GameBoard
+                    player={"player_2"}
+                    deck={playerTwoDeck}
+                    yourTurn={playerTwoTurn}
+                    switchTurns={switchTurns}
+                />}
             {playGame && <div className="game-border"></div>}
-            {playGame && <GameBoard
-                            player={"player_1"}
-                            deck={playerOneDeck}
-                            youTurn={playerOneTurn}
-                            setYourTurn={setPlayerOneTurn}
-                        />}
+            {playGame &&
+                <GameBoard
+                    player={"player_1"}
+                    deck={playerOneDeck}
+                    yourTurn={playerOneTurn}
+                    switchTurns={switchTurns}
+                />}
         </div>
     )
 }
