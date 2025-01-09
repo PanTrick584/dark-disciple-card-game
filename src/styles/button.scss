@@ -21,6 +21,11 @@ span {
     transition: all .2s;
     cursor: pointer;
 
+    &.disabled {
+        color: colors.$textColorActive;
+        cursor: not-allowed;
+    }
+
     &:focus,
     &:active,
     &:hover {

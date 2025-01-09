@@ -2,10 +2,12 @@
 
 .game-board {
     width: 100%;
+    display: flex;
+    flex-direction: column;
 
     &-container {
         width: 100%;
-        height: 60vh;
+        height: 35vh;
         display: flex;
         align-items: flex-end;
         position: relative;

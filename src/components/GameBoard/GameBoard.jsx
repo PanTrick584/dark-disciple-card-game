@@ -1,15 +1,15 @@
 import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../context/AppContext";
-import "./styles/game-board.scss"
 import { themes } from "../../consts/themes";
 import { CardTitle } from "../Card/CardTitle";
 import { CardDescription } from "../Card/CardDescription";
-import { BoardHand } from "../BoardHand/BoardHand"; // Import the new Hand component
+import { BoardHand } from "../BoardHand/BoardHand";
 import { NeoBox } from "../../containers/NeoBox";
 // API
 import { fetchChosenCards } from '../../api/fetchCards';
+import "./styles/game-board.scss"
 
-export const GameBoard = () => {
+export const GameBoard = ({ player, deck, yourTurn, setYourTurn }) => {
     // BASE GAME
     const [mulligan, setMulligan] = useState(0);
     const [cost, setCost] = useState({ current: 0, total: 7 });
@@ -66,18 +66,18 @@ export const GameBoard = () => {
     }, [mulligan])
 
     useEffect(() => {
-        if (Object.keys(editedDeck).length === 0) return;
+        if (Object.keys(deck).length === 0) return;
 
-        const ids = editedDeck.cards.map(card => card.id);
+        const ids = deck.cards.map(card => card.id);
 
         initializeDeck(ids);
-    }, [editedDeck]);
+    }, [deck]);
 
     const initializeDeck = async (ids) => {
         try {
             const data = await fetchChosenCards(ids);
 
-            const newEditDeck = editedDeck.cards
+            const newEditDeck = deck.cards
                 .map(deckCard => {
                     const cardData = data.data.find(card => card._id === deckCard.id);
                     return cardData ? { id: deckCard.id, amount: deckCard.amount, data: cardData, level: cardData.level } : null;
@@ -236,7 +236,7 @@ export const GameBoard = () => {
 
     return (
         <div className="game-board">
-            <div className="game-board-container">
+            <div className="game-board-container" style={player === "player_1" ? { order: 0} : { order: 2}}>
                 {popupOn && <div className="game-board-popup">
                     <div className="game-board-popup-text">
                         {popupMessage}
@@ -263,6 +263,8 @@ export const GameBoard = () => {
                     </div>
                     <div className="game-board-info">
                         {mulligan < 3 ? "MULLIGAN!" : "PLAY"}
+                    </div>
+                    <div className="game-board-info">
                     </div>
                     <div
                         className="board-battlefield"
@@ -295,8 +297,10 @@ export const GameBoard = () => {
 
                     <div
                         className=""
-                        onClick={() => handleEndTurn()}><NeoBox className="game-board-end-turn" >END TURN</NeoBox></div>
-
+                        onClick={() => handleEndTurn(player)}><NeoBox className="game-board-end-turn" >END TURN</NeoBox></div>
+                    <div className="game-board-points">
+                        {`PLAYER: ${player}`}
+                    </div>
                     <div className="game-board-points">
                         {`POINTS: ${boardPoints}`}
                     </div>

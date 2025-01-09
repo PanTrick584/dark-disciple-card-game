@@ -1,10 +1,39 @@
+@use "../../styles/colors.scss" as colors;
 .game {
     width: 100%;
-    height: 100%;
+    // height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
-    &-container {}
+    &-border {
+        width: 100%;
+        border: 2px solid colors.$textColorActive;
+    }
+
+    &-container-header,
+    &-header {
+        margin-bottom: 32px;
+        font-size: 28px;
+        font-weight: 400;
+        text-transform: uppercase;
+        color: colors.$textColor;
+    }
+
+    &-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 160px;
+
+        &-border {
+            height: 100%;
+            border: 1px solid colors.$textColor;
+        }
+
+        &-header {
+            font-size: 22px;
+        }
+    }
 }

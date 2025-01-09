@@ -4,7 +4,7 @@ import { AppContext } from "../../context/AppContext";
 import { NeoBox } from "../../containers/NeoBox";
 import "./styles/deck-viewer.scss"
 
-export const DeckViewer = () => {
+export const DeckViewer = ({ player }) => {
     const [decksData, setDecksData] = useState([]);
     const [showDetails, setShowDetails] = useState(false);
     const {
@@ -17,11 +17,25 @@ export const DeckViewer = () => {
         setDeckBuilderOn,
         deckViewerOn,
         setDeckViewerOn,
+        playerOneDeck, setPlayerOneDeck,
+        playerTwoDeck, setPlayerTwoDeck
     } = useContext(AppContext);
 
     useEffect(() => {
         getDecks()
     }, []);
+
+    const handleChooseDeck = (deck) => {
+        console.log(player);
+        if (player === "player_1") setPlayerOneDeck(deck)
+        if (player === "player_2") setPlayerTwoDeck(deck)
+        if (!player) {
+            console.log("deck viewer");
+            setEditedDeck(deck)
+            setDeckBuilderOn(prev => !prev);
+            setDeckViewerOn(false);
+        }
+    }
 
     const getDecks = async () => {
         try {
@@ -32,21 +46,15 @@ export const DeckViewer = () => {
         }
     }
 
-    console.log(editedDeck);
-
     return (
         <div className="decks-viewer">
             {creadtedDecks?.data?.map((deck) => {
                 return (
                     <NeoBox >
-                        <div className="decks-viewer-container">
+                        <div className="decks-viewer-container" onClick={() => handleChooseDeck(deck)}>
                             <div
                                 className="decks-viewer-name"
-                                onClick={() => {
-                                    setEditedDeck(deck)
-                                    setDeckBuilderOn(prev => !prev);
-                                    setDeckViewerOn(false);
-                                }} >
+                                 >
                                 {deck?.name} <span className="name-details" onClick={() => setShowDetails(prev => !prev)}>?</span>
                             </div>
                             <div className={`decks-viewer-factions ${showDetails ? "show" : "hide"}`}>

@@ -27,6 +27,9 @@ export const AppProvider = ({ children }) => {
     const [editedDeckId, setEditedDeckId] = useState("");
     // DECK VIEWER
     const [deckViewerOn, setDeckViewerOn] = useState(false);
+    // GAME
+    const [playerOneDeck, setPlayerOneDeck] = useState({});
+    const [playerTwoDeck, setPlayerTwoDeck] = useState({});
 
     return (
         <AppContext.Provider
@@ -60,7 +63,9 @@ export const AppProvider = ({ children }) => {
                 deckBuilderCards,
                 setDeckBuilderCards,
                 deckCardsAmount,
-                setDeckCardsAmount
+                setDeckCardsAmount,
+                playerOneDeck, setPlayerOneDeck,
+                playerTwoDeck, setPlayerTwoDeck
             }}>
             {children}
         </AppContext.Provider>
