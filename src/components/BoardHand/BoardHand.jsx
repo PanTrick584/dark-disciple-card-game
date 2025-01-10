@@ -1,18 +1,19 @@
 import React, { useState } from "react";
 import { CardTitle } from "../Card/CardTitle";
 import { CardDescription } from "../Card/CardDescription";
-// import "./styles/hand.scss";
+import "./styles/board-hand.scss";
 
 export const BoardHand = ({
     cards,
-    mulligan,
+    ownMuligan,
     selectedCard,
     mulliganCard,
     playCard,
     setSelectedCard,
     onDragStart,
     colors,
-    yourTurn
+    yourTurn,
+    player
 }) => {
     const [hoveredCard, setHoveredCard] = useState(null);
     const calculateTransform = (index, cardCount, isHovered, isSelected) => {
@@ -25,21 +26,21 @@ export const BoardHand = ({
         const elevation = -Math.pow(index - (cardCount - 1) / 2, 2) + Math.pow((cardCount - 1) / 2, 2);
 
         // If hovered or selected, remove the rotation
-        let transform = `translateY(${elevation * -2}px)`;
+        let transform = `translateY(${elevation * -2}px) scale(.6)`;
         if (!isHovered && !isSelected) {
             transform += ` rotate(${angle}deg)`;
         }
 
         // Apply hover or selection effects
         if (isHovered || isSelected) {
-            transform += ` scale(${isSelected ? 1.2 : 1.1}) translateY(-50px)`;
+            transform += ` scale(${isSelected ? 2.2 : 2.1}) translateY(-50px)`;
         }
 
         return transform;
     };
 
     const handleCardClick = (card, cardId) => {
-        if (mulligan < 3) {
+        if (ownMuligan < 3) {
             mulliganCard(cardId);
         } else {
             if (!yourTurn) return;
@@ -56,7 +57,7 @@ export const BoardHand = ({
     };
 
     return (
-        <div className="game-board-hand">
+        <div className={`game-board-hand${player === "player_2" ? " move-down" : ""}`}>
             {cards?.map((card, index) => {
                 const factionColors = colors(card.faction);
                 const isSelected = selectedCard?.id === index;

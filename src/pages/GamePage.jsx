@@ -6,15 +6,20 @@ import "./styles/game-page.scss";
 
 const GamePage = () => {
     const [playGame, setPlayGame] = useState(false);
+    const [startGame, setStartGame] = useState(false);
 
     const [playerOneTurn, setPlayerOneTurn] = useState(true);
     const [playerTwoTurn, setPlayerTwoTurn] = useState(false);
+    const [playerOneMuligan, setPlayerOneMuligan] = useState(0);
+    const [playerTwoMuligan, setPlayerTwoMuligan] = useState(0);
     const [playerOneBoard, setPlayerOneBoard] = useState([]);
     const [playerTwoBoard, setPlayerTwoBoard] = useState([]);
     const [playerOnePoints, setPlayerOnePoints] = useState(0);
     const [playerTwoPoints, setPlayerTwoPoints] = useState(0);
     const [playerOneCost, setPlayerOneCost] = useState({ current: 0, total: 7 });
     const [playerTwoCost, setPlayerTwoCost] = useState({ current: 0, total: 7 });
+    const [playerOneHand, setPlayerOneHand] = useState([]);
+    const [playerTwoHand, setPlayerTwoHand] = useState([]);
 
     const {
         editedDeck,
@@ -27,6 +32,11 @@ const GamePage = () => {
     useEffect(() => {
         setDeckViewerOn(true)
     }, [])
+
+    useEffect(() => {
+        if (playerOneMuligan !== 3 && playerTwoMuligan !== 3) return;
+        setStartGame(true)
+    }, [playerOneMuligan, playerTwoMuligan])
 
     const switchTurns = () => {
         setPlayerTwoTurn(prev => !prev);
@@ -62,9 +72,14 @@ const GamePage = () => {
             {playGame &&
                 <GameBoard
                     player={"player_2"}
+                    stargGame={startGame}
                     deck={playerTwoDeck}
                     yourTurn={playerTwoTurn}
                     switchTurns={switchTurns}
+                    ownMuligan={playerTwoMuligan}
+                    setOwnMuligan={setPlayerTwoMuligan}
+                    oponentMuligan={playerOneMuligan}
+                    setOponentMuligan={setPlayerOneMuligan}
                     ownBoard={playerTwoBoard}
                     setOwnBoard={setPlayerTwoBoard}
                     opponentBoard={playerOneBoard}
@@ -75,16 +90,25 @@ const GamePage = () => {
                     setOponentPoints={setPlayerOnePoints}
                     ownCost={playerTwoCost}
                     setOwnCost={setPlayerTwoCost}
-                    opponentCost={playerOneCost}
+                    oponentCost={playerOneCost}
                     setOponentCost={setPlayerOneCost}
+                    ownHand={playerTwoHand}
+                    setOwnHand={setPlayerTwoHand}
+                    oponentHand={playerOneHand}
+                    setOponentHand={setPlayerTwoHand}
                 />}
             {playGame && <div className="game-border"></div>}
             {playGame &&
                 <GameBoard
                     player={"player_1"}
+                    stargGame={startGame}
                     deck={playerOneDeck}
                     yourTurn={playerOneTurn}
                     switchTurns={switchTurns}
+                    ownMuligan={playerOneMuligan}
+                    setOwnMuligan={setPlayerOneMuligan}
+                    oponentMuligan={playerTwoMuligan}
+                    setOponentMuligan={setPlayerTwoMuligan}
                     ownBoard={playerOneBoard}
                     setOwnBoard={setPlayerOneBoard}
                     opponentBoard={playerTwoBoard}
@@ -95,8 +119,12 @@ const GamePage = () => {
                     setOponentPoints={setPlayerTwoPoints}
                     ownCost={playerOneCost}
                     setOwnCost={setPlayerOneCost}
-                    opponentCost={playerTwoCost}
+                    oponentCost={playerTwoCost}
                     setOponentCost={setPlayerTwoCost}
+                    ownHand={playerOneHand}
+                    setOwnHand={setPlayerOneHand}
+                    oponentHand={playerTwoHand}
+                    setOponentHand={setPlayerTwoHand}
                 />}
         </div>
     )

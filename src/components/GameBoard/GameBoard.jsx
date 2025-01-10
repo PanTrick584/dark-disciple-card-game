@@ -11,6 +11,7 @@ import { fetchChosenCards } from '../../api/fetchCards';
 import "./styles/game-board.scss"
 
 export const GameBoard = ({
+    stargGame,
     player,
     deck,
     yourTurn,
@@ -20,7 +21,11 @@ export const GameBoard = ({
     ownPoints, setOwnPoints,
     oponentPoints, setOponentPoints,
     ownCost, setOwnCost,
-    opponentCost, setOponentCost
+    oponentCost, setOponentCost,
+    ownHand, setOwnHand,
+    oponentHand, setOponentHand,
+    ownMuligan, setOwnMuligan,
+    oponentMuligan, setOponentMuligan
 }) => {
     // BASE GAME
     const [mulligan, setMulligan] = useState(0);
@@ -30,7 +35,7 @@ export const GameBoard = ({
     const [showInfo, setShowInfo] = useState(false);
     const [turns, setTurns] = useState({ current: 0, total: 14 })
     // HAND
-    const [currentHand, setCurrentHand] = useState();
+    // const [currentHand, setCurrentHand] = useState();
     const [selectedCard, setSelectedCard] = useState(null);
     // DECK
     const [currentDeck, setCurrentDeck] = useState();
@@ -74,11 +79,11 @@ export const GameBoard = ({
     useEffect(() => handlePopup("Mulligan!"), [])
 
     useEffect(() => {
-        if (mulligan === 3) {
+        if (ownMuligan === 3) {
             handlePopup("READY!")
             setShowInfo(true)
         }
-    }, [mulligan])
+    }, [ownMuligan])
 
     useEffect(() => {
         if (Object.keys(deck).length === 0) return;
@@ -93,19 +98,19 @@ export const GameBoard = ({
 
         if (turns.current === 0) {
             // Handle mulligan phase at the beginning of the round
-            mulligan < 3 && handlePopup("Mulligan!");
+            ownMuligan < 3 && handlePopup("Mulligan!");
             setTurns((prev) => ({ ...prev, current: 1 })); // Initialize turn to 1
-            setCost((prev) => ({ ...prev, current: 0 })); // Reset card cost
+            setOwnCost((prev) => ({ ...prev, current: 0 })); // Reset card cost
         } else {
             // Handle regular turn logic
             handlePopup("Your turn!");
-            setCost((prev) => ({ ...prev, current: 0 })); // Reset card cost
+            setOwnCost((prev) => ({ ...prev, current: 0 })); // Reset card cost
 
             if (currentDeck.length > 0) {
                 // Draw a card from the deck
                 const [topCard, ...remainingDeck] = currentDeck;
                 setCurrentDeck(remainingDeck);
-                setCurrentHand((prevHand) => [...prevHand, topCard]);
+                setOwnHand((prevHand) => [...prevHand, topCard]);
             }
 
             // Increment the turn counter
@@ -127,7 +132,7 @@ export const GameBoard = ({
             const shuffledDeck = shuffleArray(newEditDeck);
             const initialHand = shuffledDeck.splice(0, 10);
             setCurrentDeck(shuffledDeck);
-            setCurrentHand(initialHand);
+            setOwnHand(initialHand);
         } catch (error) {
             console.error('Error initializing deck:', error);
         }
@@ -156,19 +161,19 @@ export const GameBoard = ({
     };
 
     const mulliganCard = (cardId) => {
-        const oldHandCard = currentHand[cardId];
+        const oldHandCard = ownHand[cardId];
         const [newDeckCard] = currentDeck.splice(0, 1);
-        const newHandCards = [...currentHand];
+        const newHandCards = [...ownHand];
         newHandCards[cardId] = newDeckCard;
 
-        setCurrentHand(newHandCards);
+        setOwnHand(newHandCards);
         setCurrentDeck((prev) => {
             const randomIndex = Math.floor(Math.random() * (prev.length + 1));
             const newDeck = [...prev];
             newDeck.splice(randomIndex, 0, oldHandCard);
             return newDeck;
         });
-        setMulligan((prev) => prev + 1);
+        setOwnMulligan((prev) => prev + 1);
     };
 
     const handleEndTurn = () => {
@@ -181,7 +186,7 @@ export const GameBoard = ({
 
         if (isSpy) {
             if (!yourTurn) {
-                const newCost = cost.current + card.level;
+                const newCost = oponentCost.current + card.level;
 
                 setOwnBoard((prev) => [...prev, card]);
                 setOponentCost((prev) => ({
@@ -190,32 +195,34 @@ export const GameBoard = ({
                 }));
                 const newBoardCards = [...ownBoard, card];
                 const newPoints = newBoardCards.reduce((sum, c) => sum + c.strength, 0);
+                const newHand = ownHand.filter((_, id) => id !== handCardId);
+
+                setOponentHand(newHand);
                 setOwnPoints(newPoints);
-                // add separate own and oponents cost and points counter
                 return;
             } else {
                 setOpponentBoard((prev) => [...prev, card]);
+                const newBoardCards = [...opponentBoard, card];
+                const newPoints = newBoardCards.reduce((sum, c) => sum + c.strength, 0);
+                setOponentPoints(newPoints);
+                handlePopup("Spy card played on opponent's board!");
             }
-            // Play spy card on opponent's board
-            handlePopup("Spy card played on opponent's board!");
 
             // Deduct card level from cost
-            const newCost = cost.current + card.level;
+            const newCost = ownCost.current + card.level;
             if (newCost > 7) {
                 handlePopup("Not enough Cost Points!");
                 return;
             }
-            console.log(newCost);
-            setCost((prev) => ({
+
+            setOwnCost((prev) => ({
                 ...prev,
                 current: newCost,
             }));
 
-            // Remove the card from the player's hand
-            const newHand = currentHand.filter((_, id) => id !== handCardId);
-            setCurrentHand(newHand);
+            const newHand = ownHand.filter((_, id) => id !== handCardId);
+            setOwnHand(newHand);
 
-            // Switch turns if cost reaches the limit
             if (newCost === 7) {
                 handlePopup("End of turn!");
                 switchTurns();
@@ -224,8 +231,7 @@ export const GameBoard = ({
             return;
         }
 
-        // Existing logic for regular cards
-        const newCost = cost.current + card.level;
+        const newCost = ownCost.current + card.level;
         if (newCost > 7) {
             handlePopup("Not enough Cost Points!");
             return;
@@ -235,12 +241,12 @@ export const GameBoard = ({
         setOwnBoard(newBoardCards);
 
         const newPoints = newBoardCards.reduce((sum, c) => sum + c.strength, 0);
-        setBoardPoints(newPoints);
+        setOwnPoints(newPoints);
 
-        const newHand = currentHand.filter((_, id) => id !== handCardId);
-        setCurrentHand(newHand);
+        const newHand = ownHand.filter((_, id) => id !== handCardId);
+        setOwnHand(newHand);
 
-        setCost((prev) => ({
+        setOwnCost((prev) => ({
             ...prev,
             current: newCost,
         }));
@@ -250,7 +256,6 @@ export const GameBoard = ({
             switchTurns();
         }
     };
-
 
     return (
         <div className="game-board">
@@ -280,7 +285,7 @@ export const GameBoard = ({
                         {/* {endTurn ? "END OF TURN, PLEASE WAIT..." : ""} */}
                     </div>
                     <div className="game-board-info">
-                        {mulligan < 3 ? "MULLIGAN!" : "PLAY"}
+                        {ownMuligan < 3 ? "MULLIGAN!" : "PLAY"}
                     </div>
                     <div className="game-board-info">
                         {yourTurn && "Your turn!"}
@@ -303,6 +308,7 @@ export const GameBoard = ({
                                     return;
                                 }
 
+                                console.log("normall played card");
                                 playCard(card, draggedData.cardId);
                             } else {
                                 // console.log(card);
@@ -352,7 +358,7 @@ export const GameBoard = ({
                             {`TURN: ${turns.current} / ${turns.total}`}
                         </div>
                         <div className="game-board-info">
-                            {`MULLIGANS: ${mulligan} / 3`}
+                            {`MULLIGANS: ${ownMuligan} / 3`}
                         </div>
                         <div className="game-board-info">
                             {`TURN COST: ${ownCost.current} / ${ownCost.total}`}
@@ -369,15 +375,16 @@ export const GameBoard = ({
                     </div>}
             </div>
             <BoardHand
-                cards={currentHand}
+                cards={ownHand}
                 selectedCard={selectedCard}
-                mulligan={mulligan}
+                ownMuligan={ownMuligan}
                 mulliganCard={mulliganCard}
                 playCard={playCard}
                 setSelectedCard={setSelectedCard}
                 onDragStart={handleDragStart}
                 colors={colors}
                 yourTurn={yourTurn}
+                player={player}
             />
         </div>
     )

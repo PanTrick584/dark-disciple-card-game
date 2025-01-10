@@ -2,10 +2,13 @@
 
 .game-board {
     &-hand {
-        .hand-card {
-            &.disabled {
-                color: colors.$textColorActive;
-            }
-        }
+        // &.move-down {
+        //     transform: translateY(120px);
+        // }
+        // .hand-card {
+        //     &.disabled {
+        //         color: colors.$textColorActive;
+        //     }
+        // }
     }
 }
