@@ -17,23 +17,24 @@ export const BoardHand = ({
 }) => {
     const [hoveredCard, setHoveredCard] = useState(null);
     const calculateTransform = (index, cardCount, isHovered, isSelected) => {
-        const spreadAngle = 30; // Total angle for the fan
+        const playerOne = player === "player_1";
+        const spreadAngle = playerOne ? 30 : -30; // Total angle for the fan
         const startAngle = -spreadAngle / 2; // Start angle
         const angleStep = cardCount > 1 ? spreadAngle / (cardCount - 1) : 0;
         const angle = startAngle + index * angleStep;
 
         // Parabolic elevation for "hand" effect
-        const elevation = -Math.pow(index - (cardCount - 1) / 2, 2) + Math.pow((cardCount - 1) / 2, 2);
+        const elevation = -Math.pow(index - (cardCount - 1) / 2, playerOne ? 2 : 2) + Math.pow((cardCount - 1) / 6, -1);
 
         // If hovered or selected, remove the rotation
-        let transform = `translateY(${elevation * -2}px) scale(.6)`;
+        let transform = `translateY(${elevation * (playerOne ? -2 : 2)}px) scale(.6)`;
         if (!isHovered && !isSelected) {
             transform += ` rotate(${angle}deg)`;
         }
 
         // Apply hover or selection effects
         if (isHovered || isSelected) {
-            transform += ` scale(${isSelected ? 2.2 : 2.1}) translateY(-50px)`;
+            transform += ` scale(${isSelected ? 2.2 : 2.1}) translateY(${playerOne ? "-50px" : "50px"}) translateX(70px)`;
         }
 
         return transform;

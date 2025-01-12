@@ -4,14 +4,14 @@ import { themes } from "../../consts/themes";
 import { CardTitle } from "../Card/CardTitle";
 import { CardDescription } from "../Card/CardDescription";
 import { BoardHand } from "../BoardHand/BoardHand";
-import { NeoBox } from "../../containers/NeoBox";
 // API
 import { fetchChosenCards } from '../../api/fetchCards';
 // STYLES
 import "./styles/game-board.scss"
+import { findCardSkills } from "../../cardSkills/findCard";
+import { useGame } from "../../context/GameContext";
 
 export const GameBoard = ({
-    stargGame,
     player,
     deck,
     yourTurn,
@@ -27,15 +27,12 @@ export const GameBoard = ({
     ownMuligan, setOwnMuligan,
     oponentMuligan, setOponentMuligan
 }) => {
+    const {
+        startGame, setStartGame
+    } = useGame();
     // BASE GAME
-    const [mulligan, setMulligan] = useState(0);
-    const [cost, setCost] = useState({ current: 0, total: 7 });
-    // const [boardCards, setBoardCards] = useState([]);
-    const [boardPoints, setBoardPoints] = useState(0);
-    const [showInfo, setShowInfo] = useState(false);
     const [turns, setTurns] = useState({ current: 0, total: 14 })
     // HAND
-    // const [currentHand, setCurrentHand] = useState();
     const [selectedCard, setSelectedCard] = useState(null);
     // DECK
     const [currentDeck, setCurrentDeck] = useState();
@@ -46,8 +43,7 @@ export const GameBoard = ({
     const [popupOn, setPopupOn] = useState(false);
     const [popupMessage, setPopupMessage] = useState("");
 
-
-    const { language, editedDeck } = useContext(AppContext);
+    const { language } = useContext(AppContext);
 
     const colors = (factionName) => {
         let factionColors;
@@ -64,9 +60,7 @@ export const GameBoard = ({
 
     useEffect(() => {
         const handleOutsideClick = (e) => {
-            if (!e.target.closest(".hand-card")) {
-                setSelectedCard(null);
-            }
+            if (!e.target.closest(".hand-card")) setSelectedCard(null);
         };
 
         document.addEventListener("click", handleOutsideClick);
@@ -78,12 +72,7 @@ export const GameBoard = ({
 
     useEffect(() => handlePopup("Mulligan!"), [])
 
-    useEffect(() => {
-        if (ownMuligan === 3) {
-            handlePopup("READY!")
-            setShowInfo(true)
-        }
-    }, [ownMuligan])
+    useEffect(() => { handlePopup(startGame) }, [startGame])
 
     useEffect(() => {
         if (Object.keys(deck).length === 0) return;
@@ -94,29 +83,26 @@ export const GameBoard = ({
     }, [deck]);
 
     useEffect(() => {
-        if (!yourTurn) return; // Do nothing if it's not the player's turn
+        if (!yourTurn || !startGame) return;
 
         if (turns.current === 0) {
-            // Handle mulligan phase at the beginning of the round
+
             ownMuligan < 3 && handlePopup("Mulligan!");
-            setTurns((prev) => ({ ...prev, current: 1 })); // Initialize turn to 1
-            setOwnCost((prev) => ({ ...prev, current: 0 })); // Reset card cost
+            setTurns((prev) => ({ ...prev, current: 1 }));
+            setOwnCost((prev) => ({ ...prev, current: 0 }));
         } else {
-            // Handle regular turn logic
             handlePopup("Your turn!");
-            setOwnCost((prev) => ({ ...prev, current: 0 })); // Reset card cost
+            setOwnCost((prev) => ({ ...prev, current: 0 }));
 
             if (currentDeck.length > 0) {
-                // Draw a card from the deck
                 const [topCard, ...remainingDeck] = currentDeck;
                 setCurrentDeck(remainingDeck);
                 setOwnHand((prevHand) => [...prevHand, topCard]);
             }
 
-            // Increment the turn counter
             setTurns((prev) => ({ ...prev, current: prev.current + 1 }));
         }
-    }, [yourTurn]);
+    }, [yourTurn, startGame]);
 
     const initializeDeck = useCallback(async (ids) => {
         try {
@@ -173,7 +159,7 @@ export const GameBoard = ({
             newDeck.splice(randomIndex, 0, oldHandCard);
             return newDeck;
         });
-        setOwnMulligan((prev) => prev + 1);
+        setOwnMuligan((prev) => prev + 1);
     };
 
     const handleEndTurn = () => {
@@ -183,6 +169,9 @@ export const GameBoard = ({
 
     const playCard = (card, handCardId) => {
         const isSpy = card.category?.some((category) => category?.en === "spy");
+
+        const skills = findCardSkills(card);
+        console.log("Card Skills:", skills);
 
         if (isSpy) {
             if (!yourTurn) {
@@ -208,7 +197,6 @@ export const GameBoard = ({
                 handlePopup("Spy card played on opponent's board!");
             }
 
-            // Deduct card level from cost
             const newCost = ownCost.current + card.level;
             if (newCost > 7) {
                 handlePopup("Not enough Cost Points!");
@@ -282,13 +270,12 @@ export const GameBoard = ({
                 </div>}
                 <div className="game-board-main">
                     <div className="game-board-info">
-                        {/* {endTurn ? "END OF TURN, PLEASE WAIT..." : ""} */}
                     </div>
                     <div className="game-board-info">
                         {ownMuligan < 3 ? "MULLIGAN!" : "PLAY"}
                     </div>
                     <div className="game-board-info">
-                        {yourTurn && "Your turn!"}
+                        {yourTurn && startGame && "Your turn!"}
                     </div>
                     <div className="game-board-info">
                     </div>
@@ -299,27 +286,17 @@ export const GameBoard = ({
                             e.preventDefault();
                             const draggedData = JSON.parse(e.dataTransfer.getData("card"));
                             const { card } = draggedData;
+
                             if (yourTurn) {
-                                // Parse the dragged card data
-
-
                                 if (card.category?.some(category => category?.en === "spy")) {
                                     handlePopup("Cannot play spy cards on your board!");
                                     return;
                                 }
 
-                                console.log("normall played card");
                                 playCard(card, draggedData.cardId);
                             } else {
-                                // console.log(card);
                                 if (card.category?.some(category => category?.en === "spy")) {
-                                    console.log("spy??");
-                                    // const draggedData = JSON.parse(e.dataTransfer.getData("card"));
-                                    // const { card } = draggedData;
-
                                     playCard(card, draggedData.cardId);
-                                    // handlePopup("Cannot play spy cards on your board!");
-                                    // return;
                                 }
                             }
 
@@ -327,9 +304,7 @@ export const GameBoard = ({
                     >
                         {ownBoard.length && ownBoard?.map((boardCard, boardCardId) => {
                             const factionColors = colors(boardCard.faction)
-                            const style = {
-                                zIndex: boardCardId
-                            }
+
                             return (
                                 <div className="hand-card">
                                     <CardTitle card={boardCard} colors={factionColors} />
@@ -340,7 +315,7 @@ export const GameBoard = ({
                     </div>
 
                 </div>
-                {showInfo
+                {startGame
                     && <div className="game-board-aside">
                         {yourTurn &&
                             <div
@@ -366,11 +341,11 @@ export const GameBoard = ({
                         <div className="game-board-graveyard">
                             {`graveyard`}
                         </div>
-                        <div className="" onClick={() => { setPopupOn(true); setDeckOn(true), setPopupMessage("View deck") }}>
+                        {yourTurn && <div className="" onClick={() => { setPopupOn(true); setDeckOn(true), setPopupMessage("View deck") }}>
                             <div className="game-board-deck neo-box" >
                                 {`DECK: ${currentDeck?.length}`}
                             </div>
-                        </div>
+                        </div>}
 
                     </div>}
             </div>

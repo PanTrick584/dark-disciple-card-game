@@ -72,6 +72,14 @@
                 border-color: rgba(0, 0, 0, 0.5); // Highlight drop zone when a card is over
             }
 
+            .hand-card {
+                transform: scale(.5);
+
+                &:hover {
+                    transform: scale(1);
+
+                }
+            }
 
         }
     }
@@ -123,8 +131,8 @@
     &-hand,
     .board-battlefield {
         .hand-card {
-            transform: translateX(-15px);
-            margin: 0 -60px;
+            // transform: translateX(-15px);
+            margin: 0 -90px;
 
             &:hover {
                 z-index: 888;
@@ -153,7 +161,7 @@
         margin-top: -10%;
         justify-content: center;
         margin: 0 auto;
-align-items: flex-end;
+        align-items: flex-end;
         // transform: translateY(20px);
         // perspective: 1000px; // Adds a slight 3D effect when cards are scaled
     }

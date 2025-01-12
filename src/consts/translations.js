@@ -19,7 +19,7 @@ export const factions = {
         pl: "przymierze imperium"
     },
     elves: {
-        en: "house of elves",
+        en: "houses of elves",
         pl: "rody elfów"
     },
     orcs: {

@@ -8,6 +8,7 @@ import { LanguageSelector } from '../components/LanguageSelector/LanguageSelecto
 import { MainHeader } from '../components/MainHeader/MainHeader';
 import { mainNav } from '../consts/translations';
 import "./styles/home-page.scss"
+import { GameProvider } from '../context/GameContext';
 
 const HomePage = () => {
     const [activeDirectory, setActiveDirectory] = useState([]);
@@ -23,7 +24,7 @@ const HomePage = () => {
         game: {
             translate: "game",
             path: "game",
-            component: <GamePage />
+            component: <GameProvider><GamePage /></GameProvider>
         },
         cards: {
             translate: mainNav.cards?.[language],

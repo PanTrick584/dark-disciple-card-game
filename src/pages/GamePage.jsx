@@ -3,10 +3,10 @@ import { AppContext } from "../context/AppContext";
 import { DeckViewer } from "../components/DeckViewer/DeckViewer";
 import { GameBoard } from "../components/GameBoard/GameBoard";
 import "./styles/game-page.scss";
+import { useGame } from "../context/GameContext";
 
 const GamePage = () => {
     const [playGame, setPlayGame] = useState(false);
-    const [startGame, setStartGame] = useState(false);
 
     const [playerOneTurn, setPlayerOneTurn] = useState(true);
     const [playerTwoTurn, setPlayerTwoTurn] = useState(false);
@@ -22,19 +22,22 @@ const GamePage = () => {
     const [playerTwoHand, setPlayerTwoHand] = useState([]);
 
     const {
-        editedDeck,
         deckViewerOn,
         setDeckViewerOn,
         playerOneDeck, setPlayerOneDeck,
         playerTwoDeck, setPlayerTwoDeck
     } = useContext(AppContext);
 
+    const {
+        setStartGame
+    } = useGame();
+
     useEffect(() => {
         setDeckViewerOn(true)
     }, [])
 
     useEffect(() => {
-        if (playerOneMuligan !== 3 && playerTwoMuligan !== 3) return;
+        if (playerOneMuligan !== 3 || playerTwoMuligan !== 3) return;
         setStartGame(true)
     }, [playerOneMuligan, playerTwoMuligan])
 
@@ -72,7 +75,6 @@ const GamePage = () => {
             {playGame &&
                 <GameBoard
                     player={"player_2"}
-                    stargGame={startGame}
                     deck={playerTwoDeck}
                     yourTurn={playerTwoTurn}
                     switchTurns={switchTurns}
@@ -101,7 +103,7 @@ const GamePage = () => {
             {playGame &&
                 <GameBoard
                     player={"player_1"}
-                    stargGame={startGame}
+                    // startGame={startGame}
                     deck={playerOneDeck}
                     yourTurn={playerOneTurn}
                     switchTurns={switchTurns}
