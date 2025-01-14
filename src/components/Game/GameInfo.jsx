@@ -1,36 +1,33 @@
 // GameInfo.js
 import React from 'react';
+import { useGame } from '../../context/GameContext';
+// import "./styles/game-info.scss";
 
-export const GameInfo = ({
-    player,
-    isCurrentPlayer,
-    onEndTurn,
-    onViewDeck,
-    currentTurn,
-    totalTurns
-}) => {
+export const GameInfo = ({ playerId, isCurrentPlayer, onViewDeck }) => {
+    const { players, switchTurns } = useGame();
+
     return (
         <div className="game-board-aside">
             {isCurrentPlayer && (
-                <div className="neo-box" onClick={onEndTurn}>
+                <div className="neo-box" onClick={switchTurns}>
                     END TURN
                 </div>
             )}
 
             <div className="game-board-info">
-                {`POINTS: ${player.points}`}
+                {`POINTS: ${players[playerId].points}`}
             </div>
 
             <div className="game-board-info">
-                {`TURN: ${currentTurn} / ${totalTurns}`}
+                {`TURN: ${players[playerId].currentTurn} / 14`}
             </div>
 
             <div className="game-board-info">
-                {`MULLIGANS: ${player.muligan} / 3`}
+                {`MULLIGANS: ${players[playerId].muligan} / 3`}
             </div>
 
             <div className="game-board-info">
-                {`TURN COST: ${player.cost.current} / ${player.cost.total}`}
+                {`TURN COST: ${players[playerId].cost.current} / 7`}
             </div>
 
             <div className="game-board-graveyard">
@@ -39,7 +36,7 @@ export const GameInfo = ({
 
             {isCurrentPlayer && (
                 <div className="game-board-deck neo-box" onClick={onViewDeck}>
-                    {`DECK: ${player.currentDeck?.length}`}
+                    {`DECK: ${players[playerId].currentDeck?.length}`}
                 </div>
             )}
         </div>

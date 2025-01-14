@@ -11,10 +11,9 @@ export function GameProvider({ children }) {
     const [startGame, setStartGame] = useState(false);
     const [playGame, setPlayGame] = useState(false);
     const [currentPlayer, setCurrentPlayer] = useState('player_1');
-    const [turns, setTurns] = useState({ current: 0, total: 14 });
     const {
-        playerOneDeck, setPlayerOneDeck,
-        playerTwoDeck, setPlayerTwoDeck
+        playerOneDeck,
+        playerTwoDeck,
     } = useContext(AppContext);
 
     // Player states
@@ -26,7 +25,8 @@ export function GameProvider({ children }) {
             cost: { current: 0, total: 7 },
             hand: [],
             deck: {},
-            currentDeck: []
+            currentDeck: [],
+            currentTurn: 0
         },
         player_2: {
             muligan: 0,
@@ -35,44 +35,69 @@ export function GameProvider({ children }) {
             cost: { current: 0, total: 7 },
             hand: [],
             deck: {},
-            currentDeck: []
+            currentDeck: [],
+            currentTurn: 0
         }
     });
 
     useEffect(() => {
         if (playerOneDeck) {
-            console.log(playerOneDeck);
             updatePlayerState("player_1", "deck", playerOneDeck);
 
             if (playerOneDeck?.cards) {
-                const ids = playerOneDeck?.cards.map(card => card.id);
-                initializeDeck(ids, "player_1")
+                initializeDeck(playerOneDeck.cards, "player_1")
             }
-
         }
-    }, [playerOneDeck ])
+    }, [playerOneDeck])
 
     useEffect(() => {
         if (playerTwoDeck) {
             updatePlayerState("player_2", "deck", playerTwoDeck)
 
             if (playerTwoDeck?.cards) {
-                const ids = playerTwoDeck?.cards.map(card => card.id);
-                initializeDeck(ids, "player_2")
+                initializeDeck(playerTwoDeck.cards, "player_2")
+            }
+        }
+    }, [playerTwoDeck])
 
+    //  useEffect(() => {
+    //     if (playerOneMuligan !== 3 || playerTwoMuligan !== 3) return;
+    //     setStartGame(true)
+    // }, [playerOneMuligan, playerTwoMuligan])
+
+    useEffect(() => {
+        console.log(currentPlayer);
+        // if (!players[currentPlayer].turn) return;
+
+        if (players[currentPlayer].currentTurn === 0) {
+
+            // players[currentPlayer].turn < 3
+            // && handlePopup("Mulligan!");
+
+            updatePlayerState(currentPlayer, "currentTurn", 1)
+            updatePlayerState(currentPlayer, "cost", { ...players[currentPlayer].cost, current: 0 })
+        } else {
+            // handlePopup("Your turn!");
+            updatePlayerState(currentPlayer, "cost", { ...players[currentPlayer].cost, current: 0 })
+            const [topCard, ...remainingDeck] = players[currentPlayer].currentDeck;
+            updatePlayerState(currentPlayer, "currentDeck", remainingDeck)
+            updatePlayerState(currentPlayer, "hand", [...players[currentPlayer].hand, topCard])
+
+            if (players[currentPlayer]?.deck?.length > 0) {
+                // setCurrentDeck(remainingDeck);
+                // setOwnHand((prevHand) => [...prevHand, topCard]);
             }
 
+            updatePlayerState(currentPlayer, "cost", { ...players[currentPlayer].cost, current: 0 })
         }
-    }, [playerTwoDeck ])
+    }, [currentPlayer]);
 
-    const initializeDeck = useCallback(async (ids, player) => {
-        console.log(ids);
-        console.log(player);
+    const initializeDeck = useCallback(async (cards, player) => {
+        const ids = cards.map(card => card.id);
+
         try {
             const data = await fetchChosenCards(ids);
-            console.log("data:");
-            console.log();
-            const newEditDeck = players?.[`${player}`]?.deck?.cards
+            const newEditDeck = cards
                 .map(deckCard => {
                     const cardData = data.data.find(card => card._id === deckCard.id);
                     return cardData ? Array(deckCard.amount).fill(cardData) : null;
@@ -82,8 +107,9 @@ export function GameProvider({ children }) {
 
             const shuffledDeck = shuffleArray(newEditDeck);
             const initialHand = shuffledDeck.splice(0, 10);
+
             updatePlayerState(player, "currentDeck", shuffledDeck);
-            updatePlayerState(player, "currentHand", initialHand);
+            updatePlayerState(player, "hand", initialHand);
         } catch (error) {
             console.error('Error initializing deck:', error);
         }
@@ -99,128 +125,118 @@ export function GameProvider({ children }) {
         }));
     };
 
+    function shuffleArray(array) {
+        const shuffled = [...array];
+        for (let i = shuffled.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+        return shuffled;
+    }
+
+    const muliganCard = (cardId) => {
+        const oldHandCard = players[currentPlayer].hand[cardId];
+        const [newDeckCard] = players[currentPlayer].currentDeck.splice(0, 1);
+        const newHandCards = [...players[currentPlayer].hand];
+        newHandCards[cardId] = newDeckCard;
+
+        // const randomIndex = Math.floor(Math.random() * (player.currentDeck.length + 1));
+        // const newDeck = player.currentDeck.splice(randomIndex, 0, oldHandCard);
+        const newDeck = [...players[currentPlayer].currentDeck, oldHandCard];
+
+        updatePlayerState(currentPlayer, "hand", newHandCards)
+        updatePlayerState(currentPlayer, "currentDeck", newDeck)
+        updatePlayerState(currentPlayer, "muligan", players[currentPlayer].muligan + 1)
+    };
+
     const switchTurns = () => {
         setCurrentPlayer(prev => prev === 'player_1' ? 'player_2' : 'player_1');
     };
 
-        const playCard = (playerId, card, handCardId) => {
-            console.log("play card");
-            console.log(playerId);
-            const currentPlayer = players[playerId];
-    //     const opponentId = playerId === 'player_1' ? 'player_2' : 'player_1';
+    const playCard = (playerId, card, handCardId) => {
+        const opponentId = playerId === 'player_1' ? 'player_2' : 'player_1';
+        console.log(playerId);
+        console.log(opponentId);
         const isSpy = card.category?.some((category) => category?.en === "spy");
 
-        // const skills = findCardSkills(card);
-        // console.log("Card Skills:", skills);
-
         if (isSpy) {
-            if (!yourTurn) {
-                const newCost = oponentCost.current + card.level;
+            if (currentPlayer !== playerId) {
+                const newCost = players[opponentId]?.cost?.current + card.level;
 
-                setOwnBoard((prev) => [...prev, card]);
-                setOponentCost((prev) => ({
-                    ...prev,
-                    current: newCost,
-                }));
-                const newBoardCards = [...ownBoard, card];
+                console.log("drag spy!");
+                if (newCost > 7) {
+                    handlePopup("Not enough Cost Points!");
+                    return;
+                }
+
+                if (newCost === 7) {
+                    handlePopup("End of turn!");
+                    switchTurns();
+                }
+
+                updatePlayerState(opponentId, 'cost', { ...opponentId.cost, current: newCost });
+
+                const newBoardCards = [...players[playerId]?.board, card];
+                updatePlayerState(playerId, 'board', newBoardCards);
+
                 const newPoints = newBoardCards.reduce((sum, c) => sum + c.strength, 0);
-                const newHand = ownHand.filter((_, id) => id !== handCardId);
+                updatePlayerState(playerId, 'points', newPoints);
 
-                setOponentHand(newHand);
-                setOwnPoints(newPoints);
-                return;
+                const newHand = players[opponentId].hand.filter((_, id) => id !== handCardId);
+                updatePlayerState(opponentId, 'hand', newHand);
             } else {
-                setOpponentBoard((prev) => [...prev, card]);
-                const newBoardCards = [...opponentBoard, card];
+                const newCost = players[playerId]?.cost?.current + card.level;
+
+                console.log("click spy!");
+                if (newCost > 7) {
+                    handlePopup("Not enough Cost Points!");
+                    return;
+                }
+
+                if (newCost === 7) {
+                    handlePopup("End of turn!");
+                    switchTurns();
+                }
+
+                updatePlayerState(playerId, 'cost', { ...playerId.cost, current: newCost });
+
+                const newBoardCards = [...players[opponentId]?.board, card];
+                updatePlayerState(opponentId, 'board', newBoardCards);
+
+
                 const newPoints = newBoardCards.reduce((sum, c) => sum + c.strength, 0);
-                setOponentPoints(newPoints);
-                handlePopup("Spy card played on opponent's board!");
+                updatePlayerState(opponentId, 'points', newPoints);
+
+                const newHand = players[playerId].hand.filter((_, id) => id !== handCardId);
+                updatePlayerState(playerId, 'hand', newHand);
             }
-
-            const newCost = ownCost.current + card.level;
-            if (newCost > 7) {
-                handlePopup("Not enough Cost Points!");
-                return;
-            }
-
-            setOwnCost((prev) => ({
-                ...prev,
-                current: newCost,
-            }));
-
-            const newHand = ownHand.filter((_, id) => id !== handCardId);
-            setOwnHand(newHand);
-
-            if (newCost === 7) {
-                handlePopup("End of turn!");
-                switchTurns();
-            }
-
+            // handlePopup("Spy card played on opponent's board!");
             return;
         }
 
-        // const newCost = ownCost.current + card.level;
-        const newCost = currentPlayer?.cost?.current + card?.level;
+        const newCost = players[playerId]?.cost?.current + card?.level;
+
         if (newCost > 7) {
             handlePopup("Not enough Cost Points!");
             return;
         }
 
-        const newBoardCards = [...currentPlayer?.board, card];
-        // setOwnBoard(newBoardCards);
-        updatePlayerState(targetPlayer, 'board', newBoardCards);
-
-
-        const newPoints = newBoardCards.reduce((sum, c) => sum + c.strength, 0);
-        setOwnPoints(newPoints);
-
-        const newHand = ownHand.filter((_, id) => id !== handCardId);
-        setOwnHand(newHand);
-
-        setOwnCost((prev) => ({
-            ...prev,
-            current: newCost,
-        }));
-
         if (newCost === 7) {
             handlePopup("End of turn!");
             switchTurns();
         }
+
+        updatePlayerState(playerId, 'cost', { ...playerId.cost, current: newCost });
+
+        const newBoardCards = [...players[playerId]?.board, card];
+        updatePlayerState(playerId, 'board', newBoardCards);
+
+        const newPoints = newBoardCards.reduce((sum, c) => sum + c.strength, 0);
+        updatePlayerState(playerId, 'points', newPoints);
+
+        const newHand = players[playerId]?.hand.filter((_, id) => id !== handCardId);
+        updatePlayerState(playerId, 'hand', newHand);
     };
-
-    // const playCard = (playerId, card, handCardId) => {
-    //     const currentPlayer = players[playerId];
-    //     const opponentId = playerId === 'player_1' ? 'player_2' : 'player_1';
-    //     const isSpy = card?.category?.some((category) => category?.en === "spy");
-
-    //     if (isSpy) {
-    //         // Handle spy card logic
-    //         const targetPlayer = opponentId;
-    //         const newBoard = [...players[targetPlayer].board, card];
-    //         updatePlayerState(targetPlayer, 'board', newBoard);
-
-    //         const newPoints = newBoard.reduce((sum, c) => sum + c.strength, 0);
-    //         updatePlayerState(targetPlayer, 'points', newPoints);
-    //     } else {
-    //         // Handle regular card logic
-    //         const newCost = currentPlayer?.cost?.current + card?.level;
-    //         if (newCost > 7) return false;
-
-    //         const newBoard = [...currentPlayer?.board, card];
-    //         const newPoints = newBoard.reduce((sum, c) => sum + c.strength, 0);
-
-    //         updatePlayerState(playerId, 'board', newBoard);
-    //         updatePlayerState(playerId, 'points', newPoints);
-    //         updatePlayerState(playerId, 'cost', { ...currentPlayer.cost, current: newCost });
-    //     }
-
-    //     // Remove card from hand
-    //     const newHand = currentPlayer.hand.filter((_, idx) => idx !== handCardId);
-    //     console.log(newHand);
-    //     updatePlayerState(playerId, 'hand', newHand);
-
-    //     return true;
-    // };
 
     return (
         <GameContext.Provider value={{
@@ -230,9 +246,8 @@ export function GameProvider({ children }) {
             setPlayGame,
             currentPlayer,
             players,
-            turns,
-            setTurns,
             updatePlayerState,
+            muliganCard,
             switchTurns,
             playCard
         }}>

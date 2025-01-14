@@ -1,5 +1,5 @@
 export const fetchDB = async (path) => {
-    console.log(path);
+    // console.log(path);
     try {
         const response = await fetch(path);
 
@@ -8,7 +8,7 @@ export const fetchDB = async (path) => {
         }
 
         const result = await response.json();
-        console.log(result);
+        // console.log(result);
         return result;
     } catch (error) {
         console.error("Error fetching JSON data:", error);
@@ -17,7 +17,7 @@ export const fetchDB = async (path) => {
 };
 
 export const patchDB = async (path, updatedData) => {
-    console.log(`PATCH to: ${path}`, updatedData);
+    // console.log(`PATCH to: ${path}`, updatedData);
     try {
         const response = await fetch(path, {
             method: 'PATCH',
@@ -32,7 +32,7 @@ export const patchDB = async (path, updatedData) => {
         }
 
         const result = await response.json();
-        console.log('PATCH response:', result);
+        // console.log('PATCH response:', result);
         return result;
     } catch (error) {
         console.error("Error with PATCH request:", error);
@@ -41,7 +41,7 @@ export const patchDB = async (path, updatedData) => {
 };
 
 export const addDeckDB = async (path, deck) => {
-    console.log(deck);
+    // console.log(deck);
     try {
         const response = await fetch(path, {
             method: 'POST',
@@ -56,7 +56,7 @@ export const addDeckDB = async (path, deck) => {
         }
 
         const result = await response.json();
-        console.log('PATCH response:', result);
+        // console.log('PATCH response:', result);
         return result;
     } catch (error) {
         console.error("Error with PATCH request:", error);
@@ -80,7 +80,7 @@ export const updateDeckDB = async (path, deck) => {
         }
 
         const result = await response.json();
-        console.log('PATCH response:', result);
+        // console.log('PATCH response:', result);
         return result;
     } catch (error) {
         console.error("Error with PATCH request:", error.message);
@@ -96,7 +96,7 @@ export const getDecksDB = async (path) => {
         }
 
         const result = await response.json();
-        console.log('GET response:', result);
+        // console.log('GET response:', result);
         return result;
     } catch (error) {
         console.error("Error with GET request:", error);

@@ -1,19 +1,19 @@
 import { factions } from "./translations";
 
 export const themes = {
-    elves: {
+    ["houses-of-elves"]: {
         faction: factions.elves,
         themeMain: "#22551A",
         themeAccent: "#C0C0C0",
         themeAccentAlt: "#ADD8E6"
     },
-    orcs: {
+    ["orc-tribes"]: {
         faction: factions.orcs,
         themeMain: "#8B0000",
         themeAccent: "#CC5500",
         themeAccentAlt: "#36454F"
     },
-    damned: {
+    ["damned-hordes"]: {
         faction: factions.damned,
         themeMain: "#4B0082",
         themeAccent: "#7FFF00",

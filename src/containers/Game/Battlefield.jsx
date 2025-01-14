@@ -2,8 +2,11 @@ import React from 'react';
 import { CardTitle } from "../Card/CardTitle";
 import { CardDescription } from "../Card/CardDescription";
 import "./styles/board-field.scss";
+import { useGame } from '../../context/GameContext';
 
 export const BoardField = ({ cards, isCurrentPlayer, onCardPlay, getColors }) => {
+    const { players, switchTurns } = useGame();
+
     const handleDrop = (e) => {
         e.preventDefault();
         if (!isCurrentPlayer) return;
@@ -12,7 +15,6 @@ export const BoardField = ({ cards, isCurrentPlayer, onCardPlay, getColors }) =>
         const isSpy = card.category?.some(category => category?.en === "spy");
 
         if (isSpy && isCurrentPlayer) {
-            // Can't play spy cards on your own board
             return;
         }
 

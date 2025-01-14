@@ -5,7 +5,7 @@ import { NeoBox } from "../../containers/NeoBox";
 import "./styles/deck-viewer.scss"
 
 export const DeckViewer = ({ player }) => {
-    const [decksData, setDecksData] = useState([]);
+    // const [decksData, setDecksData] = useState([]);
     const [showDetails, setShowDetails] = useState(false);
     const [activeDeck, setActiveDeck] = useState(null);
     const {
@@ -27,7 +27,6 @@ export const DeckViewer = ({ player }) => {
     }, []);
 
     const handleChooseDeck = (deck, deckId) => {
-        console.log(player);
         setActiveDeck(deckId)
         if (player === "player_1") setPlayerOneDeck(deck)
         if (player === "player_2") setPlayerTwoDeck(deck)
