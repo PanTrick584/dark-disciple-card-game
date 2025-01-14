@@ -10,12 +10,14 @@ import { fetchChosenCards } from '../../api/fetchCards';
 import "./styles/game-board.scss"
 import { findCardSkills } from "../../cardSkills/findCard";
 import { useGame } from "../../context/GameContext";
+import { GameInfo } from "./GameInfo";
 
 export const GameBoard = ({
-    player,
+    playerId,
+    // player,
     deck,
     yourTurn,
-    switchTurns,
+    // switchTurns,
     ownBoard, setOwnBoard,
     opponentBoard, setOpponentBoard,
     ownPoints, setOwnPoints,
@@ -28,10 +30,20 @@ export const GameBoard = ({
     oponentMuligan, setOponentMuligan
 }) => {
     const {
-        startGame, setStartGame
+        currentPlayer,
+        players,
+        turns,
+        setTurns,
+        switchTurns,
+        playCard,
+        startGame,
+            setStartGame,
     } = useGame();
+
+    // console.log(players);
+
     // BASE GAME
-    const [turns, setTurns] = useState({ current: 0, total: 14 })
+    // const [turns, setTurns] = useState({ current: 0, total: 14 })
     // HAND
     const [selectedCard, setSelectedCard] = useState(null);
     // DECK
@@ -75,12 +87,12 @@ export const GameBoard = ({
     useEffect(() => { handlePopup(startGame) }, [startGame])
 
     useEffect(() => {
-        if (Object.keys(deck).length === 0) return;
+        if (Object.keys(players?.[`${playerId}`]?.deck).length === 0) return;
 
-        const ids = deck.cards.map(card => card.id);
+        const ids = players?.[`${playerId}`]?.deck?.cards.map(card => card.id);
 
         initializeDeck(ids);
-    }, [deck]);
+    }, [players?.[`${playerId}`].deck]);
 
     useEffect(() => {
         if (!yourTurn || !startGame) return;
@@ -167,83 +179,98 @@ export const GameBoard = ({
         handlePopup("End of turn!")
     }
 
-    const playCard = (card, handCardId) => {
-        const isSpy = card.category?.some((category) => category?.en === "spy");
+    const isCurrentPlayer = currentPlayer === playerId;
+    const player = players[playerId];
 
-        const skills = findCardSkills(card);
-        console.log("Card Skills:", skills);
+    const getColors = (factionName) => {
+        // Your existing colors function implementation
+    };
 
-        if (isSpy) {
-            if (!yourTurn) {
-                const newCost = oponentCost.current + card.level;
-
-                setOwnBoard((prev) => [...prev, card]);
-                setOponentCost((prev) => ({
-                    ...prev,
-                    current: newCost,
-                }));
-                const newBoardCards = [...ownBoard, card];
-                const newPoints = newBoardCards.reduce((sum, c) => sum + c.strength, 0);
-                const newHand = ownHand.filter((_, id) => id !== handCardId);
-
-                setOponentHand(newHand);
-                setOwnPoints(newPoints);
-                return;
-            } else {
-                setOpponentBoard((prev) => [...prev, card]);
-                const newBoardCards = [...opponentBoard, card];
-                const newPoints = newBoardCards.reduce((sum, c) => sum + c.strength, 0);
-                setOponentPoints(newPoints);
-                handlePopup("Spy card played on opponent's board!");
-            }
-
-            const newCost = ownCost.current + card.level;
-            if (newCost > 7) {
-                handlePopup("Not enough Cost Points!");
-                return;
-            }
-
-            setOwnCost((prev) => ({
-                ...prev,
-                current: newCost,
-            }));
-
-            const newHand = ownHand.filter((_, id) => id !== handCardId);
-            setOwnHand(newHand);
-
-            if (newCost === 7) {
-                handlePopup("End of turn!");
-                switchTurns();
-            }
-
-            return;
-        }
-
-        const newCost = ownCost.current + card.level;
-        if (newCost > 7) {
-            handlePopup("Not enough Cost Points!");
-            return;
-        }
-
-        const newBoardCards = [...ownBoard, card];
-        setOwnBoard(newBoardCards);
-
-        const newPoints = newBoardCards.reduce((sum, c) => sum + c.strength, 0);
-        setOwnPoints(newPoints);
-
-        const newHand = ownHand.filter((_, id) => id !== handCardId);
-        setOwnHand(newHand);
-
-        setOwnCost((prev) => ({
-            ...prev,
-            current: newCost,
-        }));
-
-        if (newCost === 7) {
-            handlePopup("End of turn!");
+    const handleCardPlay = (card, handCardId) => {
+        if (!isCurrentPlayer) return;
+        const success = playCard(playerId, card, handCardId);
+        if (success && player.cost.current >= 7) {
             switchTurns();
         }
     };
+
+    // const playCard = (card, handCardId) => {
+    //     const isSpy = card.category?.some((category) => category?.en === "spy");
+
+    //     const skills = findCardSkills(card);
+    //     console.log("Card Skills:", skills);
+
+    //     if (isSpy) {
+    //         if (!yourTurn) {
+    //             const newCost = oponentCost.current + card.level;
+
+    //             setOwnBoard((prev) => [...prev, card]);
+    //             setOponentCost((prev) => ({
+    //                 ...prev,
+    //                 current: newCost,
+    //             }));
+    //             const newBoardCards = [...ownBoard, card];
+    //             const newPoints = newBoardCards.reduce((sum, c) => sum + c.strength, 0);
+    //             const newHand = ownHand.filter((_, id) => id !== handCardId);
+
+    //             setOponentHand(newHand);
+    //             setOwnPoints(newPoints);
+    //             return;
+    //         } else {
+    //             setOpponentBoard((prev) => [...prev, card]);
+    //             const newBoardCards = [...opponentBoard, card];
+    //             const newPoints = newBoardCards.reduce((sum, c) => sum + c.strength, 0);
+    //             setOponentPoints(newPoints);
+    //             handlePopup("Spy card played on opponent's board!");
+    //         }
+
+    //         const newCost = ownCost.current + card.level;
+    //         if (newCost > 7) {
+    //             handlePopup("Not enough Cost Points!");
+    //             return;
+    //         }
+
+    //         setOwnCost((prev) => ({
+    //             ...prev,
+    //             current: newCost,
+    //         }));
+
+    //         const newHand = ownHand.filter((_, id) => id !== handCardId);
+    //         setOwnHand(newHand);
+
+    //         if (newCost === 7) {
+    //             handlePopup("End of turn!");
+    //             switchTurns();
+    //         }
+
+    //         return;
+    //     }
+
+    //     const newCost = ownCost.current + card.level;
+    //     if (newCost > 7) {
+    //         handlePopup("Not enough Cost Points!");
+    //         return;
+    //     }
+
+    //     const newBoardCards = [...ownBoard, card];
+    //     setOwnBoard(newBoardCards);
+
+    //     const newPoints = newBoardCards.reduce((sum, c) => sum + c.strength, 0);
+    //     setOwnPoints(newPoints);
+
+    //     const newHand = ownHand.filter((_, id) => id !== handCardId);
+    //     setOwnHand(newHand);
+
+    //     setOwnCost((prev) => ({
+    //         ...prev,
+    //         current: newCost,
+    //     }));
+
+    //     if (newCost === 7) {
+    //         handlePopup("End of turn!");
+    //         switchTurns();
+    //     }
+    // };
 
     return (
         <div className="game-board">
@@ -315,39 +342,14 @@ export const GameBoard = ({
                     </div>
 
                 </div>
-                {startGame
-                    && <div className="game-board-aside">
-                        {yourTurn &&
-                            <div
-                                className="neo-box"
-                                onClick={() => handleEndTurn(player)}>
-                                END TURN
-                            </div>}
-                        <div className="game-board-info">
-                            {`PLAYER: ${player}`}
-                        </div>
-                        <div className="game-board-info">
-                            {`POINTS: ${ownPoints}`}
-                        </div>
-                        <div className="game-board-info">
-                            {`TURN: ${turns.current} / ${turns.total}`}
-                        </div>
-                        <div className="game-board-info">
-                            {`MULLIGANS: ${ownMuligan} / 3`}
-                        </div>
-                        <div className="game-board-info">
-                            {`TURN COST: ${ownCost.current} / ${ownCost.total}`}
-                        </div>
-                        <div className="game-board-graveyard">
-                            {`graveyard`}
-                        </div>
-                        {yourTurn && <div className="" onClick={() => { setPopupOn(true); setDeckOn(true), setPopupMessage("View deck") }}>
-                            <div className="game-board-deck neo-box" >
-                                {`DECK: ${currentDeck?.length}`}
-                            </div>
-                        </div>}
-
-                    </div>}
+                <GameInfo
+                    player={player}
+                    isCurrentPlayer={isCurrentPlayer}
+                    onEndTurn={switchTurns}
+                    onViewDeck={() => setIsDeckVisible(true)}
+                    currentTurn={turns.current}
+                    totalTurns={turns.total}
+                />
             </div>
             <BoardHand
                 cards={ownHand}
@@ -360,6 +362,9 @@ export const GameBoard = ({
                 colors={colors}
                 yourTurn={yourTurn}
                 player={player}
+                playerId={playerId}
+                    getColors={getColors}
+                    onCardPlay={handleCardPlay}
             />
         </div>
     )

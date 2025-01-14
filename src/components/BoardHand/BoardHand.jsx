@@ -2,20 +2,36 @@ import React, { useState } from "react";
 import { CardTitle } from "../Card/CardTitle";
 import { CardDescription } from "../Card/CardDescription";
 import "./styles/board-hand.scss";
+import { useGame } from "../../context/GameContext";
 
 export const BoardHand = ({
-    cards,
+    // cards,
     ownMuligan,
-    selectedCard,
+    // selectedCard,
     mulliganCard,
     playCard,
-    setSelectedCard,
+    // setSelectedCard,
     onDragStart,
     colors,
     yourTurn,
-    player
+    // player,
+    playerId,
+    getColors,
+    onCardPlay
 }) => {
     const [hoveredCard, setHoveredCard] = useState(null);
+    const [selectedCard, setSelectedCard] = useState(null);
+
+    const {
+        currentPlayer,
+        players,
+        updatePlayerState
+    } = useGame();
+
+    const player = players[playerId];
+    const isCurrentPlayer = currentPlayer === playerId;
+    const cards = player.hand;
+    // const [hoveredCard, setHoveredCard] = useState(null);
     const calculateTransform = (index, cardCount, isHovered, isSelected) => {
         const playerOne = player === "player_1";
         const spreadAngle = playerOne ? 30 : -30; // Total angle for the fan

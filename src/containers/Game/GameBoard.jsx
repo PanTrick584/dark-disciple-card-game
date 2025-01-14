@@ -1,4 +1,5 @@
-// Updated GameBoard.js
+import { useGame } from "./GameContext";
+
 export const GameBoard = ({ playerId }) => {
     const {
         currentPlayer,

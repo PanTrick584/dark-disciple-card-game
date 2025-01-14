@@ -75,6 +75,7 @@ const GamePage = () => {
             {playGame &&
                 <GameBoard
                     player={"player_2"}
+                    playerId="player_2"
                     deck={playerTwoDeck}
                     yourTurn={playerTwoTurn}
                     switchTurns={switchTurns}
@@ -103,6 +104,7 @@ const GamePage = () => {
             {playGame &&
                 <GameBoard
                     player={"player_1"}
+                    playerId="player_1"
                     // startGame={startGame}
                     deck={playerOneDeck}
                     yourTurn={playerOneTurn}

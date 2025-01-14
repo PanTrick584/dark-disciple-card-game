@@ -1,5 +1,6 @@
 // GameInfo.js
 import React from 'react';
+// import "./styles/game-info.scss";
 
 export const GameInfo = ({
     player,
