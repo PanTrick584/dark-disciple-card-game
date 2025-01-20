@@ -9,7 +9,7 @@ export const GameInfo = ({ playerId, isCurrentPlayer, onViewDeck }) => {
     return (
         <div className="game-board-aside">
             {isCurrentPlayer && (
-                <div className="neo-box" onClick={switchTurns}>
+                <div className="neo-box" onClick={() => switchTurns(playerId)}>
                     END TURN
                 </div>
             )}

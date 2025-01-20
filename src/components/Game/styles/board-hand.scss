@@ -2,8 +2,14 @@
 
 .game-board {
     &-hand {
-        &.move-down {
+        position: absolute !important;
+        top: 0;
+        left: 0;
+
+        &.down {
             transform: translateY(20px);
+            bottom: 0;
+            left: 0;
         }
 
         // .hand-card {

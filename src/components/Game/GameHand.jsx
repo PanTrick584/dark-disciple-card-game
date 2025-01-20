@@ -1,14 +1,14 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { CardTitle } from "../Card/CardTitle";
 import { CardDescription } from "../Card/CardDescription";
 import "./styles/board-hand.scss";
 import { useGame } from "../../context/GameContext";
 import { AppContext } from "../../context/AppContext";
+import { themes } from "../../consts/themes";
 
 export const GameHand = ({
     playCard,
     onDragStart,
-    colors,
     playerId,
 }) => {
     const [hoveredCard, setHoveredCard] = useState(null);
@@ -17,13 +17,44 @@ export const GameHand = ({
     const {
         currentPlayer,
         players,
-        muliganCard
+        muliganCard,
+        muliganEnable,
+        setMuliganEnable,
+        showPopupMessage
     } = useGame();
+
     const { language } = useContext(AppContext);
 
     const player = players[playerId];
     const isCurrentPlayer = currentPlayer === playerId;
     const cards = player.hand;
+
+    useEffect(() => {
+        const handleOutsideClick = (e) => {
+            if (!e.target.closest(".hand-card")) setSelectedCard(null);
+        };
+
+        document.addEventListener("click", handleOutsideClick);
+
+        return () => {
+            document.removeEventListener("click", handleOutsideClick);
+        };
+    }, []);
+
+
+    const colors = (factionName) => {
+        let factionColors;
+        const theme = Object.values(themes).find(theme => theme.faction[language] === factionName.replace("-", " "));
+
+        if (theme) {
+            factionColors = {
+                themeMain: theme.themeMain,
+                themeAccent: theme.themeAccent,
+                themeAccentAlt: theme.themeAccentAlt,
+            };
+        }
+        return factionColors;
+    }
 
     const calculateTransform = (index, cardCount, isHovered, isSelected) => {
         const playerOne = playerId === "player_1";
@@ -47,10 +78,18 @@ export const GameHand = ({
     };
 
     const handleCardClick = (card, cardId) => {
-        if (player.muligan < 3) {
+        if (player.muligan < 3 && isCurrentPlayer) {
             muliganCard(cardId);
+            if (player.muligan === 2 && muliganEnable) {
+                setMuliganEnable(false);
+                showPopupMessage(playerId, "Lets start the GAME!", 1000)
+            }
         } else {
+            console.log(muliganEnable);
+
             if (!isCurrentPlayer) return;
+
+            // if () showPopupMessage(playerId, "Lets start GAME!")
 
             if (selectedCard?.id === cardId) {
                 setSelectedCard(null);
@@ -62,7 +101,7 @@ export const GameHand = ({
     };
 
     return (
-        <div className={`game-board-hand${player === "player_2" ? " move-down" : ""}`}>
+        <div className={`game-board-hand${playerId === "player_1" ? " down" : ""}`}>
             {cards?.map((card, index) => {
                 const factionColors = colors(card?.faction[language]);
                 const isSelected = selectedCard?.id === index;

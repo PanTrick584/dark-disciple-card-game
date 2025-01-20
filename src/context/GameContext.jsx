@@ -10,6 +10,16 @@ export function GameProvider({ children }) {
     // Game state
     const [startGame, setStartGame] = useState(false);
     const [playGame, setPlayGame] = useState(false);
+    const [popupMessage, setPopupMessage] = useState({
+        show: false,
+        message: ""
+    });
+    const [popupMessages, setPopupMessages] = useState({
+        player_1: null,
+        player_2: null,
+    });
+    const [muliganEnable, setMuliganEnable] = useState(true)
+
     const [currentPlayer, setCurrentPlayer] = useState('player_1');
     const {
         playerOneDeck,
@@ -150,7 +160,44 @@ export function GameProvider({ children }) {
     };
 
     const switchTurns = () => {
-        setCurrentPlayer(prev => prev === 'player_1' ? 'player_2' : 'player_1');
+        const nextPlayer = currentPlayer === "player_1" ? "player_2" : "player_1";
+
+        // setPopupMessages((prev) => ({
+        //     ...prev,
+        //     [currentPlayer]: "End of Turn!",
+        // }));
+
+        showPopupMessage(currentPlayer, "End of turn!")
+        showPopupMessage(nextPlayer, "Your turn!")
+
+        // setPopupMessages((prev) => ({
+        //     ...prev,
+        //     [nextPlayer]: "Your Turn!",
+        // }));
+
+        setCurrentPlayer(nextPlayer);
+
+        // setTimeout(() => {
+        //     setPopupMessages((prev) => ({
+        //         ...prev,
+        //         [currentPlayer]: null,
+        //         [nextPlayer]: null,
+        //     }));
+        // }, 600);
+    };
+
+    const showPopupMessage = (playerId, message, duration = 500) => {
+        setPopupMessages((prev) => ({
+            ...prev,
+            [playerId]: message,
+        }));
+
+        setTimeout(() => {
+            setPopupMessages((prev) => ({
+                ...prev,
+                [playerId]: null,
+            }));
+        }, duration);
     };
 
     const playCard = (playerId, card, handCardId) => {
@@ -170,8 +217,8 @@ export function GameProvider({ children }) {
                 }
 
                 if (newCost === 7) {
-                    handlePopup("End of turn!");
-                    switchTurns();
+                    // handlePopup("End of turn!");
+                    switchTurns(playerId);
                 }
 
                 updatePlayerState(opponentId, 'cost', { ...opponentId.cost, current: newCost });
@@ -189,13 +236,13 @@ export function GameProvider({ children }) {
 
                 console.log("click spy!");
                 if (newCost > 7) {
-                    handlePopup("Not enough Cost Points!");
+                    // handlePopup("Not enough Cost Points!");
                     return;
                 }
 
                 if (newCost === 7) {
-                    handlePopup("End of turn!");
-                    switchTurns();
+                    // handlePopup("End of turn!");
+                    switchTurns(playerId);
                 }
 
                 updatePlayerState(playerId, 'cost', { ...playerId.cost, current: newCost });
@@ -210,7 +257,6 @@ export function GameProvider({ children }) {
                 const newHand = players[playerId].hand.filter((_, id) => id !== handCardId);
                 updatePlayerState(playerId, 'hand', newHand);
             }
-            // handlePopup("Spy card played on opponent's board!");
             return;
         }
 
@@ -222,8 +268,8 @@ export function GameProvider({ children }) {
         }
 
         if (newCost === 7) {
-            handlePopup("End of turn!");
-            switchTurns();
+            // handlePopup("End of turn!");
+            switchTurns(playerId);
         }
 
         updatePlayerState(playerId, 'cost', { ...playerId.cost, current: newCost });
@@ -249,7 +295,12 @@ export function GameProvider({ children }) {
             updatePlayerState,
             muliganCard,
             switchTurns,
-            playCard
+            playCard,
+            popupMessages,
+            setPopupMessages,
+            showPopupMessage,
+            muliganEnable,
+            setMuliganEnable
         }}>
             {children}
         </GameContext.Provider>
