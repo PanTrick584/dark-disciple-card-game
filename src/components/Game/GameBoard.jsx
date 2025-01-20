@@ -34,7 +34,7 @@ export const GameBoard = ({ playerId }) => {
     // GRAVEYARD
     const [currentGrave, setCurrentGrave] = useState([]);
     //POPUP
-    const [popupOn, setPopupOn] = useState(false);
+    // const [popupOn, setPopupOn] = useState(false);
 
     const { language } = useContext(AppContext);
 
@@ -48,10 +48,27 @@ export const GameBoard = ({ playerId }) => {
         );
     };
 
-    const handleCardPlay = (card, handCardId) => {
-        if (!isCurrentPlayer) return;
-        const success = playCard(playerId, card, handCardId);
+    const handleCardDrop = (e, targetPlayerId) => {
+        e.preventDefault();
+        const draggedData = JSON.parse(e.dataTransfer.getData("card"));
+
+        const { card, cardId } = draggedData;
+
+        // Prevent playing cards on the wrong board
+        if (card.category?.some((category) => category?.en === "spy") && targetPlayerId === playerId) {
+            setPopupMessage(playerId, "Cannot play spy cards on your board!");
+            return;
+        }
+
+        playCard(targetPlayerId, card, cardId);
     };
+
+    // const handleCardPlay = (playerId, card, handCardId) => {
+    //     console.log(isCurrentPlayer);
+    //     if (!isCurrentPlayer) return;
+    //     console.log("card play");
+    //     playCard(playerId, card, handCardId);
+    // };
 
     return (
         <div className="game-board">
@@ -62,7 +79,7 @@ export const GameBoard = ({ playerId }) => {
                     <BoardInfo />
                     <Battlefield
                         isCurrentPlayer={isCurrentPlayer}
-                        handleDrop={handleCardPlay}
+                        handleDrop={(e) => handleCardDrop(e, playerId)}
                         player={player}
                     />
                 </div>
@@ -74,9 +91,8 @@ export const GameBoard = ({ playerId }) => {
             </div>
             <GameHand
                 playCard={playCard}
-                onDragStart={handleDragStart}
+                handleDragStart={handleDragStart}
                 playerId={playerId}
-                onCardPlay={handleCardPlay}
             />
         </div>
     )

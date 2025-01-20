@@ -8,7 +8,7 @@ import { themes } from "../../consts/themes";
 
 export const GameHand = ({
     playCard,
-    onDragStart,
+    handleDragStart,
     playerId,
 }) => {
     const [hoveredCard, setHoveredCard] = useState(null);
@@ -89,8 +89,6 @@ export const GameHand = ({
 
             if (!isCurrentPlayer) return;
 
-            // if () showPopupMessage(playerId, "Lets start GAME!")
-
             if (selectedCard?.id === cardId) {
                 setSelectedCard(null);
                 playCard(playerId, card, cardId);
@@ -117,7 +115,8 @@ export const GameHand = ({
                         }}
                         draggable={isCurrentPlayer}
                         onClick={() => handleCardClick(card, index)}
-                        onDragStart={isCurrentPlayer ? (e) => onDragStart(e, card, index) : undefined}
+                        onDragStart={(e) => handleDragStart(e, card, index)} // Drag handler
+                        // onDragStart={isCurrentPlayer ? (e) => handleDragStart(e, card, index) : undefined}
                         onMouseEnter={isCurrentPlayer ? () => setHoveredCard(index) : undefined}
                         onMouseLeave={isCurrentPlayer ? () => setHoveredCard(null) : undefined}
                     >

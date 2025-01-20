@@ -79,26 +79,30 @@ export function GameProvider({ children }) {
         console.log(currentPlayer);
         // if (!players[currentPlayer].turn) return;
 
+        updatePlayerState(currentPlayer, "currentTurn", players[currentPlayer].currentTurn + 1)
+        updatePlayerState(currentPlayer, "cost", { ...players[currentPlayer].cost, current: 0 })
+
+        // DRAW A CARD
+        const [topCard, ...remainingDeck] = players[currentPlayer].currentDeck;
+        updatePlayerState(currentPlayer, "currentDeck", remainingDeck)
+        updatePlayerState(currentPlayer, "hand", [...players[currentPlayer].hand, topCard])
+
         if (players[currentPlayer].currentTurn === 0) {
 
             // players[currentPlayer].turn < 3
             // && handlePopup("Mulligan!");
 
-            updatePlayerState(currentPlayer, "currentTurn", 1)
-            updatePlayerState(currentPlayer, "cost", { ...players[currentPlayer].cost, current: 0 })
+            // updatePlayerState(currentPlayer, "cost", { ...players[currentPlayer].cost, current: 0 })
         } else {
             // handlePopup("Your turn!");
-            updatePlayerState(currentPlayer, "cost", { ...players[currentPlayer].cost, current: 0 })
-            const [topCard, ...remainingDeck] = players[currentPlayer].currentDeck;
-            updatePlayerState(currentPlayer, "currentDeck", remainingDeck)
-            updatePlayerState(currentPlayer, "hand", [...players[currentPlayer].hand, topCard])
+
 
             if (players[currentPlayer]?.deck?.length > 0) {
                 // setCurrentDeck(remainingDeck);
                 // setOwnHand((prevHand) => [...prevHand, topCard]);
             }
 
-            updatePlayerState(currentPlayer, "cost", { ...players[currentPlayer].cost, current: 0 })
+            // updatePlayerState(currentPlayer, "cost", { ...players[currentPlayer].cost, current: 0 })
         }
     }, [currentPlayer]);
 
@@ -135,7 +139,7 @@ export function GameProvider({ children }) {
         }));
     };
 
-    function shuffleArray(array) {
+    const shuffleArray = (array) => {
         const shuffled = [...array];
         for (let i = shuffled.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -162,28 +166,9 @@ export function GameProvider({ children }) {
     const switchTurns = () => {
         const nextPlayer = currentPlayer === "player_1" ? "player_2" : "player_1";
 
-        // setPopupMessages((prev) => ({
-        //     ...prev,
-        //     [currentPlayer]: "End of Turn!",
-        // }));
-
         showPopupMessage(currentPlayer, "End of turn!")
         showPopupMessage(nextPlayer, "Your turn!")
-
-        // setPopupMessages((prev) => ({
-        //     ...prev,
-        //     [nextPlayer]: "Your Turn!",
-        // }));
-
         setCurrentPlayer(nextPlayer);
-
-        // setTimeout(() => {
-        //     setPopupMessages((prev) => ({
-        //         ...prev,
-        //         [currentPlayer]: null,
-        //         [nextPlayer]: null,
-        //     }));
-        // }, 600);
     };
 
     const showPopupMessage = (playerId, message, duration = 500) => {
@@ -217,7 +202,6 @@ export function GameProvider({ children }) {
                 }
 
                 if (newCost === 7) {
-                    // handlePopup("End of turn!");
                     switchTurns(playerId);
                 }
 
@@ -260,6 +244,7 @@ export function GameProvider({ children }) {
             return;
         }
 
+        console.log("no spy");
         const newCost = players[playerId]?.cost?.current + card?.level;
 
         if (newCost > 7) {
