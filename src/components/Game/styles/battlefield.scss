@@ -1,3 +1,4 @@
+@use "../../../styles/colors.scss" as colors;
 
 .battlefield {
     height: 100%;
@@ -9,8 +10,9 @@
     border: 2px dashed transparent;
     transition: border-color 0.2s;
 
-    &.drag-over {
-        border-color: rgba(0, 0, 0, 0.5); // Highlight drop zone when a card is over
+    &.highlight {
+        // border-color: rgba(0, 0, 0, 0.5); // Highlight drop zone when a card is over
+        background-color: colors.$textColorActive;
     }
 
     .hand-card {
@@ -19,7 +21,7 @@
 
         &:hover {
             transform: scale(1);
-
+            z-index: 999;
         }
     }
 

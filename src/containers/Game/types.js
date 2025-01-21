@@ -6,7 +6,7 @@ export const SKILL_TYPES = {
     SHIELD: 'SHIELD',
     SUMMON: 'SUMMON',
     TRANSFORM: 'TRANSFORM',
-    // Add more as needed
+    PLAY: 'PLAY'
 };
 
 export const TARGET_TYPES = {

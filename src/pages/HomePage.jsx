@@ -9,6 +9,8 @@ import { MainHeader } from '../components/MainHeader/MainHeader';
 import { mainNav } from '../consts/translations';
 import "./styles/home-page.scss"
 import { GameProvider } from '../context/GameContext';
+// import { GameProvider } from '../context/GameContext/GameProvider';
+
 
 const HomePage = () => {
     const [activeDirectory, setActiveDirectory] = useState([]);

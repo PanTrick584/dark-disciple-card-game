@@ -3,6 +3,8 @@ import { CardTitle } from "../Card/CardTitle";
 import { CardDescription } from "../Card/CardDescription";
 import "./styles/board-hand.scss";
 import { useGame } from "../../context/GameContext";
+// import { useGame } from '../../context/GameContext/GameContext';
+
 import { AppContext } from "../../context/AppContext";
 import { themes } from "../../consts/themes";
 
@@ -111,7 +113,7 @@ export const GameHand = ({
                         className={`hand-card${isCurrentPlayer ? "" : " disabled"}`}
                         style={{
                             transform: calculateTransform(index, cards.length, isHovered, isSelected),
-                            zIndex: isSelected || isHovered ? 999 : ((index - cardArr.length ) * -1),
+                            zIndex: isSelected || isHovered ? 999 : ((index - cardArr.length) * -1),
                         }}
                         draggable={isCurrentPlayer}
                         onClick={() => handleCardClick(card, index)}

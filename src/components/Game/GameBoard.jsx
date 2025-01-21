@@ -10,6 +10,9 @@ import { fetchChosenCards } from '../../api/fetchCards';
 import "./styles/game-board.scss"
 import { findCardSkills } from "../../cardSkills/findCard";
 import { useGame } from "../../context/GameContext";
+// import { useGame } from '../../context/GameContext/GameContext';
+// import { useGame } from "../../context/GameContext";
+
 import { GameInfo } from "./GameInfo";
 import { Battlefield } from "./Battlefield";
 import { DeckPopup } from "../Popup/DeckPopup";
@@ -48,15 +51,7 @@ export const GameBoard = ({ playerId }) => {
         );
     };
 
-    const handleCardDrop = (e, playerId) => {
-        e.preventDefault();
-        // console.log(targetPlayerId);
-        const draggedData = JSON.parse(e.dataTransfer.getData("card")) ?? "" ;
-        if (!draggedData) return;
-        const { card, cardId } = draggedData;
 
-        playCard(playerId, card, cardId);
-    };
 
     return (
         <div className="game-board">
@@ -67,7 +62,6 @@ export const GameBoard = ({ playerId }) => {
                     <BoardInfo />
                     <Battlefield
                         isCurrentPlayer={isCurrentPlayer}
-                        handleCardDrop={handleCardDrop}
                         player={player}
                         playerId={playerId}
                     />
