@@ -100,7 +100,7 @@ export const GameHand = ({
 
     return (
         <div className={`game-board-hand${playerId === "player_1" ? " down" : ""}`}>
-            {cards?.map((card, index) => {
+            {cards?.map((card, index, cardArr) => {
                 const factionColors = colors(card?.faction[language]);
                 const isSelected = selectedCard?.id === index;
                 const isHovered = hoveredCard === index;
@@ -111,12 +111,12 @@ export const GameHand = ({
                         className={`hand-card${isCurrentPlayer ? "" : " disabled"}`}
                         style={{
                             transform: calculateTransform(index, cards.length, isHovered, isSelected),
-                            zIndex: isSelected || isHovered ? 999 : index,
+                            zIndex: isSelected || isHovered ? 999 : ((index - cardArr.length ) * -1),
                         }}
                         draggable={isCurrentPlayer}
                         onClick={() => handleCardClick(card, index)}
-                        onDragStart={(e) => handleDragStart(e, card, index)} // Drag handler
-                        // onDragStart={isCurrentPlayer ? (e) => handleDragStart(e, card, index) : undefined}
+                        // onDragStart={(e) => handleDragStart(e, card, index)} // Drag handler
+                        onDragStart={isCurrentPlayer ? (e) => handleDragStart(e, card, index) : undefined}
                         onMouseEnter={isCurrentPlayer ? () => setHoveredCard(index) : undefined}
                         onMouseLeave={isCurrentPlayer ? () => setHoveredCard(null) : undefined}
                     >

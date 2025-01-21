@@ -70,14 +70,8 @@ export function GameProvider({ children }) {
         }
     }, [playerTwoDeck])
 
-    //  useEffect(() => {
-    //     if (playerOneMuligan !== 3 || playerTwoMuligan !== 3) return;
-    //     setStartGame(true)
-    // }, [playerOneMuligan, playerTwoMuligan])
-
     useEffect(() => {
         console.log(currentPlayer);
-        // if (!players[currentPlayer].turn) return;
 
         updatePlayerState(currentPlayer, "currentTurn", players[currentPlayer].currentTurn + 1)
         updatePlayerState(currentPlayer, "cost", { ...players[currentPlayer].cost, current: 0 })
@@ -86,24 +80,6 @@ export function GameProvider({ children }) {
         const [topCard, ...remainingDeck] = players[currentPlayer].currentDeck;
         updatePlayerState(currentPlayer, "currentDeck", remainingDeck)
         updatePlayerState(currentPlayer, "hand", [...players[currentPlayer].hand, topCard])
-
-        if (players[currentPlayer].currentTurn === 0) {
-
-            // players[currentPlayer].turn < 3
-            // && handlePopup("Mulligan!");
-
-            // updatePlayerState(currentPlayer, "cost", { ...players[currentPlayer].cost, current: 0 })
-        } else {
-            // handlePopup("Your turn!");
-
-
-            if (players[currentPlayer]?.deck?.length > 0) {
-                // setCurrentDeck(remainingDeck);
-                // setOwnHand((prevHand) => [...prevHand, topCard]);
-            }
-
-            // updatePlayerState(currentPlayer, "cost", { ...players[currentPlayer].cost, current: 0 })
-        }
     }, [currentPlayer]);
 
     const initializeDeck = useCallback(async (cards, player) => {
@@ -154,6 +130,7 @@ export function GameProvider({ children }) {
         const newHandCards = [...players[currentPlayer].hand];
         newHandCards[cardId] = newDeckCard;
 
+        // PLACE CARD AT RANDO IN DECK TO FIX
         // const randomIndex = Math.floor(Math.random() * (player.currentDeck.length + 1));
         // const newDeck = player.currentDeck.splice(randomIndex, 0, oldHandCard);
         const newDeck = [...players[currentPlayer].currentDeck, oldHandCard];
@@ -244,11 +221,22 @@ export function GameProvider({ children }) {
             return;
         }
 
+
+        if (currentPlayer !== playerId) {
+            showPopupMessage(opponentId, "stop druging cards on opponents board!");
+            return;
+        }
+
+        if (currentPlayer === playerId) {
+            console.log("regular card!");
+            // return;
+        }
+
         console.log("no spy");
         const newCost = players[playerId]?.cost?.current + card?.level;
 
         if (newCost > 7) {
-            handlePopup("Not enough Cost Points!");
+            showPopupMessage(playerId, "Not enough Cost Points!");
             return;
         }
 
@@ -269,6 +257,53 @@ export function GameProvider({ children }) {
         updatePlayerState(playerId, 'hand', newHand);
     };
 
+    // BOARD
+    const calculateDropIndex = (e, playerId) => {
+        const boardElement = e.currentTarget; // The drop target
+        const children = Array.from(boardElement.children); // Get all card elements
+        const { clientX } = e; // Horizontal drop position
+    
+        // Iterate over children to find where the card should be dropped
+        for (let i = 0; i < children.length; i++) {
+            const rect = children[i].getBoundingClientRect();
+            if (clientX < rect.left + rect.width / 2) {
+                return i; // Return the index before which the card should be inserted
+            }
+        }
+    
+        return children.length; // Default to the end of the board
+    };
+
+    const handleCardOrder = (e, playerId, draggedIndex) => {
+        e.preventDefault();
+        const source = e.dataTransfer.getData("source");
+    
+        if (source === "hand") {
+            // Add card from hand to the board
+            const card = players[playerId].hand[data.cardIndex];
+            updatePlayerState(playerId, "hand", players[playerId].hand.filter((_, i) => i !== data.cardIndex));
+    
+            // Find dropIndex
+            const dropIndex = calculateDropIndex(e, playerId);
+            const newBoard = [...players[playerId].board];
+            newBoard.splice(dropIndex, 0, card);
+    
+            updatePlayerState(playerId, "board", newBoard);
+        } else if (source === "board") {
+            // Reorder cards on the board
+            // const draggedIndex = data.cardIndex;
+            const dropIndex = calculateDropIndex(e, playerId);
+    
+            if (draggedIndex !== dropIndex) {
+                const board = [...players[playerId].board];
+                const [draggedCard] = board.splice(draggedIndex, 1);
+                board.splice(dropIndex, 0, draggedCard);
+                updatePlayerState(playerId, "board", board);
+            }
+        }
+    };
+    
+
     return (
         <GameContext.Provider value={{
             startGame,
@@ -285,7 +320,8 @@ export function GameProvider({ children }) {
             setPopupMessages,
             showPopupMessage,
             muliganEnable,
-            setMuliganEnable
+            setMuliganEnable,
+            handleCardOrder
         }}>
             {children}
         </GameContext.Provider>

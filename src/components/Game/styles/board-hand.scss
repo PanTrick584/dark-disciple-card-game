@@ -5,12 +5,15 @@
         position: absolute !important;
         top: 0;
         left: 0;
+        height: min-content;
 
         &.down {
             transform: translateY(20px);
             bottom: 0;
             left: 0;
+            top: auto;
         }
+
 
         // .hand-card {
         //     &.disabled {

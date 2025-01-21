@@ -1,4 +1,26 @@
+
 .battlefield {
-    align-items: flex-end;
+    height: 100%;
+    display: flex;
+    // align-items: flex-start;
     justify-content: center;
+    flex-wrap: wrap;
+    // flex: 0 0 80%;
+    border: 2px dashed transparent;
+    transition: border-color 0.2s;
+
+    &.drag-over {
+        border-color: rgba(0, 0, 0, 0.5); // Highlight drop zone when a card is over
+    }
+
+    .hand-card {
+        transform: scale(.5);
+        margin: 0 -70px;
+
+        &:hover {
+            transform: scale(1);
+
+        }
+    }
+
 }

@@ -23,7 +23,7 @@ export const GameBoard = ({ playerId }) => {
         playCard,
         startGame,
         popupMessages,
-        setPopupMessage
+        setPopupMessages
     } = useGame();
 
     // DECK
@@ -48,39 +48,28 @@ export const GameBoard = ({ playerId }) => {
         );
     };
 
-    const handleCardDrop = (e, targetPlayerId) => {
+    const handleCardDrop = (e, playerId) => {
         e.preventDefault();
-        const draggedData = JSON.parse(e.dataTransfer.getData("card"));
-
+        // console.log(targetPlayerId);
+        const draggedData = JSON.parse(e.dataTransfer.getData("card")) ?? "" ;
+        if (!draggedData) return;
         const { card, cardId } = draggedData;
 
-        // Prevent playing cards on the wrong board
-        if (card.category?.some((category) => category?.en === "spy") && targetPlayerId === playerId) {
-            setPopupMessage(playerId, "Cannot play spy cards on your board!");
-            return;
-        }
-
-        playCard(targetPlayerId, card, cardId);
+        playCard(playerId, card, cardId);
     };
-
-    // const handleCardPlay = (playerId, card, handCardId) => {
-    //     console.log(isCurrentPlayer);
-    //     if (!isCurrentPlayer) return;
-    //     console.log("card play");
-    //     playCard(playerId, card, handCardId);
-    // };
 
     return (
         <div className="game-board">
             {deckPopupOn && <DeckPopup cards={popupCards} />}
-            <div className="game-board-container" style={playerId === "player_1" ? { order: 0 } : { order: 2 }}>
+            <div className="game-board-container" >
                 {popupMessages[playerId] && <InfoPopup playerId={playerId} />}
                 <div className="game-board-main">
                     <BoardInfo />
                     <Battlefield
                         isCurrentPlayer={isCurrentPlayer}
-                        handleDrop={(e) => handleCardDrop(e, playerId)}
+                        handleCardDrop={handleCardDrop}
                         player={player}
+                        playerId={playerId}
                     />
                 </div>
                 <GameInfo
