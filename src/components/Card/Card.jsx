@@ -20,7 +20,7 @@ export const Card = ({ card, deckBuilderOn, setDeckBuilderCards, handleDeck, new
     }
 
     return (
-        <div className="card">
+        <div className="card" onClick={() => console.log(card._id)}>
             <div className="card-popup">
                 {!deckBuilderOn ?
                     <div className="card-popup-edit">

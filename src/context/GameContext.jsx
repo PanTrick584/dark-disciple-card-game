@@ -108,7 +108,7 @@ export function GameProvider({ children }) {
     });
 
     // BOARD ACTIONS
-    const { handleCardOrder } = useBoardActions()
+    const { handleCardOrder } = useBoardActions({players, updatePlayerState})
 
     const value = {
         startGame,

@@ -1,4 +1,4 @@
-export function useBoardActions() {
+export function useBoardActions({ players, updatePlayerState }) {
 
     const calculateDropIndex = (e, playerId) => {
         const boardElement = e.currentTarget;

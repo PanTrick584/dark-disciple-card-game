@@ -14,9 +14,13 @@ export function useCardActions({
         newHandCards[cardId] = newDeckCard;
 
         // TODO: PLACE CARD AT RANDO IN DECK
-        // const randomIndex = Math.floor(Math.random() * (player.currentDeck.length + 1));
-        // const newDeck = player.currentDeck.splice(randomIndex, 0, oldHandCard);
-        const newDeck = [...players[currentPlayer].currentDeck, oldHandCard];
+        const randomIndex = Math.floor(Math.random() * (players[currentPlayer].currentDeck.length + 1));
+        console.log(randomIndex);
+        console.log(players[currentPlayer].currentDeck);
+        let newDeck = players[currentPlayer].currentDeck.splice(randomIndex, 0, oldHandCard);
+        console.log(newDeck);
+        console.log(newDeck.length);
+        newDeck = [...players[currentPlayer].currentDeck, oldHandCard];
 
         updatePlayerState(currentPlayer, "hand", newHandCards)
         updatePlayerState(currentPlayer, "currentDeck", newDeck)
@@ -28,8 +32,27 @@ export function useCardActions({
         console.log(playerId);
         console.log(opponentId);
         const isSpy = card.category?.some((category) => category?.en === "spy");
+        const skillType = card.skills?.map((skill) => skill?.type.map(type => type.en));
+        console.log(skillType);
+        console.log(skillType[0]);
+
+        skillType.forEach((type) => {
+            const [name] = type;
+            if (name === "play") {
+                console.log("zagranie");
+            }
+
+            if (name === "cycle") {
+                console.log("cykl");
+            }
+
+            if (name === "preparation") {
+                console.log("przygotowanie");
+            }
+        })
 
         const cardSkills = findCardSkills(card);
+        console.log(card._id);
         console.log(cardSkills);
 
         // TODO: if spy card is dragged on ally board, popup should inform about need to play it on the oposit board

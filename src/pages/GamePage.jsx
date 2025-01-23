@@ -4,7 +4,6 @@ import { DeckViewer } from "../components/DeckViewer/DeckViewer";
 import { GameBoard } from "../components/Game/GameBoard";
 import "./styles/game-page.scss";
 import { useGame } from "../context/GameContext";
-// import { useGame } from '../context/GameContext/GameContext';
 
 const GamePage = () => {
     const [playGame, setPlayGame] = useState(false);
