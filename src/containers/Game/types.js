@@ -1,4 +1,9 @@
 // types.js
+export const SKILL_EXECUTION = {
+    PLAY: 'PLAY',
+    PREPARATION: 'PREPARATION',
+    CYCLE: 'CYCLE',
+}
 export const SKILL_TYPES = {
     DAMAGE: 'DAMAGE',
     BOOST: 'BOOST',
@@ -10,9 +15,11 @@ export const SKILL_TYPES = {
 };
 
 export const TARGET_TYPES = {
+    ENEMY: 'ENEMY',
     ENEMY_SINGLE: 'ENEMY_SINGLE',
     ENEMY_ALL: 'ENEMY_ALL',
     ENEMY_ANY: 'ENEMY_ANY',
+    ALLY: 'ALLY',
     ALLY_SINGLE: 'ALLY_SINGLE',
     ALLY_ALL: 'ALLY_ALL',
     ALLY_ANY: 'ALLY_ANY',

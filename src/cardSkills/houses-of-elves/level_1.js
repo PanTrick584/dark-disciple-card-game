@@ -1,28 +1,51 @@
-import { CARD_CATEGORY, CARD_PLAYED, CARD_VALUES, SKILL_TYPES, TARGET_TYPES, VALUE_COMPARISON } from "../../containers/Game/types";
+import {
+    CARD_CATEGORY,
+    CARD_PLAYED,
+    CARD_VALUES,
+    SKILL_EXECUTION,
+    SKILL_TYPES,
+    TARGET_TYPES,
+    VALUE_COMPARISON
+} from "../../containers/Game/types";
 
 const cardSkills = {
     "6759ccf075fc7e3b233510e5": [
         {
-            type: SKILL_TYPES.DAMAGE,
-            targetType: TARGET_TYPES.ENEMY_SINGLE,
-            value: 2,
-            requirement: {
+            execution: SKILL_EXECUTION.PLAY,
+            skillType: {
+                type: SKILL_TYPES.DAMAGE,
+                value: 2
+            },
+            targetType: {
+                type: TARGET_TYPES.ENEMY_SINGLE,
+            },
+            condition: {
                 type: CARD_CATEGORY.SPY
             }
         }
     ],
     "6759ccf075fc7e3b233510e4": [
         {
-            type: SKILL_TYPES.DAMAGE,
-            targetType: TARGET_TYPES.ALLY_SINGLE,
-            value: 2,
+            execution: SKILL_EXECUTION.PLAY,
+            skillType: {
+                type: SKILL_TYPES.DAMAGE,
+                value: 2
+            },
+            targetType: {
+                type: TARGET_TYPES.ALLY_SINGLE
+            },
         }
     ],
     "6759ccf075fc7e3b233510e6": [
         {
-            type: SKILL_TYPES.DAMAGE,
-            targetType: TARGET_TYPES.ENEMY_SINGLE,
-            value: 4,
+            execution: SKILL_EXECUTION.PLAY,
+            skillType: {
+                type: SKILL_TYPES.DAMAGE,
+                value: 4
+            },
+            targetType: {
+                type: TARGET_TYPES.ENEMY_SINGLE
+            },
             condition: {
                 type: CARD_VALUES.COST,
                 comparison: VALUE_COMPARISON.EQUAL,
@@ -32,9 +55,14 @@ const cardSkills = {
     ],
     "6759ccf075fc7e3b233510e9": [
         {
-            type: SKILL_TYPES.BOOST,
-            targetType: TARGET_TYPES.SELF,
-            value: 1,
+            execution: SKILL_EXECUTION.CYCLE,
+            skillType: {
+                type: SKILL_TYPES.BOOST,
+                value: 1
+            },
+            targetType: {
+                type: TARGET_TYPES.SELF
+            },
             condition: {
                 type: CARD_VALUES.STRENGTH,
                 targetType: TARGET_TYPES.ENEMY_ANY,
@@ -45,17 +73,27 @@ const cardSkills = {
     ],
     "6759ccf075fc7e3b233510eb": [
         {
-            type: SKILL_TYPES.BOOST,
-            targetType: TARGET_TYPES.ALLY_SINGLE,
-            value: 3,
+            execution: SKILL_EXECUTION.PLAY,
+            skillType: {
+                type: SKILL_TYPES.BOOST,
+                value: 3
+            },
+            targetType: {
+                type: TARGET_TYPES.ALLY_SINGLE,
+            },
             condition: {
                 type: CARD_CATEGORY.SOURCE,
             }
         },
         {
-            type: SKILL_TYPES.BOOST,
-            targetType: TARGET_TYPES.ALLY_SINGLE,
-            value: 3,
+            execution: SKILL_EXECUTION.PREPARATION,
+            skillType: {
+                type: SKILL_TYPES.BOOST,
+                value: 3
+            },
+            targetType: {
+                type: TARGET_TYPES.ALLY_SINGLE,
+            },
             condition: {
                 type: CARD_CATEGORY.SOURCE,
             }
@@ -63,9 +101,14 @@ const cardSkills = {
     ],
     "6759ccf075fc7e3b233510ea": [
         {
-            type: SKILL_TYPES.DAMAGE,
-            targetType: TARGET_TYPES.ENEMY_SINGLE,
-            value: 2,
+            execution: SKILL_EXECUTION.PREPARATION,
+            skillType: {
+                type: SKILL_TYPES.DAMAGE,
+                value: 2
+            },
+            targetType: {
+                type: TARGET_TYPES.ENEMY_SINGLE
+            },
             condition: {
                 type: CARD_PLAYED.LAST_TURN
             }
