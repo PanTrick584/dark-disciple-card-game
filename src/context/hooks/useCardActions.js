@@ -1,4 +1,5 @@
 import { findCardSkills } from "../../cardSkills/findCard";
+import { SKILL_EXECUTION, TARGET_TYPES } from "../../containers/Game/types";
 
 export function useCardActions({
     players,
@@ -23,52 +24,132 @@ export function useCardActions({
         updatePlayerState(currentPlayer, "muligan", players[currentPlayer].muligan + 1)
     };
 
+    const selectTargets = (targetType, players, currentPlayerId, opponentId) => {
+        switch (targetType.type) {
+            case TARGET_TYPES.ENEMY_SINGLE:
+                return [players[opponentId].board[0]]; // Example: first enemy card
+            case TARGET_TYPES.ENEMY_ALL:
+                return players[opponentId].board;
+            case TARGET_TYPES.ALLY_SINGLE:
+                return [players[currentPlayerId].board[0]]; // Example: first ally card
+            // Add more target selection logic
+            default:
+                return [];
+        }
+    }
+
+    function shouldExecuteSkill(skill, card) {
+        // Check skill conditions
+        switch (skill.condition.type) {
+            case CARD_CATEGORY.SOURCE:
+                return card.category === skill.condition.type;
+            // Add more condition checks
+            default:
+                return true;
+        }
+    }
+
+    // Skill effect application
+    function applySkillEffect(skill, target) {
+        switch (skill.skillType.type) {
+            case SKILL_TYPES.BOOST:
+                target.stats.boost += skill.skillType.value;
+                break;
+            // Add more skill type effects
+        }
+    }
+
+    function initiatePlayerTargeting(skill, card, players, currentPlayerId, opponentId) {
+        // Trigger UI for player to select target
+        // This would typically involve setting game state to "targeting mode"
+        return {
+            ...card,
+            pendingSkill: skill,
+            targetingInProgress: true
+        };
+    }
+
+    const skillExecutionStrategies = {
+        [SKILL_EXECUTION.PLAY]: (skill, card, players, playerId, opponentId) => {
+            // Generic play skill execution
+            // const updatedCard = updateCard(skill, card);
+            console.log(SKILL_EXECUTION.PLAY);
+            // Target selection logic
+            const targets = selectTargets(skill.targetType, players, playerId, opponentId);
+
+            // Conditional execution
+            if (shouldExecuteSkill(skill, card)) {
+                targets.forEach(target => {
+                    applySkillEffect(skill, target);
+                });
+            }
+
+            return updatedCard;
+        },
+
+        [SKILL_EXECUTION.PREPARATION]: (skill, card, players, playerId, opponentId) => {
+            // Preparation skill logic
+            // const updatedCard = updateCard(skill, card);
+            const updatedCard = SKILL_EXECUTION.PREPARATION
+            console.log(SKILL_EXECUTION.PREPARATION);
+            // Add specific preparation effects
+            return updatedCard;
+        },
+
+        [SKILL_EXECUTION.CYCLE]: (skill, card, players, playerId, opponentId) => {
+            // Cycle skill logic
+            // const updatedCard = updateCard(skill, card);
+            const updatedCard = SKILL_EXECUTION.CYCLE
+            console.log(SKILL_EXECUTION.CYCLE);
+            // Add specific cycle effects
+            return updatedCard;
+        }
+    };
+
+    const requiresPlayerTargeting = (skill) => {
+        const manualTargetSkills = [
+            TARGET_TYPES.ALLY_SINGLE,
+            TARGET_TYPES.ENEMY_SINGLE,
+        ];
+
+        return manualTargetSkills.includes(skill.targetType.type);
+    }
+
+    const executeCardSkills = (card, players, playerId, opponentId) => {
+        if (!Array.isArray(card.skillsSchema)) return card;
+        console.log(card.skillsSchema);
+        return card.skillsSchema.reduce((updatedCard, skill) => {
+            const executionStrategy = skillExecutionStrategies[skill.execution];
+
+            if (executionStrategy) {
+                // Interactive targeting for skills that require player selection
+                if (requiresPlayerTargeting(skill)) {
+                    return initiatePlayerTargeting(skill, updatedCard, players, playerId, opponentId);
+                }
+
+                // Automatic execution for skills without targeting
+                return executionStrategy(skill, updatedCard, players, playerId, opponentId);
+            }
+
+            return updatedCard;
+        }, card.skillsSchema);
+    }
+
     const playCard = (playerId, card, handCardId) => {
         const opponentId = playerId === 'player_1' ? 'player_2' : 'player_1';
-        console.log(playerId);
-        console.log(opponentId);
         const isSpy = card.category?.some((category) => category?.en === "spy");
         const skillType = card.skills?.map((skill) => skill?.type.map(type => type.en));
         const cardSkills = findCardSkills(card);
 
-        // skillType.forEach((type, typeId) => {
-        //     const [name] = type;
-        //     const nameUp = name.toUpperCase();
-        //     const currentSkill = cardSkills?.[typeId];
-
-        //     if (nameUp === currentSkill.execution) {
-        //         console.log(nameUp);
-        //         console.log(currentSkill);
+        card.skillsSchema = cardSkills;
 
         const updateCard = (skill) => ({ ...card, [skill.execution]: skill, turnPlayed: players[playerId].currentTurn })
-        //     }
-        // })
-        if (Array.isArray(cardSkills)) {
-            cardSkills?.forEach((skill, skillId) => {
-                console.log(skill);
-                if (skill.execution === 'PLAY') {
-                    card = updateCard(skill)
-                    if (skill.targetType === 'ENEMY_SINGLE' || skill.targetType === 'ENEMY_ALL' || skill.targetType === 'ENEMY' || skill.targetType === 'ENEMY_ANY') {
-                        players[opponentId].board.forEach((boardCard, boardCardId) => {
+        executeCardSkills(card, players, playerId, opponentId);
 
-                        })
-                    }
-                    console.log(card);
-                }
-
-                if (skill.execution === 'CYCLE') {
-                    card = updateCard(skill)
-                    console.log(card);
-                    console.log('CYCLE');
-                }
-
-                if (skill.execution === 'PREPARATION') {
-                    card = updateCard(skill)
-                    console.log(card);
-                    console.log('PREPARATION');
-                }
-            })
-        }
+        // if (Array.isArray(cardSkills)) {
+        //     cardSkills?.forEach((skill, skillId) => {
+        //     })
+        // }
 
         // TODO: if spy card is dragged on ally board, popup should inform about need to play it on the oposit board
         if (isSpy) {

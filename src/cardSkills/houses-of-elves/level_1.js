@@ -2,6 +2,7 @@ import {
     CARD_CATEGORY,
     CARD_PLAYED,
     CARD_VALUES,
+    GAME_ACTION,
     SKILL_EXECUTION,
     SKILL_TYPES,
     TARGET_TYPES,
@@ -53,6 +54,34 @@ const cardSkills = {
             }
         }
     ],
+    "6759ccf075fc7e3b233510e7": [
+        {
+            execution: SKILL_EXECUTION.PLAY,
+            skillType: {
+                type: SKILL_TYPES.BOOST,
+                value: 2
+            },
+            targetType: {
+                type: TARGET_TYPES.ENEMY_SINGLE
+            }
+        }
+    ],
+    "6759ccf075fc7e3b233510e8": [
+        {
+            execution: SKILL_EXECUTION.CYCLE,
+            skillType: {
+                type: SKILL_TYPES.BOOST,
+                value: 1
+            },
+            targetType: {
+                type: TARGET_TYPES.SELF
+            },
+            condition: {
+                type: GAME_ACTION.PLAY,
+                comparison: CARD_CATEGORY.SPY
+            }
+        }
+    ],
     "6759ccf075fc7e3b233510e9": [
         {
             execution: SKILL_EXECUTION.CYCLE,
@@ -64,10 +93,8 @@ const cardSkills = {
                 type: TARGET_TYPES.SELF
             },
             condition: {
-                type: CARD_VALUES.STRENGTH,
+                type: GAME_ACTION.BOOST,
                 targetType: TARGET_TYPES.ENEMY_ANY,
-                comparison: VALUE_COMPARISON.EQUAL,
-                value: 0
             }
         }
     ],

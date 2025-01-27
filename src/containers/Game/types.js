@@ -71,3 +71,9 @@ export const VALUE_COMPARISON = {
     LOWER: 'LOWER',
     EQUAL: 'EQUAL'
 }
+
+export const GAME_ACTION = {
+    PLAY: 'PLAY',
+    DAMAGE: 'DAMAGE',
+    BOOST: 'BOOST',
+}
